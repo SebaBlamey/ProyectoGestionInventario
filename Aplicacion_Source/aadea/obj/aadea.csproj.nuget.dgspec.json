@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eweew\\source\\repos\\aadea\\aadea\\aadea.csproj": {}
+    "C:\\Users\\pipen\\Documents\\GitHub\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eweew\\source\\repos\\aadea\\aadea\\aadea.csproj": {
+    "C:\\Users\\pipen\\Documents\\GitHub\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eweew\\source\\repos\\aadea\\aadea\\aadea.csproj",
+        "projectUniqueName": "C:\\Users\\pipen\\Documents\\GitHub\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
         "projectName": "aadea",
-        "projectPath": "C:\\Users\\eweew\\source\\repos\\aadea\\aadea\\aadea.csproj",
-        "packagesPath": "C:\\Users\\eweew\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eweew\\source\\repos\\aadea\\aadea\\obj\\",
+        "projectPath": "C:\\Users\\pipen\\Documents\\GitHub\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
+        "packagesPath": "C:\\Users\\pipen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pipen\\Documents\\GitHub\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\eweew\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pipen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +62,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

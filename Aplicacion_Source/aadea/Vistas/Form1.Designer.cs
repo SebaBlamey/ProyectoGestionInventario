@@ -32,20 +32,26 @@
             loginButton = new Button();
             VerContrasena = new CheckBox();
             PIN_box = new TextBox();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // loginButton
             // 
-            loginButton.BackColor = Color.FromArgb(42, 58, 81);
-            loginButton.FlatAppearance.BorderColor = Color.FromArgb(255, 119, 133);
-            loginButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 119, 133);
-            loginButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 119, 133);
+            loginButton.BackColor = Color.FromArgb(138, 106, 61);
+            loginButton.FlatAppearance.BorderColor = Color.White;
+            loginButton.FlatAppearance.BorderSize = 2;
+            loginButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(85, 59, 16);
+            loginButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 59, 16);
             loginButton.FlatStyle = FlatStyle.Flat;
-            loginButton.Font = new Font("Ubuntu", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
+            loginButton.Font = new Font("Tahoma", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             loginButton.ForeColor = SystemColors.Control;
-            loginButton.Location = new Point(120, 244);
+            loginButton.Location = new Point(137, 308);
+            loginButton.Margin = new Padding(3, 4, 3, 4);
             loginButton.Name = "loginButton";
-            loginButton.Size = new Size(85, 31);
+            loginButton.Size = new Size(97, 41);
             loginButton.TabIndex = 2;
             loginButton.Text = "Login";
             loginButton.UseVisualStyleBackColor = false;
@@ -54,54 +60,81 @@
             // VerContrasena
             // 
             VerContrasena.AutoSize = true;
-            VerContrasena.Checked = true;
-            VerContrasena.CheckState = CheckState.Checked;
+            VerContrasena.CheckAlign = ContentAlignment.MiddleRight;
             VerContrasena.FlatAppearance.CheckedBackColor = Color.FromArgb(255, 119, 133);
             VerContrasena.FlatStyle = FlatStyle.Flat;
-            VerContrasena.Font = new Font("Ubuntu", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
-            VerContrasena.ForeColor = SystemColors.Window;
-            VerContrasena.Location = new Point(82, 219);
+            VerContrasena.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            VerContrasena.ForeColor = SystemColors.InfoText;
+            VerContrasena.Location = new Point(235, 284);
+            VerContrasena.Margin = new Padding(3, 4, 3, 4);
             VerContrasena.Name = "VerContrasena";
-            VerContrasena.Size = new Size(63, 20);
+            VerContrasena.Size = new Size(77, 22);
             VerContrasena.TabIndex = 3;
             VerContrasena.Text = "Ver PIN";
+            VerContrasena.TextAlign = ContentAlignment.MiddleRight;
             VerContrasena.UseVisualStyleBackColor = true;
             VerContrasena.CheckedChanged += VerContrasena_CheckedChanged;
             // 
             // PIN_box
             // 
-            PIN_box.Font = new Font("Ubuntu", 8.999999F, FontStyle.Regular, GraphicsUnit.Point);
+            PIN_box.Font = new Font("Tahoma", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             PIN_box.ForeColor = SystemColors.WindowFrame;
             PIN_box.HideSelection = false;
-            PIN_box.Location = new Point(79, 190);
+            PIN_box.Location = new Point(59, 253);
+            PIN_box.Margin = new Padding(3, 4, 3, 4);
             PIN_box.MaxLength = 8;
             PIN_box.Name = "PIN_box";
-            PIN_box.Size = new Size(166, 21);
+            PIN_box.Size = new Size(253, 28);
             PIN_box.TabIndex = 4;
-            PIN_box.Text = "Ingresa PIN";
+            PIN_box.Text = "Ingrese PIN";
             PIN_box.TextAlign = HorizontalAlignment.Center;
-            PIN_box.UseSystemPasswordChar = true;
             PIN_box.Click += PIN_box_Click;
             PIN_box.MouseClick += PIN_box_MouseClick;
             PIN_box.TextChanged += PIN_box_TextChanged;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resource.logo3;
+            pictureBox1.Location = new Point(4, -16);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(363, 293);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resource.nube;
+            pictureBox2.Location = new Point(12, 198);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(600, 600);
+            pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(42, 58, 81);
+            BackColor = Color.BurlyWood;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(324, 407);
+            ClientSize = new Size(370, 543);
             Controls.Add(PIN_box);
             Controls.Add(VerContrasena);
             Controls.Add(loginButton);
+            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Login";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Delicias de el Tebal";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -110,5 +143,7 @@
         private Button loginButton;
         private CheckBox VerContrasena;
         private TextBox PIN_box;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

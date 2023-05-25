@@ -1,3 +1,4 @@
+using aadea.Vistas;
 using System.Runtime.InteropServices;
 
 namespace aadea
@@ -8,6 +9,7 @@ namespace aadea
         {
             InitializeComponent();
         }
+
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -22,14 +24,24 @@ namespace aadea
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Holaa");
+            if (PIN_box.Text == "12345678")
+            {
+                this.Hide();
+                Principal principal = new Principal();
+                principal.ShowDialog();
+
+                Application.Exit();
+            }
+            else
+            {
+                MessageBox.Show("Usuario incorrecto");
+            }
         }
 
 
@@ -37,42 +49,34 @@ namespace aadea
         {
             try
             {
-                PIN_box.ForeColor = Color.White;
+                PIN_box.ForeColor = Color.Black;
             }
             catch { }
         }
 
         private void PIN_box_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Click");
             PIN_box.SelectAll();
+            PIN_box.UseSystemPasswordChar = true;
         }
 
         private void PIN_box_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("Click");
             PIN_box.SelectAll();
             PIN_box.ForeColor = Color.Black;
+            VerContrasena.Checked = false;
         }
 
         private void VerContrasena_CheckedChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(VerContrasena.Checked.ToString());
-            Console.WriteLine("OFFFF");
             if (VerContrasena.Checked == true)
             {
-                Console.WriteLine("OFF");
                 PIN_box.UseSystemPasswordChar = false;
             }
             else
             {
-                Console.WriteLine("ON");
                 PIN_box.UseSystemPasswordChar = true;
             }
-        }
-
-        private void VerContrasena_Click(object sender, EventArgs e)
-        {
         }
     }
 }
