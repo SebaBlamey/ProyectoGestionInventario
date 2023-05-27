@@ -30,7 +30,7 @@ namespace aadea
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (PIN_box.Text == "12345678")
+            if (PIN_box.Text == "1234")
             {
                 this.Hide();
                 Principal principal = new Principal();
