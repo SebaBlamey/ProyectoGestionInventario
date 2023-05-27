@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Pb+ZtR2gV84oWKedDDfvNoA9vodDFik3NpZOk9HqSPdwyEuGJ0cqeCeE+zYx8DL4orU4/U8VEDoqHOeMdCZIuQ==",
+  "dgSpecHash": "BbwYhNDKKoBLzfklIaJPbIV+xWcw7S/Zo9tMLs0+9DLMBL1xX+m3yljrR0IsE8Ulh4ca5BEaeNVQZyOlvA1+HA==",
   "success": true,
   "projectFilePath": "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\eweew\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512"
+  ],
   "logs": []
 }

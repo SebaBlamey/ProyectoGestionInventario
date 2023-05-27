@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            iconButtonSalir = new FontAwesome.Sharp.IconButton();
+            iconButtonAsistencia = new FontAwesome.Sharp.IconButton();
+            iconButtonTrabajadores = new FontAwesome.Sharp.IconButton();
+            iconButtonProductos = new FontAwesome.Sharp.IconButton();
+            iconButtonProduccion = new FontAwesome.Sharp.IconButton();
+            iconButtonMateriales = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
-            btn_asistencia = new Button();
-            btn_trabajadores = new Button();
-            btn_produccion = new Button();
-            btn_productos = new Button();
-            btn_materiales = new Button();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
@@ -44,18 +45,154 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(85, 59, 16);
+            panel1.Controls.Add(iconButtonSalir);
+            panel1.Controls.Add(iconButtonAsistencia);
+            panel1.Controls.Add(iconButtonTrabajadores);
+            panel1.Controls.Add(iconButtonProductos);
+            panel1.Controls.Add(iconButtonProduccion);
+            panel1.Controls.Add(iconButtonMateriales);
             panel1.Controls.Add(panel3);
-            panel1.Controls.Add(btn_asistencia);
-            panel1.Controls.Add(btn_trabajadores);
-            panel1.Controls.Add(btn_produccion);
-            panel1.Controls.Add(btn_productos);
-            panel1.Controls.Add(btn_materiales);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(218, 522);
             panel1.TabIndex = 0;
+            // 
+            // iconButtonSalir
+            // 
+            iconButtonSalir.FlatAppearance.BorderSize = 0;
+            iconButtonSalir.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
+            iconButtonSalir.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonSalir.FlatStyle = FlatStyle.Flat;
+            iconButtonSalir.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonSalir.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
+            iconButtonSalir.IconColor = Color.White;
+            iconButtonSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonSalir.IconSize = 35;
+            iconButtonSalir.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonSalir.Location = new Point(0, 475);
+            iconButtonSalir.Margin = new Padding(3, 3, 5, 3);
+            iconButtonSalir.Name = "iconButtonSalir";
+            iconButtonSalir.Padding = new Padding(5, 0, 0, 0);
+            iconButtonSalir.Size = new Size(218, 47);
+            iconButtonSalir.TabIndex = 16;
+            iconButtonSalir.Text = "Salir";
+            iconButtonSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonSalir.UseVisualStyleBackColor = true;
+            iconButtonSalir.Click += iconButtonSalir_Click;
+            // 
+            // iconButtonAsistencia
+            // 
+            iconButtonAsistencia.FlatAppearance.BorderSize = 0;
+            iconButtonAsistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
+            iconButtonAsistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonAsistencia.FlatStyle = FlatStyle.Flat;
+            iconButtonAsistencia.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonAsistencia.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
+            iconButtonAsistencia.IconColor = Color.White;
+            iconButtonAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonAsistencia.IconSize = 35;
+            iconButtonAsistencia.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonAsistencia.Location = new Point(0, 344);
+            iconButtonAsistencia.Margin = new Padding(3, 3, 5, 3);
+            iconButtonAsistencia.Name = "iconButtonAsistencia";
+            iconButtonAsistencia.Padding = new Padding(5, 0, 0, 0);
+            iconButtonAsistencia.Size = new Size(218, 47);
+            iconButtonAsistencia.TabIndex = 15;
+            iconButtonAsistencia.Text = "Asistencia";
+            iconButtonAsistencia.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonAsistencia.UseVisualStyleBackColor = true;
+            iconButtonAsistencia.Click += iconButtonAsistencia_Click;
+            // 
+            // iconButtonTrabajadores
+            // 
+            iconButtonTrabajadores.FlatAppearance.BorderSize = 0;
+            iconButtonTrabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
+            iconButtonTrabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonTrabajadores.FlatStyle = FlatStyle.Flat;
+            iconButtonTrabajadores.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonTrabajadores.IconChar = FontAwesome.Sharp.IconChar.Users;
+            iconButtonTrabajadores.IconColor = Color.White;
+            iconButtonTrabajadores.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonTrabajadores.IconSize = 35;
+            iconButtonTrabajadores.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonTrabajadores.Location = new Point(0, 291);
+            iconButtonTrabajadores.Margin = new Padding(3, 3, 5, 3);
+            iconButtonTrabajadores.Name = "iconButtonTrabajadores";
+            iconButtonTrabajadores.Padding = new Padding(5, 0, 0, 0);
+            iconButtonTrabajadores.Size = new Size(218, 47);
+            iconButtonTrabajadores.TabIndex = 14;
+            iconButtonTrabajadores.Text = "Trabajadores";
+            iconButtonTrabajadores.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonTrabajadores.UseVisualStyleBackColor = true;
+            iconButtonTrabajadores.Click += iconButtonTrabajadores_Click;
+            // 
+            // iconButtonProductos
+            // 
+            iconButtonProductos.FlatAppearance.BorderSize = 0;
+            iconButtonProductos.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
+            iconButtonProductos.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonProductos.FlatStyle = FlatStyle.Flat;
+            iconButtonProductos.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonProductos.IconChar = FontAwesome.Sharp.IconChar.BowlFood;
+            iconButtonProductos.IconColor = Color.White;
+            iconButtonProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonProductos.IconSize = 35;
+            iconButtonProductos.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonProductos.Location = new Point(0, 132);
+            iconButtonProductos.Name = "iconButtonProductos";
+            iconButtonProductos.Padding = new Padding(5, 0, 5, 0);
+            iconButtonProductos.Size = new Size(218, 47);
+            iconButtonProductos.TabIndex = 13;
+            iconButtonProductos.Text = "Productos";
+            iconButtonProductos.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonProductos.UseVisualStyleBackColor = true;
+            iconButtonProductos.Click += iconButtonProductos_Click;
+            // 
+            // iconButtonProduccion
+            // 
+            iconButtonProduccion.FlatAppearance.BorderSize = 0;
+            iconButtonProduccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
+            iconButtonProduccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonProduccion.FlatStyle = FlatStyle.Flat;
+            iconButtonProduccion.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonProduccion.IconChar = FontAwesome.Sharp.IconChar.Building;
+            iconButtonProduccion.IconColor = Color.White;
+            iconButtonProduccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonProduccion.IconSize = 35;
+            iconButtonProduccion.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonProduccion.Location = new Point(0, 238);
+            iconButtonProduccion.Name = "iconButtonProduccion";
+            iconButtonProduccion.Padding = new Padding(5, 0, 0, 0);
+            iconButtonProduccion.Size = new Size(218, 47);
+            iconButtonProduccion.TabIndex = 12;
+            iconButtonProduccion.Text = "Produccion";
+            iconButtonProduccion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonProduccion.UseVisualStyleBackColor = true;
+            iconButtonProduccion.Click += iconButtonProduccion_Click;
+            // 
+            // iconButtonMateriales
+            // 
+            iconButtonMateriales.FlatAppearance.BorderSize = 0;
+            iconButtonMateriales.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
+            iconButtonMateriales.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonMateriales.FlatStyle = FlatStyle.Flat;
+            iconButtonMateriales.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonMateriales.IconChar = FontAwesome.Sharp.IconChar.KitchenSet;
+            iconButtonMateriales.IconColor = Color.White;
+            iconButtonMateriales.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonMateriales.IconSize = 35;
+            iconButtonMateriales.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonMateriales.Location = new Point(0, 185);
+            iconButtonMateriales.Name = "iconButtonMateriales";
+            iconButtonMateriales.Padding = new Padding(5, 0, 0, 0);
+            iconButtonMateriales.Size = new Size(218, 47);
+            iconButtonMateriales.TabIndex = 11;
+            iconButtonMateriales.Text = "Materiales";
+            iconButtonMateriales.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonMateriales.UseVisualStyleBackColor = true;
+            iconButtonMateriales.Click += iconButtonMateriales_Click;
             // 
             // panel3
             // 
@@ -66,91 +203,6 @@
             panel3.MouseDown += panel3_MouseDown;
             panel3.MouseMove += panel3_MouseMove;
             panel3.MouseUp += panel3_MouseUp;
-            // 
-            // btn_asistencia
-            // 
-            btn_asistencia.FlatAppearance.BorderSize = 0;
-            btn_asistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            btn_asistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
-            btn_asistencia.FlatStyle = FlatStyle.Flat;
-            btn_asistencia.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_asistencia.ForeColor = Color.White;
-            btn_asistencia.Location = new Point(0, 351);
-            btn_asistencia.Name = "btn_asistencia";
-            btn_asistencia.Padding = new Padding(20, 0, 0, 0);
-            btn_asistencia.Size = new Size(218, 52);
-            btn_asistencia.TabIndex = 10;
-            btn_asistencia.Text = "Asistencia";
-            btn_asistencia.TextAlign = ContentAlignment.MiddleLeft;
-            btn_asistencia.UseVisualStyleBackColor = true;
-            // 
-            // btn_trabajadores
-            // 
-            btn_trabajadores.FlatAppearance.BorderSize = 0;
-            btn_trabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            btn_trabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
-            btn_trabajadores.FlatStyle = FlatStyle.Flat;
-            btn_trabajadores.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_trabajadores.ForeColor = Color.White;
-            btn_trabajadores.Location = new Point(0, 293);
-            btn_trabajadores.Name = "btn_trabajadores";
-            btn_trabajadores.Padding = new Padding(20, 0, 0, 0);
-            btn_trabajadores.Size = new Size(218, 52);
-            btn_trabajadores.TabIndex = 9;
-            btn_trabajadores.Text = "Trabajadores";
-            btn_trabajadores.TextAlign = ContentAlignment.MiddleLeft;
-            btn_trabajadores.UseVisualStyleBackColor = true;
-            // 
-            // btn_produccion
-            // 
-            btn_produccion.FlatAppearance.BorderSize = 0;
-            btn_produccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            btn_produccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
-            btn_produccion.FlatStyle = FlatStyle.Flat;
-            btn_produccion.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_produccion.ForeColor = Color.White;
-            btn_produccion.Location = new Point(0, 235);
-            btn_produccion.Name = "btn_produccion";
-            btn_produccion.Padding = new Padding(20, 0, 0, 0);
-            btn_produccion.Size = new Size(218, 52);
-            btn_produccion.TabIndex = 8;
-            btn_produccion.Text = "Producción";
-            btn_produccion.TextAlign = ContentAlignment.MiddleLeft;
-            btn_produccion.UseVisualStyleBackColor = true;
-            // 
-            // btn_productos
-            // 
-            btn_productos.FlatAppearance.BorderSize = 0;
-            btn_productos.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            btn_productos.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
-            btn_productos.FlatStyle = FlatStyle.Flat;
-            btn_productos.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_productos.ForeColor = Color.White;
-            btn_productos.Location = new Point(0, 177);
-            btn_productos.Name = "btn_productos";
-            btn_productos.Padding = new Padding(20, 0, 0, 0);
-            btn_productos.Size = new Size(218, 52);
-            btn_productos.TabIndex = 7;
-            btn_productos.Text = "Productos";
-            btn_productos.TextAlign = ContentAlignment.MiddleLeft;
-            btn_productos.UseVisualStyleBackColor = true;
-            // 
-            // btn_materiales
-            // 
-            btn_materiales.FlatAppearance.BorderSize = 0;
-            btn_materiales.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            btn_materiales.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
-            btn_materiales.FlatStyle = FlatStyle.Flat;
-            btn_materiales.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_materiales.ForeColor = Color.White;
-            btn_materiales.Location = new Point(0, 119);
-            btn_materiales.Name = "btn_materiales";
-            btn_materiales.Padding = new Padding(20, 0, 0, 0);
-            btn_materiales.Size = new Size(218, 52);
-            btn_materiales.TabIndex = 3;
-            btn_materiales.Text = "Materiales";
-            btn_materiales.TextAlign = ContentAlignment.MiddleLeft;
-            btn_materiales.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -167,7 +219,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resource.nube;
-            pictureBox1.Location = new Point(202, 0);
+            pictureBox1.Location = new Point(330, 55);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1110, 905);
@@ -202,10 +254,11 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Panel panel3;
-        private Button btn_materiales;
-        private Button btn_asistencia;
-        private Button btn_trabajadores;
-        private Button btn_produccion;
-        private Button btn_productos;
+        private FontAwesome.Sharp.IconButton iconButtonProduccion;
+        private FontAwesome.Sharp.IconButton iconButtonMateriales;
+        private FontAwesome.Sharp.IconButton iconButtonAsistencia;
+        private FontAwesome.Sharp.IconButton iconButtonTrabajadores;
+        private FontAwesome.Sharp.IconButton iconButtonProductos;
+        private FontAwesome.Sharp.IconButton iconButtonSalir;
     }
 }

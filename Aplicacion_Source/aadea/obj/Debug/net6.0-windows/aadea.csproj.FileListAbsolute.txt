@@ -54,3 +54,5 @@ D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicac
 D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.pdb
 D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.genruntimeconfig.cache
 D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\ref\aadea.dll
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.csproj.CopyComplete
