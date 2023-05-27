@@ -56,3 +56,24 @@ D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicac
 D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\ref\aadea.dll
 D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
 D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.csproj.CopyComplete
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.exe
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.deps.json
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.runtimeconfig.json
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.dll
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.pdb
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.csproj.AssemblyReference.cache
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Properties.Resource.resources
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Login.resources
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.Principal.resources
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.csproj.GenerateResource.cache
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.AssemblyInfoInputs.cache
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.AssemblyInfo.cs
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.csproj.CoreCompileInputs.cache
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.csproj.CopyComplete
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.dll
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\refint\aadea.dll
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.pdb
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.genruntimeconfig.cache
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\ref\aadea.dll

@@ -34,6 +34,7 @@
             PIN_box = new TextBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -115,6 +116,21 @@
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
             // 
+            // iconButton1
+            // 
+            iconButton1.FlatAppearance.BorderSize = 0;
+            iconButton1.FlatStyle = FlatStyle.Flat;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.IconSize = 30;
+            iconButton1.Location = new Point(0, -1);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(40, 38);
+            iconButton1.TabIndex = 7;
+            iconButton1.UseVisualStyleBackColor = true;
+            iconButton1.Click += iconButton1_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -122,6 +138,7 @@
             BackColor = Color.BurlyWood;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(324, 407);
+            Controls.Add(iconButton1);
             Controls.Add(PIN_box);
             Controls.Add(VerContrasena);
             Controls.Add(loginButton);
@@ -146,5 +163,6 @@
         private TextBox PIN_box;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

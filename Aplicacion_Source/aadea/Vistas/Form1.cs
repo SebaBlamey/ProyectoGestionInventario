@@ -105,5 +105,10 @@ namespace aadea
         {
             isMouseDown = false;
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

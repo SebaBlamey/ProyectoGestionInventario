@@ -38,8 +38,11 @@
             panel3 = new Panel();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
+            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -196,9 +199,11 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(pictureBox2);
+            panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(218, 59);
+            panel3.Size = new Size(218, 522);
             panel3.TabIndex = 6;
             panel3.MouseDown += panel3_MouseDown;
             panel3.MouseMove += panel3_MouseMove;
@@ -227,6 +232,18 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resource.logo3;
+            pictureBox2.Location = new Point(12, 0);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(182, 136);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -244,7 +261,9 @@
             Text = "Principal";
             Load += Principal_Load;
             panel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -260,5 +279,6 @@
         private FontAwesome.Sharp.IconButton iconButtonTrabajadores;
         private FontAwesome.Sharp.IconButton iconButtonProductos;
         private FontAwesome.Sharp.IconButton iconButtonSalir;
+        private PictureBox pictureBox2;
     }
 }
