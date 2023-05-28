@@ -105,9 +105,21 @@ namespace aadea
         {
             isMouseDown = false;
         }
+        [DllImport("user32.dll")]
+        public static extern bool AnimateWindow(IntPtr hWnd, int dwTime, int dwFlags);
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            const int AW_SLIDE = 0x40000;
+            const int AW_HOR_NEGATIVE = 0x2;
+            const int AW_HIDE = 0x10000;
+            const int AnimationDuration = 500; // Duración de la animación en milisegundos
+
+            // Realizar animación de cierre deslizante hacia la izquierda
+            AnimateWindow(this.Handle, AnimationDuration, AW_SLIDE | AW_HOR_NEGATIVE | AW_HIDE);
+
+            // Esperar a que finalice la animación antes de cerrar la aplicación
+            System.Threading.Thread.Sleep(AnimationDuration);
             Application.Exit();
         }
     }

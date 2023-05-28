@@ -36,13 +36,13 @@
             iconButtonProduccion = new FontAwesome.Sharp.IconButton();
             iconButtonMateriales = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
+            pictureBox2 = new PictureBox();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -209,6 +209,18 @@
             panel3.MouseMove += panel3_MouseMove;
             panel3.MouseUp += panel3_MouseUp;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resource.logo3;
+            pictureBox2.Location = new Point(13, 0);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(192, 149);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
             // panel2
             // 
             panel2.Dock = DockStyle.Top;
@@ -224,25 +236,13 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resource.nube;
-            pictureBox1.Location = new Point(330, 55);
+            pictureBox1.Location = new Point(310, 101);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1110, 905);
+            pictureBox1.Size = new Size(947, 751);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = Properties.Resource.logo3;
-            pictureBox2.Location = new Point(12, 0);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(182, 136);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 6;
-            pictureBox2.TabStop = false;
             // 
             // Principal
             // 
@@ -262,8 +262,8 @@
             Load += Principal_Load;
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
