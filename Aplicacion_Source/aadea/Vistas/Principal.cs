@@ -1,6 +1,5 @@
 ﻿using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
-
 namespace aadea.Vistas
 {
     public partial class Principal : Form
