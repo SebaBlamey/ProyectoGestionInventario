@@ -2,6 +2,8 @@
 using System.Runtime.InteropServices;
 using System.Data.SQLite;
 using System.Data;
+using System.Configuration;
+
 namespace aadea.Vistas
 {
     public partial class Principal : Form
@@ -11,7 +13,8 @@ namespace aadea.Vistas
         public Principal()
         {
             InitializeComponent();
-            string connectionString = "Data Source=./Base_delicias.db.sql;Version=3;";
+            string databasePath = ConfigurationManager.AppSettings["DatabasePath"];
+            string connectionString = $"Data Source={databasePath};Version=3;";
             connection = new SQLiteConnection(connectionString);
         }
 
@@ -119,20 +122,11 @@ namespace aadea.Vistas
 
         private void iconButtonProductos_Click(object sender, EventArgs e)
         {
-            /*
-            string connectionString = "Data Source=../../BaseDeDatos/datos.sqlite;Version=3;";
-            SQLiteConnection connection = new SQLiteConnection(connectionString);
-            string query = "SELECT * FROM Productos";
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            DataTable dt = new DataTable();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
-            adapter.Fill(dt);
-            dataGridView1.DataSource = dt;*/
 
             try
             {
                 connection.Open();
-                string query = "SELECT * FROM Producto";
+                string query = "SELECT * FROM producto";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet);
@@ -142,7 +136,7 @@ namespace aadea.Vistas
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en la base de datos"+ex.Message);
+                MessageBox.Show("Error en la base de datos "+ex.Message);
             }
         }
 
