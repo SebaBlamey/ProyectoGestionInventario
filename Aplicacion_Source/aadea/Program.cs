@@ -1,9 +1,12 @@
 using aadea.Vistas;
+using System.Data.SQLite;
 
 namespace aadea
 {
     internal static class Program
     {
+
+        public static SQLiteConnection connection;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

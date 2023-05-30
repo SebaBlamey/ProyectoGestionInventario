@@ -1,12 +1,18 @@
 ﻿using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
+using System.Data.SQLite;
+using System.Data;
 namespace aadea.Vistas
 {
     public partial class Principal : Form
     {
+        private SQLiteConnection connection;
+
         public Principal()
         {
             InitializeComponent();
+            string connectionString = "Data Source=./Base_delicias.db.sql;Version=3;";
+            connection = new SQLiteConnection(connectionString);
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -113,7 +119,31 @@ namespace aadea.Vistas
 
         private void iconButtonProductos_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            /*
+            string connectionString = "Data Source=../../BaseDeDatos/datos.sqlite;Version=3;";
+            SQLiteConnection connection = new SQLiteConnection(connectionString);
+            string query = "SELECT * FROM Productos";
+            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;*/
+
+            try
+            {
+                connection.Open();
+                string query = "SELECT * FROM Producto";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
+                dataGridView1.DataSource = dataSet.Tables[0];
+
+            connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la base de datos"+ex.Message);
+            }
         }
 
         private void iconButtonMateriales_Click(object sender, EventArgs e)
@@ -134,6 +164,16 @@ namespace aadea.Vistas
         private void iconButtonAsistencia_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

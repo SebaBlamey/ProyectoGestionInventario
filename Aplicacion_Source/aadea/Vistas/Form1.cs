@@ -1,5 +1,6 @@
 using aadea.Vistas;
 using System.Runtime.InteropServices;
+using System.Data.SQLite;
 
 namespace aadea
 {

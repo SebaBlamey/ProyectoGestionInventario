@@ -1,4 +1,6 @@
-﻿namespace aadea.Vistas
+﻿using System.Data.SQLite;
+
+namespace aadea.Vistas
 {
     partial class Principal
     {
@@ -6,7 +8,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -39,10 +40,12 @@
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
+            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -57,9 +60,8 @@
             panel1.Controls.Add(panel3);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(218, 522);
+            panel1.Size = new Size(249, 696);
             panel1.TabIndex = 0;
             // 
             // iconButtonSalir
@@ -74,11 +76,11 @@
             iconButtonSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonSalir.IconSize = 35;
             iconButtonSalir.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonSalir.Location = new Point(0, 475);
-            iconButtonSalir.Margin = new Padding(3, 3, 5, 3);
+            iconButtonSalir.Location = new Point(0, 633);
+            iconButtonSalir.Margin = new Padding(3, 4, 6, 4);
             iconButtonSalir.Name = "iconButtonSalir";
-            iconButtonSalir.Padding = new Padding(5, 0, 0, 0);
-            iconButtonSalir.Size = new Size(218, 47);
+            iconButtonSalir.Padding = new Padding(6, 0, 0, 0);
+            iconButtonSalir.Size = new Size(249, 63);
             iconButtonSalir.TabIndex = 16;
             iconButtonSalir.Text = "Salir";
             iconButtonSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -97,11 +99,11 @@
             iconButtonAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonAsistencia.IconSize = 35;
             iconButtonAsistencia.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonAsistencia.Location = new Point(0, 344);
-            iconButtonAsistencia.Margin = new Padding(3, 3, 5, 3);
+            iconButtonAsistencia.Location = new Point(0, 459);
+            iconButtonAsistencia.Margin = new Padding(3, 4, 6, 4);
             iconButtonAsistencia.Name = "iconButtonAsistencia";
-            iconButtonAsistencia.Padding = new Padding(5, 0, 0, 0);
-            iconButtonAsistencia.Size = new Size(218, 47);
+            iconButtonAsistencia.Padding = new Padding(6, 0, 0, 0);
+            iconButtonAsistencia.Size = new Size(249, 63);
             iconButtonAsistencia.TabIndex = 15;
             iconButtonAsistencia.Text = "Asistencia";
             iconButtonAsistencia.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -120,11 +122,11 @@
             iconButtonTrabajadores.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonTrabajadores.IconSize = 35;
             iconButtonTrabajadores.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonTrabajadores.Location = new Point(0, 291);
-            iconButtonTrabajadores.Margin = new Padding(3, 3, 5, 3);
+            iconButtonTrabajadores.Location = new Point(0, 388);
+            iconButtonTrabajadores.Margin = new Padding(3, 4, 6, 4);
             iconButtonTrabajadores.Name = "iconButtonTrabajadores";
-            iconButtonTrabajadores.Padding = new Padding(5, 0, 0, 0);
-            iconButtonTrabajadores.Size = new Size(218, 47);
+            iconButtonTrabajadores.Padding = new Padding(6, 0, 0, 0);
+            iconButtonTrabajadores.Size = new Size(249, 63);
             iconButtonTrabajadores.TabIndex = 14;
             iconButtonTrabajadores.Text = "Trabajadores";
             iconButtonTrabajadores.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -143,10 +145,11 @@
             iconButtonProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonProductos.IconSize = 35;
             iconButtonProductos.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonProductos.Location = new Point(0, 132);
+            iconButtonProductos.Location = new Point(0, 176);
+            iconButtonProductos.Margin = new Padding(3, 4, 3, 4);
             iconButtonProductos.Name = "iconButtonProductos";
-            iconButtonProductos.Padding = new Padding(5, 0, 5, 0);
-            iconButtonProductos.Size = new Size(218, 47);
+            iconButtonProductos.Padding = new Padding(6, 0, 6, 0);
+            iconButtonProductos.Size = new Size(249, 63);
             iconButtonProductos.TabIndex = 13;
             iconButtonProductos.Text = "Productos";
             iconButtonProductos.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -165,10 +168,11 @@
             iconButtonProduccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonProduccion.IconSize = 35;
             iconButtonProduccion.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonProduccion.Location = new Point(0, 238);
+            iconButtonProduccion.Location = new Point(0, 317);
+            iconButtonProduccion.Margin = new Padding(3, 4, 3, 4);
             iconButtonProduccion.Name = "iconButtonProduccion";
-            iconButtonProduccion.Padding = new Padding(5, 0, 0, 0);
-            iconButtonProduccion.Size = new Size(218, 47);
+            iconButtonProduccion.Padding = new Padding(6, 0, 0, 0);
+            iconButtonProduccion.Size = new Size(249, 63);
             iconButtonProduccion.TabIndex = 12;
             iconButtonProduccion.Text = "Produccion";
             iconButtonProduccion.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -187,10 +191,11 @@
             iconButtonMateriales.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonMateriales.IconSize = 35;
             iconButtonMateriales.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonMateriales.Location = new Point(0, 185);
+            iconButtonMateriales.Location = new Point(0, 247);
+            iconButtonMateriales.Margin = new Padding(3, 4, 3, 4);
             iconButtonMateriales.Name = "iconButtonMateriales";
-            iconButtonMateriales.Padding = new Padding(5, 0, 0, 0);
-            iconButtonMateriales.Size = new Size(218, 47);
+            iconButtonMateriales.Padding = new Padding(6, 0, 0, 0);
+            iconButtonMateriales.Size = new Size(249, 63);
             iconButtonMateriales.TabIndex = 11;
             iconButtonMateriales.Text = "Materiales";
             iconButtonMateriales.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -202,8 +207,9 @@
             panel3.Controls.Add(pictureBox2);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(218, 522);
+            panel3.Size = new Size(249, 696);
             panel3.TabIndex = 6;
             panel3.MouseDown += panel3_MouseDown;
             panel3.MouseMove += panel3_MouseMove;
@@ -213,10 +219,9 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = Properties.Resource.logo3;
-            pictureBox2.Location = new Point(13, 0);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Location = new Point(15, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(192, 149);
+            pictureBox2.Size = new Size(219, 199);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
@@ -224,10 +229,9 @@
             // panel2
             // 
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(218, 0);
-            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Location = new Point(249, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(707, 62);
+            panel2.Size = new Size(808, 83);
             panel2.TabIndex = 1;
             panel2.MouseDown += panel2_MouseDown;
             panel2.MouseMove += panel2_MouseMove;
@@ -236,26 +240,36 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resource.nube;
-            pictureBox1.Location = new Point(310, 101);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(354, 135);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(947, 751);
+            pictureBox1.Size = new Size(1082, 1001);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(354, 135);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(676, 399);
+            dataGridView1.TabIndex = 3;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            // 
             // Principal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.BurlyWood;
-            ClientSize = new Size(925, 522);
+            ClientSize = new Size(1057, 696);
+            Controls.Add(dataGridView1);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             ForeColor = Color.Transparent;
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Principal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Principal";
@@ -264,6 +278,7 @@
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -280,5 +295,6 @@
         private FontAwesome.Sharp.IconButton iconButtonProductos;
         private FontAwesome.Sharp.IconButton iconButtonSalir;
         private PictureBox pictureBox2;
+        private DataGridView dataGridView1;
     }
 }
