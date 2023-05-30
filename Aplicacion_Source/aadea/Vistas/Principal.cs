@@ -7,12 +7,12 @@ namespace aadea.Vistas
     public partial class Principal : Form
     {
         private SQLiteConnection connection;
+
         public Principal()
         {
             InitializeComponent();
-            string dbPath = "Database/base_delicias.db";
-            string connectionString = $"Data Source={dbPath};Version=3;";
-            SQLiteConnection connection=  new SQLiteConnection(connectionString);
+            string connectionString = "Data Source=./Base_delicias.db.sql;Version=3;";
+            connection = new SQLiteConnection(connectionString);
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -119,27 +119,26 @@ namespace aadea.Vistas
 
         private void iconButtonProductos_Click(object sender, EventArgs e)
         {
+            /*
+            string connectionString = "Data Source=../../BaseDeDatos/datos.sqlite;Version=3;";
+            SQLiteConnection connection = new SQLiteConnection(connectionString);
+            string query = "SELECT * FROM Productos";
+            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd);
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;*/
+
             try
             {
-                
                 connection.Open();
                 string query = "SELECT * FROM Producto";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet);
                 dataGridView1.DataSource = dataSet.Tables[0];
-                connection.Close();
-                
-                /*
-                connection.Open();
-                string query = "SELECT * FROM Producto";
-                SQLiteCommand cmd = new SQLiteCommand(query,connection);
-                DataTable dt = new DataTable();
-                SQLiteDataAdapter adapter= new SQLiteDataAdapter(cmd);
-                adapter.Fill(dt);
-                dataGridView1.DataSource = dt;
-                connection.Close();
-                */
+
+            connection.Close();
             }
             catch (Exception ex)
             {
