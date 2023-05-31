@@ -12,7 +12,7 @@ namespace aadea.Vistas
         private static string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
         public Principal()
         {
-            InitializeComponent();            
+            InitializeComponent();
             connection = new SQLiteConnection(cadena);
         }
 
@@ -97,6 +97,7 @@ namespace aadea.Vistas
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
+                pictureBox1.Hide();
             }
         }
         private void DisableButton()
@@ -117,45 +118,98 @@ namespace aadea.Vistas
 
             Application.Exit();
         }
+        private IconButton? actualButton;
+        private void SetActualButton(object sender, string text)
+        {
+            if (sender != null)
+            {
+                UnsetActualButton();
+                actualButton = (IconButton?)sender;
+                menuTitleLaberl.Text = text;
+                menuTitleLaberl.ForeColor = Color.FromArgb(111, 82, 38);
+                menuTitleLaberl.TextAlign = ContentAlignment.MiddleCenter;
+                dataGridView1.DataSource = null;
+            }
+        }
+        private void UnsetActualButton()
+        {
+            actualButton = null;
+        }
 
         private void iconButtonProductos_Click(object sender, EventArgs e)
         {
-
+            ActivateButton(sender);
             try
             {
+                SetActualButton(sender, "PRODUCTOS");
                 connection.Open();
                 string query = "SELECT * FROM producto";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet);
                 dataGridView1.DataSource = dataSet.Tables[0];
-
-            connection.Close();
+                dataGridView1.ForeColor = Color.White;
+                connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en la base de datos "+ex.Message);
+                MessageBox.Show("Error en la base de datos " + ex.Message);
             }
         }
 
         private void iconButtonMateriales_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            ActivateButton(sender);
+            try
+            {
+                SetActualButton(sender, "MATERIALES");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la base de datos " + ex.Message);
+            }
         }
 
         private void iconButtonProduccion_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            try
+            {
+                SetActualButton(sender, "PRODUCCION");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la base de datos " + ex.Message);
+            }
         }
 
         private void iconButtonTrabajadores_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            ActivateButton(sender);
+            try
+            {
+                SetActualButton(sender, "TRABAJADORES");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la base de datos " + ex.Message);
+            }
         }
 
         private void iconButtonAsistencia_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            ActivateButton(sender);
+            try
+            {
+                SetActualButton(sender, "ASISTENCIA");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la base de datos " + ex.Message);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
