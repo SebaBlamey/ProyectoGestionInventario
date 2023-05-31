@@ -293,7 +293,6 @@ namespace aadea.Vistas
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(707, 456);
             dataGridView1.TabIndex = 3;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
             // Principal
             // 

@@ -211,15 +211,5 @@ namespace aadea.Vistas
                 MessageBox.Show("Error en la base de datos " + ex.Message);
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
