@@ -94,3 +94,4 @@ C:\Users\pipen\Documents\GitHub\ProyectoGestionInventario\Aplicacion_Source\aade
 C:\Users\pipen\Documents\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\pipen\Documents\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.csproj.CopyComplete
 C:\Users\pipen\Documents\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.dll.config
+C:\Users\pipen\Documents\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\database.db

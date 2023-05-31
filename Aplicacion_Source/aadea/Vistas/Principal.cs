@@ -9,13 +9,11 @@ namespace aadea.Vistas
     public partial class Principal : Form
     {
         private SQLiteConnection connection;
-
+        private static string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
         public Principal()
         {
-            InitializeComponent();
-            string databasePath = ConfigurationManager.AppSettings["DatabasePath"];
-            string connectionString = $"Data Source={databasePath};Version=3;";
-            connection = new SQLiteConnection(connectionString);
+            InitializeComponent();            
+            connection = new SQLiteConnection(cadena);
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
