@@ -41,11 +41,11 @@
             // 
             // loginButton
             // 
-            loginButton.BackColor = Color.FromArgb(138, 106, 61);
+            loginButton.BackColor = Color.FromArgb(33, 36, 53);
             loginButton.FlatAppearance.BorderColor = Color.White;
             loginButton.FlatAppearance.BorderSize = 2;
-            loginButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(85, 59, 16);
-            loginButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(85, 59, 16);
+            loginButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
+            loginButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             loginButton.FlatStyle = FlatStyle.Flat;
             loginButton.Font = new Font("Tahoma", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             loginButton.ForeColor = SystemColors.Control;
@@ -64,7 +64,7 @@
             VerContrasena.FlatAppearance.CheckedBackColor = Color.FromArgb(255, 119, 133);
             VerContrasena.FlatStyle = FlatStyle.Flat;
             VerContrasena.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            VerContrasena.ForeColor = SystemColors.InfoText;
+            VerContrasena.ForeColor = Color.White;
             VerContrasena.Location = new Point(206, 213);
             VerContrasena.Name = "VerContrasena";
             VerContrasena.Size = new Size(68, 18);
@@ -121,7 +121,7 @@
             iconButton1.FlatAppearance.BorderSize = 0;
             iconButton1.FlatStyle = FlatStyle.Flat;
             iconButton1.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            iconButton1.IconColor = Color.Black;
+            iconButton1.IconColor = Color.White;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 30;
             iconButton1.Location = new Point(0, -1);
@@ -135,7 +135,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.BurlyWood;
+            BackColor = Color.FromArgb(33, 36, 53);
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(324, 407);
             Controls.Add(iconButton1);

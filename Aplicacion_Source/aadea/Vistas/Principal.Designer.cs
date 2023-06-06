@@ -42,13 +42,11 @@ namespace aadea.Vistas
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
             menuTitleLaberl = new Label();
-            pictureBox1 = new PictureBox();
             dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -71,13 +69,15 @@ namespace aadea.Vistas
             // 
             // iconButtonSalir
             // 
+            iconButtonSalir.BackColor = Color.FromArgb(33, 36, 53);
             iconButtonSalir.FlatAppearance.BorderSize = 0;
-            iconButtonSalir.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            iconButtonSalir.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonSalir.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
+            iconButtonSalir.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonSalir.FlatStyle = FlatStyle.Flat;
             iconButtonSalir.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonSalir.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonSalir.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
-            iconButtonSalir.IconColor = Color.White;
+            iconButtonSalir.IconColor = Color.FromArgb(144, 147, 166);
             iconButtonSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonSalir.IconSize = 35;
             iconButtonSalir.ImageAlign = ContentAlignment.MiddleLeft;
@@ -89,18 +89,20 @@ namespace aadea.Vistas
             iconButtonSalir.TabIndex = 16;
             iconButtonSalir.Text = "Salir";
             iconButtonSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonSalir.UseVisualStyleBackColor = true;
+            iconButtonSalir.UseVisualStyleBackColor = false;
             iconButtonSalir.Click += iconButtonSalir_Click;
             // 
             // iconButtonAsistencia
             // 
+            iconButtonAsistencia.BackColor = Color.FromArgb(33, 36, 53);
             iconButtonAsistencia.FlatAppearance.BorderSize = 0;
-            iconButtonAsistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            iconButtonAsistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonAsistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
+            iconButtonAsistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonAsistencia.FlatStyle = FlatStyle.Flat;
             iconButtonAsistencia.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonAsistencia.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonAsistencia.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
-            iconButtonAsistencia.IconColor = Color.White;
+            iconButtonAsistencia.IconColor = Color.FromArgb(144, 147, 166);
             iconButtonAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonAsistencia.IconSize = 35;
             iconButtonAsistencia.ImageAlign = ContentAlignment.MiddleLeft;
@@ -112,18 +114,20 @@ namespace aadea.Vistas
             iconButtonAsistencia.TabIndex = 15;
             iconButtonAsistencia.Text = "Asistencia";
             iconButtonAsistencia.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonAsistencia.UseVisualStyleBackColor = true;
+            iconButtonAsistencia.UseVisualStyleBackColor = false;
             iconButtonAsistencia.Click += iconButtonAsistencia_Click;
             // 
             // iconButtonTrabajadores
             // 
+            iconButtonTrabajadores.BackColor = Color.FromArgb(33, 36, 53);
             iconButtonTrabajadores.FlatAppearance.BorderSize = 0;
-            iconButtonTrabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            iconButtonTrabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonTrabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
+            iconButtonTrabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonTrabajadores.FlatStyle = FlatStyle.Flat;
             iconButtonTrabajadores.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonTrabajadores.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonTrabajadores.IconChar = FontAwesome.Sharp.IconChar.Users;
-            iconButtonTrabajadores.IconColor = Color.White;
+            iconButtonTrabajadores.IconColor = Color.FromArgb(144, 147, 166);
             iconButtonTrabajadores.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonTrabajadores.IconSize = 35;
             iconButtonTrabajadores.ImageAlign = ContentAlignment.MiddleLeft;
@@ -135,18 +139,20 @@ namespace aadea.Vistas
             iconButtonTrabajadores.TabIndex = 14;
             iconButtonTrabajadores.Text = "Trabajadores";
             iconButtonTrabajadores.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonTrabajadores.UseVisualStyleBackColor = true;
+            iconButtonTrabajadores.UseVisualStyleBackColor = false;
             iconButtonTrabajadores.Click += iconButtonTrabajadores_Click;
             // 
             // iconButtonProductos
             // 
+            iconButtonProductos.BackColor = Color.FromArgb(33, 36, 53);
             iconButtonProductos.FlatAppearance.BorderSize = 0;
-            iconButtonProductos.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            iconButtonProductos.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonProductos.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
+            iconButtonProductos.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonProductos.FlatStyle = FlatStyle.Flat;
             iconButtonProductos.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonProductos.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonProductos.IconChar = FontAwesome.Sharp.IconChar.BowlFood;
-            iconButtonProductos.IconColor = Color.White;
+            iconButtonProductos.IconColor = Color.FromArgb(144, 147, 166);
             iconButtonProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonProductos.IconSize = 35;
             iconButtonProductos.ImageAlign = ContentAlignment.MiddleLeft;
@@ -157,18 +163,20 @@ namespace aadea.Vistas
             iconButtonProductos.TabIndex = 13;
             iconButtonProductos.Text = "Productos";
             iconButtonProductos.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonProductos.UseVisualStyleBackColor = true;
+            iconButtonProductos.UseVisualStyleBackColor = false;
             iconButtonProductos.Click += iconButtonProductos_Click;
             // 
             // iconButtonProduccion
             // 
+            iconButtonProduccion.BackColor = Color.FromArgb(33, 36, 53);
             iconButtonProduccion.FlatAppearance.BorderSize = 0;
-            iconButtonProduccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            iconButtonProduccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonProduccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
+            iconButtonProduccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonProduccion.FlatStyle = FlatStyle.Flat;
             iconButtonProduccion.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonProduccion.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonProduccion.IconChar = FontAwesome.Sharp.IconChar.Building;
-            iconButtonProduccion.IconColor = Color.White;
+            iconButtonProduccion.IconColor = Color.FromArgb(144, 147, 166);
             iconButtonProduccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonProduccion.IconSize = 35;
             iconButtonProduccion.ImageAlign = ContentAlignment.MiddleLeft;
@@ -179,18 +187,20 @@ namespace aadea.Vistas
             iconButtonProduccion.TabIndex = 12;
             iconButtonProduccion.Text = "Produccion";
             iconButtonProduccion.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonProduccion.UseVisualStyleBackColor = true;
+            iconButtonProduccion.UseVisualStyleBackColor = false;
             iconButtonProduccion.Click += iconButtonProduccion_Click;
             // 
             // iconButtonMateriales
             // 
+            iconButtonMateriales.BackColor = Color.FromArgb(33, 36, 53);
             iconButtonMateriales.FlatAppearance.BorderSize = 0;
-            iconButtonMateriales.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 106, 61);
-            iconButtonMateriales.FlatAppearance.MouseOverBackColor = Color.FromArgb(111, 82, 38);
+            iconButtonMateriales.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
+            iconButtonMateriales.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonMateriales.FlatStyle = FlatStyle.Flat;
             iconButtonMateriales.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonMateriales.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonMateriales.IconChar = FontAwesome.Sharp.IconChar.KitchenSet;
-            iconButtonMateriales.IconColor = Color.White;
+            iconButtonMateriales.IconColor = Color.FromArgb(144, 147, 166);
             iconButtonMateriales.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonMateriales.IconSize = 35;
             iconButtonMateriales.ImageAlign = ContentAlignment.MiddleLeft;
@@ -201,11 +211,12 @@ namespace aadea.Vistas
             iconButtonMateriales.TabIndex = 11;
             iconButtonMateriales.Text = "Materiales";
             iconButtonMateriales.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonMateriales.UseVisualStyleBackColor = true;
+            iconButtonMateriales.UseVisualStyleBackColor = false;
             iconButtonMateriales.Click += iconButtonMateriales_Click;
             // 
             // panel3
             // 
+            panel3.BackColor = Color.FromArgb(33, 36, 53);
             panel3.Controls.Add(pictureBox2);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 0);
@@ -230,6 +241,7 @@ namespace aadea.Vistas
             // 
             // panel2
             // 
+            panel2.BackColor = Color.White;
             panel2.Controls.Add(menuTitleLaberl);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(218, 0);
@@ -252,21 +264,9 @@ namespace aadea.Vistas
             menuTitleLaberl.TabIndex = 0;
             menuTitleLaberl.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resource.nube;
-            pictureBox1.Location = new Point(310, 101);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(947, 751);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.BurlyWood;
+            dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -298,11 +298,10 @@ namespace aadea.Vistas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.BurlyWood;
+            BackColor = Color.White;
             ClientSize = new Size(925, 522);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(pictureBox1);
             Controls.Add(dataGridView1);
             ForeColor = Color.Transparent;
             FormBorderStyle = FormBorderStyle.None;
@@ -316,7 +315,6 @@ namespace aadea.Vistas
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -325,7 +323,6 @@ namespace aadea.Vistas
 
         private Panel panel1;
         private Panel panel2;
-        private PictureBox pictureBox1;
         private Panel panel3;
         private FontAwesome.Sharp.IconButton iconButtonProduccion;
         private FontAwesome.Sharp.IconButton iconButtonMateriales;

@@ -93,21 +93,24 @@ namespace aadea.Vistas
             {
                 DisableButton();
                 currentBtn = (IconButton)sender;
-                currentBtn.BackColor = Color.FromArgb(138, 106, 61);
+                currentBtn.BackColor = Color.FromArgb(212, 104, 255);
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
-                pictureBox1.Hide();
+                currentBtn.ForeColor = Color.FromArgb(255, 255, 255);
+                currentBtn.IconColor = Color.FromArgb(255, 255, 255);
             }
         }
         private void DisableButton()
         {
             if (currentBtn != null)
             {
-                currentBtn.BackColor = Color.FromArgb(85, 59, 16);
+                currentBtn.BackColor = Color.FromArgb(33, 36, 53);
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
+                currentBtn.ForeColor = Color.FromArgb(144, 147, 166);
+                currentBtn.IconColor = Color.FromArgb(144, 147, 166);
             }
         }
         private void iconButtonSalir_Click(object sender, EventArgs e)
