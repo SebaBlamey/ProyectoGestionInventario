@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            DGV_T = new DataGridView();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DGV_T).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // DGV_T
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 12);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(682, 358);
-            dataGridView1.TabIndex = 0;
+            DGV_T.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV_T.Location = new Point(12, 12);
+            DGV_T.Name = "DGV_T";
+            DGV_T.Size = new Size(682, 358);
+            DGV_T.TabIndex = 0;
             // 
             // button1
             // 
@@ -80,16 +80,17 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(dataGridView1);
+            Controls.Add(DGV_T);
             Name = "FormTrabajadores";
             Text = "FormTrabajadores";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += FormTrabajadores_Load;
+            ((System.ComponentModel.ISupportInitialize)DGV_T).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView DGV_T;
         private Button button1;
         private Button button2;
         private Button button3;

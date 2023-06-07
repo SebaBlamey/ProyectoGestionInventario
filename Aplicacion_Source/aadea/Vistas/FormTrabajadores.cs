@@ -16,5 +16,17 @@ namespace aadea.Vistas
         {
             InitializeComponent();
         }
+
+        private void ListadoT()
+        {
+            L_Trabajadores datos = new L_Trabajadores();
+            DGV_T.DataSource = datos.Listado_Trabajadores();
+
+        }
+
+        private void FormTrabajadores_Load(object sender, EventArgs e)
+        {
+            this.ListadoT();
+        }
     }
 }
