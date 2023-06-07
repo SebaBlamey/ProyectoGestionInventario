@@ -10,6 +10,7 @@ namespace aadea.Vistas
     {
         private SQLiteConnection connection;
         private static string cadena = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
+        private Form currentChildForm;
         public Principal()
         {
             InitializeComponent();
@@ -113,6 +114,23 @@ namespace aadea.Vistas
                 currentBtn.IconColor = Color.FromArgb(144, 147, 166);
             }
         }
+        private void OpenChildForm(Form childForm)
+        {
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
+            currentChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelDesk.Controls.Add(childForm);
+            panelDesk.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+
+        }
+
         private void iconButtonSalir_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -131,7 +149,7 @@ namespace aadea.Vistas
                 menuTitleLaberl.Text = text;
                 menuTitleLaberl.ForeColor = Color.FromArgb(111, 82, 38);
                 menuTitleLaberl.TextAlign = ContentAlignment.MiddleCenter;
-                dataGridView1.DataSource = null;
+               // dataGridView1.DataSource = null;
             }
         }
         private void UnsetActualButton()
@@ -150,8 +168,8 @@ namespace aadea.Vistas
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet);
-                dataGridView1.DataSource = dataSet.Tables[0];
-                dataGridView1.ForeColor = Color.White;
+               // dataGridView1.DataSource = dataSet.Tables[0];
+               // dataGridView1.ForeColor = Color.White;
                 connection.Close();
             }
             catch (Exception ex)
@@ -167,6 +185,7 @@ namespace aadea.Vistas
             try
             {
                 SetActualButton(sender, "MATERIALES");
+                OpenChildForm(new FormMateriales());
             }
             catch (Exception ex)
             {
@@ -180,6 +199,7 @@ namespace aadea.Vistas
             try
             {
                 SetActualButton(sender, "PRODUCCION");
+                OpenChildForm(new FormProduccion());
             }
             catch (Exception ex)
             {
@@ -194,6 +214,7 @@ namespace aadea.Vistas
             try
             {
                 SetActualButton(sender, "TRABAJADORES");
+                OpenChildForm(new FormTrabajadores());
             }
             catch (Exception ex)
             {
@@ -208,11 +229,17 @@ namespace aadea.Vistas
             try
             {
                 SetActualButton(sender, "ASISTENCIA");
+                OpenChildForm(new FormAsistencia());
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error en la base de datos " + ex.Message);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

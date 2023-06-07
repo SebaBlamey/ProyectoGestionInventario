@@ -29,8 +29,6 @@ namespace aadea.Vistas
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             iconButtonSalir = new FontAwesome.Sharp.IconButton();
             iconButtonAsistencia = new FontAwesome.Sharp.IconButton();
@@ -42,12 +40,11 @@ namespace aadea.Vistas
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
             menuTitleLaberl = new Label();
-            dataGridView1 = new DataGridView();
+            panelDesk = new Panel();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -264,35 +261,14 @@ namespace aadea.Vistas
             menuTitleLaberl.TabIndex = 0;
             menuTitleLaberl.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // dataGridView1
+            // panelDesk
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.BurlyWood;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Transparent;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(138, 106, 61);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.Location = new Point(218, 66);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.BurlyWood;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(138, 106, 61);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(707, 456);
-            dataGridView1.TabIndex = 3;
+            panelDesk.BackColor = Color.Silver;
+            panelDesk.Dock = DockStyle.Fill;
+            panelDesk.Location = new Point(218, 62);
+            panelDesk.Name = "panelDesk";
+            panelDesk.Size = new Size(707, 460);
+            panelDesk.TabIndex = 2;
             // 
             // Principal
             // 
@@ -300,9 +276,9 @@ namespace aadea.Vistas
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(925, 522);
+            Controls.Add(panelDesk);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(dataGridView1);
             ForeColor = Color.Transparent;
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 2, 3, 2);
@@ -315,7 +291,6 @@ namespace aadea.Vistas
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -331,7 +306,7 @@ namespace aadea.Vistas
         private FontAwesome.Sharp.IconButton iconButtonProductos;
         private FontAwesome.Sharp.IconButton iconButtonSalir;
         private PictureBox pictureBox2;
-        private DataGridView dataGridView1;
         private Label menuTitleLaberl;
+        private Panel panelDesk;
     }
 }
