@@ -28,36 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            checkBox1 = new CheckBox();
-            button1 = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
-            // checkBox1
+            // label1
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(374, 185);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(83, 19);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "checkBox1";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(413, 317);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(292, 160);
+            label1.Name = "label1";
+            label1.Size = new Size(68, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Produccion";
             // 
             // FormProduccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
-            Controls.Add(checkBox1);
+            Controls.Add(label1);
             Name = "FormProduccion";
             Text = "FormProduccion";
             ResumeLayout(false);
@@ -66,7 +55,6 @@
 
         #endregion
 
-        private CheckBox checkBox1;
-        private Button button1;
+        private Label label1;
     }
 }

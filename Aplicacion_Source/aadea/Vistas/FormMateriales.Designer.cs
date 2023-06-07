@@ -28,30 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            checkedListBox1 = new CheckedListBox();
+            label1 = new Label();
             SuspendLayout();
             // 
-            // checkedListBox1
+            // label1
             // 
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Location = new Point(325, 215);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(120, 94);
-            checkedListBox1.TabIndex = 0;
+            label1.AutoSize = true;
+            label1.Location = new Point(262, 182);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Materiales";
             // 
             // FormMateriales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(checkedListBox1);
+            Controls.Add(label1);
             Name = "FormMateriales";
             Text = "FormMateriales";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private CheckedListBox checkedListBox1;
+        private Label label1;
     }
 }
