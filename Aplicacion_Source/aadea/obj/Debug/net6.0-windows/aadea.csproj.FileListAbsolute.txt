@@ -152,4 +152,4 @@ C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aade
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormTrabajadores.resources
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormMateriales.resources
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormProduccion.resources
-C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormProductis.resources
+C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormProductos.resources

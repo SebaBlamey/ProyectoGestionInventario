@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DGV_T = new DataGridView();
             button1 = new Button();
             button2 = new Button();
@@ -37,9 +38,20 @@
             // 
             // DGV_T
             // 
+            DGV_T.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DGV_T.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DGV_T.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV_T.EnableHeadersVisualStyles = false;
             DGV_T.Location = new Point(12, 12);
             DGV_T.Name = "DGV_T";
+            DGV_T.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_T.Size = new Size(682, 358);
             DGV_T.TabIndex = 0;
             // 
@@ -47,29 +59,29 @@
             // 
             button1.BackColor = Color.Maroon;
             button1.BackgroundImageLayout = ImageLayout.None;
-            button1.Location = new Point(73, 396);
+            button1.Location = new Point(46, 386);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(85, 42);
             button1.TabIndex = 1;
             button1.Text = "Eliminar";
             button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
-            button2.Location = new Point(300, 391);
+            button2.Location = new Point(154, 386);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(85, 42);
             button2.TabIndex = 2;
-            button2.Text = "button2";
+            button2.Text = "Agregar";
             button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            button3.Location = new Point(482, 396);
+            button3.Location = new Point(261, 386);
             button3.Name = "button3";
-            button3.Size = new Size(75, 23);
+            button3.Size = new Size(85, 42);
             button3.TabIndex = 3;
-            button3.Text = "button3";
+            button3.Text = "Editar";
             button3.UseVisualStyleBackColor = true;
             // 
             // FormTrabajadores

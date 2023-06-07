@@ -147,7 +147,7 @@ namespace aadea.Vistas
                 UnsetActualButton();
                 actualButton = (IconButton?)sender;
                 menuTitleLaberl.Text = text;
-                menuTitleLaberl.ForeColor = Color.FromArgb(111, 82, 38);
+                menuTitleLaberl.ForeColor = Color.FromArgb(33, 36, 53);
                 menuTitleLaberl.TextAlign = ContentAlignment.MiddleCenter;
                // dataGridView1.DataSource = null;
             }
@@ -180,8 +180,7 @@ namespace aadea.Vistas
 
         private void iconButtonMateriales_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
-            ActivateButton(sender);
+            ActivateButton(sender);      
             try
             {
                 SetActualButton(sender, "MATERIALES");
@@ -210,7 +209,6 @@ namespace aadea.Vistas
         private void iconButtonTrabajadores_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
-            ActivateButton(sender);
             try
             {
                 SetActualButton(sender, "TRABAJADORES");
@@ -224,8 +222,7 @@ namespace aadea.Vistas
 
         private void iconButtonAsistencia_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
-            ActivateButton(sender);
+            ActivateButton(sender);      
             try
             {
                 SetActualButton(sender, "ASISTENCIA");

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace aadea.Vistas
 {
-    public partial class FormProductis : Form
+    public partial class FormProductos : Form
     {
-        public FormProductis()
+        public FormProductos()
         {
             InitializeComponent();
         }

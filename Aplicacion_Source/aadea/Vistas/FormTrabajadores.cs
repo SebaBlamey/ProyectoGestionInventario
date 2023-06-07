@@ -27,6 +27,14 @@ namespace aadea.Vistas
         private void FormTrabajadores_Load(object sender, EventArgs e)
         {
             this.ListadoT();
+            this.Formato_T();
         }
+
+        private void Formato_T()
+        {
+            DGV_T.Columns[0].Width = 200;
+
+        }
+
     }
 }

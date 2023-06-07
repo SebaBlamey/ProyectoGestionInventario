@@ -1,6 +1,6 @@
 ﻿namespace aadea.Vistas
 {
-    partial class FormProductis
+    partial class FormProductos
     {
         /// <summary>
         /// Required designer variable.

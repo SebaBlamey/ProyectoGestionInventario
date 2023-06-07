@@ -35,5 +35,29 @@ namespace aadea
                if(SQLCon.State == ConnectionState.Open) SQLCon.Close();
             }
         }
+
+        public void InsertarTrabajador(string rut, string nombre, string apellido, string direccion, string numero)
+        {
+            string answer = "";
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+
+                string SQLQuery = "";
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally 
+            {
+
+            }
+        }
+
+        public void EliminarTrabajador()
+        { }
     }
 }
