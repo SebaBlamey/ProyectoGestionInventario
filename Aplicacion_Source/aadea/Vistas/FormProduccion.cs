@@ -16,5 +16,6 @@ namespace aadea.Vistas
         {
             InitializeComponent();
         }
+
     }
 }

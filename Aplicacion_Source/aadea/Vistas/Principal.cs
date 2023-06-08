@@ -171,6 +171,7 @@ namespace aadea.Vistas
                // dataGridView1.DataSource = dataSet.Tables[0];
                // dataGridView1.ForeColor = Color.White;
                 connection.Close();
+                OpenChildForm(new FormProductos());
             }
             catch (Exception ex)
             {

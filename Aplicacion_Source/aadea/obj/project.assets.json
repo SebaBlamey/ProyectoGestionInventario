@@ -1243,24 +1243,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pipen\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\danie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pipen\\OneDrive\\Documentos\\GitHub\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
+      "projectUniqueName": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
       "projectName": "aadea",
-      "projectPath": "C:\\Users\\pipen\\OneDrive\\Documentos\\GitHub\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
-      "packagesPath": "C:\\Users\\pipen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pipen\\OneDrive\\Documentos\\GitHub\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\obj\\",
+      "projectPath": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
+      "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\pipen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1314,7 +1309,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
