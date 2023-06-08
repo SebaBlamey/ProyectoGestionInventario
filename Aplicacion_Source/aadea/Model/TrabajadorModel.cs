@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace aadea
+namespace aadea.Model
 {
     public class TrabajadorModel
     {
@@ -23,27 +23,28 @@ namespace aadea
         public string Rut
         {
             get => rut;
-            set => rut = value; 
+            set => rut = value;
         }
 
 
-        public string Nombre {
+        public string Nombre
+        {
             get => nombre;
             set => nombre = value;
         }
         public string Apellido
         {
             get => apellido;
-            set => apellido = value; 
+            set => apellido = value;
         }
         public string Direccion
-        { 
-            get => direccion; 
-            set => direccion = value; 
+        {
+            get => direccion;
+            set => direccion = value;
         }
         public string Telefono
-        { 
-            get => telefono; 
+        {
+            get => telefono;
             set => telefono = value;
         }
     }

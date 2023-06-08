@@ -28,32 +28,371 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblProduct = new Label();
+            panel1 = new Panel();
+            tabControl = new TabControl();
+            productList = new TabPage();
+            GVProduct = new DataGridView();
+            btDelete = new Button();
+            EdtiProduct = new Button();
+            AddProduct = new Button();
+            lbImagen = new Label();
+            pictureBox1 = new PictureBox();
+            btsearch = new Button();
+            txtSearch = new TextBox();
+            labeltitle = new Label();
+            AddP = new TabPage();
+            btExaminar = new Button();
+            examinarPic = new PictureBox();
+            txtDesc = new TextBox();
+            txtProduct = new TextBox();
+            lbdesc = new Label();
             label1 = new Label();
+            EditP = new TabPage();
+            btexam = new Button();
+            cambiarBox = new PictureBox();
+            textBox2 = new TextBox();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            panel1.SuspendLayout();
+            tabControl.SuspendLayout();
+            productList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)GVProduct).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            AddP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)examinarPic).BeginInit();
+            EditP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)cambiarBox).BeginInit();
             SuspendLayout();
+            // 
+            // lblProduct
+            // 
+            lblProduct.AutoSize = true;
+            lblProduct.Location = new Point(11, 6);
+            lblProduct.Name = "lblProduct";
+            lblProduct.Size = new Size(61, 15);
+            lblProduct.TabIndex = 0;
+            lblProduct.Text = "Productos";
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(lblProduct);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 81);
+            panel1.TabIndex = 1;
+            // 
+            // tabControl
+            // 
+            tabControl.Controls.Add(productList);
+            tabControl.Controls.Add(AddP);
+            tabControl.Controls.Add(EditP);
+            tabControl.Dock = DockStyle.Top;
+            tabControl.Location = new Point(0, 81);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(800, 370);
+            tabControl.TabIndex = 2;
+            // 
+            // productList
+            // 
+            productList.Controls.Add(GVProduct);
+            productList.Controls.Add(btDelete);
+            productList.Controls.Add(EdtiProduct);
+            productList.Controls.Add(AddProduct);
+            productList.Controls.Add(lbImagen);
+            productList.Controls.Add(pictureBox1);
+            productList.Controls.Add(btsearch);
+            productList.Controls.Add(txtSearch);
+            productList.Controls.Add(labeltitle);
+            productList.Location = new Point(4, 24);
+            productList.Name = "productList";
+            productList.Padding = new Padding(3);
+            productList.Size = new Size(792, 342);
+            productList.TabIndex = 0;
+            productList.Text = "ListaProductos";
+            productList.UseVisualStyleBackColor = true;
+            productList.Click += productList_Click;
+            // 
+            // GVProduct
+            // 
+            GVProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GVProduct.Location = new Point(17, 80);
+            GVProduct.Name = "GVProduct";
+            GVProduct.RowTemplate.Height = 25;
+            GVProduct.Size = new Size(572, 241);
+            GVProduct.TabIndex = 9;
+            // 
+            // btDelete
+            // 
+            btDelete.Location = new Point(644, 280);
+            btDelete.Name = "btDelete";
+            btDelete.Size = new Size(121, 23);
+            btDelete.TabIndex = 8;
+            btDelete.Text = "Eliminar";
+            btDelete.UseVisualStyleBackColor = true;
+            // 
+            // EdtiProduct
+            // 
+            EdtiProduct.Location = new Point(644, 251);
+            EdtiProduct.Name = "EdtiProduct";
+            EdtiProduct.Size = new Size(121, 23);
+            EdtiProduct.TabIndex = 7;
+            EdtiProduct.Text = "Editar";
+            EdtiProduct.UseVisualStyleBackColor = true;
+            EdtiProduct.Click += EdtiProduct_Click;
+            // 
+            // AddProduct
+            // 
+            AddProduct.Location = new Point(644, 222);
+            AddProduct.Name = "AddProduct";
+            AddProduct.Size = new Size(121, 23);
+            AddProduct.TabIndex = 6;
+            AddProduct.Text = "Agregar";
+            AddProduct.UseVisualStyleBackColor = true;
+            AddProduct.Click += AddProduct_Click;
+            // 
+            // lbImagen
+            // 
+            lbImagen.AutoSize = true;
+            lbImagen.Location = new Point(672, 42);
+            lbImagen.Name = "lbImagen";
+            lbImagen.Size = new Size(47, 15);
+            lbImagen.TabIndex = 5;
+            lbImagen.Text = "Imagen";
+            lbImagen.Click += lbImagen_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(611, 68);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(173, 148);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
+            // btsearch
+            // 
+            btsearch.Location = new Point(498, 39);
+            btsearch.Name = "btsearch";
+            btsearch.Size = new Size(107, 23);
+            btsearch.TabIndex = 3;
+            btsearch.Text = "Search";
+            btsearch.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(17, 39);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(466, 23);
+            txtSearch.TabIndex = 2;
+            // 
+            // labeltitle
+            // 
+            labeltitle.AutoSize = true;
+            labeltitle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labeltitle.Location = new Point(17, 12);
+            labeltitle.Name = "labeltitle";
+            labeltitle.Size = new Size(80, 21);
+            labeltitle.TabIndex = 1;
+            labeltitle.Text = "Productos";
+            // 
+            // AddP
+            // 
+            AddP.Controls.Add(btExaminar);
+            AddP.Controls.Add(examinarPic);
+            AddP.Controls.Add(txtDesc);
+            AddP.Controls.Add(txtProduct);
+            AddP.Controls.Add(lbdesc);
+            AddP.Controls.Add(label1);
+            AddP.Location = new Point(4, 24);
+            AddP.Name = "AddP";
+            AddP.Padding = new Padding(3);
+            AddP.Size = new Size(792, 342);
+            AddP.TabIndex = 1;
+            AddP.Text = "AgregarProductos";
+            AddP.UseVisualStyleBackColor = true;
+            AddP.Click += DetailsP_Click;
+            // 
+            // btExaminar
+            // 
+            btExaminar.Location = new Point(405, 201);
+            btExaminar.Name = "btExaminar";
+            btExaminar.Size = new Size(75, 23);
+            btExaminar.TabIndex = 5;
+            btExaminar.Text = "Examinar";
+            btExaminar.UseVisualStyleBackColor = true;
+            btExaminar.Click += btExaminar_Click;
+            // 
+            // examinarPic
+            // 
+            examinarPic.Location = new Point(364, 37);
+            examinarPic.Name = "examinarPic";
+            examinarPic.Size = new Size(153, 158);
+            examinarPic.SizeMode = PictureBoxSizeMode.Zoom;
+            examinarPic.TabIndex = 4;
+            examinarPic.TabStop = false;
+            examinarPic.Click += pictureBox2_Click;
+            // 
+            // txtDesc
+            // 
+            txtDesc.Location = new Point(43, 179);
+            txtDesc.Multiline = true;
+            txtDesc.Name = "txtDesc";
+            txtDesc.Size = new Size(216, 55);
+            txtDesc.TabIndex = 3;
+            // 
+            // txtProduct
+            // 
+            txtProduct.Location = new Point(43, 74);
+            txtProduct.Name = "txtProduct";
+            txtProduct.Size = new Size(206, 23);
+            txtProduct.TabIndex = 2;
+            // 
+            // lbdesc
+            // 
+            lbdesc.AutoSize = true;
+            lbdesc.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbdesc.Location = new Point(40, 136);
+            lbdesc.Name = "lbdesc";
+            lbdesc.Size = new Size(87, 20);
+            lbdesc.TabIndex = 1;
+            lbdesc.Text = "Descripcion";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(301, 177);
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(40, 37);
             label1.Name = "label1";
-            label1.Size = new Size(61, 15);
+            label1.Size = new Size(129, 20);
             label1.TabIndex = 0;
-            label1.Text = "Productos";
+            label1.Text = "Nombre producto";
             // 
-            // FormProductis
+            // EditP
+            // 
+            EditP.Controls.Add(btexam);
+            EditP.Controls.Add(cambiarBox);
+            EditP.Controls.Add(textBox2);
+            EditP.Controls.Add(label3);
+            EditP.Controls.Add(textBox1);
+            EditP.Controls.Add(label2);
+            EditP.Location = new Point(4, 24);
+            EditP.Name = "EditP";
+            EditP.Padding = new Padding(3);
+            EditP.Size = new Size(792, 342);
+            EditP.TabIndex = 2;
+            EditP.Text = "EditP";
+            EditP.UseVisualStyleBackColor = true;
+            // 
+            // btexam
+            // 
+            btexam.Location = new Point(372, 218);
+            btexam.Name = "btexam";
+            btexam.Size = new Size(117, 23);
+            btexam.TabIndex = 5;
+            btexam.Text = "Examinar";
+            btexam.UseVisualStyleBackColor = true;
+            // 
+            // cambiarBox
+            // 
+            cambiarBox.Location = new Point(353, 47);
+            cambiarBox.Name = "cambiarBox";
+            cambiarBox.Size = new Size(160, 154);
+            cambiarBox.TabIndex = 4;
+            cambiarBox.TabStop = false;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(40, 174);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(218, 67);
+            textBox2.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(40, 141);
+            label3.Name = "label3";
+            label3.Size = new Size(128, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Editar descripcion";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(40, 87);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(218, 23);
+            textBox1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(40, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(104, 20);
+            label2.TabIndex = 0;
+            label2.Text = "Editar nombre";
+            label2.Click += label2_Click;
+            // 
+            // FormProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
-            Name = "FormProductis";
+            Controls.Add(tabControl);
+            Controls.Add(panel1);
+            Name = "FormProductos";
             Text = "FormProductis";
+            Load += FormProductos_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            tabControl.ResumeLayout(false);
+            productList.ResumeLayout(false);
+            productList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)GVProduct).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            AddP.ResumeLayout(false);
+            AddP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)examinarPic).EndInit();
+            EditP.ResumeLayout(false);
+            EditP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)cambiarBox).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
+        private Label lblProduct;
+        private Panel panel1;
+        private TabControl tabControl;
+        private TabPage productList;
+        private TabPage AddP;
+        private Label lbImagen;
+        private PictureBox pictureBox1;
+        private Button btsearch;
+        private TextBox txtSearch;
+        private Label labeltitle;
+        private Button btDelete;
+        private Button EdtiProduct;
+        private Button AddProduct;
+        private TextBox txtProduct;
+        private Label lbdesc;
         private Label label1;
+        private PictureBox examinarPic;
+        private TextBox txtDesc;
+        private Button btExaminar;
+        private TabPage EditP;
+        private Label label2;
+        private TextBox textBox1;
+        private Button btexam;
+        private PictureBox cambiarBox;
+        private TextBox textBox2;
+        private Label label3;
+        private DataGridView GVProduct;
     }
 }
