@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblProduct = new Label();
-            panel1 = new Panel();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             productList = new TabPage();
             GVProduct = new DataGridView();
             btDelete = new Button();
             EdtiProduct = new Button();
+            AddProduct = new Button();
             lbImagen = new Label();
             pictureBox1 = new PictureBox();
+            btsearch = new Button();
             txtSearch = new TextBox();
             labeltitle = new Label();
             AddP = new TabPage();
@@ -53,9 +54,6 @@
             label3 = new Label();
             textBox1 = new TextBox();
             label2 = new Label();
-            AddProduct = new Button();
-            btsearch = new Button();
-            panel1.SuspendLayout();
             tabControl.SuspendLayout();
             productList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GVProduct).BeginInit();
@@ -66,34 +64,16 @@
             ((System.ComponentModel.ISupportInitialize)cambiarBox).BeginInit();
             SuspendLayout();
             // 
-            // lblProduct
-            // 
-            lblProduct.AutoSize = true;
-            lblProduct.Location = new Point(11, 6);
-            lblProduct.Name = "lblProduct";
-            lblProduct.Size = new Size(61, 15);
-            lblProduct.TabIndex = 0;
-            lblProduct.Text = "Productos";
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(lblProduct);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(691, 55);
-            panel1.TabIndex = 1;
-            // 
             // tabControl
             // 
             tabControl.Controls.Add(productList);
             tabControl.Controls.Add(AddP);
             tabControl.Controls.Add(EditP);
             tabControl.Dock = DockStyle.Top;
-            tabControl.Location = new Point(0, 55);
+            tabControl.Location = new Point(0, 0);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(691, 370);
+            tabControl.Size = new Size(691, 423);
             tabControl.TabIndex = 2;
             // 
             // productList
@@ -110,7 +90,7 @@
             productList.Location = new Point(4, 24);
             productList.Name = "productList";
             productList.Padding = new Padding(3);
-            productList.Size = new Size(683, 342);
+            productList.Size = new Size(683, 395);
             productList.TabIndex = 0;
             productList.Text = "ListaProductos";
             productList.UseVisualStyleBackColor = true;
@@ -118,16 +98,26 @@
             // 
             // GVProduct
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            GVProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             GVProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GVProduct.EnableHeadersVisualStyles = false;
             GVProduct.Location = new Point(17, 80);
             GVProduct.Name = "GVProduct";
             GVProduct.RowTemplate.Height = 25;
-            GVProduct.Size = new Size(365, 241);
+            GVProduct.Size = new Size(456, 289);
             GVProduct.TabIndex = 9;
+            GVProduct.CellFormatting += GVProduct_CellFormatting;
             // 
             // btDelete
             // 
-            btDelete.Location = new Point(423, 293);
+            btDelete.Location = new Point(502, 338);
             btDelete.Name = "btDelete";
             btDelete.Size = new Size(121, 23);
             btDelete.TabIndex = 8;
@@ -136,7 +126,7 @@
             // 
             // EdtiProduct
             // 
-            EdtiProduct.Location = new Point(423, 264);
+            EdtiProduct.Location = new Point(502, 309);
             EdtiProduct.Name = "EdtiProduct";
             EdtiProduct.Size = new Size(121, 23);
             EdtiProduct.TabIndex = 7;
@@ -144,10 +134,20 @@
             EdtiProduct.UseVisualStyleBackColor = true;
             EdtiProduct.Click += EdtiProduct_Click;
             // 
+            // AddProduct
+            // 
+            AddProduct.Location = new Point(502, 280);
+            AddProduct.Name = "AddProduct";
+            AddProduct.Size = new Size(121, 23);
+            AddProduct.TabIndex = 6;
+            AddProduct.Text = "Agregar";
+            AddProduct.UseVisualStyleBackColor = true;
+            AddProduct.Click += AddProduct_Click;
+            // 
             // lbImagen
             // 
             lbImagen.AutoSize = true;
-            lbImagen.Location = new Point(463, 71);
+            lbImagen.Location = new Point(548, 96);
             lbImagen.Name = "lbImagen";
             lbImagen.Size = new Size(47, 15);
             lbImagen.TabIndex = 5;
@@ -156,17 +156,26 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(407, 89);
+            pictureBox1.Location = new Point(491, 114);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(158, 140);
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
+            // btsearch
+            // 
+            btsearch.Location = new Point(502, 38);
+            btsearch.Name = "btsearch";
+            btsearch.Size = new Size(107, 23);
+            btsearch.TabIndex = 3;
+            btsearch.Text = "Search";
+            btsearch.UseVisualStyleBackColor = true;
+            // 
             // txtSearch
             // 
             txtSearch.Location = new Point(17, 39);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(365, 23);
+            txtSearch.Size = new Size(456, 23);
             txtSearch.TabIndex = 2;
             // 
             // labeltitle
@@ -190,7 +199,7 @@
             AddP.Location = new Point(4, 24);
             AddP.Name = "AddP";
             AddP.Padding = new Padding(3);
-            AddP.Size = new Size(683, 342);
+            AddP.Size = new Size(683, 395);
             AddP.TabIndex = 1;
             AddP.Text = "AgregarProductos";
             AddP.UseVisualStyleBackColor = true;
@@ -262,7 +271,7 @@
             EditP.Location = new Point(4, 24);
             EditP.Name = "EditP";
             EditP.Padding = new Padding(3);
-            EditP.Size = new Size(683, 342);
+            EditP.Size = new Size(683, 395);
             EditP.TabIndex = 2;
             EditP.Text = "EditP";
             EditP.UseVisualStyleBackColor = true;
@@ -320,37 +329,15 @@
             label2.Text = "Editar nombre";
             label2.Click += label2_Click;
             // 
-            // AddProduct
-            // 
-            AddProduct.Location = new Point(423, 235);
-            AddProduct.Name = "AddProduct";
-            AddProduct.Size = new Size(121, 23);
-            AddProduct.TabIndex = 6;
-            AddProduct.Text = "Agregar";
-            AddProduct.UseVisualStyleBackColor = true;
-            AddProduct.Click += AddProduct_Click;
-            // 
-            // btsearch
-            // 
-            btsearch.Location = new Point(423, 38);
-            btsearch.Name = "btsearch";
-            btsearch.Size = new Size(107, 23);
-            btsearch.TabIndex = 3;
-            btsearch.Text = "Search";
-            btsearch.UseVisualStyleBackColor = true;
-            // 
             // FormProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(691, 421);
             Controls.Add(tabControl);
-            Controls.Add(panel1);
             Name = "FormProductos";
             Text = "FormProductis";
             Load += FormProductos_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             tabControl.ResumeLayout(false);
             productList.ResumeLayout(false);
             productList.PerformLayout();
@@ -366,9 +353,6 @@
         }
 
         #endregion
-
-        private Label lblProduct;
-        private Panel panel1;
         private TabControl tabControl;
         private TabPage productList;
         private TabPage AddP;

@@ -115,5 +115,10 @@ namespace aadea.Vistas
                 image = memoria.ToArray();
             }
         }
+
+        private void GVProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            ForeColor = Color.Black;
+        }
     }
 }

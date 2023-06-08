@@ -123,10 +123,10 @@
             iconButton1.IconChar = FontAwesome.Sharp.IconChar.Xmark;
             iconButton1.IconColor = Color.White;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(0, -1);
+            iconButton1.IconSize = 25;
+            iconButton1.Location = new Point(297, -1);
             iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(40, 38);
+            iconButton1.Size = new Size(27, 32);
             iconButton1.TabIndex = 7;
             iconButton1.UseVisualStyleBackColor = true;
             iconButton1.Click += iconButton1_Click;
