@@ -41,6 +41,8 @@
             txtSearch = new TextBox();
             labeltitle = new Label();
             AddP = new TabPage();
+            btCancelAdd = new Button();
+            btSaveAdd = new Button();
             btExaminar = new Button();
             examinarPic = new PictureBox();
             txtDesc = new TextBox();
@@ -48,6 +50,8 @@
             lbdesc = new Label();
             label1 = new Label();
             EditP = new TabPage();
+            btCancelEdit = new Button();
+            btSaveEdit = new Button();
             btexam = new Button();
             cambiarBox = new PictureBox();
             textBox2 = new TextBox();
@@ -190,6 +194,8 @@
             // 
             // AddP
             // 
+            AddP.Controls.Add(btCancelAdd);
+            AddP.Controls.Add(btSaveAdd);
             AddP.Controls.Add(btExaminar);
             AddP.Controls.Add(examinarPic);
             AddP.Controls.Add(txtDesc);
@@ -204,6 +210,26 @@
             AddP.Text = "AgregarProductos";
             AddP.UseVisualStyleBackColor = true;
             AddP.Click += DetailsP_Click;
+            // 
+            // btCancelAdd
+            // 
+            btCancelAdd.Location = new Point(184, 276);
+            btCancelAdd.Name = "btCancelAdd";
+            btCancelAdd.Size = new Size(75, 23);
+            btCancelAdd.TabIndex = 7;
+            btCancelAdd.Text = "Cancelar";
+            btCancelAdd.UseVisualStyleBackColor = true;
+            btCancelAdd.Click += btCancelAdd_Click;
+            // 
+            // btSaveAdd
+            // 
+            btSaveAdd.Location = new Point(43, 276);
+            btSaveAdd.Name = "btSaveAdd";
+            btSaveAdd.Size = new Size(75, 23);
+            btSaveAdd.TabIndex = 6;
+            btSaveAdd.Text = "Guardar";
+            btSaveAdd.UseVisualStyleBackColor = true;
+            btSaveAdd.Click += button1_Click;
             // 
             // btExaminar
             // 
@@ -262,6 +288,8 @@
             // 
             // EditP
             // 
+            EditP.Controls.Add(btCancelEdit);
+            EditP.Controls.Add(btSaveEdit);
             EditP.Controls.Add(btexam);
             EditP.Controls.Add(cambiarBox);
             EditP.Controls.Add(textBox2);
@@ -276,6 +304,25 @@
             EditP.Text = "EditP";
             EditP.UseVisualStyleBackColor = true;
             // 
+            // btCancelEdit
+            // 
+            btCancelEdit.Location = new Point(183, 297);
+            btCancelEdit.Name = "btCancelEdit";
+            btCancelEdit.Size = new Size(75, 23);
+            btCancelEdit.TabIndex = 7;
+            btCancelEdit.Text = "Cancelar";
+            btCancelEdit.UseVisualStyleBackColor = true;
+            btCancelEdit.Click += btCancelEdit_Click;
+            // 
+            // btSaveEdit
+            // 
+            btSaveEdit.Location = new Point(40, 297);
+            btSaveEdit.Name = "btSaveEdit";
+            btSaveEdit.Size = new Size(75, 23);
+            btSaveEdit.TabIndex = 6;
+            btSaveEdit.Text = "Guardar";
+            btSaveEdit.UseVisualStyleBackColor = true;
+            // 
             // btexam
             // 
             btexam.Location = new Point(372, 218);
@@ -284,6 +331,7 @@
             btexam.TabIndex = 5;
             btexam.Text = "Examinar";
             btexam.UseVisualStyleBackColor = true;
+            btexam.Click += btexam_Click;
             // 
             // cambiarBox
             // 
@@ -292,6 +340,7 @@
             cambiarBox.Size = new Size(160, 154);
             cambiarBox.TabIndex = 4;
             cambiarBox.TabStop = false;
+            cambiarBox.Click += cambiarBox_Click;
             // 
             // textBox2
             // 
@@ -378,5 +427,9 @@
         private DataGridView GVProduct;
         private Button AddProduct;
         private Button btsearch;
+        private Button btCancelAdd;
+        private Button btSaveAdd;
+        private Button btCancelEdit;
+        private Button btSaveEdit;
     }
 }

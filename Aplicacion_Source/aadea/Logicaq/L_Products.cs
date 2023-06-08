@@ -18,7 +18,7 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT ID,nombre,stock from producto";
+                string SQLQuery = "SELECT ID,nombre,descripcion from producto";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 SQLCon.Open();
                 resultado = Comando.ExecuteReader();
@@ -35,27 +35,62 @@ namespace aadea.Logicaq
             }
         }
 
-        public void InsertProduct(string rut, string nombre, string apellido, string direccion, string numero)
+        public void InsertProductWI(string nomb, string des, byte[] im)
         {
-            string answer = "";
+            string answer = "%";
+            SQLiteTransaction transaction = null;
             SQLiteConnection SQLCon = new SQLiteConnection();
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-
-                string SQLQuery = "";
+                string SQLQuery = "INSERT INTO producto(nombre,imagen,descripcion) VALUES('@nombre','@desc',@img)";
+                SQLCon.Open();
+                transaction=SQLCon.BeginTransaction();
+                SQLiteCommand Comando = new SQLiteCommand( SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@nombre", nomb);
+                Comando.Parameters.AddWithValue("@img", im);
+                Comando.Parameters.AddWithValue("@desc", des);
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de registro, intente nuevamente";
+                transaction.Commit();
+                //return answer;
 
             }
             catch (Exception ex)
             {
-
+                answer = ex.Message;
             }
             finally
             {
-
+                if(SQLCon.State==ConnectionState.Open)SQLCon.Close();
             }
         }
+        public void InsertProduct(string nom, string des)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "INSERT INTO producto(nombre, descripcion) VALUES (@nombre, @desc)";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@nombre", nom);
+                Comando.Parameters.AddWithValue("@desc", des);
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de registro, intente nuevamente";
+                transaction.Commit();
 
+            }
+            catch (Exception ex)
+            {
+                answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
         public void DeleteProduct()
         { }
     

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -12,29 +13,23 @@ namespace aadea
         private string Basedatos;
         private static Conexion Con = null;
 
+
+       
         private Conexion()
         {
-            this.Basedatos = "./database.db";
+
         }
 
-        public SQLiteConnection CrearConexion() 
+        public SQLiteConnection CrearConexion()
         {
-            SQLiteConnection Cadena = new SQLiteConnection();
-            try 
-            { 
-                Cadena.ConnectionString = "Data Source="+this.Basedatos;
-            }
-            catch (Exception ex) 
-            {
-                Cadena = null;
-                throw ex;
-            }
+            string connectionString = ConfigurationManager.ConnectionStrings["cadena"].ConnectionString;
+            SQLiteConnection Cadena = new SQLiteConnection(connectionString);
             return Cadena;
         }
 
-        public static Conexion GetConexion() 
+        public static Conexion GetConexion()
         {
-            if (Con == null) 
+            if (Con == null)
             {
                 Con = new Conexion();
             }
