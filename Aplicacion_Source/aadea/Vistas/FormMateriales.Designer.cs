@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             ListaMateriales = new TabPage();
             btDelete = new Button();
@@ -83,7 +85,8 @@
             // 
             // btDelete
             // 
-            btDelete.Location = new Point(502, 339);
+            btDelete.ForeColor = Color.Black;
+            btDelete.Location = new Point(548, 339);
             btDelete.Name = "btDelete";
             btDelete.Size = new Size(121, 23);
             btDelete.TabIndex = 15;
@@ -92,7 +95,8 @@
             // 
             // EdtiProduct
             // 
-            EdtiProduct.Location = new Point(502, 310);
+            EdtiProduct.ForeColor = Color.Black;
+            EdtiProduct.Location = new Point(548, 310);
             EdtiProduct.Name = "EdtiProduct";
             EdtiProduct.Size = new Size(121, 23);
             EdtiProduct.TabIndex = 14;
@@ -101,7 +105,8 @@
             // 
             // AddProduct
             // 
-            AddProduct.Location = new Point(502, 281);
+            AddProduct.ForeColor = Color.Black;
+            AddProduct.Location = new Point(548, 281);
             AddProduct.Name = "AddProduct";
             AddProduct.Size = new Size(121, 23);
             AddProduct.TabIndex = 13;
@@ -111,7 +116,7 @@
             // lbImagen
             // 
             lbImagen.AutoSize = true;
-            lbImagen.Location = new Point(548, 96);
+            lbImagen.Location = new Point(588, 117);
             lbImagen.Name = "lbImagen";
             lbImagen.Size = new Size(47, 15);
             lbImagen.TabIndex = 12;
@@ -119,15 +124,16 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(491, 114);
+            pictureBox1.Location = new Point(548, 135);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(158, 140);
+            pictureBox1.Size = new Size(127, 119);
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
             // btsearch
             // 
-            btsearch.Location = new Point(502, 38);
+            btsearch.ForeColor = Color.Black;
+            btsearch.Location = new Point(562, 39);
             btsearch.Name = "btsearch";
             btsearch.Size = new Size(107, 23);
             btsearch.TabIndex = 4;
@@ -148,19 +154,45 @@
             // 
             textBox1.Location = new Point(17, 39);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(456, 23);
+            textBox1.Size = new Size(516, 23);
             textBox1.TabIndex = 1;
             // 
             // DGV_materiales
             // 
-            DGV_materiales.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
-            DGV_materiales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV_materiales.AllowUserToResizeColumns = false;
+            DGV_materiales.AllowUserToResizeRows = false;
+            DGV_materiales.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DGV_materiales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_materiales.BackgroundColor = Color.White;
+            DGV_materiales.BorderStyle = BorderStyle.None;
+            DGV_materiales.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGV_materiales.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DGV_materiales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            DGV_materiales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DGV_materiales.EnableHeadersVisualStyles = false;
+            DGV_materiales.GridColor = Color.DarkBlue;
             DGV_materiales.Location = new Point(17, 80);
             DGV_materiales.Name = "DGV_materiales";
+            DGV_materiales.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DGV_materiales.RowHeadersVisible = false;
+            DGV_materiales.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            DGV_materiales.RowsDefaultCellStyle = dataGridViewCellStyle2;
             DGV_materiales.RowTemplate.Height = 25;
-            DGV_materiales.Size = new Size(456, 289);
-            DGV_materiales.TabIndex = 0;
+            DGV_materiales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGV_materiales.Size = new Size(516, 289);
+            DGV_materiales.TabIndex = 9;
             // 
             // AddMaterial
             // 
@@ -194,12 +226,12 @@
             Controls.Add(tabControl1);
             Name = "FormMateriales";
             Text = "FormMateriales";
+            Load += FormMaterials_Load;
             tabControl1.ResumeLayout(false);
             ListaMateriales.ResumeLayout(false);
             ListaMateriales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGV_materiales).EndInit();
-            Load += FormMaterials_Load;
             ResumeLayout(false);
         }
 

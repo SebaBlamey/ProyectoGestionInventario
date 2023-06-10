@@ -206,5 +206,7 @@ namespace aadea.Vistas
                 image = memoria.ToArray();
             }
         }
+
+
     }
 }

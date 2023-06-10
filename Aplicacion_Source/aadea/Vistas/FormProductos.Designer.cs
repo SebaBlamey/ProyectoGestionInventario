@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             productList = new TabPage();
             GVProduct = new DataGridView();
@@ -102,26 +103,45 @@
             // 
             // GVProduct
             // 
+            GVProduct.AllowUserToResizeColumns = false;
+            GVProduct.AllowUserToResizeRows = false;
+            GVProduct.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            GVProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            GVProduct.BackgroundColor = Color.White;
+            GVProduct.BorderStyle = BorderStyle.None;
+            GVProduct.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            GVProduct.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             GVProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            GVProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GVProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             GVProduct.EnableHeadersVisualStyles = false;
+            GVProduct.GridColor = Color.DarkBlue;
             GVProduct.Location = new Point(17, 80);
             GVProduct.Name = "GVProduct";
+            GVProduct.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            GVProduct.RowHeadersVisible = false;
+            GVProduct.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            GVProduct.RowsDefaultCellStyle = dataGridViewCellStyle2;
             GVProduct.RowTemplate.Height = 25;
-            GVProduct.Size = new Size(456, 289);
+            GVProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            GVProduct.Size = new Size(516, 289);
             GVProduct.TabIndex = 9;
             GVProduct.CellFormatting += GVProduct_CellFormatting;
             // 
             // btDelete
             // 
-            btDelete.Location = new Point(502, 338);
+            btDelete.Location = new Point(554, 321);
             btDelete.Name = "btDelete";
             btDelete.Size = new Size(121, 23);
             btDelete.TabIndex = 8;
@@ -130,7 +150,7 @@
             // 
             // EdtiProduct
             // 
-            EdtiProduct.Location = new Point(502, 309);
+            EdtiProduct.Location = new Point(554, 292);
             EdtiProduct.Name = "EdtiProduct";
             EdtiProduct.Size = new Size(121, 23);
             EdtiProduct.TabIndex = 7;
@@ -140,7 +160,7 @@
             // 
             // AddProduct
             // 
-            AddProduct.Location = new Point(502, 280);
+            AddProduct.Location = new Point(554, 263);
             AddProduct.Name = "AddProduct";
             AddProduct.Size = new Size(121, 23);
             AddProduct.TabIndex = 6;
@@ -151,7 +171,7 @@
             // lbImagen
             // 
             lbImagen.AutoSize = true;
-            lbImagen.Location = new Point(548, 96);
+            lbImagen.Location = new Point(587, 96);
             lbImagen.Name = "lbImagen";
             lbImagen.Size = new Size(47, 15);
             lbImagen.TabIndex = 5;
@@ -160,15 +180,15 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(491, 114);
+            pictureBox1.Location = new Point(539, 114);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(158, 140);
+            pictureBox1.Size = new Size(136, 121);
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
             // btsearch
             // 
-            btsearch.Location = new Point(502, 38);
+            btsearch.Location = new Point(554, 38);
             btsearch.Name = "btsearch";
             btsearch.Size = new Size(107, 23);
             btsearch.TabIndex = 3;
@@ -179,7 +199,7 @@
             // 
             txtSearch.Location = new Point(17, 39);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(456, 23);
+            txtSearch.Size = new Size(516, 23);
             txtSearch.TabIndex = 2;
             // 
             // labeltitle
