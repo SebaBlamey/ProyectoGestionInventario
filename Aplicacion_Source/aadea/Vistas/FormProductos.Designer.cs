@@ -138,6 +138,7 @@
             GVProduct.Size = new Size(516, 289);
             GVProduct.TabIndex = 9;
             GVProduct.CellFormatting += GVProduct_CellFormatting;
+            GVProduct.SelectionChanged += GVProduct_SelectionChanged;
             // 
             // btDelete
             // 
@@ -351,7 +352,6 @@
             btexam.TabIndex = 5;
             btexam.Text = "Examinar";
             btexam.UseVisualStyleBackColor = true;
-            btexam.Click += btexam_Click;
             // 
             // cambiarBox
             // 

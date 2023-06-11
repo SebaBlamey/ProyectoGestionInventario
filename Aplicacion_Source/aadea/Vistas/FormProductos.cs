@@ -9,14 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Controls;
+using System.Drawing;
 using System.Windows.Forms;
 using aadea.Logicaq;
 
 namespace aadea.Vistas
 {
+
     public partial class FormProductos : Form
     {
-        private byte[] image;
+        private string rutaSeleccionada;
         public FormProductos()
         {
             InitializeComponent();
@@ -82,6 +84,8 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(productList);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(AddP);
+
+
         }
 
         private void EdtiProduct_Click(object sender, EventArgs e)
@@ -111,10 +115,10 @@ namespace aadea.Vistas
             if (selectorImagen.ShowDialog() == DialogResult.OK)
             {
                 examinarPic.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
-                MemoryStream memoria = new MemoryStream();
-                examinarPic.Image.Save(memoria, System.Drawing.Imaging.ImageFormat.Png);
-                image = memoria.ToArray();
+                rutaSeleccionada = selectorImagen.FileName;
+
             }
+
         }
 
         private void GVProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -122,6 +126,7 @@ namespace aadea.Vistas
             ForeColor = Color.Black;
         }
 
+        //Boton guardar
         private void button1_Click(object sender, EventArgs e)
         {
             string nombre;
@@ -129,26 +134,29 @@ namespace aadea.Vistas
             byte[] img = null;
             L_Products ins = new L_Products();
 
-            if (examinarPic.Image != null)
+            if (!string.IsNullOrEmpty(rutaSeleccionada))
             {
+
+                byte[] bytesImagen = File.ReadAllBytes(rutaSeleccionada);
                 nombre = txtProduct.Text;
                 desc = txtDesc.Text;
 
-                System.Drawing.Image imagen = pictureBox1.Image;
-                using (MemoryStream memoryStream = new MemoryStream())
-                {
-                    imagen.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    img = memoryStream.ToArray();
-                }
-
-                ins.InsertProductWI(nombre, desc, img);
+                ins.InsertProductWI(nombre, desc, bytesImagen);
             }
             else
             {
+                // No se ha seleccionado ninguna ruta, realiza acciones adicionales o muestra un mensaje de error
                 nombre = txtProduct.Text;
                 desc = txtDesc.Text;
+
                 ins.InsertProduct(nombre, desc);
             }
+
+
+
+
+
+
 
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);
@@ -193,20 +201,35 @@ namespace aadea.Vistas
 
         }
 
-        private void btexam_Click(object sender, EventArgs e)
+        private void GVProduct_SelectionChanged(object sender, EventArgs e)
         {
-            OpenFileDialog selectorImagen = new OpenFileDialog();
-            selectorImagen.Title = "Seleccionar imagen";
-
-            if (selectorImagen.ShowDialog() == DialogResult.OK)
+            L_Products productos = new L_Products();
+            if (GVProduct.SelectedRows.Count > 0)
             {
-                cambiarBox.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
-                MemoryStream memoria = new MemoryStream();
-                cambiarBox.Image.Save(memoria, System.Drawing.Imaging.ImageFormat.Png);
-                image = memoria.ToArray();
+                // Obtén el ID del producto de la fila seleccionada en el DataGridView
+                int productoID = Convert.ToInt32(GVProduct.SelectedRows[0].Cells["ID"].Value);
+
+                // Obtén los datos de imagen del producto desde la base de datos
+                byte[] imagenBytes = productos.ObtenerImagenProducto(productoID);
+
+                if (imagenBytes != null)
+                {
+                    // Convierte los bytes de imagen a un objeto Image del espacio de nombres System.Drawing
+                    using (MemoryStream ms = new MemoryStream(imagenBytes))
+                    {
+                        System.Drawing.Image imagen = System.Drawing.Image.FromStream(ms);
+
+                        // Asigna la imagen al PictureBox
+                        pictureBox1.Image = imagen;
+                    }
+                }
+                else
+                {
+                    // No se encontró ninguna imagen para el producto seleccionado
+                    pictureBox1.Image = null;
+                }
             }
+
         }
-
-
     }
 }
