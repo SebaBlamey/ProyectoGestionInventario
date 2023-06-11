@@ -55,9 +55,8 @@ namespace aadea.Logicaq
             }
             catch (Exception ex)
             {
-
                 answer = ex.Message;
-                transaction.Rollback();
+                
             }
             finally
             {
@@ -86,14 +85,38 @@ namespace aadea.Logicaq
             catch (Exception ex)
             {
                 answer = ex.Message;
+                
             }
             finally
             {
                 if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
             }
         }
-        public void DeleteProduct()
-        { }
+        public void DeleteProduct(int id)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "DELETE FROM producto WHERE ID = @id";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@ID", id);
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de eliminacion, intente nuevamente";
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
 
         public byte[] ObtenerImagenProducto(int productoID)
         {

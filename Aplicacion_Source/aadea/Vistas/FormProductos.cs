@@ -151,13 +151,6 @@ namespace aadea.Vistas
 
                 ins.InsertProduct(nombre, desc);
             }
-
-
-
-
-
-
-
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
@@ -230,6 +223,26 @@ namespace aadea.Vistas
                 }
             }
 
+        }
+
+        private void GVProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            L_Products productos = new L_Products();
+            if (GVProduct.SelectedRows.Count==0)
+            {
+                MessageBox.Show("Por favor seleccione una fila para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int id = Convert.ToInt32(GVProduct.SelectedRows[0].Cells["ID"].Value);
+            productos.DeleteProduct(id);
+            GVProduct.DataSource = null;
+            GVProduct.Rows.Clear();
+            FormProductos_Load(sender, e);
         }
     }
 }

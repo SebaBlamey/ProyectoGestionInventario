@@ -137,6 +137,7 @@
             GVProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             GVProduct.Size = new Size(516, 289);
             GVProduct.TabIndex = 9;
+            GVProduct.CellContentClick += GVProduct_CellContentClick;
             GVProduct.CellFormatting += GVProduct_CellFormatting;
             GVProduct.SelectionChanged += GVProduct_SelectionChanged;
             // 
@@ -148,6 +149,7 @@
             btDelete.TabIndex = 8;
             btDelete.Text = "Eliminar";
             btDelete.UseVisualStyleBackColor = true;
+            btDelete.Click += btDelete_Click;
             // 
             // EdtiProduct
             // 
@@ -184,6 +186,7 @@
             pictureBox1.Location = new Point(539, 114);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(136, 121);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 

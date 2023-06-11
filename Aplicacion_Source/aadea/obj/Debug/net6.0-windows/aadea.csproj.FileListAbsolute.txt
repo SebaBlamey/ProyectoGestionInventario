@@ -154,7 +154,6 @@ C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aade
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormProduccion.resources
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormProductos.resources
 C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.exe
-C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\database.db
 C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.dll.config
 C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.deps.json
 C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\aadea.runtimeconfig.json
@@ -218,3 +217,4 @@ C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de So
 C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormTrabajadores.resources
 C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.PINmod.resources
 C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.PINmod.resources
+C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\database.db
