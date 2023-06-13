@@ -1,5 +1,6 @@
 ﻿using aadea.Logicaq;
 using aadea.Model;
+using aadea.userControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace aadea.Vistas
         public FormProduccion()
         {
             InitializeComponent();
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -26,13 +28,13 @@ namespace aadea.Vistas
         private void ListadoProduc()
         {
             L_Produccion datos = new L_Produccion();
-            DGV_materiales.DataSource = datos.listProduccion();
+            //DGV_materiales.DataSource = datos.listProduccion();
         }
 
         private void Formato_P()
         {
-            DGV_materiales.Columns[0].Width = 170;
-            DGV_materiales.Columns[1].Width = 170;
+            //DGV_materiales.Columns[0].Width = 170;
+            //DGV_materiales.Columns[1].Width = 170;
 
         }
 
@@ -40,6 +42,11 @@ namespace aadea.Vistas
         {
             this.ListadoProduc();
             this.Formato_P();
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
