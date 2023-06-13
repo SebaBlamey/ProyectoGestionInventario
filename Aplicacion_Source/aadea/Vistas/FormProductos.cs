@@ -233,7 +233,7 @@ namespace aadea.Vistas
         private void btDelete_Click(object sender, EventArgs e)
         {
             L_Products productos = new L_Products();
-            if (GVProduct.SelectedRows.Count==0)
+            if (GVProduct.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Por favor seleccione una fila para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

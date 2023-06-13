@@ -21,7 +21,6 @@ namespace aadea.Vistas
             Load += FormProduccion_Load;
 
         }
-
         private void FormProduccion_Load(object? sender, EventArgs e)
         {
             L_inventario l_Inventario = new L_inventario();

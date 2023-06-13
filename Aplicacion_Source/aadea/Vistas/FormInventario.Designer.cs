@@ -29,36 +29,40 @@
         private void InitializeComponent()
         {
             tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
+            tabView = new TabPage();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
-            tabPage2 = new TabPage();
+            Editar = new TabPage();
+            tabDelete = new TabPage();
             tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tabView.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabView);
+            tabControl1.Controls.Add(Editar);
+            tabControl1.Controls.Add(tabDelete);
             tabControl1.Dock = DockStyle.Top;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(817, 478);
             tabControl1.TabIndex = 0;
+            tabControl1.UseWaitCursor = true;
             // 
-            // tabPage1
+            // tabView
             // 
-            tabPage1.Controls.Add(flowLayoutPanel1);
-            tabPage1.Controls.Add(panel1);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(809, 450);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
+            tabView.Controls.Add(flowLayoutPanel1);
+            tabView.Controls.Add(panel1);
+            tabView.Location = new Point(4, 24);
+            tabView.Name = "tabView";
+            tabView.Padding = new Padding(3);
+            tabView.Size = new Size(809, 450);
+            tabView.TabIndex = 0;
+            tabView.Text = "Stock";
+            tabView.UseVisualStyleBackColor = true;
+            tabView.UseWaitCursor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -67,6 +71,7 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(793, 429);
             flowLayoutPanel1.TabIndex = 1;
+            flowLayoutPanel1.UseWaitCursor = true;
             // 
             // panel1
             // 
@@ -77,16 +82,29 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(803, 0);
             panel1.TabIndex = 0;
+            panel1.UseWaitCursor = true;
             // 
-            // tabPage2
+            // Editar
             // 
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(809, 450);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
+            Editar.Location = new Point(4, 24);
+            Editar.Name = "Editar";
+            Editar.Padding = new Padding(3);
+            Editar.Size = new Size(809, 450);
+            Editar.TabIndex = 1;
+            Editar.Text = "tabEdit";
+            Editar.UseVisualStyleBackColor = true;
+            Editar.UseWaitCursor = true;
+            // 
+            // tabDelete
+            // 
+            tabDelete.Location = new Point(4, 24);
+            tabDelete.Name = "tabDelete";
+            tabDelete.Padding = new Padding(3);
+            tabDelete.Size = new Size(809, 450);
+            tabDelete.TabIndex = 2;
+            tabDelete.Text = "Eliminar";
+            tabDelete.UseVisualStyleBackColor = true;
+            tabDelete.UseWaitCursor = true;
             // 
             // FormInventario
             // 
@@ -97,17 +115,18 @@
             Name = "FormInventario";
             Text = "FormInventario";
             tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            tabView.ResumeLayout(false);
+            tabView.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
+        private TabPage tabView;
+        private TabPage Editar;
         private Panel panel1;
         private FlowLayoutPanel flowLayoutPanel1;
+        private TabPage tabDelete;
     }
 }

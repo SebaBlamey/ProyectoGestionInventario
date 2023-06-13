@@ -58,6 +58,8 @@
             // 
             // dataGridViewInv
             // 
+            dataGridViewInv.BackgroundColor = SystemColors.Control;
+            dataGridViewInv.BorderStyle = BorderStyle.None;
             dataGridViewInv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewInv.Location = new Point(278, 22);
             dataGridViewInv.Name = "dataGridViewInv";

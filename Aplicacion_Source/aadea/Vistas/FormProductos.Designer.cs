@@ -349,7 +349,7 @@
             // 
             // btexam
             // 
-            btexam.Location = new Point(372, 218);
+            btexam.Location = new Point(353, 218);
             btexam.Name = "btexam";
             btexam.Size = new Size(117, 23);
             btexam.TabIndex = 5;
