@@ -149,7 +149,7 @@ namespace aadea.Vistas
                 menuTitleLaberl.Text = text;
                 menuTitleLaberl.ForeColor = Color.FromArgb(33, 36, 53);
                 menuTitleLaberl.TextAlign = ContentAlignment.MiddleCenter;
-               // dataGridView1.DataSource = null;
+                // dataGridView1.DataSource = null;
             }
         }
         private void UnsetActualButton()
@@ -168,8 +168,8 @@ namespace aadea.Vistas
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet);
-               // dataGridView1.DataSource = dataSet.Tables[0];
-               // dataGridView1.ForeColor = Color.White;
+                // dataGridView1.DataSource = dataSet.Tables[0];
+                // dataGridView1.ForeColor = Color.White;
                 connection.Close();
                 OpenChildForm(new FormProductos());
             }
@@ -181,7 +181,7 @@ namespace aadea.Vistas
 
         private void iconButtonMateriales_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);      
+            ActivateButton(sender);
             try
             {
                 SetActualButton(sender, "MATERIALES");
@@ -223,11 +223,25 @@ namespace aadea.Vistas
 
         private void iconButtonAsistencia_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);      
+            ActivateButton(sender);
             try
             {
                 SetActualButton(sender, "ASISTENCIA");
                 OpenChildForm(new FormAsistencia());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en la base de datos " + ex.Message);
+            }
+        }
+
+        private void iconButtonBodega_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            try
+            {
+                SetActualButton(sender, "BODEGA");
+                //OpenChildForm(new FormAsistencia());
             }
             catch (Exception ex)
             {

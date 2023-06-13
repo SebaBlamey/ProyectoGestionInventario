@@ -41,6 +41,7 @@ namespace aadea.Vistas
             panel2 = new Panel();
             menuTitleLaberl = new Label();
             panelDesk = new Panel();
+            iconButtonBodega = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -214,6 +215,7 @@ namespace aadea.Vistas
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(33, 36, 53);
+            panel3.Controls.Add(iconButtonBodega);
             panel3.Controls.Add(pictureBox2);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 0);
@@ -270,6 +272,31 @@ namespace aadea.Vistas
             panelDesk.Size = new Size(707, 460);
             panelDesk.TabIndex = 2;
             // 
+            // iconButtonBodega
+            // 
+            iconButtonBodega.BackColor = Color.FromArgb(33, 36, 53);
+            iconButtonBodega.FlatAppearance.BorderSize = 0;
+            iconButtonBodega.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
+            iconButtonBodega.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            iconButtonBodega.FlatStyle = FlatStyle.Flat;
+            iconButtonBodega.Font = new Font("Tahoma", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButtonBodega.ForeColor = Color.FromArgb(144, 147, 166);
+            iconButtonBodega.IconChar = FontAwesome.Sharp.IconChar.Viadeo;
+            iconButtonBodega.IconColor = Color.FromArgb(144, 147, 166);
+            iconButtonBodega.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonBodega.IconSize = 35;
+            iconButtonBodega.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonBodega.Location = new Point(0, 397);
+            iconButtonBodega.Margin = new Padding(3, 3, 5, 3);
+            iconButtonBodega.Name = "iconButtonBodega";
+            iconButtonBodega.Padding = new Padding(5, 0, 0, 0);
+            iconButtonBodega.Size = new Size(218, 47);
+            iconButtonBodega.TabIndex = 17;
+            iconButtonBodega.Text = "Bodega";
+            iconButtonBodega.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonBodega.UseVisualStyleBackColor = false;
+            iconButtonBodega.Click += iconButtonBodega_Click;
+            // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -308,5 +335,6 @@ namespace aadea.Vistas
         private PictureBox pictureBox2;
         private Label menuTitleLaberl;
         private Panel panelDesk;
+        private FontAwesome.Sharp.IconButton iconButtonBodega;
     }
 }
