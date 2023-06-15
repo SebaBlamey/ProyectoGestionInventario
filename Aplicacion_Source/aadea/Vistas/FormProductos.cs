@@ -87,6 +87,31 @@ namespace aadea.Vistas
 
 
         }
+        /*
+        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            string textoBusqueda = txtSearch.Text.Trim().ToLower();
+
+            // Verificar si la columna "nombre" existe en el DataGridView
+            if (GVProduct.Columns.Contains("nombre"))
+            {
+                // Iterar por cada fila del DataGridView
+                foreach (DataGridViewRow row in GVProduct.Rows)
+                {
+                        // Obtener el valor de la celda en la columna "nombre" de cada fila
+                        string nombreProducto = row.Cells["nombre"].Value?.ToString()?.ToLower() ?? "";
+
+
+                        // Ocultar la fila si el nombre del producto no contiene el texto de búsqueda
+                        row.Visible = nombreProducto.Contains(textoBusqueda);
+                }
+            }
+        }*/
+        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
 
         private void EdtiProduct_Click(object sender, EventArgs e)
         {

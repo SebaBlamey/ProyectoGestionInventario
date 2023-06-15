@@ -36,12 +36,16 @@
             btViewProduccion = new Model.BT();
             bt1 = new Model.BT();
             tabHistory = new TabPage();
+            DVGHistory = new DataGridView();
+            bttExitHistory = new Model.BT();
             tabProduccionActual = new TabPage();
             tabIngresarProduccion = new TabPage();
             contextMenuStrip1 = new ContextMenuStrip(components);
             panel1.SuspendLayout();
             tabControlProduccion.SuspendLayout();
             viewButtons.SuspendLayout();
+            tabHistory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DVGHistory).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -138,6 +142,8 @@
             // 
             // tabHistory
             // 
+            tabHistory.Controls.Add(DVGHistory);
+            tabHistory.Controls.Add(bttExitHistory);
             tabHistory.Location = new Point(4, 24);
             tabHistory.Name = "tabHistory";
             tabHistory.Padding = new Padding(3);
@@ -146,6 +152,37 @@
             tabHistory.TabIndex = 1;
             tabHistory.Text = "Historial de produccion";
             tabHistory.UseVisualStyleBackColor = true;
+            // 
+            // DVGHistory
+            // 
+            DVGHistory.BackgroundColor = SystemColors.Control;
+            DVGHistory.BorderStyle = BorderStyle.None;
+            DVGHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DVGHistory.Location = new Point(8, 6);
+            DVGHistory.Name = "DVGHistory";
+            DVGHistory.RowTemplate.Height = 25;
+            DVGHistory.Size = new Size(778, 382);
+            DVGHistory.TabIndex = 1;
+            DVGHistory.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // bttExitHistory
+            // 
+            bttExitHistory.BackColor = Color.MediumSlateBlue;
+            bttExitHistory.BackgroundColor = Color.MediumSlateBlue;
+            bttExitHistory.BorderColor = Color.PaleVioletRed;
+            bttExitHistory.BorderRadius = 20;
+            bttExitHistory.BorderSize = 0;
+            bttExitHistory.FlatAppearance.BorderSize = 0;
+            bttExitHistory.FlatStyle = FlatStyle.Flat;
+            bttExitHistory.ForeColor = Color.White;
+            bttExitHistory.Location = new Point(638, 394);
+            bttExitHistory.Name = "bttExitHistory";
+            bttExitHistory.Size = new Size(150, 40);
+            bttExitHistory.TabIndex = 0;
+            bttExitHistory.Text = "Salir";
+            bttExitHistory.TextColor = Color.White;
+            bttExitHistory.UseVisualStyleBackColor = false;
+            bttExitHistory.Click += bttExitHistory_Click;
             // 
             // tabProduccionActual
             // 
@@ -180,10 +217,11 @@
             Controls.Add(panel1);
             Name = "FormProduccion";
             Text = "FormProduccion";
-            Load += FormProducion_Load;
             panel1.ResumeLayout(false);
             tabControlProduccion.ResumeLayout(false);
             viewButtons.ResumeLayout(false);
+            tabHistory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)DVGHistory).EndInit();
             ResumeLayout(false);
         }
 
@@ -199,5 +237,7 @@
         private Model.BT btIngresarProduccion;
         private Model.BT btViewProduccion;
         private Model.BT bt1;
+        private DataGridView DVGHistory;
+        private Model.BT bttExitHistory;
     }
 }

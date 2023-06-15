@@ -205,6 +205,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(516, 23);
             txtSearch.TabIndex = 2;
+            txtSearch.TextChanged += textBoxBuscar_TextChanged;
             // 
             // labeltitle
             // 
