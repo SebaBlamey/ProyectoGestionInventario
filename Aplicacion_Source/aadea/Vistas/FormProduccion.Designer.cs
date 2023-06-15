@@ -36,16 +36,15 @@
             btViewProduccion = new Model.BT();
             bt1 = new Model.BT();
             tabHistory = new TabPage();
-            DVGHistory = new DataGridView();
             bttExitHistory = new Model.BT();
             tabProduccionActual = new TabPage();
             tabIngresarProduccion = new TabPage();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            LayoutHistorial = new FlowLayoutPanel();
             panel1.SuspendLayout();
             tabControlProduccion.SuspendLayout();
             viewButtons.SuspendLayout();
             tabHistory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DVGHistory).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -142,7 +141,7 @@
             // 
             // tabHistory
             // 
-            tabHistory.Controls.Add(DVGHistory);
+            tabHistory.Controls.Add(LayoutHistorial);
             tabHistory.Controls.Add(bttExitHistory);
             tabHistory.Location = new Point(4, 24);
             tabHistory.Name = "tabHistory";
@@ -152,18 +151,6 @@
             tabHistory.TabIndex = 1;
             tabHistory.Text = "Historial de produccion";
             tabHistory.UseVisualStyleBackColor = true;
-            // 
-            // DVGHistory
-            // 
-            DVGHistory.BackgroundColor = SystemColors.Control;
-            DVGHistory.BorderStyle = BorderStyle.None;
-            DVGHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DVGHistory.Location = new Point(8, 6);
-            DVGHistory.Name = "DVGHistory";
-            DVGHistory.RowTemplate.Height = 25;
-            DVGHistory.Size = new Size(778, 382);
-            DVGHistory.TabIndex = 1;
-            DVGHistory.CellContentClick += dataGridView1_CellContentClick;
             // 
             // bttExitHistory
             // 
@@ -209,6 +196,14 @@
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
+            // LayoutHistorial
+            // 
+            LayoutHistorial.AutoScroll = true;
+            LayoutHistorial.Location = new Point(3, 6);
+            LayoutHistorial.Name = "LayoutHistorial";
+            LayoutHistorial.Size = new Size(783, 382);
+            LayoutHistorial.TabIndex = 1;
+            // 
             // FormProduccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -221,7 +216,6 @@
             tabControlProduccion.ResumeLayout(false);
             viewButtons.ResumeLayout(false);
             tabHistory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)DVGHistory).EndInit();
             ResumeLayout(false);
         }
 
@@ -237,7 +231,7 @@
         private Model.BT btIngresarProduccion;
         private Model.BT btViewProduccion;
         private Model.BT bt1;
-        private DataGridView DVGHistory;
         private Model.BT bttExitHistory;
+        private FlowLayoutPanel LayoutHistorial;
     }
 }

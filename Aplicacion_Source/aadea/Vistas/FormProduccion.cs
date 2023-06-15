@@ -26,11 +26,6 @@ namespace aadea.Vistas
 
         }
 
-        private void listadoHistory()
-        {
-            
-        }
-
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -45,6 +40,26 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
             tabControlProduccion.TabPages.Add(tabHistory);
 
+
+            L_Produccion l_produccion = new L_Produccion();
+            DataTable dataTable = l_produccion.ListHistorial();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                historyControl userControl = new historyControl();
+
+                int id = Convert.ToInt32(row["ID"]);
+                string fecha_inicio = row["fecha_inicio"].ToString();
+                string fecha_termino = row["fecha_termino"].ToString();
+
+                userControl.fechaInicio = fecha_inicio;
+                userControl.fechaTermino = fecha_termino;
+                userControl.Tittle += " " + id;
+                LayoutHistorial.Controls.Add(userControl);
+                DataTable tableMaterial= l_produccion.listMaterialForHistory(id);
+                DataTable tableProduct = l_produccion.GetProductHistory(id);
+                userControl.DataGridViewMateriales.DataSource = tableMaterial;
+                userControl.DataGridViewProductos.DataSource = tableProduct;
+            }
         }
 
         private void btViewProduccion_Click(object sender, EventArgs e)

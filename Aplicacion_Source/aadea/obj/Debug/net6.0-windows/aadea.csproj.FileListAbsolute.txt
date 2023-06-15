@@ -220,3 +220,4 @@ C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_S
 C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\bin\Debug\net6.0-windows\database.db
 C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.productBodega.resources
 C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormInventario.resources
+C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.historyControl.resources

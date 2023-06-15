@@ -4,6 +4,9 @@
     <Compile Update="Model\BT.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="userControls\historyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="userControls\productBodega.cs">
       <SubType>UserControl</SubType>
     </Compile>
