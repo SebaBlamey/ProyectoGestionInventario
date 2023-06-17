@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System.Drawing;
 using System.Windows.Forms;
 using aadea.Logicaq;
+using aadea.userControls;
 
 namespace aadea.Vistas
 {
@@ -26,58 +27,6 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(EditP);
         }
 
-
-        private void ListadoP()
-        {
-            L_Products datos = new L_Products();
-            GVProduct.DataSource = datos.listProducts();
-
-        }
-
-        private void Formato_P()
-        {
-            GVProduct.Columns[0].Width = 170;
-            GVProduct.Columns[1].Width = 170;
-
-        }
-
-
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbImagen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void productList_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DetailsP_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddProduct_Click(object sender, EventArgs e)
         {
             tabControl.SelectedTab = AddP;
@@ -87,32 +36,6 @@ namespace aadea.Vistas
 
 
         }
-        /*
-        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
-        {
-            string textoBusqueda = txtSearch.Text.Trim().ToLower();
-
-            // Verificar si la columna "nombre" existe en el DataGridView
-            if (GVProduct.Columns.Contains("nombre"))
-            {
-                // Iterar por cada fila del DataGridView
-                foreach (DataGridViewRow row in GVProduct.Rows)
-                {
-                        // Obtener el valor de la celda en la columna "nombre" de cada fila
-                        string nombreProducto = row.Cells["nombre"].Value?.ToString()?.ToLower() ?? "";
-
-
-                        // Ocultar la fila si el nombre del producto no contiene el texto de búsqueda
-                        row.Visible = nombreProducto.Contains(textoBusqueda);
-                }
-            }
-        }*/
-        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-
         private void EdtiProduct_Click(object sender, EventArgs e)
         {
             tabControl.SelectedTab = EditP;
@@ -120,16 +43,31 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(productList);
             tabControl.TabPages.Add(EditP);
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FormProductos_Load(object sender, EventArgs e)
         {
-            this.ListadoP();
-            this.Formato_P();
+            L_Products l_products = new L_Products();
+            DataTable dataTable = l_products.listProducts();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                UserProduct userControl = new UserProduct();
+
+                int id = Convert.ToInt32(row["ID"]);
+                string nombre = row["nombre"].ToString();
+                string desc = row["descripcion"].ToString();
+                byte[] imagen = l_products.ObtenerImagenProducto(id);
+                userControl.Tittle = nombre;
+                userControl.Desc = desc;
+                if (imagen != null && imagen.Length > 0)
+                {
+
+                    using (MemoryStream ms = new MemoryStream(imagen))
+                    {
+                        System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+                        userControl.PictureBox1 = img;
+                    }
+                }
+                flowLayoutPanel1.Controls.Add(userControl);
+            }
         }
 
         private void btExaminar_Click(object sender, EventArgs e)
@@ -144,11 +82,6 @@ namespace aadea.Vistas
 
             }
 
-        }
-
-        private void GVProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            ForeColor = Color.Black;
         }
 
         //Boton guardar
@@ -214,13 +147,9 @@ namespace aadea.Vistas
 
         }
 
-        private void cambiarBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void GVProduct_SelectionChanged(object sender, EventArgs e)
         {
+            /*
             L_Products productos = new L_Products();
             if (GVProduct.SelectedRows.Count > 0)
             {
@@ -246,17 +175,14 @@ namespace aadea.Vistas
                     // No se encontró ninguna imagen para el producto seleccionado
                     pictureBox1.Image = null;
                 }
-            }
+            }*/
 
         }
 
-        private void GVProduct_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void btDelete_Click(object sender, EventArgs e)
         {
+            /*
             L_Products productos = new L_Products();
             if (GVProduct.SelectedRows.Count == 0)
             {
@@ -268,6 +194,7 @@ namespace aadea.Vistas
             GVProduct.DataSource = null;
             GVProduct.Rows.Clear();
             FormProductos_Load(sender, e);
+            */
         }
     }
 }

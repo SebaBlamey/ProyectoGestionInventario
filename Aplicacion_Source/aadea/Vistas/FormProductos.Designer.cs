@@ -28,18 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             productList = new TabPage();
-            GVProduct = new DataGridView();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             btDelete = new Button();
             EdtiProduct = new Button();
             AddProduct = new Button();
-            lbImagen = new Label();
-            pictureBox1 = new PictureBox();
-            btsearch = new Button();
-            txtSearch = new TextBox();
             labeltitle = new Label();
             AddP = new TabPage();
             btCancelAdd = new Button();
@@ -61,8 +55,6 @@
             label2 = new Label();
             tabControl.SuspendLayout();
             productList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)GVProduct).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             AddP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)examinarPic).BeginInit();
             EditP.SuspendLayout();
@@ -83,14 +75,10 @@
             // 
             // productList
             // 
-            productList.Controls.Add(GVProduct);
+            productList.Controls.Add(flowLayoutPanel1);
             productList.Controls.Add(btDelete);
             productList.Controls.Add(EdtiProduct);
             productList.Controls.Add(AddProduct);
-            productList.Controls.Add(lbImagen);
-            productList.Controls.Add(pictureBox1);
-            productList.Controls.Add(btsearch);
-            productList.Controls.Add(txtSearch);
             productList.Controls.Add(labeltitle);
             productList.Location = new Point(4, 24);
             productList.Name = "productList";
@@ -99,51 +87,18 @@
             productList.TabIndex = 0;
             productList.Text = "ListaProductos";
             productList.UseVisualStyleBackColor = true;
-            productList.Click += productList_Click;
             // 
-            // GVProduct
+            // flowLayoutPanel1
             // 
-            GVProduct.AllowUserToResizeColumns = false;
-            GVProduct.AllowUserToResizeRows = false;
-            GVProduct.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            GVProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            GVProduct.BackgroundColor = Color.White;
-            GVProduct.BorderStyle = BorderStyle.None;
-            GVProduct.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            GVProduct.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            GVProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            GVProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            GVProduct.EnableHeadersVisualStyles = false;
-            GVProduct.GridColor = Color.DarkBlue;
-            GVProduct.Location = new Point(17, 80);
-            GVProduct.Name = "GVProduct";
-            GVProduct.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            GVProduct.RowHeadersVisible = false;
-            GVProduct.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.DimGray;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            GVProduct.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            GVProduct.RowTemplate.Height = 25;
-            GVProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            GVProduct.Size = new Size(516, 289);
-            GVProduct.TabIndex = 9;
-            GVProduct.CellContentClick += GVProduct_CellContentClick;
-            GVProduct.CellFormatting += GVProduct_CellFormatting;
-            GVProduct.SelectionChanged += GVProduct_SelectionChanged;
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.Location = new Point(17, 68);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(658, 317);
+            flowLayoutPanel1.TabIndex = 9;
             // 
             // btDelete
             // 
-            btDelete.Location = new Point(554, 321);
+            btDelete.Location = new Point(488, 13);
             btDelete.Name = "btDelete";
             btDelete.Size = new Size(121, 23);
             btDelete.TabIndex = 8;
@@ -153,7 +108,7 @@
             // 
             // EdtiProduct
             // 
-            EdtiProduct.Location = new Point(554, 292);
+            EdtiProduct.Location = new Point(332, 13);
             EdtiProduct.Name = "EdtiProduct";
             EdtiProduct.Size = new Size(121, 23);
             EdtiProduct.TabIndex = 7;
@@ -163,49 +118,13 @@
             // 
             // AddProduct
             // 
-            AddProduct.Location = new Point(554, 263);
+            AddProduct.Location = new Point(184, 13);
             AddProduct.Name = "AddProduct";
             AddProduct.Size = new Size(121, 23);
             AddProduct.TabIndex = 6;
             AddProduct.Text = "Agregar";
             AddProduct.UseVisualStyleBackColor = true;
             AddProduct.Click += AddProduct_Click;
-            // 
-            // lbImagen
-            // 
-            lbImagen.AutoSize = true;
-            lbImagen.Location = new Point(587, 96);
-            lbImagen.Name = "lbImagen";
-            lbImagen.Size = new Size(47, 15);
-            lbImagen.TabIndex = 5;
-            lbImagen.Text = "Imagen";
-            lbImagen.Click += lbImagen_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(539, 114);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(136, 121);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            // 
-            // btsearch
-            // 
-            btsearch.Location = new Point(554, 38);
-            btsearch.Name = "btsearch";
-            btsearch.Size = new Size(107, 23);
-            btsearch.TabIndex = 3;
-            btsearch.Text = "Search";
-            btsearch.UseVisualStyleBackColor = true;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(17, 39);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(516, 23);
-            txtSearch.TabIndex = 2;
-            txtSearch.TextChanged += textBoxBuscar_TextChanged;
             // 
             // labeltitle
             // 
@@ -234,7 +153,6 @@
             AddP.TabIndex = 1;
             AddP.Text = "AgregarProductos";
             AddP.UseVisualStyleBackColor = true;
-            AddP.Click += DetailsP_Click;
             // 
             // btCancelAdd
             // 
@@ -274,7 +192,6 @@
             examinarPic.SizeMode = PictureBoxSizeMode.Zoom;
             examinarPic.TabIndex = 4;
             examinarPic.TabStop = false;
-            examinarPic.Click += pictureBox2_Click;
             // 
             // txtDesc
             // 
@@ -364,7 +281,6 @@
             cambiarBox.Size = new Size(160, 154);
             cambiarBox.TabIndex = 4;
             cambiarBox.TabStop = false;
-            cambiarBox.Click += cambiarBox_Click;
             // 
             // textBox2
             // 
@@ -400,7 +316,6 @@
             label2.Size = new Size(104, 20);
             label2.TabIndex = 0;
             label2.Text = "Editar nombre";
-            label2.Click += label2_Click;
             // 
             // FormProductos
             // 
@@ -414,8 +329,6 @@
             tabControl.ResumeLayout(false);
             productList.ResumeLayout(false);
             productList.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)GVProduct).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             AddP.ResumeLayout(false);
             AddP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)examinarPic).EndInit();
@@ -429,9 +342,6 @@
         private TabControl tabControl;
         private TabPage productList;
         private TabPage AddP;
-        private Label lbImagen;
-        private PictureBox pictureBox1;
-        private TextBox txtSearch;
         private Label labeltitle;
         private Button btDelete;
         private Button EdtiProduct;
@@ -448,12 +358,11 @@
         private PictureBox cambiarBox;
         private TextBox textBox2;
         private Label label3;
-        private DataGridView GVProduct;
         private Button AddProduct;
-        private Button btsearch;
         private Button btCancelAdd;
         private Button btSaveAdd;
         private Button btCancelEdit;
         private Button btSaveEdit;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

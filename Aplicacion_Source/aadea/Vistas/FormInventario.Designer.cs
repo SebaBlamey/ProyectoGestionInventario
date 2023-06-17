@@ -67,6 +67,7 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.ForeColor = Color.White;
             flowLayoutPanel1.Location = new Point(8, 9);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(793, 429);

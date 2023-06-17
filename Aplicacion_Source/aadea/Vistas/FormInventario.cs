@@ -19,7 +19,8 @@ namespace aadea.Vistas
         {
             InitializeComponent();
             Load += FormProduccion_Load;
-
+            tabControl1.TabPages.Remove(Editar);
+            tabControl1.TabPages.Remove(tabDelete);
         }
         private void FormProduccion_Load(object? sender, EventArgs e)
         {
@@ -49,13 +50,6 @@ namespace aadea.Vistas
                 DataTable list = l_Bodega.listInventarioporID(id);
                 userControl.DataGridView1.DataSource = list;
             }
-
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

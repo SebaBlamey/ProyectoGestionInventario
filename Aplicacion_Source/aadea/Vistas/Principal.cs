@@ -241,7 +241,7 @@ namespace aadea.Vistas
             try
             {
                 SetActualButton(sender, "BODEGA");
-                //OpenChildForm(new FormAsistencia());
+                OpenChildForm(new FormInventario());
             }
             catch (Exception ex)
             {

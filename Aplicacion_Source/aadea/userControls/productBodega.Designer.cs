@@ -41,16 +41,16 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(30, 51);
+            pictureBox1.Location = new Point(30, 61);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(174, 162);
+            pictureBox1.Size = new Size(140, 152);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // nameProduct
             // 
             nameProduct.AutoSize = true;
-            nameProduct.Location = new Point(58, 22);
+            nameProduct.Location = new Point(39, 43);
             nameProduct.Name = "nameProduct";
             nameProduct.Size = new Size(122, 15);
             nameProduct.TabIndex = 1;
@@ -58,18 +58,19 @@
             // 
             // dataGridViewInv
             // 
-            dataGridViewInv.BackgroundColor = SystemColors.Control;
+            dataGridViewInv.BackgroundColor = Color.White;
             dataGridViewInv.BorderStyle = BorderStyle.None;
             dataGridViewInv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewInv.Location = new Point(278, 22);
+            dataGridViewInv.Location = new Point(199, 22);
             dataGridViewInv.Name = "dataGridViewInv";
             dataGridViewInv.RowTemplate.Height = 25;
-            dataGridViewInv.Size = new Size(352, 191);
+            dataGridViewInv.Size = new Size(320, 191);
             dataGridViewInv.TabIndex = 2;
             // 
             // addStock
             // 
-            addStock.Location = new Point(662, 76);
+            addStock.ForeColor = Color.Black;
+            addStock.Location = new Point(525, 72);
             addStock.Name = "addStock";
             addStock.Size = new Size(75, 23);
             addStock.TabIndex = 3;
@@ -78,7 +79,8 @@
             // 
             // deleteStock
             // 
-            deleteStock.Location = new Point(662, 133);
+            deleteStock.ForeColor = Color.Black;
+            deleteStock.Location = new Point(525, 101);
             deleteStock.Name = "deleteStock";
             deleteStock.Size = new Size(75, 23);
             deleteStock.TabIndex = 4;
@@ -92,19 +94,21 @@
             panel1.Controls.Add(nameProduct);
             panel1.Location = new Point(-8, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(226, 229);
+            panel1.Size = new Size(201, 229);
             panel1.TabIndex = 5;
+            panel1.Paint += panel1_Paint;
             // 
             // productBodega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(deleteStock);
             Controls.Add(addStock);
             Controls.Add(dataGridViewInv);
             Controls.Add(panel1);
             Name = "productBodega";
-            Size = new Size(759, 227);
+            Size = new Size(625, 227);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInv).EndInit();
             panel1.ResumeLayout(false);
