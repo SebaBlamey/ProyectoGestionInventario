@@ -55,7 +55,7 @@ namespace aadea.Vistas
                 userControl.fechaTermino = fecha_termino;
                 userControl.Tittle += " " + id;
                 LayoutHistorial.Controls.Add(userControl);
-                DataTable tableMaterial= l_produccion.listMaterialForHistory(id);
+                DataTable tableMaterial = l_produccion.listMaterialForHistory(id);
                 DataTable tableProduct = l_produccion.GetProductHistory(id);
                 userControl.DataGridViewMateriales.DataSource = tableMaterial;
                 userControl.DataGridViewProductos.DataSource = tableProduct;

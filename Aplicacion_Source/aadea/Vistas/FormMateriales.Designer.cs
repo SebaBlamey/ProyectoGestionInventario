@@ -86,6 +86,8 @@
             ListaMateriales.Controls.Add(flowLayoutPanel1);
             ListaMateriales.Controls.Add(AddProduct);
             ListaMateriales.Controls.Add(label1);
+            ListaMateriales.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ListaMateriales.ForeColor = Color.Black;
             ListaMateriales.Location = new Point(4, 24);
             ListaMateriales.Name = "ListaMateriales";
             ListaMateriales.Padding = new Padding(3);
@@ -97,29 +99,34 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            flowLayoutPanel1.ForeColor = Color.Black;
             flowLayoutPanel1.Location = new Point(17, 59);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(644, 317);
             flowLayoutPanel1.TabIndex = 16;
+            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // AddProduct
             // 
+            AddProduct.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             AddProduct.ForeColor = Color.Black;
-            AddProduct.Location = new Point(397, 12);
+            AddProduct.Location = new Point(528, 14);
             AddProduct.Name = "AddProduct";
-            AddProduct.Size = new Size(264, 23);
+            AddProduct.Size = new Size(133, 28);
             AddProduct.TabIndex = 13;
-            AddProduct.Text = "Agregar material nuevo";
+            AddProduct.Text = "Agregar material";
             AddProduct.UseVisualStyleBackColor = true;
             AddProduct.Click += AddProduct_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(17, 12);
             label1.Name = "label1";
-            label1.Size = new Size(82, 21);
+            label1.Size = new Size(107, 23);
             label1.TabIndex = 10;
             label1.Text = "Materiales";
             // 
@@ -155,42 +162,52 @@
             // 
             // opcionBox
             // 
+            opcionBox.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            opcionBox.ForeColor = Color.Black;
             opcionBox.FormattingEnabled = true;
-            opcionBox.Location = new Point(133, 175);
+            opcionBox.Location = new Point(150, 172);
             opcionBox.Name = "opcionBox";
-            opcionBox.Size = new Size(93, 23);
+            opcionBox.Size = new Size(93, 25);
             opcionBox.TabIndex = 11;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(133, 140);
+            label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(150, 140);
             label5.Name = "label5";
-            label5.Size = new Size(45, 15);
+            label5.Size = new Size(76, 22);
             label5.TabIndex = 10;
             label5.Text = "Unidad";
             // 
             // lblStock
             // 
             lblStock.AutoSize = true;
+            lblStock.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStock.ForeColor = Color.Black;
             lblStock.Location = new Point(36, 140);
             lblStock.Name = "lblStock";
-            lblStock.Size = new Size(36, 15);
+            lblStock.Size = new Size(60, 22);
             lblStock.TabIndex = 9;
             lblStock.Text = "Stock";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.Black;
             label3.Location = new Point(39, 53);
             label3.Name = "label3";
-            label3.Size = new Size(51, 15);
+            label3.Size = new Size(84, 22);
             label3.TabIndex = 7;
             label3.Text = "Nombre";
             // 
             // btExaminar
             // 
-            btExaminar.Location = new Point(383, 204);
+            btExaminar.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btExaminar.ForeColor = Color.Black;
+            btExaminar.Location = new Point(383, 208);
             btExaminar.Name = "btExaminar";
             btExaminar.Size = new Size(98, 23);
             btExaminar.TabIndex = 6;
@@ -200,7 +217,9 @@
             // 
             // btCancel
             // 
-            btCancel.Location = new Point(145, 251);
+            btCancel.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btCancel.ForeColor = Color.Black;
+            btCancel.Location = new Point(145, 255);
             btCancel.Name = "btCancel";
             btCancel.Size = new Size(75, 23);
             btCancel.TabIndex = 5;
@@ -210,7 +229,9 @@
             // 
             // btSave
             // 
-            btSave.Location = new Point(36, 251);
+            btSave.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btSave.ForeColor = Color.Black;
+            btSave.Location = new Point(36, 255);
             btSave.Name = "btSave";
             btSave.Size = new Size(75, 23);
             btSave.TabIndex = 4;
@@ -221,9 +242,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(401, 39);
+            label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(383, 32);
             label2.Name = "label2";
-            label2.Size = new Size(47, 15);
+            label2.Size = new Size(82, 22);
             label2.TabIndex = 3;
             label2.Text = "Imagen";
             // 
@@ -243,17 +266,21 @@
             // 
             // txtStock
             // 
+            txtStock.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStock.ForeColor = Color.Black;
             txtStock.Location = new Point(36, 175);
             txtStock.Name = "txtStock";
-            txtStock.Size = new Size(72, 23);
+            txtStock.Size = new Size(72, 22);
             txtStock.TabIndex = 1;
             txtStock.KeyPress += txtStock_KeyPress;
             // 
             // txtNameInsert
             // 
+            txtNameInsert.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNameInsert.ForeColor = Color.Black;
             txtNameInsert.Location = new Point(39, 81);
             txtNameInsert.Name = "txtNameInsert";
-            txtNameInsert.Size = new Size(181, 23);
+            txtNameInsert.Size = new Size(181, 22);
             txtNameInsert.TabIndex = 0;
             // 
             // EditMaterial
@@ -278,21 +305,24 @@
             // 
             // boxMedidaActual
             // 
+            boxMedidaActual.ForeColor = Color.Black;
             boxMedidaActual.FormattingEnabled = true;
-            boxMedidaActual.Location = new Point(171, 179);
+            boxMedidaActual.Location = new Point(186, 179);
             boxMedidaActual.Name = "boxMedidaActual";
             boxMedidaActual.Size = new Size(121, 23);
             boxMedidaActual.TabIndex = 10;
             // 
             // txtStockActual
             // 
+            txtStockActual.ForeColor = Color.Black;
             txtStockActual.Location = new Point(41, 179);
             txtStockActual.Name = "txtStockActual";
-            txtStockActual.Size = new Size(100, 23);
+            txtStockActual.Size = new Size(125, 23);
             txtStockActual.TabIndex = 9;
             // 
             // txtNameActual
             // 
+            txtNameActual.ForeColor = Color.Black;
             txtNameActual.Location = new Point(41, 74);
             txtNameActual.Name = "txtNameActual";
             txtNameActual.Size = new Size(251, 23);
@@ -314,7 +344,9 @@
             // 
             // btCancelMod
             // 
-            btCancelMod.Location = new Point(171, 256);
+            btCancelMod.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btCancelMod.ForeColor = Color.Black;
+            btCancelMod.Location = new Point(186, 256);
             btCancelMod.Name = "btCancelMod";
             btCancelMod.Size = new Size(75, 23);
             btCancelMod.TabIndex = 6;
@@ -324,7 +356,9 @@
             // 
             // btSaveMod
             // 
-            btSaveMod.Location = new Point(41, 256);
+            btSaveMod.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btSaveMod.ForeColor = Color.Black;
+            btSaveMod.Location = new Point(91, 256);
             btSaveMod.Name = "btSaveMod";
             btSaveMod.Size = new Size(75, 23);
             btSaveMod.TabIndex = 5;
@@ -334,6 +368,8 @@
             // 
             // btAddImagenModify
             // 
+            btAddImagenModify.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btAddImagenModify.ForeColor = Color.Black;
             btAddImagenModify.Location = new Point(385, 230);
             btAddImagenModify.Name = "btAddImagenModify";
             btAddImagenModify.Size = new Size(148, 23);
@@ -344,36 +380,45 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(438, 33);
+            label8.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(418, 38);
             label8.Name = "label8";
-            label8.Size = new Size(47, 15);
+            label8.Size = new Size(82, 22);
             label8.TabIndex = 3;
             label8.Text = "Imagen";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(171, 146);
+            label7.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(186, 146);
             label7.Name = "label7";
-            label7.Size = new Size(104, 15);
+            label7.Size = new Size(76, 22);
             label7.TabIndex = 2;
-            label7.Text = "Unidad de medida";
+            label7.Text = "Unidad";
+            label7.Click += label7_Click;
             // 
             // label6
             // 
             label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.Black;
             label6.Location = new Point(41, 146);
             label6.Name = "label6";
-            label6.Size = new Size(71, 15);
+            label6.Size = new Size(125, 22);
             label6.TabIndex = 1;
             label6.Text = "Stock actual";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.Black;
             label4.Location = new Point(41, 33);
             label4.Name = "label4";
-            label4.Size = new Size(86, 15);
+            label4.Size = new Size(149, 22);
             label4.TabIndex = 0;
             label4.Text = "Nombre actual";
             // 

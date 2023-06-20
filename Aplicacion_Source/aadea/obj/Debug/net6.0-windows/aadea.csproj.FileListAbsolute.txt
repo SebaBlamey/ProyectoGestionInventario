@@ -229,3 +229,14 @@ C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aade
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.UserProduct.resources
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormInventario.resources
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.PINmod.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.historyControl.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.productBodega.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.UserMaterial.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.UserProduct.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormAsistencia.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormInventario.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormMateriales.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormProduccion.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormProductos.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormTrabajadores.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.PINmod.resources

@@ -47,7 +47,7 @@
             loginButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             loginButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             loginButton.FlatStyle = FlatStyle.Flat;
-            loginButton.Font = new Font("Tahoma", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            loginButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             loginButton.ForeColor = SystemColors.Control;
             loginButton.Location = new Point(120, 231);
             loginButton.Name = "loginButton";
@@ -63,11 +63,11 @@
             VerContrasena.CheckAlign = ContentAlignment.MiddleRight;
             VerContrasena.FlatAppearance.CheckedBackColor = Color.FromArgb(255, 119, 133);
             VerContrasena.FlatStyle = FlatStyle.Flat;
-            VerContrasena.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            VerContrasena.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
             VerContrasena.ForeColor = Color.White;
             VerContrasena.Location = new Point(206, 213);
             VerContrasena.Name = "VerContrasena";
-            VerContrasena.Size = new Size(68, 18);
+            VerContrasena.Size = new Size(66, 20);
             VerContrasena.TabIndex = 3;
             VerContrasena.Text = "Ver PIN";
             VerContrasena.TextAlign = ContentAlignment.MiddleRight;
@@ -76,13 +76,13 @@
             // 
             // PIN_box
             // 
-            PIN_box.Font = new Font("Tahoma", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            PIN_box.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             PIN_box.ForeColor = SystemColors.WindowFrame;
             PIN_box.HideSelection = false;
             PIN_box.Location = new Point(52, 190);
             PIN_box.MaxLength = 8;
             PIN_box.Name = "PIN_box";
-            PIN_box.Size = new Size(222, 24);
+            PIN_box.Size = new Size(222, 26);
             PIN_box.TabIndex = 4;
             PIN_box.Text = "Ingrese PIN";
             PIN_box.TextAlign = HorizontalAlignment.Center;

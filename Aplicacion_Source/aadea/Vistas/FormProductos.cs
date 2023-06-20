@@ -26,17 +26,14 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
         }
-
-        private void AddProduct_Click(object sender, EventArgs e)
+        private void AddProduct_Click_1(object sender, EventArgs e)
         {
             tabControl.SelectedTab = AddP;
             tabControl.TabPages.Remove(productList);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(AddP);
-
-
         }
-        private void EdtiProduct_Click(object sender, EventArgs e)
+        private void EdtiProduct_Click_1(object sender, EventArgs e)
         {
             tabControl.SelectedTab = EditP;
             tabControl.TabPages.Remove(AddP);
@@ -180,7 +177,7 @@ namespace aadea.Vistas
         }
 
 
-        private void btDelete_Click(object sender, EventArgs e)
+        private void btDelete_Click_1(object sender, EventArgs e)
         {
             /*
             L_Products productos = new L_Products();

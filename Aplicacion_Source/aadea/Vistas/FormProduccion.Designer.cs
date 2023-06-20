@@ -36,11 +36,11 @@
             btViewProduccion = new Model.BT();
             bt1 = new Model.BT();
             tabHistory = new TabPage();
+            LayoutHistorial = new FlowLayoutPanel();
             bttExitHistory = new Model.BT();
             tabProduccionActual = new TabPage();
             tabIngresarProduccion = new TabPage();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            LayoutHistorial = new FlowLayoutPanel();
             panel1.SuspendLayout();
             tabControlProduccion.SuspendLayout();
             viewButtons.SuspendLayout();
@@ -63,6 +63,7 @@
             tabControlProduccion.Controls.Add(tabProduccionActual);
             tabControlProduccion.Controls.Add(tabIngresarProduccion);
             tabControlProduccion.Dock = DockStyle.Fill;
+            tabControlProduccion.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabControlProduccion.Location = new Point(0, 0);
             tabControlProduccion.Name = "tabControlProduccion";
             tabControlProduccion.SelectedIndex = 0;
@@ -91,6 +92,7 @@
             btIngresarProduccion.BorderSize = 0;
             btIngresarProduccion.FlatAppearance.BorderSize = 0;
             btIngresarProduccion.FlatStyle = FlatStyle.Flat;
+            btIngresarProduccion.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btIngresarProduccion.ForeColor = Color.White;
             btIngresarProduccion.Location = new Point(237, 258);
             btIngresarProduccion.Name = "btIngresarProduccion";
@@ -110,6 +112,7 @@
             btViewProduccion.BorderSize = 0;
             btViewProduccion.FlatAppearance.BorderSize = 0;
             btViewProduccion.FlatStyle = FlatStyle.Flat;
+            btViewProduccion.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btViewProduccion.ForeColor = Color.White;
             btViewProduccion.Location = new Point(237, 172);
             btViewProduccion.Name = "btViewProduccion";
@@ -129,6 +132,7 @@
             bt1.BorderSize = 0;
             bt1.FlatAppearance.BorderSize = 0;
             bt1.FlatStyle = FlatStyle.Flat;
+            bt1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             bt1.ForeColor = Color.White;
             bt1.Location = new Point(237, 82);
             bt1.Name = "bt1";
@@ -152,6 +156,14 @@
             tabHistory.Text = "Historial de produccion";
             tabHistory.UseVisualStyleBackColor = true;
             // 
+            // LayoutHistorial
+            // 
+            LayoutHistorial.AutoScroll = true;
+            LayoutHistorial.Location = new Point(3, 6);
+            LayoutHistorial.Name = "LayoutHistorial";
+            LayoutHistorial.Size = new Size(783, 382);
+            LayoutHistorial.TabIndex = 1;
+            // 
             // bttExitHistory
             // 
             bttExitHistory.BackColor = Color.MediumSlateBlue;
@@ -173,10 +185,10 @@
             // 
             // tabProduccionActual
             // 
-            tabProduccionActual.Location = new Point(4, 24);
+            tabProduccionActual.Location = new Point(4, 26);
             tabProduccionActual.Name = "tabProduccionActual";
             tabProduccionActual.Padding = new Padding(3);
-            tabProduccionActual.Size = new Size(794, 440);
+            tabProduccionActual.Size = new Size(794, 438);
             tabProduccionActual.TabIndex = 2;
             tabProduccionActual.Text = "Produccion Actual";
             tabProduccionActual.UseVisualStyleBackColor = true;
@@ -195,14 +207,6 @@
             // 
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
-            // 
-            // LayoutHistorial
-            // 
-            LayoutHistorial.AutoScroll = true;
-            LayoutHistorial.Location = new Point(3, 6);
-            LayoutHistorial.Name = "LayoutHistorial";
-            LayoutHistorial.Size = new Size(783, 382);
-            LayoutHistorial.TabIndex = 1;
             // 
             // FormProduccion
             // 

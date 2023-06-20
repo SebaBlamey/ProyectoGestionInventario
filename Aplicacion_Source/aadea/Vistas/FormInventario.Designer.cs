@@ -44,35 +44,34 @@
             tabControl1.Controls.Add(Editar);
             tabControl1.Controls.Add(tabDelete);
             tabControl1.Dock = DockStyle.Top;
+            tabControl1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(817, 478);
             tabControl1.TabIndex = 0;
-            tabControl1.UseWaitCursor = true;
             // 
             // tabView
             // 
             tabView.Controls.Add(flowLayoutPanel1);
             tabView.Controls.Add(panel1);
-            tabView.Location = new Point(4, 24);
+            tabView.ForeColor = Color.Black;
+            tabView.Location = new Point(4, 26);
             tabView.Name = "tabView";
             tabView.Padding = new Padding(3);
-            tabView.Size = new Size(809, 450);
+            tabView.Size = new Size(809, 448);
             tabView.TabIndex = 0;
             tabView.Text = "Stock";
             tabView.UseVisualStyleBackColor = true;
-            tabView.UseWaitCursor = true;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.ForeColor = Color.White;
+            flowLayoutPanel1.ForeColor = Color.Black;
             flowLayoutPanel1.Location = new Point(8, 9);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(793, 429);
             flowLayoutPanel1.TabIndex = 1;
-            flowLayoutPanel1.UseWaitCursor = true;
             // 
             // panel1
             // 
@@ -83,7 +82,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(803, 0);
             panel1.TabIndex = 0;
-            panel1.UseWaitCursor = true;
             // 
             // Editar
             // 
@@ -94,7 +92,6 @@
             Editar.TabIndex = 1;
             Editar.Text = "tabEdit";
             Editar.UseVisualStyleBackColor = true;
-            Editar.UseWaitCursor = true;
             // 
             // tabDelete
             // 
@@ -105,7 +102,6 @@
             tabDelete.TabIndex = 2;
             tabDelete.Text = "Eliminar";
             tabDelete.UseVisualStyleBackColor = true;
-            tabDelete.UseWaitCursor = true;
             // 
             // FormInventario
             // 
