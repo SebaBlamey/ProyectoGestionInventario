@@ -41,10 +41,11 @@
             // lblTittle
             // 
             lblTittle.AutoSize = true;
-            lblTittle.ForeColor = SystemColors.AppWorkspace;
+            lblTittle.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTittle.ForeColor = Color.Black;
             lblTittle.Location = new Point(177, 16);
             lblTittle.Name = "lblTittle";
-            lblTittle.Size = new Size(38, 15);
+            lblTittle.Size = new Size(44, 18);
             lblTittle.TabIndex = 0;
             lblTittle.Text = "label1";
             // 
@@ -59,36 +60,41 @@
             picMaterial.Location = new Point(17, 16);
             picMaterial.Name = "picMaterial";
             picMaterial.Size = new Size(137, 132);
+            picMaterial.SizeMode = PictureBoxSizeMode.Zoom;
             picMaterial.TabIndex = 1;
             picMaterial.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(177, 78);
             label1.Name = "label1";
-            label1.Size = new Size(39, 15);
+            label1.Size = new Size(48, 18);
             label1.TabIndex = 2;
             label1.Text = "Stock:";
             // 
             // lblUnidad
             // 
             lblUnidad.AutoSize = true;
-            lblUnidad.ForeColor = SystemColors.ActiveCaption;
-            lblUnidad.Location = new Point(306, 78);
+            lblUnidad.BackColor = Color.Transparent;
+            lblUnidad.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUnidad.ForeColor = Color.Black;
+            lblUnidad.Location = new Point(325, 78);
             lblUnidad.Name = "lblUnidad";
-            lblUnidad.Size = new Size(45, 15);
+            lblUnidad.Size = new Size(52, 18);
             lblUnidad.TabIndex = 3;
             lblUnidad.Text = "Unidad";
             // 
             // lblCantidad
             // 
             lblCantidad.AutoSize = true;
-            lblCantidad.ForeColor = SystemColors.ControlLight;
+            lblCantidad.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCantidad.ForeColor = Color.Black;
             lblCantidad.Location = new Point(244, 78);
             lblCantidad.Name = "lblCantidad";
-            lblCantidad.Size = new Size(53, 15);
+            lblCantidad.Size = new Size(62, 18);
             lblCantidad.TabIndex = 4;
             lblCantidad.Text = "cantidad";
             // 

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {}
+    "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {}
   },
   "projects": {
-    "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {
+    "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
+        "projectUniqueName": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
         "projectName": "aadea",
-        "projectPath": "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
-        "packagesPath": "C:\\Users\\eweew\\.nuget\\packages\\",
-        "outputPath": "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\obj\\",
+        "projectPath": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
+        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\eweew\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
