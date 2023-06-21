@@ -4,15 +4,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace aadea.Vistas
 {
     public partial class FormAsistencia : Form
     {
+
+        private readonly string expresionRegular = @"^([01][0-9]|2[0-3]):[0-5][0-9]$";
         public FormAsistencia()
         {
             InitializeComponent();
@@ -55,32 +59,44 @@ namespace aadea.Vistas
 
         private void AddSave_Click(object sender, EventArgs e)
         {
-            if (DGV_Trabajador.SelectedRows.Count > 0)
+            L_Asistencia l_Asistencia = new L_Asistencia();
+
+            string rut;
+            string nombre;
+            string apellido;
+
+   
+
+            DateTime fechaSeleccionada = dateTimePickerFecha.Value;
+            string horaLlegada = CheckIn.Text;
+            string horaSalida = CheckOut.Text;
+
+            Regex regex = new Regex(@"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
+            if (!regex.IsMatch(horaLlegada) || !regex.IsMatch(horaSalida))
             {
-                // Obtener el índice de la columna del nombre del trabajador en DGV_Trabajador
-                int nombreColumnIndex = DGV_Trabajador.Columns["Nombre"].Index;
-
-                // Obtener el nombre del trabajador de la fila seleccionada
-                string nombre = DGV_Trabajador.SelectedRows[0].Cells[nombreColumnIndex].Value.ToString();
-
-                // Obtener los valores seleccionados en la pestaña "Añadir"
-                string rut = DGV_Trabajador.SelectedRows[0].Cells["Rut"].Value.ToString();
-                string apellido = DGV_Trabajador.SelectedRows[0].Cells["Apellido"].Value.ToString();
-                DateTime fecha = dateTimePickerFecha.Value;
-                string horaLlegada = CheckIn.Text;
-                string horaSalida = CheckOut.Text;
-
-                // Calcular la diferencia de tiempo entre la hora de llegada y la hora de salida
-                TimeSpan tiempoLlegada = TimeSpan.Parse(horaLlegada);
-                TimeSpan tiempoSalida = TimeSpan.Parse(horaSalida);
-                TimeSpan horasTrabajadas = tiempoSalida - tiempoLlegada;
-
-                // Obtener la cantidad total de horas trabajadas como un valor decimal
-                double totalHorasTrabajadas = horasTrabajadas.TotalHours;
-
-                // Agregar una nueva fila al DataGridView de la pestaña "Historial"
-                DGV_Asist.Rows.Add(rut, nombre, apellido, fecha, horaLlegada, horaSalida, totalHorasTrabajadas);
+                // Mostrar mensaje de error o realizar alguna acción apropiada
+                MessageBox.Show("Formato de hora incorrecto. Utilice el formato HH:mm.", "Error");
+                return;
             }
+
+            // Calcular las horas trabajadas
+            DateTime llegada = DateTime.ParseExact(horaLlegada, "HH:mm", CultureInfo.InvariantCulture);
+            DateTime salida = DateTime.ParseExact(horaSalida, "HH:mm", CultureInfo.InvariantCulture);
+
+            TimeSpan horasTrabajadas = salida - llegada;
+
+            // Obtener las horas trabajadas en formato float
+            float horasTrabajadasFloat = (float)horasTrabajadas.TotalHours;
+ 
+                DataGridViewRow filaSeleccionada = DGV_Trabajador.SelectedRows[0];
+                rut = filaSeleccionada.Cells["rut"].Value.ToString();
+                nombre = filaSeleccionada.Cells["nombre"].Value.ToString();
+                apellido = filaSeleccionada.Cells["apellido"].Value.ToString();
+
+                l_Asistencia.InsertAssistance(rut, fechaSeleccionada, llegada, salida, nombre, apellido, horasTrabajadasFloat);
+
+            
+
         }
 
 

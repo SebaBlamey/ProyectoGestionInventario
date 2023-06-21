@@ -79,7 +79,7 @@
             History.Location = new Point(4, 26);
             History.Name = "History";
             History.Padding = new Padding(3);
-            History.Size = new Size(683, 391);
+            History.Size = new Size(681, 391);
             History.TabIndex = 0;
             History.Text = "Historial";
             History.UseVisualStyleBackColor = true;
@@ -116,7 +116,6 @@
             // 
             // DGV_Asist
             // 
-            DGV_Asist.AllowUserToAddRows = false;
             DGV_Asist.AllowUserToDeleteRows = false;
             DGV_Asist.AllowUserToResizeColumns = false;
             DGV_Asist.AllowUserToResizeRows = false;
@@ -248,7 +247,7 @@
             Edit.ForeColor = Color.Black;
             Edit.Location = new Point(4, 26);
             Edit.Name = "Edit";
-            Edit.Size = new Size(683, 391);
+            Edit.Size = new Size(681, 391);
             Edit.TabIndex = 2;
             Edit.Text = "Editar";
             Edit.UseVisualStyleBackColor = true;
@@ -258,7 +257,7 @@
             Delete.ForeColor = Color.Black;
             Delete.Location = new Point(4, 26);
             Delete.Name = "Delete";
-            Delete.Size = new Size(683, 391);
+            Delete.Size = new Size(681, 391);
             Delete.TabIndex = 3;
             Delete.Text = "Eliminar";
             Delete.UseVisualStyleBackColor = true;
