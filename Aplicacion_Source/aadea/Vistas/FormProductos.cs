@@ -45,6 +45,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(productList);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(AddP);
+
         }
         private void EdtiProduct_Click_1(object sender, EventArgs e)
         {
@@ -181,10 +182,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
-            txtProduct.Text = string.Empty;
-            txtDesc.Text = string.Empty;
-            examinarPic.Image = null;
-            FormProductos_Load(sender, e);
+            resetCampos(sender, e);
         }
 
         private void btCancelEdit_Click(object sender, EventArgs e)
@@ -193,81 +191,41 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
-            textBox1.Text = string.Empty;
-            textBox2.Text = string.Empty;
-            cambiarBox.Image = null;
-            FormProductos_Load(sender, e);
-
-
-
+            resetCampos(sender, e);
         }
-
-        private void GVProduct_SelectionChanged(object sender, EventArgs e)
-        {
-            /*
-            L_Products productos = new L_Products();
-            if (GVProduct.SelectedRows.Count > 0)
-            {
-                // Obtén el ID del producto de la fila seleccionada en el DataGridView
-                int productoID = Convert.ToInt32(GVProduct.SelectedRows[0].Cells["ID"].Value);
-
-                // Obtén los datos de imagen del producto desde la base de datos
-                byte[] imagenBytes = productos.ObtenerImagenProducto(productoID);
-
-                if (imagenBytes != null)
-                {
-                    // Convierte los bytes de imagen a un objeto Image del espacio de nombres System.Drawing
-                    using (MemoryStream ms = new MemoryStream(imagenBytes))
-                    {
-                        System.Drawing.Image imagen = System.Drawing.Image.FromStream(ms);
-
-                        // Asigna la imagen al PictureBox
-                        pictureBox1.Image = imagen;
-                    }
-                }
-                else
-                {
-                    // No se encontró ninguna imagen para el producto seleccionado
-                    pictureBox1.Image = null;
-                }
-            }*/
-
-        }
-
 
         private void btDelete_Click_1(object sender, EventArgs e)
         {
-            /*
-            L_Products productos = new L_Products();
-            if (GVProduct.SelectedRows.Count == 0)
+            if (selectedUserControl != null)
             {
-                MessageBox.Show("Por favor seleccione una fila para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                L_Products l_Products = new L_Products();
+                int id = ((UserProduct)selectedUserControl).ID;
+                l_Products.DeleteProduct(id);
+                resetCampos(sender, e);
             }
-            int id = Convert.ToInt32(GVProduct.SelectedRows[0].Cells["ID"].Value);
-            productos.DeleteProduct(id);
-            GVProduct.DataSource = null;
-            GVProduct.Rows.Clear();
-            FormProductos_Load(sender, e);
-            */
+            else
+            {
+                MessageBox.Show("Debe seleccionar un producto");
+            }
         }
 
         private void btSaveEdit_Click(object sender, EventArgs e)
         {
+            L_Products l_list= new L_Products();
             System.Windows.Forms.TextBox textBoxTitulo = EditP.Controls.Find("textBox1", true).FirstOrDefault() as System.Windows.Forms.TextBox;
             System.Windows.Forms.TextBox textBoxDescripcion = EditP.Controls.Find("textBox2", true).FirstOrDefault() as System.Windows.Forms.TextBox;
             PictureBox pictureBoxImagen = EditP.Controls.Find("cambiarBox", true).FirstOrDefault() as PictureBox;
-            Image nuevaimagen = null;
-            string nuevoName;
-            string nuevoDescripcion;
+            Image nuevaimagen = pictureBoxImagen.Image;
+            string nuevoName=textBoxTitulo.Text;
+            string nuevoDescripcion=textBoxDescripcion.Text;
             int id = ((UserProduct)selectedUserControl).ID;
-            if (textBoxTitulo != null ) 
+            if (textBoxTitulo != null)
             {
                 // Obtener los valores de los controles
-                string nuevoTitulo = textBoxTitulo.Text;
-                string nuevaDescripcion = textBoxDescripcion.Text;
+                nuevoName = textBoxTitulo.Text;
+                nuevoDescripcion = textBoxDescripcion.Text;
                 nuevaimagen = pictureBoxImagen.Image;
-           
+
             }
             else
             {
@@ -275,18 +233,46 @@ namespace aadea.Vistas
             }
             if (nuevaimagen == null)
             {
-               //actualizar sin imagen
+                l_list.update(id,nuevoName, nuevoDescripcion);
             }
             else
             {
-                //actualizar con imagen
+                byte[] ima = ConvertirImagenABytes(nuevaimagen);
+                l_list.updateWI(id,nuevoName,nuevoDescripcion,ima);
             }
 
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
-            resetCampos(sender,e);
+            resetCampos(sender, e);
+        }
+
+        private void btexam_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selectorImagen = new OpenFileDialog();
+            selectorImagen.Title = "Seleccionar imagen";
+
+            if (selectorImagen.ShowDialog() == DialogResult.OK)
+            {
+                cambiarBox.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
+                rutaSeleccionada = selectorImagen.FileName;
+            }
+        }
+        public byte[] ConvertirImagenABytes(Image imagen)
+        {
+            if (imagen != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    imagen.Save(ms, imagen.RawFormat);
+                    return ms.ToArray();
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

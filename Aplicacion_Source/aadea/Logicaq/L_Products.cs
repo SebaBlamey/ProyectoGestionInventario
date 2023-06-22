@@ -147,5 +147,62 @@ namespace aadea.Logicaq
             return imagenBytes;
         }
 
+        public void update(int id, string nombre, string desc)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "UPDATE producto\r\nSET nombre = @nuevoNombre, descripcion = @nuevaDescripcion\r\nWHERE ID = @idProducto;";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@idProducto", id);
+                Comando.Parameters.AddWithValue("@nuevoNombre", nombre);
+                Comando.Parameters.AddWithValue("@nuevaDescripcion", desc);
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de eliminacion, intente nuevamente";
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
+
+        public void updateWI(int id, string nombre, string desc, byte[]im)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "UPDATE producto\r\nSET nombre = @nuevoNombre, descripcion = @nuevaDescripcion, imagen = @nuevaImagen\r\nWHERE ID = @idProducto;";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@idProducto", id);
+                Comando.Parameters.AddWithValue("@nuevoNombre", nombre);
+                Comando.Parameters.AddWithValue("@nuevaDescripcion", desc);
+                Comando.Parameters.AddWithValue("@nuevaImagen", im);
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de eliminacion, intente nuevamente";
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
+
     }
 }

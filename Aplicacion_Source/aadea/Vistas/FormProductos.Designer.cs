@@ -313,6 +313,7 @@
             btexam.TabIndex = 5;
             btexam.Text = "Examinar";
             btexam.UseVisualStyleBackColor = true;
+            btexam.Click += btexam_Click;
             // 
             // cambiarBox
             // 
