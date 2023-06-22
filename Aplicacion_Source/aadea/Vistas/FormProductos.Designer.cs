@@ -180,6 +180,7 @@
             // btCancelAdd
             // 
             btCancelAdd.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btCancelAdd.ForeColor = Color.Black;
             btCancelAdd.Location = new Point(184, 276);
             btCancelAdd.Name = "btCancelAdd";
             btCancelAdd.Size = new Size(75, 23);
@@ -191,6 +192,7 @@
             // btSaveAdd
             // 
             btSaveAdd.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btSaveAdd.ForeColor = Color.Black;
             btSaveAdd.Location = new Point(43, 276);
             btSaveAdd.Name = "btSaveAdd";
             btSaveAdd.Size = new Size(75, 23);
@@ -202,6 +204,7 @@
             // btExaminar
             // 
             btExaminar.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btExaminar.ForeColor = Color.Black;
             btExaminar.Location = new Point(405, 201);
             btExaminar.Name = "btExaminar";
             btExaminar.Size = new Size(75, 23);
@@ -240,6 +243,7 @@
             // 
             lbdesc.AutoSize = true;
             lbdesc.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbdesc.ForeColor = Color.Black;
             lbdesc.Location = new Point(40, 136);
             lbdesc.Name = "lbdesc";
             lbdesc.Size = new Size(116, 22);
@@ -250,6 +254,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(40, 37);
             label1.Name = "label1";
             label1.Size = new Size(176, 22);
@@ -277,6 +282,7 @@
             // btCancelEdit
             // 
             btCancelEdit.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btCancelEdit.ForeColor = Color.Black;
             btCancelEdit.Location = new Point(183, 297);
             btCancelEdit.Name = "btCancelEdit";
             btCancelEdit.Size = new Size(75, 23);
@@ -288,6 +294,7 @@
             // btSaveEdit
             // 
             btSaveEdit.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btSaveEdit.ForeColor = Color.Black;
             btSaveEdit.Location = new Point(40, 297);
             btSaveEdit.Name = "btSaveEdit";
             btSaveEdit.Size = new Size(75, 23);
@@ -298,6 +305,7 @@
             // btexam
             // 
             btexam.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btexam.ForeColor = Color.Black;
             btexam.Location = new Point(387, 207);
             btexam.Name = "btexam";
             btexam.Size = new Size(90, 23);
@@ -326,6 +334,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.Black;
             label3.Location = new Point(40, 141);
             label3.Name = "label3";
             label3.Size = new Size(172, 22);
@@ -344,6 +353,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.Black;
             label2.Location = new Point(40, 47);
             label2.Name = "label2";
             label2.Size = new Size(139, 22);
