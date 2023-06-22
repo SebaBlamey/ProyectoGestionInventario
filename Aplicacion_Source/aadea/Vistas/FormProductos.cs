@@ -103,6 +103,10 @@ namespace aadea.Vistas
                         userControl.PictureBox1 = img;
                     }
                 }
+                else
+                {
+                    userControl.PictureBox1 = Properties.Resource.defaultImage;
+                }
                 flowLayoutPanel1.Controls.Add(userControl);
             }
         }

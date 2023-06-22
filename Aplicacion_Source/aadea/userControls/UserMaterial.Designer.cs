@@ -38,6 +38,21 @@
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
             // 
+            // picMaterial
+            // 
+            picMaterial.BackColor = SystemColors.Control;
+            picMaterial.ForeColor = SystemColors.ControlText;
+            picMaterial.IconChar = FontAwesome.Sharp.IconChar.None;
+            picMaterial.IconColor = SystemColors.ControlText;
+            picMaterial.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            picMaterial.IconSize = 132;
+            picMaterial.Location = new Point(17, 16);
+            picMaterial.Name = "picMaterial";
+            picMaterial.Size = new Size(137, 132);
+            picMaterial.SizeMode = PictureBoxSizeMode.StretchImage;
+            picMaterial.TabIndex = 1;
+            picMaterial.TabStop = false;
+            // 
             // label1
             // 
             label1.AutoSize = true;
