@@ -53,7 +53,6 @@ namespace aadea.Logicaq
                 Comando.Parameters.AddWithValue("@img", im);
                 Comando.Parameters.AddWithValue("@stock", stock);
                 Comando.Parameters.AddWithValue("@unidad", unidad);
-                Comando.ExecuteNonQuery();
                 answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de registro, intente nuevamente";
                 transaction.Commit();
             }

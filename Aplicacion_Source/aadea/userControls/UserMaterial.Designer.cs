@@ -28,26 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblTittle = new Label();
             picMaterial = new FontAwesome.Sharp.IconPictureBox();
             label1 = new Label();
             lblUnidad = new Label();
             lblCantidad = new Label();
             btModify = new Button();
             btDelete = new Button();
+            nametxt = new Label();
             ((System.ComponentModel.ISupportInitialize)picMaterial).BeginInit();
             SuspendLayout();
-            // 
-            // lblTittle
-            // 
-            lblTittle.AutoSize = true;
-            lblTittle.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTittle.ForeColor = Color.Black;
-            lblTittle.Location = new Point(177, 16);
-            lblTittle.Name = "lblTittle";
-            lblTittle.Size = new Size(44, 18);
-            lblTittle.TabIndex = 0;
-            lblTittle.Text = "label1";
             // 
             // picMaterial
             // 
@@ -118,17 +107,27 @@
             btDelete.UseVisualStyleBackColor = true;
             btDelete.Click += btDelete_Click;
             // 
+            // nametxt
+            // 
+            nametxt.AutoSize = true;
+            nametxt.ForeColor = Color.Cyan;
+            nametxt.Location = new Point(177, 16);
+            nametxt.Name = "nametxt";
+            nametxt.Size = new Size(38, 15);
+            nametxt.TabIndex = 7;
+            nametxt.Text = "label2";
+            // 
             // UserMaterial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(nametxt);
             Controls.Add(btDelete);
             Controls.Add(btModify);
             Controls.Add(lblCantidad);
             Controls.Add(lblUnidad);
             Controls.Add(label1);
             Controls.Add(picMaterial);
-            Controls.Add(lblTittle);
             Name = "UserMaterial";
             Size = new Size(615, 170);
             ((System.ComponentModel.ISupportInitialize)picMaterial).EndInit();
@@ -137,13 +136,12 @@
         }
 
         #endregion
-
-        private Label lblTittle;
         private FontAwesome.Sharp.IconPictureBox picMaterial;
         private Label label1;
         private Label lblUnidad;
         private Label lblCantidad;
         private Button btModify;
         private Button btDelete;
+        private Label nametxt;
     }
 }

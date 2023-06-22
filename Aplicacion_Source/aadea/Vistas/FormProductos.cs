@@ -42,6 +42,7 @@ namespace aadea.Vistas
         }
         private void FormProductos_Load(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
             L_Products l_products = new L_Products();
             DataTable dataTable = l_products.listProducts();
             foreach (DataRow row in dataTable.Rows)

@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using System.Windows.Input.Manipulations;
 using static System.Windows.Forms.Design.AxImporter;
 
 namespace aadea.Vistas
@@ -37,6 +38,7 @@ namespace aadea.Vistas
 
         private void FormMaterials_Load(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Controls.Clear();
             L_Materials l_materials = new L_Materials();
             DataTable dataTable = l_materials.listMaterials();
             foreach (DataRow row in dataTable.Rows)
@@ -44,14 +46,14 @@ namespace aadea.Vistas
                 UserMaterial userControl = new UserMaterial();
 
                 int id = Convert.ToInt32(row["ID"]);
-                string nombre = row["nombre"].ToString();
+                string name = row["nombre"].ToString();
+                MessageBox.Show("el nombre es: " + name);
                 string stock = row["stock"].ToString();
                 string unidad = row["unidad"].ToString();
                 byte[] imagen = l_materials.ObtenerImagenMaterial(id);
-                userControl.Tittle = nombre;
+                userControl.nombretit = name;
                 userControl.Cantidad = stock;
                 userControl.Unidad = unidad;
-
                 userControl.ID = Convert.ToInt32(row["ID"]);
 
                 // Suscribirte al evento DeleteButtonClicked y pasar el UserControl
@@ -64,13 +66,14 @@ namespace aadea.Vistas
                     UserControl_ButtonModify(userControl);
                 };
 
+
                 if (imagen != null && imagen.Length > 0)
                 {
-
+                    
                     using (MemoryStream ms = new MemoryStream(imagen))
                     {
-                        System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-                        userControl.PictureBox1 = img;
+                        Image img = Image.FromStream(ms);
+                        userControl.PicMaterial1 = img;
                     }
                 }
                 flowLayoutPanel1.Controls.Add(userControl);
@@ -80,10 +83,10 @@ namespace aadea.Vistas
         private void UserControl_ButtonModify(UserMaterial user)
         {
 
-            string nombre = user.Tittle;
+            string nombre = user.nombretit;
             string cantidad = user.Cantidad;
             string unidad = user.Unidad;
-            Image imagen = user.PictureBox1;
+            Image imagen = user.PicMaterial1;
             tabControl1.SelectedTab = EditMaterial;
             tabControl1.TabPages.Add(EditMaterial);
             tabControl1.TabPages.Remove(ListaMateriales);
@@ -110,7 +113,6 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(AddMaterial);
             tabControl1.TabPages.Remove(ListaMateriales);
             tabControl1.TabPages.Remove(EditMaterial);
-
         }
 
         private void btCancel_Click(object sender, EventArgs e)
@@ -173,8 +175,6 @@ namespace aadea.Vistas
                     tabControl1.TabPages.Remove(AddMaterial);
                     tabControl1.TabPages.Remove(EditMaterial);
                     FormMaterials_Load(sender, e);
-
-
                 }
                 else
                 {

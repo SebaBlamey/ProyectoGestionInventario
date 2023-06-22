@@ -23,10 +23,10 @@ namespace aadea.userControls
         public event EventHandler buttonDeleteClick;
         #region propierties
 
-        public string Tittle
+        public string nombretit
         {
-            get { return lblTittle.Text; }
-            set { lblTittle.Text = value; }
+            get { return nametxt.Text; }
+            set { nametxt.Text = value; }
         }
 
         public int ID { get; set; }
@@ -42,7 +42,7 @@ namespace aadea.userControls
             set { lblUnidad.Text = value; }
         }
 
-        public System.Drawing.Image PictureBox1
+        public Image PicMaterial1
         {
             get { return picMaterial.Image; }
             set { picMaterial.Image = value; }
@@ -59,12 +59,5 @@ namespace aadea.userControls
         {
             buttonDeleteClick?.Invoke(this, EventArgs.Empty);
         }
-
-        private void modTagLabel(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }
