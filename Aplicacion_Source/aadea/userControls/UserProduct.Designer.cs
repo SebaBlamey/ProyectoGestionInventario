@@ -31,8 +31,6 @@
             picProducto = new PictureBox();
             lblTittle = new Label();
             lblDescripcion = new Label();
-            bttEdit = new Button();
-            bttDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)picProducto).BeginInit();
             SuspendLayout();
             // 
@@ -62,30 +60,10 @@
             lblDescripcion.TabIndex = 2;
             lblDescripcion.Text = "label1";
             // 
-            // bttEdit
-            // 
-            bttEdit.Location = new Point(376, 55);
-            bttEdit.Name = "bttEdit";
-            bttEdit.Size = new Size(75, 23);
-            bttEdit.TabIndex = 3;
-            bttEdit.Text = "Editar";
-            bttEdit.UseVisualStyleBackColor = true;
-            // 
-            // bttDelete
-            // 
-            bttDelete.Location = new Point(376, 99);
-            bttDelete.Name = "bttDelete";
-            bttDelete.Size = new Size(75, 23);
-            bttDelete.TabIndex = 4;
-            bttDelete.Text = "Eliminar";
-            bttDelete.UseVisualStyleBackColor = true;
-            // 
             // UserProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(bttDelete);
-            Controls.Add(bttEdit);
             Controls.Add(lblDescripcion);
             Controls.Add(lblTittle);
             Controls.Add(picProducto);
@@ -101,7 +79,5 @@
         private PictureBox picProducto;
         private Label lblTittle;
         private Label lblDescripcion;
-        private Button bttEdit;
-        private Button bttDelete;
     }
 }

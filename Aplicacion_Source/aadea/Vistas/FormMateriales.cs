@@ -22,7 +22,6 @@ namespace aadea.Vistas
     {
         private string rutaSeleccionada;
         private string rutaModify;
-
         public FormMateriales()
         {
             InitializeComponent();
@@ -253,16 +252,6 @@ namespace aadea.Vistas
             txtStockActual.Text = string.Empty;
             boxMedidaActual.Text = string.Empty;
             opcionBox.Text = string.Empty;
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

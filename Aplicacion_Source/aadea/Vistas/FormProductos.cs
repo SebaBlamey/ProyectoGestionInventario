@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using aadea.Logicaq;
 using aadea.userControls;
+using Image = System.Drawing.Image;
 
 namespace aadea.Vistas
 {
@@ -20,12 +21,24 @@ namespace aadea.Vistas
     public partial class FormProductos : Form
     {
         private string rutaSeleccionada;
+        private System.Windows.Forms.UserControl selectedUserControl;
         public FormProductos()
         {
             InitializeComponent();
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
         }
+
+
+        private void resetCampos(object sender, EventArgs e)
+        {
+            txtProduct.Text = string.Empty;
+            txtDesc.Text = string.Empty;
+            examinarPic.Image = null;
+            FormProductos_Load(sender, e);
+        }
+
+
         private void AddProduct_Click_1(object sender, EventArgs e)
         {
             tabControl.SelectedTab = AddP;
@@ -35,10 +48,35 @@ namespace aadea.Vistas
         }
         private void EdtiProduct_Click_1(object sender, EventArgs e)
         {
-            tabControl.SelectedTab = EditP;
-            tabControl.TabPages.Remove(AddP);
-            tabControl.TabPages.Remove(productList);
-            tabControl.TabPages.Add(EditP);
+            if (selectedUserControl != null)
+            {
+                //movemos a la pestaña editar
+                tabControl.SelectedTab = EditP;
+                tabControl.TabPages.Remove(AddP);
+                tabControl.TabPages.Remove(productList);
+                tabControl.TabPages.Add(EditP);
+                //obtenemos datos del producto elegido
+                string nombre = ((UserProduct)selectedUserControl).Tittle;
+                string desc = ((UserProduct)selectedUserControl).Desc;
+                System.Drawing.Image image = ((UserProduct)selectedUserControl).PictureBox1;
+                //rellenamos la pagina de editar con los datos que obtuvimos
+                System.Windows.Forms.TextBox textBoxTitulo = EditP.Controls.Find("textBox1", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+                System.Windows.Forms.TextBox textBoxDescripcion = EditP.Controls.Find("textBox2", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+                PictureBox pictureBoxImagen = EditP.Controls.Find("cambiarBox", true).FirstOrDefault() as PictureBox;
+
+                if (textBoxTitulo != null)
+                    textBoxTitulo.Text = nombre;
+
+                if (textBoxDescripcion != null)
+                    textBoxDescripcion.Text = desc;
+
+                if (pictureBoxImagen != null)
+                    pictureBoxImagen.Image = image;
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione una producto para editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void FormProductos_Load(object sender, EventArgs e)
         {
@@ -48,13 +86,14 @@ namespace aadea.Vistas
             foreach (DataRow row in dataTable.Rows)
             {
                 UserProduct userControl = new UserProduct();
-
+                userControl.Click += UserControl_Click;
                 int id = Convert.ToInt32(row["ID"]);
                 string nombre = row["nombre"].ToString();
                 string desc = row["descripcion"].ToString();
                 byte[] imagen = l_products.ObtenerImagenProducto(id);
                 userControl.Tittle = nombre;
                 userControl.Desc = desc;
+                userControl.ID = id;
                 if (imagen != null && imagen.Length > 0)
                 {
 
@@ -67,6 +106,20 @@ namespace aadea.Vistas
                 flowLayoutPanel1.Controls.Add(userControl);
             }
         }
+        private void UserControl_Click(object? sender, EventArgs e)
+        {
+            if (selectedUserControl != null)
+            {
+                selectedUserControl.BackColor = SystemColors.Control; // Cambia el fondo a su estado original
+            }
+
+            // Marca el User Control actualmente seleccionado
+            selectedUserControl = (System.Windows.Forms.UserControl)sender;
+
+            // Cambia el fondo del User Control seleccionado
+            selectedUserControl.BackColor = Color.LightBlue;
+        }
+
 
         private void btExaminar_Click(object sender, EventArgs e)
         {
@@ -193,6 +246,43 @@ namespace aadea.Vistas
             GVProduct.Rows.Clear();
             FormProductos_Load(sender, e);
             */
+        }
+
+        private void btSaveEdit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.TextBox textBoxTitulo = EditP.Controls.Find("textBox1", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            System.Windows.Forms.TextBox textBoxDescripcion = EditP.Controls.Find("textBox2", true).FirstOrDefault() as System.Windows.Forms.TextBox;
+            PictureBox pictureBoxImagen = EditP.Controls.Find("cambiarBox", true).FirstOrDefault() as PictureBox;
+            Image nuevaimagen = null;
+            string nuevoName;
+            string nuevoDescripcion;
+            int id = ((UserProduct)selectedUserControl).ID;
+            if (textBoxTitulo != null ) 
+            {
+                // Obtener los valores de los controles
+                string nuevoTitulo = textBoxTitulo.Text;
+                string nuevaDescripcion = textBoxDescripcion.Text;
+                nuevaimagen = pictureBoxImagen.Image;
+           
+            }
+            else
+            {
+                MessageBox.Show("El producto a ingresar debe tener al menos el nombre.");
+            }
+            if (nuevaimagen == null)
+            {
+               //actualizar sin imagen
+            }
+            else
+            {
+                //actualizar con imagen
+            }
+
+            tabControl.SelectedTab = productList;
+            tabControl.TabPages.Remove(AddP);
+            tabControl.TabPages.Remove(EditP);
+            tabControl.TabPages.Add(productList);
+            resetCampos(sender,e);
         }
     }
 }

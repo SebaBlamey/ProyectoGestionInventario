@@ -20,6 +20,7 @@ namespace aadea.userControls
 
         #region Propiertes
 
+        public int ID { get; set; }
         public string Tittle
         {
             get { return lblTittle.Text; }
@@ -39,5 +40,6 @@ namespace aadea.userControls
         }
 
         #endregion
+
     }
 }

@@ -105,7 +105,6 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(644, 317);
             flowLayoutPanel1.TabIndex = 16;
-            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // AddProduct
             // 
@@ -398,7 +397,6 @@
             label7.Size = new Size(76, 22);
             label7.TabIndex = 2;
             label7.Text = "Unidad";
-            label7.Click += label7_Click;
             // 
             // label6
             // 

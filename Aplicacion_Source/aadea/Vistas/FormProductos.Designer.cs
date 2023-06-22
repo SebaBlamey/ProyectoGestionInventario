@@ -294,6 +294,7 @@
             btSaveEdit.TabIndex = 6;
             btSaveEdit.Text = "Guardar";
             btSaveEdit.UseVisualStyleBackColor = true;
+            btSaveEdit.Click += btSaveEdit_Click;
             // 
             // btexam
             // 
