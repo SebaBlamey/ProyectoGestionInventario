@@ -147,7 +147,6 @@ namespace aadea.Logicaq
             {
                 if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
             }
-
             return imagenBytes;
         }
 

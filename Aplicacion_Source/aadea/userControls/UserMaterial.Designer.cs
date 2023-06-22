@@ -28,30 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            picMaterial = new FontAwesome.Sharp.IconPictureBox();
             label1 = new Label();
             lblUnidad = new Label();
             lblCantidad = new Label();
             btModify = new Button();
             btDelete = new Button();
             nametxt = new Label();
-            ((System.ComponentModel.ISupportInitialize)picMaterial).BeginInit();
+            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // picMaterial
-            // 
-            picMaterial.BackColor = SystemColors.Control;
-            picMaterial.ForeColor = SystemColors.ControlText;
-            picMaterial.IconChar = FontAwesome.Sharp.IconChar.None;
-            picMaterial.IconColor = SystemColors.ControlText;
-            picMaterial.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            picMaterial.IconSize = 132;
-            picMaterial.Location = new Point(17, 16);
-            picMaterial.Name = "picMaterial";
-            picMaterial.Size = new Size(137, 132);
-            picMaterial.SizeMode = PictureBoxSizeMode.Zoom;
-            picMaterial.TabIndex = 1;
-            picMaterial.TabStop = false;
             // 
             // label1
             // 
@@ -117,31 +102,45 @@
             nametxt.TabIndex = 7;
             nametxt.Text = "label2";
             // 
+            // iconPictureBox1
+            // 
+            iconPictureBox1.BackColor = SystemColors.Control;
+            iconPictureBox1.ForeColor = SystemColors.ControlText;
+            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPictureBox1.IconColor = SystemColors.ControlText;
+            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox1.IconSize = 123;
+            iconPictureBox1.Location = new Point(19, 22);
+            iconPictureBox1.Name = "iconPictureBox1";
+            iconPictureBox1.Size = new Size(123, 130);
+            iconPictureBox1.TabIndex = 8;
+            iconPictureBox1.TabStop = false;
+            // 
             // UserMaterial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(iconPictureBox1);
             Controls.Add(nametxt);
             Controls.Add(btDelete);
             Controls.Add(btModify);
             Controls.Add(lblCantidad);
             Controls.Add(lblUnidad);
             Controls.Add(label1);
-            Controls.Add(picMaterial);
             Name = "UserMaterial";
             Size = new Size(615, 170);
-            ((System.ComponentModel.ISupportInitialize)picMaterial).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private FontAwesome.Sharp.IconPictureBox picMaterial;
         private Label label1;
         private Label lblUnidad;
         private Label lblCantidad;
         private Button btModify;
         private Button btDelete;
         private Label nametxt;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
     }
 }

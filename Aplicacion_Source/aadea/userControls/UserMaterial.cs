@@ -42,10 +42,10 @@ namespace aadea.userControls
             set { lblUnidad.Text = value; }
         }
 
-        public Image PicMaterial1
+        public Image MaterialImage
         {
-            get { return picMaterial.Image; }
-            set { picMaterial.Image = value; }
+            get { return iconPictureBox1.Image; }
+            set { iconPictureBox1.Image = value; }
         }
 
         #endregion

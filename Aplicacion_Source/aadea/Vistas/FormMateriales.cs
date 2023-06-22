@@ -47,7 +47,6 @@ namespace aadea.Vistas
 
                 int id = Convert.ToInt32(row["ID"]);
                 string name = row["nombre"].ToString();
-                MessageBox.Show("el nombre es: " + name);
                 string stock = row["stock"].ToString();
                 string unidad = row["unidad"].ToString();
                 byte[] imagen = l_materials.ObtenerImagenMaterial(id);
@@ -69,24 +68,24 @@ namespace aadea.Vistas
 
                 if (imagen != null && imagen.Length > 0)
                 {
-                    
+
                     using (MemoryStream ms = new MemoryStream(imagen))
                     {
-                        Image img = Image.FromStream(ms);
-                        userControl.PicMaterial1 = img;
+                        System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+                        userControl.MaterialImage = img;
                     }
                 }
                 flowLayoutPanel1.Controls.Add(userControl);
             }
-
         }
+
         private void UserControl_ButtonModify(UserMaterial user)
         {
 
             string nombre = user.nombretit;
             string cantidad = user.Cantidad;
             string unidad = user.Unidad;
-            Image imagen = user.PicMaterial1;
+            Image imagen = user.MaterialImage;
             tabControl1.SelectedTab = EditMaterial;
             tabControl1.TabPages.Add(EditMaterial);
             tabControl1.TabPages.Remove(ListaMateriales);
