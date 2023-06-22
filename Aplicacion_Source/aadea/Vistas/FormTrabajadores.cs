@@ -48,6 +48,7 @@ namespace aadea.Vistas
                 MessageBox.Show("Por favor seleccione una fila para editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             textBoxRut.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Rut"].Value);
             textBoxName.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Nombre"].Value);
             textBoxSurname.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Apellido"].Value);

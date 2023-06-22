@@ -62,13 +62,28 @@ namespace aadea.Vistas
             L_Asistencia l_Asistencia = new L_Asistencia();
 
             string rut;
-            string nombre;
-            string apellido;
 
-
+            if (DGV_Trabajador.SelectedRows.Count > 0)
+            {
+                // Se seleccionó una fila completa del trabajador
+                DataGridViewRow filaSeleccionada = DGV_Trabajador.SelectedRows[0];
+                rut = filaSeleccionada.Cells["rut"].Value.ToString();
+            }
+            else if (DGV_Trabajador.SelectedCells.Count > 0)
+            {
+                // Se seleccionó solo el valor del rut
+                int rowIndex = DGV_Trabajador.SelectedCells[0].RowIndex;
+                DataGridViewRow filaSeleccionada = DGV_Trabajador.Rows[rowIndex];
+                rut = filaSeleccionada.Cells["rut"].Value.ToString();
+            }
+            else
+            {
+                // No se seleccionó ninguna fila o celda
+                MessageBox.Show("Seleccione un trabajador o el valor del rut.", "Error");
+                return;
+            }
 
             DateTime fechaSeleccionada = dateTimePickerFecha.Value.Date;
-            Console.WriteLine("Ejemplo: " + fechaSeleccionada);
             string horaLlegada = CheckIn.Text;
             string horaSalida = CheckOut.Text;
 
@@ -89,19 +104,11 @@ namespace aadea.Vistas
             // Obtener las horas trabajadas en formato float
             float horasTrabajadasFloat = (float)horasTrabajadas.TotalHours;
             TotalsHours.Text = horasTrabajadasFloat.ToString();
-            DataGridViewRow filaSeleccionada = DGV_Trabajador.SelectedRows[0];
-            rut = filaSeleccionada.Cells["rut"].Value.ToString();
-            nombre = filaSeleccionada.Cells["nombre"].Value.ToString();
-            apellido = filaSeleccionada.Cells["apellido"].Value.ToString();
 
-            Ejemplo1.Text = fechaSeleccionada.ToString();
-            Ejemplo2.Text = apellido;
-
-            l_Asistencia.InsertAssistance(rut, fechaSeleccionada, llegada, salida, nombre, apellido, horasTrabajadasFloat);
+            l_Asistencia.InsertAssistance(rut, fechaSeleccionada, llegada, salida, horasTrabajadasFloat);
             FormAsist_Load(sender, e);
-
-
         }
+
 
 
 
