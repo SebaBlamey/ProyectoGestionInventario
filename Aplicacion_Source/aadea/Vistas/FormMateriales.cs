@@ -76,6 +76,10 @@ namespace aadea.Vistas
                         userControl.PicMaterial1 = img;
                     }
                 }
+                else
+                {
+                    userControl.PicMaterial1 = Properties.Resource.defaultImage;
+                }
                 flowLayoutPanel1.Controls.Add(userControl);
             }
 

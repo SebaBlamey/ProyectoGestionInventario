@@ -49,7 +49,7 @@
             picMaterial.Location = new Point(17, 16);
             picMaterial.Name = "picMaterial";
             picMaterial.Size = new Size(137, 132);
-            picMaterial.SizeMode = PictureBoxSizeMode.Zoom;
+            picMaterial.SizeMode = PictureBoxSizeMode.StretchImage;
             picMaterial.TabIndex = 1;
             picMaterial.TabStop = false;
             // 
