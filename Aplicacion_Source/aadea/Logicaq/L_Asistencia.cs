@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using aadea.Vistas;
 
 namespace aadea.Logicaq
 {
@@ -19,9 +20,9 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT t.Rut, t.Nombre, t.Apellido, a.Dia, a.Llegada, a.Salida " +
-                                                 "FROM Trabajador t " +
-                                                 "JOIN Asistencia a ON t.Rut = a.Trabajador";
+                string SQLQuery = "SELECT a.Trabajador AS Rut, t.Nombre, t.Apellido, a.Dia, a.Llegada, a.Salida, a.[Horas trabajadas] " +
+                                  "FROM Asistencia a " +
+                                  "JOIN Trabajador t ON a.Trabajador = t.Rut";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 SQLCon.Open();
                 resultado = Comando.ExecuteReader();
@@ -37,6 +38,8 @@ namespace aadea.Logicaq
                 if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
             }
         }
+
+
 
 
         public DataTable listTrabajadoresAsist()
@@ -86,6 +89,7 @@ namespace aadea.Logicaq
                 comando.Parameters.AddWithValue("@horasTrabajadas", horasTrabajadas);
                 answer = comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de registro, intente nuevamente";
                 transaction.Commit();
+
             }
             catch (Exception ex)
             {

@@ -35,6 +35,8 @@
             addButton = new Button();
             DGV_Asist = new DataGridView();
             Add = new TabPage();
+            Ejemplo2 = new Label();
+            Ejemplo1 = new Label();
             TotalsHours = new Label();
             label4 = new Label();
             CheckOut = new TextBox();
@@ -116,13 +118,12 @@
             // 
             // DGV_Asist
             // 
-            DGV_Asist.AllowUserToDeleteRows = false;
-            DGV_Asist.AllowUserToResizeColumns = false;
-            DGV_Asist.AllowUserToResizeRows = false;
+            DGV_Asist.AllowUserToOrderColumns = true;
             DGV_Asist.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DGV_Asist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGV_Asist.BackgroundColor = Color.White;
             DGV_Asist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            DGV_Asist.EditMode = DataGridViewEditMode.EditOnF2;
             DGV_Asist.Location = new Point(8, 6);
             DGV_Asist.Name = "DGV_Asist";
             DGV_Asist.RowTemplate.Height = 25;
@@ -131,6 +132,8 @@
             // 
             // Add
             // 
+            Add.Controls.Add(Ejemplo2);
+            Add.Controls.Add(Ejemplo1);
             Add.Controls.Add(TotalsHours);
             Add.Controls.Add(label4);
             Add.Controls.Add(CheckOut);
@@ -149,6 +152,24 @@
             Add.TabIndex = 1;
             Add.Text = " Añadir";
             Add.UseVisualStyleBackColor = true;
+            // 
+            // Ejemplo2
+            // 
+            Ejemplo2.AutoSize = true;
+            Ejemplo2.Location = new Point(563, 231);
+            Ejemplo2.Name = "Ejemplo2";
+            Ejemplo2.Size = new Size(44, 18);
+            Ejemplo2.TabIndex = 11;
+            Ejemplo2.Text = "label5";
+            // 
+            // Ejemplo1
+            // 
+            Ejemplo1.AutoSize = true;
+            Ejemplo1.Location = new Point(563, 206);
+            Ejemplo1.Name = "Ejemplo1";
+            Ejemplo1.Size = new Size(44, 18);
+            Ejemplo1.TabIndex = 10;
+            Ejemplo1.Text = "label5";
             // 
             // TotalsHours
             // 
@@ -204,9 +225,10 @@
             // 
             dateTimePickerFecha.CalendarFont = new Font("Tahoma", 8.75F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePickerFecha.Font = new Font("Tahoma", 8.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerFecha.Location = new Point(425, 69);
+            dateTimePickerFecha.Format = DateTimePickerFormat.Custom;
+            dateTimePickerFecha.Location = new Point(495, 75);
             dateTimePickerFecha.Name = "dateTimePickerFecha";
-            dateTimePickerFecha.Size = new Size(250, 22);
+            dateTimePickerFecha.Size = new Size(112, 22);
             dateTimePickerFecha.TabIndex = 3;
             // 
             // label1
@@ -301,5 +323,7 @@
         private TextBox CheckIn;
         private Label label3;
         private Label label2;
+        private Label Ejemplo2;
+        private Label Ejemplo1;
     }
 }
