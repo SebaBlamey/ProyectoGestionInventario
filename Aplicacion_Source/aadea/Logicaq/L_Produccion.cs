@@ -44,7 +44,7 @@ namespace aadea.Logicaq
             try
             {
                 connection = Conexion.GetConexion().CrearConexion();
-                string Query = "SELECT Material.nombre, Material_Produccion.cantidad\r\nFROM Material_Produccion\r\nJOIN Material ON Material_Produccion.id_material = Material.ID\r\nWHERE Material_Produccion.id_produccion = @id;";
+                string Query = "SELECT Material.nombre, Detalle_Historial.cantidad FROM Detalle_Historial JOIN Material ON Detalle_Historial.id_material = Material.ID WHERE Detalle_Historial.id_historial = 1";
                 SQLiteCommand Command = new SQLiteCommand(Query, connection);
                 Command.Parameters.AddWithValue("id", id);
                 connection.Open();
@@ -70,7 +70,7 @@ namespace aadea.Logicaq
             try
             {
                 connection = Conexion.GetConexion().CrearConexion();
-                string Query = "SELECT Producto.nombre, Frasco.tamaño_frasco, Producto_Historial.cantidad\r\nFROM Producto_Historial\r\nJOIN Producto ON Producto_Historial.id_producto = Producto.ID\r\nJOIN Frasco ON Producto_Historial.id_frasco = Frasco.ID\r\nWHERE Producto_Historial.id_historial = @id;";
+                string Query = "SELECT Producto.nombre, Frasco.tamaño, Producto_Historial.cantidad\r\nFROM Producto_Historial\r\nJOIN Producto ON Producto_Historial.id_producto = Producto.ID\r\nJOIN Frasco ON Producto_Historial.id_frasco = Frasco.ID\r\nWHERE Producto_Historial.id_historial = @id;";
                 SQLiteCommand Command = new SQLiteCommand(Query, connection);
                 Command.Parameters.AddWithValue("id", id);
                 connection.Open();
@@ -88,5 +88,29 @@ namespace aadea.Logicaq
             }
         }
 
+        public DataTable ObtenerMateriales()
+        {
+            SQLiteDataReader resultado;
+            DataTable tabla = new DataTable();
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string Query = "SELECT nombre FROM Material";
+                SQLiteCommand Command = new SQLiteCommand(Query, connection);
+                connection.Open();
+                resultado = Command.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
     }
 }

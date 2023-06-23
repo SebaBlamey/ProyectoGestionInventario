@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblProduct = new Label();
             DGV_Producto = new DataGridView();
             DGV_materiales = new DataGridView();
@@ -42,6 +45,7 @@
             // lblProduct
             // 
             lblProduct.AutoSize = true;
+            lblProduct.ForeColor = Color.Black;
             lblProduct.Location = new Point(13, 10);
             lblProduct.Name = "lblProduct";
             lblProduct.Size = new Size(89, 15);
@@ -52,6 +56,14 @@
             // 
             DGV_Producto.BackgroundColor = SystemColors.Control;
             DGV_Producto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            DGV_Producto.DefaultCellStyle = dataGridViewCellStyle1;
             DGV_Producto.Location = new Point(14, 36);
             DGV_Producto.Name = "DGV_Producto";
             DGV_Producto.RowTemplate.Height = 25;
@@ -61,7 +73,23 @@
             // DGV_materiales
             // 
             DGV_materiales.BackgroundColor = SystemColors.Control;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DGV_materiales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DGV_materiales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            DGV_materiales.DefaultCellStyle = dataGridViewCellStyle3;
             DGV_materiales.Location = new Point(285, 36);
             DGV_materiales.Name = "DGV_materiales";
             DGV_materiales.RowTemplate.Height = 25;
@@ -71,6 +99,7 @@
             // lblFechaInicio
             // 
             lblFechaInicio.AutoSize = true;
+            lblFechaInicio.ForeColor = Color.Black;
             lblFechaInicio.Location = new Point(491, 10);
             lblFechaInicio.Name = "lblFechaInicio";
             lblFechaInicio.Size = new Size(86, 15);
@@ -80,6 +109,7 @@
             // lblFechatermino
             // 
             lblFechatermino.AutoSize = true;
+            lblFechatermino.ForeColor = Color.Black;
             lblFechatermino.Location = new Point(491, 74);
             lblFechatermino.Name = "lblFechatermino";
             lblFechatermino.Size = new Size(99, 15);
@@ -89,6 +119,7 @@
             // lblInsertInicio
             // 
             lblInsertInicio.AutoSize = true;
+            lblInsertInicio.ForeColor = Color.Black;
             lblInsertInicio.Location = new Point(513, 36);
             lblInsertInicio.Name = "lblInsertInicio";
             lblInsertInicio.Size = new Size(38, 15);
@@ -98,6 +129,7 @@
             // lblInsertTermino
             // 
             lblInsertTermino.AutoSize = true;
+            lblInsertTermino.ForeColor = Color.Black;
             lblInsertTermino.Location = new Point(513, 107);
             lblInsertTermino.Name = "lblInsertTermino";
             lblInsertTermino.Size = new Size(38, 15);
@@ -116,7 +148,7 @@
             Controls.Add(DGV_Producto);
             Controls.Add(lblProduct);
             Name = "historyControl";
-            Size = new Size(596, 150);
+            Size = new Size(607, 151);
             ((System.ComponentModel.ISupportInitialize)DGV_Producto).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGV_materiales).EndInit();
             ResumeLayout(false);

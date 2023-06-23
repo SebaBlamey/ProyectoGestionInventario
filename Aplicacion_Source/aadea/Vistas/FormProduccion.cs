@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media.Media3D;
 
 namespace aadea.Vistas
 {
@@ -22,16 +23,11 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
-
-
+            DGVAddProduccion.Columns.Add("Material", "Material");
+            DGVAddProduccion.Columns.Add("Cantidad", "Cantidad");
         }
 
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        //HISTORIAL
         private void bt1_Click(object sender, EventArgs e)
         {
             tabControlProduccion.SelectedTab = tabHistory;
@@ -69,7 +65,10 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Add(tabProduccionActual);
+            FormLoadProduccionActual(sender, e);
         }
+
+
 
         private void btIngresarProduccion_Click(object sender, EventArgs e)
         {
@@ -80,11 +79,6 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Add(tabIngresarProduccion);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void bttExitHistory_Click(object sender, EventArgs e)
         {
             tabControlProduccion.SelectedTab = viewButtons;
@@ -92,6 +86,91 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
             tabControlProduccion.TabPages.Add(viewButtons);
+        }
+
+
+        //PRODUCCION ACTUAL
+        private void FormLoadProduccionActual(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                produccionActual user = new produccionActual();
+                int producc = i;
+                user.Tittle = "Producción numero: " + i + 1;
+                flowLayoutPanel1.Controls.Add(user);
+
+            }
+
+        }
+
+        private void btExitProduccionActual_Click(object sender, EventArgs e)
+        {
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Add(viewButtons);
+        }
+
+        //INGRESAR PRODUCCION
+
+        /*
+        private void addProduccion(object sender, EventArgs e)
+        {
+            L_Produccion l_list = new L_Produccion();
+            // Obtener los materiales disponibles desde la base de datos
+            DataTable materialesTable = l_list.ObtenerMateriales();
+
+            // Llenar el DataGridView con los datos de los materiales
+            DGVAddProduccion.Rows.Clear(); // Limpiar las filas existentes
+
+            foreach (DataRow row in materialesTable.Rows)
+            {
+                int materialID = Convert.ToInt32(row["ID"]);
+                string nombre = row["Nombre"].ToString();
+
+                // Agregar una nueva fila al DataGridView
+                int rowIndex = DGVAddProduccion.Rows.Add();
+
+                // Establecer los valores de las celdas en la nueva fila
+                DGVAddProduccion.Rows[rowIndex].Cells["Material"].Value = materialID;
+                DGVAddProduccion.Rows[rowIndex].Cells["Cantidad"].Value = 0; // Valor inicial de la cantidad, puedes cambiarlo según tus necesidades
+            }
+
+        }*/
+        private void textBoxCantidad_TextChanged(object sender, EventArgs e)
+        {
+            /*
+            DGVAddProduccion.Rows.Clear();
+            int cantidad = 0;
+            if (int.TryParse(textBoxCantidad.Text, out cantidad))
+            {
+                for (int i = 1; i <= cantidad; i++)
+                {
+                    DataGridViewComboBoxCell comboCell = new DataGridViewComboBoxCell();
+                    comboCell.Items.Add("Material 1");
+                    comboCell.Items.Add("Material 2");
+                    // Agrega más elementos según los materiales disponibles
+                    DGVAddProduccion.Rows.Add(comboCell, "");
+                }
+            }*/
+
+            DGVAddProduccion.Rows.Clear();
+            DGVAddProduccion.Columns.Clear();
+            DGVAddProduccion.Columns.Add("Material", "Material");
+            DGVAddProduccion.Columns.Add("Cantidad", "Cantidad");
+            L_Produccion l_list= new L_Produccion();
+            DataTable dt = l_list.ObtenerMateriales();
+            // Agregar las filas al DataGridView
+            foreach (DataRow row in dt.Rows)
+            {
+                string nombreMaterial = row["Nombre"].ToString();
+
+                DataGridViewComboBoxCell comboCell = new DataGridViewComboBoxCell();
+                comboCell.Items.Add(nombreMaterial);
+
+                DGVAddProduccion.Rows.Add(comboCell, "");
+            }
         }
     }
 }

@@ -245,3 +245,4 @@ C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de So
 C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.UserMaterial.resources
 C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.UserProduct.resources
 C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.FormInventario.resources
+C:\Users\pipen\OneDrive\Documentos\GitHub\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.userControls.produccionActual.resources
