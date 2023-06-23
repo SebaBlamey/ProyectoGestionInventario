@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Principal = new TabControl();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            TabPrincipal = new TabControl();
             History = new TabPage();
             DeleteButton = new Button();
             EditButton = new Button();
             addButton = new Button();
             DGV_Asist = new DataGridView();
             Add = new TabPage();
-            Ejemplo2 = new Label();
-            Ejemplo1 = new Label();
+            CancelBT = new Button();
             TotalsHours = new Label();
             label4 = new Label();
             CheckOut = new TextBox();
@@ -48,27 +49,43 @@
             AddSave = new Button();
             DGV_Trabajador = new DataGridView();
             Edit = new TabPage();
+            Cancel = new Model.BT();
+            Save = new Model.BT();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            lastName = new Label();
+            nombre = new Label();
+            leave = new Label();
+            Arrival = new Label();
+            date = new Label();
+            rut = new Label();
+            GeneralInfo = new Label();
+            textBox2 = new TextBox();
+            newArrival = new TextBox();
+            dateTimePicker1 = new DateTimePicker();
             Delete = new TabPage();
-            Principal.SuspendLayout();
+            TabPrincipal.SuspendLayout();
             History.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Asist).BeginInit();
             Add.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Trabajador).BeginInit();
+            Edit.SuspendLayout();
             SuspendLayout();
             // 
-            // Principal
+            // TabPrincipal
             // 
-            Principal.Controls.Add(History);
-            Principal.Controls.Add(Add);
-            Principal.Controls.Add(Edit);
-            Principal.Controls.Add(Delete);
-            Principal.Dock = DockStyle.Fill;
-            Principal.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Principal.Location = new Point(0, 0);
-            Principal.Name = "Principal";
-            Principal.SelectedIndex = 0;
-            Principal.Size = new Size(689, 421);
-            Principal.TabIndex = 0;
+            TabPrincipal.Controls.Add(History);
+            TabPrincipal.Controls.Add(Add);
+            TabPrincipal.Controls.Add(Edit);
+            TabPrincipal.Controls.Add(Delete);
+            TabPrincipal.Dock = DockStyle.Fill;
+            TabPrincipal.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            TabPrincipal.Location = new Point(0, 0);
+            TabPrincipal.Name = "TabPrincipal";
+            TabPrincipal.SelectedIndex = 0;
+            TabPrincipal.Size = new Size(689, 421);
+            TabPrincipal.TabIndex = 0;
             // 
             // History
             // 
@@ -95,6 +112,7 @@
             DeleteButton.TabIndex = 3;
             DeleteButton.Text = "Eliminar";
             DeleteButton.UseVisualStyleBackColor = true;
+            DeleteButton.Click += DeleteButton_Click;
             // 
             // EditButton
             // 
@@ -105,6 +123,7 @@
             EditButton.TabIndex = 2;
             EditButton.Text = "Editar";
             EditButton.UseVisualStyleBackColor = true;
+            EditButton.Click += EditButton_Click;
             // 
             // addButton
             // 
@@ -115,14 +134,32 @@
             addButton.TabIndex = 1;
             addButton.Text = "Agregar";
             addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
             // 
             // DGV_Asist
             // 
-            DGV_Asist.AllowUserToOrderColumns = true;
+            DGV_Asist.AllowUserToAddRows = false;
+            DGV_Asist.AllowUserToDeleteRows = false;
             DGV_Asist.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DGV_Asist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGV_Asist.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 8.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DGV_Asist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DGV_Asist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DGV_Asist.DefaultCellStyle = dataGridViewCellStyle2;
             DGV_Asist.EditMode = DataGridViewEditMode.EditOnF2;
             DGV_Asist.Location = new Point(8, 6);
             DGV_Asist.Name = "DGV_Asist";
@@ -132,8 +169,7 @@
             // 
             // Add
             // 
-            Add.Controls.Add(Ejemplo2);
-            Add.Controls.Add(Ejemplo1);
+            Add.Controls.Add(CancelBT);
             Add.Controls.Add(TotalsHours);
             Add.Controls.Add(label4);
             Add.Controls.Add(CheckOut);
@@ -153,23 +189,15 @@
             Add.Text = " Añadir";
             Add.UseVisualStyleBackColor = true;
             // 
-            // Ejemplo2
+            // CancelBT
             // 
-            Ejemplo2.AutoSize = true;
-            Ejemplo2.Location = new Point(563, 231);
-            Ejemplo2.Name = "Ejemplo2";
-            Ejemplo2.Size = new Size(44, 18);
-            Ejemplo2.TabIndex = 11;
-            Ejemplo2.Text = "label5";
-            // 
-            // Ejemplo1
-            // 
-            Ejemplo1.AutoSize = true;
-            Ejemplo1.Location = new Point(563, 206);
-            Ejemplo1.Name = "Ejemplo1";
-            Ejemplo1.Size = new Size(44, 18);
-            Ejemplo1.TabIndex = 10;
-            Ejemplo1.Text = "label5";
+            CancelBT.Location = new Point(579, 348);
+            CancelBT.Name = "CancelBT";
+            CancelBT.Size = new Size(75, 23);
+            CancelBT.TabIndex = 12;
+            CancelBT.Text = "Cancelar";
+            CancelBT.UseVisualStyleBackColor = true;
+            CancelBT.Click += CancelBT_Click;
             // 
             // TotalsHours
             // 
@@ -243,7 +271,7 @@
             // 
             // AddSave
             // 
-            AddSave.Location = new Point(561, 348);
+            AddSave.Location = new Point(450, 348);
             AddSave.Name = "AddSave";
             AddSave.Size = new Size(75, 23);
             AddSave.TabIndex = 1;
@@ -266,6 +294,21 @@
             // 
             // Edit
             // 
+            Edit.Controls.Add(Cancel);
+            Edit.Controls.Add(Save);
+            Edit.Controls.Add(label7);
+            Edit.Controls.Add(label6);
+            Edit.Controls.Add(label5);
+            Edit.Controls.Add(lastName);
+            Edit.Controls.Add(nombre);
+            Edit.Controls.Add(leave);
+            Edit.Controls.Add(Arrival);
+            Edit.Controls.Add(date);
+            Edit.Controls.Add(rut);
+            Edit.Controls.Add(GeneralInfo);
+            Edit.Controls.Add(textBox2);
+            Edit.Controls.Add(newArrival);
+            Edit.Controls.Add(dateTimePicker1);
             Edit.ForeColor = Color.Black;
             Edit.Location = new Point(4, 26);
             Edit.Name = "Edit";
@@ -273,6 +316,155 @@
             Edit.TabIndex = 2;
             Edit.Text = "Editar";
             Edit.UseVisualStyleBackColor = true;
+            // 
+            // Cancel
+            // 
+            Cancel.BackColor = Color.MediumSlateBlue;
+            Cancel.BackgroundColor = Color.MediumSlateBlue;
+            Cancel.BorderColor = Color.PaleVioletRed;
+            Cancel.BorderRadius = 20;
+            Cancel.BorderSize = 0;
+            Cancel.FlatAppearance.BorderSize = 0;
+            Cancel.FlatStyle = FlatStyle.Flat;
+            Cancel.ForeColor = Color.White;
+            Cancel.Location = new Point(209, 325);
+            Cancel.Name = "Cancel";
+            Cancel.Size = new Size(81, 27);
+            Cancel.TabIndex = 16;
+            Cancel.Text = "Cancelar";
+            Cancel.TextColor = Color.White;
+            Cancel.UseVisualStyleBackColor = false;
+            Cancel.Click += Cancel_Click;
+            // 
+            // Save
+            // 
+            Save.BackColor = Color.MediumSlateBlue;
+            Save.BackgroundColor = Color.MediumSlateBlue;
+            Save.BorderColor = Color.PaleVioletRed;
+            Save.BorderRadius = 20;
+            Save.BorderSize = 0;
+            Save.FlatAppearance.BorderSize = 0;
+            Save.FlatStyle = FlatStyle.Flat;
+            Save.ForeColor = Color.White;
+            Save.Location = new Point(86, 325);
+            Save.Name = "Save";
+            Save.Size = new Size(81, 27);
+            Save.TabIndex = 15;
+            Save.Text = "Guardar";
+            Save.TextColor = Color.White;
+            Save.UseVisualStyleBackColor = false;
+            Save.Click += Save_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(41, 210);
+            label7.Name = "label7";
+            label7.Size = new Size(154, 18);
+            label7.TabIndex = 14;
+            label7.Text = "Editar hora de salida:  ";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(41, 123);
+            label6.Name = "label6";
+            label6.Size = new Size(163, 18);
+            label6.TabIndex = 13;
+            label6.Text = "Editar hora de llegada:  ";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(41, 31);
+            label5.Name = "label5";
+            label5.Size = new Size(98, 18);
+            label5.TabIndex = 12;
+            label5.Text = "Editar Fecha: ";
+            // 
+            // lastName
+            // 
+            lastName.AutoSize = true;
+            lastName.Location = new Point(391, 122);
+            lastName.Name = "lastName";
+            lastName.Size = new Size(65, 18);
+            lastName.TabIndex = 11;
+            lastName.Text = "Apellido: ";
+            // 
+            // nombre
+            // 
+            nombre.AutoSize = true;
+            nombre.Location = new Point(391, 94);
+            nombre.Name = "nombre";
+            nombre.Size = new Size(70, 18);
+            nombre.TabIndex = 10;
+            nombre.Text = "Nombre: ";
+            // 
+            // leave
+            // 
+            leave.AutoSize = true;
+            leave.Location = new Point(391, 220);
+            leave.Name = "leave";
+            leave.Size = new Size(111, 18);
+            leave.TabIndex = 9;
+            leave.Text = "Hora de Salida: ";
+            // 
+            // Arrival
+            // 
+            Arrival.AutoSize = true;
+            Arrival.Location = new Point(391, 186);
+            Arrival.Name = "Arrival";
+            Arrival.Size = new Size(124, 18);
+            Arrival.TabIndex = 8;
+            Arrival.Text = "Hora de Llegada: ";
+            // 
+            // date
+            // 
+            date.AutoSize = true;
+            date.Location = new Point(391, 151);
+            date.Name = "date";
+            date.Size = new Size(57, 18);
+            date.TabIndex = 7;
+            date.Text = "Fecha: ";
+            // 
+            // rut
+            // 
+            rut.AutoSize = true;
+            rut.Location = new Point(391, 66);
+            rut.Name = "rut";
+            rut.Size = new Size(40, 18);
+            rut.TabIndex = 4;
+            rut.Text = "Rut: ";
+            // 
+            // GeneralInfo
+            // 
+            GeneralInfo.AutoSize = true;
+            GeneralInfo.Location = new Point(391, 31);
+            GeneralInfo.Name = "GeneralInfo";
+            GeneralInfo.Size = new Size(140, 18);
+            GeneralInfo.TabIndex = 3;
+            GeneralInfo.Text = "Informacion General";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(41, 231);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 25);
+            textBox2.TabIndex = 2;
+            // 
+            // newArrival
+            // 
+            newArrival.Location = new Point(41, 144);
+            newArrival.Name = "newArrival";
+            newArrival.Size = new Size(100, 25);
+            newArrival.TabIndex = 1;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(41, 59);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 25);
+            dateTimePicker1.TabIndex = 0;
             // 
             // Delete
             // 
@@ -289,22 +481,24 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(689, 421);
-            Controls.Add(Principal);
+            Controls.Add(TabPrincipal);
             Name = "FormAsistencia";
             Text = "FormAsistencia";
             Load += FormAsist_Load;
-            Principal.ResumeLayout(false);
+            TabPrincipal.ResumeLayout(false);
             History.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DGV_Asist).EndInit();
             Add.ResumeLayout(false);
             Add.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Trabajador).EndInit();
+            Edit.ResumeLayout(false);
+            Edit.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl Principal;
+        private TabControl TabPrincipal;
         private TabPage History;
         private TabPage Add;
         private TabPage Edit;
@@ -323,7 +517,21 @@
         private TextBox CheckIn;
         private Label label3;
         private Label label2;
-        private Label Ejemplo2;
-        private Label Ejemplo1;
+        private Label GeneralInfo;
+        private TextBox textBox2;
+        private TextBox newArrival;
+        private DateTimePicker dateTimePicker1;
+        private Label leave;
+        private Label Arrival;
+        private Label date;
+        private Label rut;
+        private Label lastName;
+        private Label nombre;
+        private Model.BT Cancel;
+        private Model.BT Save;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Button CancelBT;
     }
 }
