@@ -375,6 +375,7 @@
             btAddImagenModify.TabIndex = 4;
             btAddImagenModify.Text = "Cambiar imagen";
             btAddImagenModify.UseVisualStyleBackColor = true;
+            btAddImagenModify.Click += btAddImagenModify_Click;
             // 
             // label8
             // 

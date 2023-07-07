@@ -30,8 +30,6 @@
         {
             tabControl = new TabControl();
             productList = new TabPage();
-            btDelete = new FontAwesome.Sharp.IconButton();
-            EdtiProduct = new FontAwesome.Sharp.IconButton();
             AddProduct = new FontAwesome.Sharp.IconButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
             AddP = new TabPage();
@@ -75,8 +73,6 @@
             // 
             // productList
             // 
-            productList.Controls.Add(btDelete);
-            productList.Controls.Add(EdtiProduct);
             productList.Controls.Add(AddProduct);
             productList.Controls.Add(flowLayoutPanel1);
             productList.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -89,46 +85,6 @@
             productList.Text = "ListaProductos";
             productList.UseVisualStyleBackColor = true;
             // 
-            // btDelete
-            // 
-            btDelete.BackColor = Color.FromArgb(220, 53, 69);
-            btDelete.FlatAppearance.MouseOverBackColor = Color.FromArgb(170, 3, 19);
-            btDelete.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btDelete.ForeColor = Color.White;
-            btDelete.IconChar = FontAwesome.Sharp.IconChar.SquareMinus;
-            btDelete.IconColor = Color.White;
-            btDelete.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btDelete.IconSize = 30;
-            btDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            btDelete.Location = new Point(562, 22);
-            btDelete.Name = "btDelete";
-            btDelete.Size = new Size(115, 40);
-            btDelete.TabIndex = 12;
-            btDelete.Text = "Eliminar";
-            btDelete.TextAlign = ContentAlignment.MiddleRight;
-            btDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btDelete.UseVisualStyleBackColor = false;
-            btDelete.Click += btDelete_Click_1;
-            // 
-            // EdtiProduct
-            // 
-            EdtiProduct.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            EdtiProduct.ForeColor = Color.Black;
-            EdtiProduct.IconChar = FontAwesome.Sharp.IconChar.Pen;
-            EdtiProduct.IconColor = Color.Black;
-            EdtiProduct.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            EdtiProduct.IconSize = 26;
-            EdtiProduct.ImageAlign = ContentAlignment.MiddleLeft;
-            EdtiProduct.Location = new Point(284, 22);
-            EdtiProduct.Name = "EdtiProduct";
-            EdtiProduct.Size = new Size(115, 40);
-            EdtiProduct.TabIndex = 11;
-            EdtiProduct.Text = "Editar";
-            EdtiProduct.TextAlign = ContentAlignment.MiddleRight;
-            EdtiProduct.TextImageRelation = TextImageRelation.ImageBeforeText;
-            EdtiProduct.UseVisualStyleBackColor = true;
-            EdtiProduct.Click += EdtiProduct_Click_1;
-            // 
             // AddProduct
             // 
             AddProduct.BackColor = Color.FromArgb(40, 167, 69);
@@ -140,7 +96,7 @@
             AddProduct.IconColor = Color.White;
             AddProduct.IconFont = FontAwesome.Sharp.IconFont.Auto;
             AddProduct.IconSize = 30;
-            AddProduct.Location = new Point(17, 22);
+            AddProduct.Location = new Point(265, 6);
             AddProduct.Name = "AddProduct";
             AddProduct.Size = new Size(112, 40);
             AddProduct.TabIndex = 10;
@@ -405,7 +361,5 @@
         private Button btSaveEdit;
         private FlowLayoutPanel flowLayoutPanel1;
         private FontAwesome.Sharp.IconButton AddProduct;
-        private FontAwesome.Sharp.IconButton EdtiProduct;
-        private FontAwesome.Sharp.IconButton btDelete;
     }
 }

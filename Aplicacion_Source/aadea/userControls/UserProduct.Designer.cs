@@ -31,6 +31,8 @@
             picProducto = new PictureBox();
             lblTittle = new Label();
             lblDescripcion = new Label();
+            btModifyProduct = new Button();
+            btDeleteProduct = new Button();
             ((System.ComponentModel.ISupportInitialize)picProducto).BeginInit();
             SuspendLayout();
             // 
@@ -61,10 +63,32 @@
             lblDescripcion.TabIndex = 2;
             lblDescripcion.Text = "label1";
             // 
+            // btModifyProduct
+            // 
+            btModifyProduct.Location = new Point(371, 57);
+            btModifyProduct.Name = "btModifyProduct";
+            btModifyProduct.Size = new Size(75, 23);
+            btModifyProduct.TabIndex = 3;
+            btModifyProduct.Text = "Modificar";
+            btModifyProduct.UseVisualStyleBackColor = true;
+            btModifyProduct.Click += btModifyProduct_Click;
+            // 
+            // btDeleteProduct
+            // 
+            btDeleteProduct.Location = new Point(371, 111);
+            btDeleteProduct.Name = "btDeleteProduct";
+            btDeleteProduct.Size = new Size(75, 23);
+            btDeleteProduct.TabIndex = 4;
+            btDeleteProduct.Text = "Eliminar";
+            btDeleteProduct.UseVisualStyleBackColor = true;
+            btDeleteProduct.Click += btDeleteProduct_Click;
+            // 
             // UserProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btDeleteProduct);
+            Controls.Add(btModifyProduct);
             Controls.Add(lblDescripcion);
             Controls.Add(lblTittle);
             Controls.Add(picProducto);
@@ -80,5 +104,7 @@
         private PictureBox picProducto;
         private Label lblTittle;
         private Label lblDescripcion;
+        private Button btModifyProduct;
+        private Button btDeleteProduct;
     }
 }

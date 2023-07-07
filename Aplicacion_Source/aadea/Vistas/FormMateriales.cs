@@ -257,5 +257,10 @@ namespace aadea.Vistas
             boxMedidaActual.Text = string.Empty;
             opcionBox.Text = string.Empty;
         }
+
+        private void btAddImagenModify_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

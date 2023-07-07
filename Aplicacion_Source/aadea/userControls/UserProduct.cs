@@ -16,7 +16,8 @@ namespace aadea.userControls
         {
             InitializeComponent();
         }
-
+        public event EventHandler btModifyProducto;
+        public event EventHandler btDeleteProducto;
 
         #region Propiertes
 
@@ -41,5 +42,14 @@ namespace aadea.userControls
 
         #endregion
 
+        private void btModifyProduct_Click(object sender, EventArgs e)
+        {
+            btModifyProducto?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btDeleteProduct_Click(object sender, EventArgs e)
+        {
+            btDeleteProducto?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

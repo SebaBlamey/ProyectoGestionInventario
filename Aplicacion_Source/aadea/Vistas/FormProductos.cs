@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using aadea.Logicaq;
 using aadea.userControls;
 using Image = System.Drawing.Image;
+using FontAwesome.Sharp;
 
 namespace aadea.Vistas
 {
@@ -22,6 +23,7 @@ namespace aadea.Vistas
     {
         private string rutaSeleccionada;
         private System.Windows.Forms.UserControl selectedUserControl;
+
         public FormProductos()
         {
             InitializeComponent();
@@ -29,15 +31,17 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(EditP);
         }
 
-
         private void resetCampos(object sender, EventArgs e)
         {
             txtProduct.Text = string.Empty;
             txtDesc.Text = string.Empty;
             examinarPic.Image = null;
+            cambiarBox.Image = null;
+            textBox1.Text = string.Empty;
+            textBox1.Text = string.Empty;
+            rutaSeleccionada = null;
             FormProductos_Load(sender, e);
         }
-
 
         private void AddProduct_Click_1(object sender, EventArgs e)
         {
@@ -45,39 +49,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(productList);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(AddP);
-
-        }
-        private void EdtiProduct_Click_1(object sender, EventArgs e)
-        {
-            if (selectedUserControl != null)
-            {
-                //movemos a la pestaña editar
-                tabControl.SelectedTab = EditP;
-                tabControl.TabPages.Remove(AddP);
-                tabControl.TabPages.Remove(productList);
-                tabControl.TabPages.Add(EditP);
-                //obtenemos datos del producto elegido
-                string nombre = ((UserProduct)selectedUserControl).Tittle;
-                string desc = ((UserProduct)selectedUserControl).Desc;
-                System.Drawing.Image image = ((UserProduct)selectedUserControl).PictureBox1;
-                //rellenamos la pagina de editar con los datos que obtuvimos
-                System.Windows.Forms.TextBox textBoxTitulo = EditP.Controls.Find("textBox1", true).FirstOrDefault() as System.Windows.Forms.TextBox;
-                System.Windows.Forms.TextBox textBoxDescripcion = EditP.Controls.Find("textBox2", true).FirstOrDefault() as System.Windows.Forms.TextBox;
-                PictureBox pictureBoxImagen = EditP.Controls.Find("cambiarBox", true).FirstOrDefault() as PictureBox;
-
-                if (textBoxTitulo != null)
-                    textBoxTitulo.Text = nombre;
-
-                if (textBoxDescripcion != null)
-                    textBoxDescripcion.Text = desc;
-
-                if (pictureBoxImagen != null)
-                    pictureBoxImagen.Image = image;
-            }
-            else
-            {
-                MessageBox.Show("Por favor seleccione una producto para editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            resetCampos(sender, e);
         }
         private void FormProductos_Load(object sender, EventArgs e)
         {
@@ -87,14 +59,23 @@ namespace aadea.Vistas
             foreach (DataRow row in dataTable.Rows)
             {
                 UserProduct userControl = new UserProduct();
-                userControl.Click += UserControl_Click;
                 int id = Convert.ToInt32(row["ID"]);
                 string nombre = row["nombre"].ToString();
                 string desc = row["descripcion"].ToString();
                 byte[] imagen = l_products.ObtenerImagenProducto(id);
                 userControl.Tittle = nombre;
                 userControl.Desc = desc;
-                userControl.ID = id;
+                userControl.ID = Convert.ToInt32(row["ID"]);
+
+                userControl.btDeleteProducto += (s, args) =>
+                {
+                    UserControl_DeleteButtonClicked(userControl);
+                };
+                userControl.btModifyProducto += (s, args) =>
+                {
+                    UserControl_ButtonModify(userControl);
+                };
+
                 if (imagen != null && imagen.Length > 0)
                 {
 
@@ -111,18 +92,34 @@ namespace aadea.Vistas
                 flowLayoutPanel1.Controls.Add(userControl);
             }
         }
-        private void UserControl_Click(object? sender, EventArgs e)
+        
+
+        private void UserControl_ButtonModify(UserProduct user)
         {
-            if (selectedUserControl != null)
-            {
-                selectedUserControl.BackColor = SystemColors.Control; // Cambia el fondo a su estado original
-            }
 
-            // Marca el User Control actualmente seleccionado
-            selectedUserControl = (System.Windows.Forms.UserControl)sender;
+            string nombre = user.Tittle;
+            string desc = user.Desc;
+            int id = user.ID;
+            Image imagen = user.PictureBox1;
 
-            // Cambia el fondo del User Control seleccionado
-            selectedUserControl.BackColor = Color.LightBlue;
+            tabControl.SelectedTab = EditP;
+            tabControl.TabPages.Add(EditP);
+            tabControl.TabPages.Remove(AddP);
+            tabControl.TabPages.Remove(productList);
+
+            // Rellenar los elementos en la pestaña de modificación
+            textBox1.Text = nombre;
+            textBox2.Text = desc;
+            cambiarBox.Image = imagen;
+        }
+
+
+        private void UserControl_DeleteButtonClicked(UserProduct user)
+        {
+            int id = Convert.ToInt32(user.ID);
+            L_Products l_Products = new L_Products();
+            flowLayoutPanel1.Controls.Remove(user);
+            l_Products.DeleteProduct(id);
         }
 
 
@@ -137,7 +134,6 @@ namespace aadea.Vistas
                 rutaSeleccionada = selectorImagen.FileName;
 
             }
-
         }
 
         //Boton guardar
@@ -169,10 +165,8 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
-            txtProduct.Text = string.Empty;
-            txtDesc.Text = string.Empty;
-            examinarPic.Image = null;
-            FormProductos_Load(sender, e);
+            resetCampos(sender,e);
+            
 
         }
 
@@ -211,36 +205,28 @@ namespace aadea.Vistas
 
         private void btSaveEdit_Click(object sender, EventArgs e)
         {
-            L_Products l_list= new L_Products();
-            System.Windows.Forms.TextBox textBoxTitulo = EditP.Controls.Find("textBox1", true).FirstOrDefault() as System.Windows.Forms.TextBox;
-            System.Windows.Forms.TextBox textBoxDescripcion = EditP.Controls.Find("textBox2", true).FirstOrDefault() as System.Windows.Forms.TextBox;
-            PictureBox pictureBoxImagen = EditP.Controls.Find("cambiarBox", true).FirstOrDefault() as PictureBox;
-            Image nuevaimagen = pictureBoxImagen.Image;
-            string nuevoName=textBoxTitulo.Text;
-            string nuevoDescripcion=textBoxDescripcion.Text;
-            int id = ((UserProduct)selectedUserControl).ID;
-            if (textBoxTitulo != null)
-            {
-                // Obtener los valores de los controles
-                nuevoName = textBoxTitulo.Text;
-                nuevoDescripcion = textBoxDescripcion.Text;
-                nuevaimagen = pictureBoxImagen.Image;
+            string nombre;
+            string desc;
+            byte[] img = null;
+            L_Products ins = new L_Products();
 
+            if (!string.IsNullOrEmpty(rutaSeleccionada))
+            {
+
+                byte[] bytesImagen = File.ReadAllBytes(rutaSeleccionada);
+                nombre = textBox1.Text;
+                desc = textBox2.Text;
+                
+                //ins.updateWI(nombre, desc, bytesImagen);
             }
             else
             {
-                MessageBox.Show("El producto a ingresar debe tener al menos el nombre.");
-            }
-            if (nuevaimagen == null)
-            {
-                l_list.update(id,nuevoName, nuevoDescripcion);
-            }
-            else
-            {
-                byte[] ima = ConvertirImagenABytes(nuevaimagen);
-                l_list.updateWI(id,nuevoName,nuevoDescripcion,ima);
-            }
+                // No se ha seleccionado ninguna ruta, realiza acciones adicionales o muestra un mensaje de error
+                nombre = textBox1.Text;
+                desc = textBox2.Text;
 
+                //ins.update(nombre, desc);
+            }
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
@@ -250,7 +236,7 @@ namespace aadea.Vistas
 
         private void btexam_Click(object sender, EventArgs e)
         {
-            OpenFileDialog selectorImagen = new OpenFileDialog();
+            System.Windows.Forms.OpenFileDialog selectorImagen = new System.Windows.Forms.OpenFileDialog();
             selectorImagen.Title = "Seleccionar imagen";
 
             if (selectorImagen.ShowDialog() == DialogResult.OK)
