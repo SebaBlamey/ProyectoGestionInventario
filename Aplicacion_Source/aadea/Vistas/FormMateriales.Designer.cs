@@ -60,6 +60,7 @@
             label6 = new Label();
             label4 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            btExaminMod = new Button();
             tabControl1.SuspendLayout();
             ListaMateriales.SuspendLayout();
             AddMaterial.SuspendLayout();
@@ -284,6 +285,7 @@
             // 
             // EditMaterial
             // 
+            EditMaterial.Controls.Add(btExaminMod);
             EditMaterial.Controls.Add(boxMedidaActual);
             EditMaterial.Controls.Add(txtStockActual);
             EditMaterial.Controls.Add(txtNameActual);
@@ -367,15 +369,10 @@
             // 
             // btAddImagenModify
             // 
-            btAddImagenModify.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btAddImagenModify.ForeColor = Color.Black;
-            btAddImagenModify.Location = new Point(385, 230);
+            btAddImagenModify.Location = new Point(0, 0);
             btAddImagenModify.Name = "btAddImagenModify";
-            btAddImagenModify.Size = new Size(148, 23);
-            btAddImagenModify.TabIndex = 4;
-            btAddImagenModify.Text = "Cambiar imagen";
-            btAddImagenModify.UseVisualStyleBackColor = true;
-            btAddImagenModify.Click += btAddImagenModify_Click;
+            btAddImagenModify.Size = new Size(75, 23);
+            btAddImagenModify.TabIndex = 11;
             // 
             // label8
             // 
@@ -425,6 +422,16 @@
             // 
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // btExaminMod
+            // 
+            btExaminMod.Location = new Point(425, 239);
+            btExaminMod.Name = "btExaminMod";
+            btExaminMod.Size = new Size(75, 23);
+            btExaminMod.TabIndex = 12;
+            btExaminMod.Text = "Examinar";
+            btExaminMod.UseVisualStyleBackColor = true;
+            btExaminMod.Click += btExaminMod_Click;
             // 
             // FormMateriales
             // 
@@ -480,5 +487,6 @@
         private Label label7;
         private Label label6;
         private Label label4;
+        private Button btExaminMod;
     }
 }

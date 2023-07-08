@@ -16,6 +16,7 @@ namespace aadea.Vistas
 {
     public partial class FormInventario : Form
     {
+        private int idLocal;
         public FormInventario()
         {
             InitializeComponent();
@@ -37,6 +38,15 @@ namespace aadea.Vistas
 
 
                 userControl.Tittle = nombre;
+
+                userControl.buttonDeleteClick += (s, args) =>
+                {
+                    UserControl_DeleteButtonClicked(userControl);
+                };
+                userControl.buttonModifyClick += (s, args) =>
+                {
+                    UserControl_ButtonModify(userControl);
+                };
                 if (imagen != null && imagen.Length > 0)
                 {
 
@@ -51,6 +61,24 @@ namespace aadea.Vistas
                 DataTable list = l_Bodega.listInventarioporID(id);
                 userControl.DataGridView1.DataSource = list;
             }
+
+
+        }
+
+        private void UserControl_ButtonModify(productBodega userControl)
+        {
+            tabControl1.SelectedTab = Editar;
+            tabControl1.TabPages.Add(Editar);
+            tabControl1.TabPages.Remove(tabView);
+            tabControl1.TabPages.Remove(tabDelete);
+        }
+
+        private void UserControl_DeleteButtonClicked(productBodega userControl)
+        {
+            tabControl1.SelectedTab = tabDelete;
+            tabControl1.TabPages.Add(tabDelete);
+            tabControl1.TabPages.Remove(tabView);
+            tabControl1.TabPages.Remove(Editar);
         }
     }
 }

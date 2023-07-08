@@ -32,8 +32,19 @@ namespace aadea.userControls
         public int ID { get; set; }
         public string Cantidad
         {
-            get { return lblCantidad.Text; }
-            set { lblCantidad.Text = value; }
+            get { return lblCantidada.Text; }
+            set
+            {
+                float cantidad;
+                if (float.TryParse(value, out cantidad))
+                {
+                    lblCantidada.Text = cantidad.ToString("0.##"); // Formato de cadena para mostrar el número con parte decimal
+                }
+                else
+                {
+                    lblCantidada.Text = value;
+                }
+            }
         }
 
         public string Unidad
@@ -59,5 +70,6 @@ namespace aadea.userControls
         {
             buttonDeleteClick?.Invoke(this, EventArgs.Empty);
         }
+
     }
 }

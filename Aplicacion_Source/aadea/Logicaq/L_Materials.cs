@@ -37,7 +37,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void InsertMaterialWI(string nomb, int stock, byte[] im,string unidad)
+        public void InsertMaterialWI(string nomb, float stock, byte[] im,string unidad)
         {
             string answer = "%";
             SQLiteTransaction transaction = null;
@@ -67,7 +67,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void InsertMaterial(string nom, int stock,string unidad)
+        public void InsertMaterial(string nom, float stock,string unidad)
         {
             string answer = "";
             SQLiteTransaction transaction = null;
@@ -149,6 +149,65 @@ namespace aadea.Logicaq
             }
             return imagenBytes;
         }
+        public void updateMaterial(int id, string nom, float stock, string unidad)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "UPDATE Material SET stock = @stock, unidad = @unidad, nombre = @nombre WHERE ID = @id;";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@id", id);
+                Comando.Parameters.AddWithValue("@nombre", nom);
+                Comando.Parameters.AddWithValue("@stock", stock);
+                Comando.Parameters.AddWithValue("@unidad", unidad);
+                // Comando.Parameters.AddWithValue("@imagen", imagen); // Si no necesitas actualizar la columna imagen, puedes eliminar esta línea
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de registro, intente nuevamente";
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
+        public void updateMaterialWI(int id,string nom, float stock, string unidad, byte[]im)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "UPDATE Material SET stock = @stock, unidad = @unidad, nombre = @nombre, imagen=@imagen WHERE ID = @id;";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@id", id);
+                Comando.Parameters.AddWithValue("@nombre", nom);
+                Comando.Parameters.AddWithValue("@stock", stock);
+                Comando.Parameters.AddWithValue("@unidad", unidad);
+                Comando.Parameters.AddWithValue("@imagen", im);
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de registro, intente nuevamente";
+                transaction.Commit();
 
+            }
+            catch (Exception ex)
+            {
+                answer = ex.Message;
+
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
     }
 }

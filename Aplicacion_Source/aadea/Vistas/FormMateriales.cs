@@ -9,12 +9,15 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Input.Manipulations;
 using static System.Windows.Forms.Design.AxImporter;
+using Image = System.Drawing.Image;
 
 namespace aadea.Vistas
 {
@@ -22,6 +25,7 @@ namespace aadea.Vistas
     {
         private string rutaSeleccionada;
         private string rutaModify;
+        private int idLocal;
         public FormMateriales()
         {
             InitializeComponent();
@@ -46,11 +50,12 @@ namespace aadea.Vistas
 
                 int id = Convert.ToInt32(row["ID"]);
                 string name = row["nombre"].ToString();
-                string stock = row["stock"].ToString();
+                float stock = 0;
+                float.TryParse(row["stock"].ToString(), out stock);
                 string unidad = row["unidad"].ToString();
                 byte[] imagen = l_materials.ObtenerImagenMaterial(id);
                 userControl.nombretit = name;
-                userControl.Cantidad = stock;
+                userControl.Cantidad = stock.ToString();
                 userControl.Unidad = unidad;
                 userControl.ID = Convert.ToInt32(row["ID"]);
 
@@ -64,10 +69,8 @@ namespace aadea.Vistas
                     UserControl_ButtonModify(userControl);
                 };
 
-
                 if (imagen != null && imagen.Length > 0)
                 {
-
                     using (MemoryStream ms = new MemoryStream(imagen))
                     {
                         System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
@@ -79,12 +82,17 @@ namespace aadea.Vistas
                     userControl.MaterialImage = Properties.Resource.defaultImage;
                 }
                 flowLayoutPanel1.Controls.Add(userControl);
+                if (!string.IsNullOrEmpty(unidad) && !boxMedidaActual.Items.Contains(unidad))
+                {
+                    boxMedidaActual.Items.Add(unidad);
+                }
             }
+
+
         }
 
         private void UserControl_ButtonModify(UserMaterial user)
         {
-
             string nombre = user.nombretit;
             string cantidad = user.Cantidad;
             string unidad = user.Unidad;
@@ -96,9 +104,20 @@ namespace aadea.Vistas
             // Rellenar los elementos en la pestaña de modificación
             txtNameActual.Text = nombre;
             txtStockActual.Text = cantidad;
+
+            // Verificar si la opción existe en el ComboBox y agregarla si es necesario
+            if (!boxMedidaActual.Items.Contains(unidad))
+            {
+                boxMedidaActual.Items.Add(unidad);
+            }
+
+            // Establecer la opción seleccionada en el ComboBox
             boxMedidaActual.SelectedItem = unidad;
+
             picImagenModify.Image = imagen;
+            idLocal = user.ID;
         }
+
 
         private void UserControl_DeleteButtonClicked(UserMaterial user)
         {
@@ -110,7 +129,7 @@ namespace aadea.Vistas
 
         private void AddProduct_Click(object sender, EventArgs e)
         {
-            resetCampos();
+            resetCampos(sender, e);
             tabControl1.SelectedTab = AddMaterial;
             tabControl1.TabPages.Add(AddMaterial);
             tabControl1.TabPages.Remove(ListaMateriales);
@@ -119,7 +138,7 @@ namespace aadea.Vistas
 
         private void btCancel_Click(object sender, EventArgs e)
         {
-            resetCampos();
+            resetCampos(sender, e);
             tabControl1.SelectedTab = ListaMateriales;
             tabControl1.TabPages.Add(ListaMateriales);
             tabControl1.TabPages.Remove(AddMaterial);
@@ -200,47 +219,42 @@ namespace aadea.Vistas
 
         private void btSaveMod_Click(object sender, EventArgs e)
         {
-            /*
-            string nombre = txtNameActual.Text;
-            string stocktext = txtStockActual.Text;
-            int numero = 0;
-            bool opcion = false;
-            byte[] image;
-            if (picImagenModify.Image != null)
+            string nombre;
+            float numero; // Cambio de tipo de float a decimal
+            string unidad;
+            byte[] img = null;
+            L_Materials ins = new L_Materials();
+            nombre = txtNameActual.Text;
+            unidad = boxMedidaActual.Text;
+            if (float.TryParse(txtStockActual.Text, out numero)) // Cambio de tipo de float a decimal
             {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    picImagenModify.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    image = ms.ToArray();
-                }
+                MessageBox.Show("El número ingresado es: " + numero.ToString());
             }
-            try
+            else
             {
-                if (int.TryParse(stocktext, out numero))
-                {
-                    labelResultado.Text = "El número ingresado es: " + numero.ToString();
-                    opcion = true;
-                }
-                else
-                {
-                    MessageBox.Show("El valor ingresado no es un número válido.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Se produjo un error: " + ex.Message);
-
+                MessageBox.Show("Por favor, ingresa un número decimal válido.");
             }
 
-            string unidad = boxMedidaActual.Text;
-            L_Materials insert = new L_Materials();
-            */
-
+            if (!string.IsNullOrEmpty(rutaSeleccionada))
+            {
+                img = File.ReadAllBytes(rutaSeleccionada);
+                ins.updateMaterialWI(idLocal, nombre, numero, unidad, img);
+            }
+            else
+            {
+                ins.updateMaterial(idLocal, nombre, numero, unidad);
+            }
+            tabControl1.SelectedTab = ListaMateriales;
+            tabControl1.TabPages.Remove(AddMaterial);
+            tabControl1.TabPages.Remove(EditMaterial);
+            tabControl1.TabPages.Add(ListaMateriales);
+            resetCampos(sender, e);
         }
+
 
         private void btCancelMod_Click(object sender, EventArgs e)
         {
-            resetCampos();
+            resetCampos(sender, e);
 
             tabControl1.SelectedTab = ListaMateriales;
             tabControl1.TabPages.Add(ListaMateriales);
@@ -248,19 +262,29 @@ namespace aadea.Vistas
             tabControl1.TabPages.Remove(EditMaterial);
         }
 
-        private void resetCampos()
+        private void resetCampos(object sender, EventArgs e)
         {
+            idLocal = -1;
             txtNameActual.Text = string.Empty;
             txtNameInsert.Text = string.Empty;
             txtStock.Text = string.Empty;
             txtStockActual.Text = string.Empty;
             boxMedidaActual.Text = string.Empty;
             opcionBox.Text = string.Empty;
+            rutaSeleccionada = null;
+            FormMaterials_Load(sender, e);
         }
 
-        private void btAddImagenModify_Click(object sender, EventArgs e)
+        private void btExaminMod_Click(object sender, EventArgs e)
         {
+            System.Windows.Forms.OpenFileDialog selectorImagen = new System.Windows.Forms.OpenFileDialog();
+            selectorImagen.Title = "Seleccionar imagen";
 
+            if (selectorImagen.ShowDialog() == DialogResult.OK)
+            {
+                picImagenModify.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
+                rutaSeleccionada = selectorImagen.FileName;
+            }
         }
     }
 }

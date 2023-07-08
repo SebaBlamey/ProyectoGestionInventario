@@ -23,7 +23,7 @@ namespace aadea.Vistas
     {
         private string rutaSeleccionada;
         private System.Windows.Forms.UserControl selectedUserControl;
-
+        private int idlocal;
         public FormProductos()
         {
             InitializeComponent();
@@ -33,6 +33,7 @@ namespace aadea.Vistas
 
         private void resetCampos(object sender, EventArgs e)
         {
+            idlocal = -1;
             txtProduct.Text = string.Empty;
             txtDesc.Text = string.Empty;
             examinarPic.Image = null;
@@ -70,10 +71,12 @@ namespace aadea.Vistas
                 userControl.btDeleteProducto += (s, args) =>
                 {
                     UserControl_DeleteButtonClicked(userControl);
+                    idlocal=userControl.ID;
                 };
                 userControl.btModifyProducto += (s, args) =>
                 {
                     UserControl_ButtonModify(userControl);
+                    idlocal = userControl.ID;
                 };
 
                 if (imagen != null && imagen.Length > 0)
@@ -100,6 +103,7 @@ namespace aadea.Vistas
             string nombre = user.Tittle;
             string desc = user.Desc;
             int id = user.ID;
+            idlocal = user.ID;
             Image imagen = user.PictureBox1;
 
             tabControl.SelectedTab = EditP;
@@ -141,24 +145,16 @@ namespace aadea.Vistas
         {
             string nombre;
             string desc;
-            byte[] img = null;
             L_Products ins = new L_Products();
-
+            nombre = txtProduct.Text;
+            desc = txtDesc.Text;
             if (!string.IsNullOrEmpty(rutaSeleccionada))
             {
-
                 byte[] bytesImagen = File.ReadAllBytes(rutaSeleccionada);
-                nombre = txtProduct.Text;
-                desc = txtDesc.Text;
-
                 ins.InsertProductWI(nombre, desc, bytesImagen);
             }
             else
             {
-                // No se ha seleccionado ninguna ruta, realiza acciones adicionales o muestra un mensaje de error
-                nombre = txtProduct.Text;
-                desc = txtDesc.Text;
-
                 ins.InsertProduct(nombre, desc);
             }
             tabControl.SelectedTab = productList;
@@ -205,9 +201,10 @@ namespace aadea.Vistas
 
         private void btSaveEdit_Click(object sender, EventArgs e)
         {
+            
             string nombre;
             string desc;
-            byte[] img = null;
+            
             L_Products ins = new L_Products();
 
             if (!string.IsNullOrEmpty(rutaSeleccionada))
@@ -217,7 +214,7 @@ namespace aadea.Vistas
                 nombre = textBox1.Text;
                 desc = textBox2.Text;
                 
-                //ins.updateWI(nombre, desc, bytesImagen);
+                ins.updateWI(idlocal,nombre, desc, bytesImagen);
             }
             else
             {
@@ -225,7 +222,7 @@ namespace aadea.Vistas
                 nombre = textBox1.Text;
                 desc = textBox2.Text;
 
-                //ins.update(nombre, desc);
+                ins.update(idlocal, nombre, desc);
             }
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);

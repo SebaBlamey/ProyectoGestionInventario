@@ -35,9 +35,9 @@
             btDelete = new Button();
             nametxt = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            lblCantidada = new Label();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
-            
             // 
             // label1
             // 
@@ -64,14 +64,10 @@
             // 
             // lblCantidad
             // 
-            lblCantidad.AutoSize = true;
-            lblCantidad.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCantidad.ForeColor = Color.Black;
-            lblCantidad.Location = new Point(244, 78);
+            lblCantidad.Location = new Point(212, 120);
             lblCantidad.Name = "lblCantidad";
-            lblCantidad.Size = new Size(62, 18);
-            lblCantidad.TabIndex = 4;
-            lblCantidad.Text = "cantidad";
+            lblCantidad.Size = new Size(100, 23);
+            lblCantidad.TabIndex = 9;
             // 
             // btModify
             // 
@@ -117,10 +113,20 @@
             iconPictureBox1.TabIndex = 8;
             iconPictureBox1.TabStop = false;
             // 
+            // lblCantidada
+            // 
+            lblCantidada.AutoSize = true;
+            lblCantidada.Location = new Point(256, 81);
+            lblCantidada.Name = "lblCantidada";
+            lblCantidada.Size = new Size(38, 15);
+            lblCantidada.TabIndex = 10;
+            lblCantidada.Text = "label2";
+            // 
             // UserMaterial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(lblCantidada);
             Controls.Add(iconPictureBox1);
             Controls.Add(nametxt);
             Controls.Add(btDelete);
@@ -143,5 +149,6 @@
         private Button btDelete;
         private Label nametxt;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private Label lblCantidada;
     }
 }

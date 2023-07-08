@@ -17,6 +17,9 @@ namespace aadea.userControls
             InitializeComponent();
         }
 
+        public event EventHandler buttonModifyClick;
+        public event EventHandler buttonDeleteClick;
+
         #region Properties
         public string Tittle
         {
@@ -36,9 +39,14 @@ namespace aadea.userControls
         }
         #endregion
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void btModify_Click(object sender, EventArgs e)
         {
+            buttonModifyClick?.Invoke(this, EventArgs.Empty);
+        }
 
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            buttonDeleteClick?.Invoke(this, EventArgs.Empty);
         }
     }
 }
