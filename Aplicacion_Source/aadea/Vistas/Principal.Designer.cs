@@ -72,7 +72,7 @@ namespace aadea.Vistas
             iconButtonSalir.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             iconButtonSalir.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonSalir.FlatStyle = FlatStyle.Flat;
-            iconButtonSalir.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonSalir.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonSalir.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonSalir.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
             iconButtonSalir.IconColor = Color.FromArgb(144, 147, 166);
@@ -97,7 +97,7 @@ namespace aadea.Vistas
             iconButtonAsistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             iconButtonAsistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonAsistencia.FlatStyle = FlatStyle.Flat;
-            iconButtonAsistencia.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonAsistencia.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonAsistencia.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonAsistencia.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
             iconButtonAsistencia.IconColor = Color.FromArgb(144, 147, 166);
@@ -122,7 +122,7 @@ namespace aadea.Vistas
             iconButtonTrabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             iconButtonTrabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonTrabajadores.FlatStyle = FlatStyle.Flat;
-            iconButtonTrabajadores.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonTrabajadores.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonTrabajadores.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonTrabajadores.IconChar = FontAwesome.Sharp.IconChar.Users;
             iconButtonTrabajadores.IconColor = Color.FromArgb(144, 147, 166);
@@ -147,7 +147,7 @@ namespace aadea.Vistas
             iconButtonProductos.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             iconButtonProductos.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonProductos.FlatStyle = FlatStyle.Flat;
-            iconButtonProductos.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonProductos.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonProductos.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonProductos.IconChar = FontAwesome.Sharp.IconChar.BowlFood;
             iconButtonProductos.IconColor = Color.FromArgb(144, 147, 166);
@@ -171,7 +171,7 @@ namespace aadea.Vistas
             iconButtonProduccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             iconButtonProduccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonProduccion.FlatStyle = FlatStyle.Flat;
-            iconButtonProduccion.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonProduccion.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonProduccion.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonProduccion.IconChar = FontAwesome.Sharp.IconChar.Building;
             iconButtonProduccion.IconColor = Color.FromArgb(144, 147, 166);
@@ -195,7 +195,7 @@ namespace aadea.Vistas
             iconButtonMateriales.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             iconButtonMateriales.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonMateriales.FlatStyle = FlatStyle.Flat;
-            iconButtonMateriales.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonMateriales.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonMateriales.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonMateriales.IconChar = FontAwesome.Sharp.IconChar.KitchenSet;
             iconButtonMateriales.IconColor = Color.FromArgb(144, 147, 166);
@@ -233,7 +233,7 @@ namespace aadea.Vistas
             iconButtonBodega.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             iconButtonBodega.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonBodega.FlatStyle = FlatStyle.Flat;
-            iconButtonBodega.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonBodega.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonBodega.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonBodega.IconChar = FontAwesome.Sharp.IconChar.Viadeo;
             iconButtonBodega.IconColor = Color.FromArgb(144, 147, 166);
@@ -279,14 +279,13 @@ namespace aadea.Vistas
             // 
             // menuTitleLaberl
             // 
-            menuTitleLaberl.AutoSize = true;
             menuTitleLaberl.Font = new Font("Tahoma", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            menuTitleLaberl.ImageAlign = ContentAlignment.TopCenter;
-            menuTitleLaberl.Location = new Point(290, 10);
+            menuTitleLaberl.ImageAlign = ContentAlignment.TopLeft;
+            menuTitleLaberl.Location = new Point(0, 9);
             menuTitleLaberl.Name = "menuTitleLaberl";
-            menuTitleLaberl.Size = new Size(0, 42);
+            menuTitleLaberl.Size = new Size(707, 42);
             menuTitleLaberl.TabIndex = 0;
-            menuTitleLaberl.TextAlign = ContentAlignment.MiddleLeft;
+            menuTitleLaberl.Text = "aaaaaaaaaaaaaaaaaaa";
             // 
             // panelDesk
             // 
@@ -317,7 +316,6 @@ namespace aadea.Vistas
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
