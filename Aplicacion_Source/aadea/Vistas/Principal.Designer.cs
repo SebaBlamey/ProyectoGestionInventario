@@ -30,6 +30,7 @@ namespace aadea.Vistas
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             iconButtonSalir = new FontAwesome.Sharp.IconButton();
             iconButtonAsistencia = new FontAwesome.Sharp.IconButton();
             iconButtonTrabajadores = new FontAwesome.Sharp.IconButton();
@@ -310,6 +311,7 @@ namespace aadea.Vistas
             Margin = new Padding(3, 2, 3, 2);
             Name = "Principal";
             StartPosition = FormStartPosition.CenterScreen;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Text = "Principal";
             Load += Principal_Load;
             panel1.ResumeLayout(false);
