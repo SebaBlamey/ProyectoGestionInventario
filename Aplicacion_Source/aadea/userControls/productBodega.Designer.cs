@@ -28,19 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             nameProduct = new Label();
             dataGridViewInv = new DataGridView();
             addStock = new Button();
             deleteBtn = new Button();
             panel1 = new Panel();
-            numericUpDown1 = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInv).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -72,14 +70,14 @@
             dataGridViewInv.BorderStyle = BorderStyle.None;
             dataGridViewInv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewInv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewInv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewInv.EnableHeadersVisualStyles = false;
             dataGridViewInv.GridColor = Color.DarkBlue;
@@ -89,10 +87,10 @@
             dataGridViewInv.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewInv.RowHeadersVisible = false;
             dataGridViewInv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.DimGray;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
-            dataGridViewInv.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.DimGray;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Plum;
+            dataGridViewInv.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewInv.RowTemplate.Height = 25;
             dataGridViewInv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewInv.Size = new Size(281, 191);
@@ -101,21 +99,22 @@
             // addStock
             // 
             addStock.ForeColor = Color.Black;
-            addStock.Location = new Point(525, 72);
+            addStock.Location = new Point(525, 61);
             addStock.Name = "addStock";
-            addStock.Size = new Size(75, 23);
+            addStock.Size = new Size(75, 47);
             addStock.TabIndex = 3;
-            addStock.Text = "Agregar";
+            addStock.Text = "Modificar Stock";
             addStock.UseVisualStyleBackColor = true;
+            addStock.Click += btModify_Click;
             // 
             // deleteBtn
             // 
             deleteBtn.ForeColor = Color.Black;
-            deleteBtn.Location = new Point(525, 101);
+            deleteBtn.Location = new Point(525, 124);
             deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(75, 23);
+            deleteBtn.Size = new Size(75, 61);
             deleteBtn.TabIndex = 4;
-            deleteBtn.Text = "Eliminar";
+            deleteBtn.Text = "Eliminar De Bodega";
             deleteBtn.UseVisualStyleBackColor = true;
             deleteBtn.Click += deleteBtn_Click;
             // 
@@ -129,20 +128,11 @@
             panel1.Size = new Size(201, 229);
             panel1.TabIndex = 5;
             // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(538, 35);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.ReadOnly = true;
-            numericUpDown1.Size = new Size(62, 23);
-            numericUpDown1.TabIndex = 6;
-            // 
             // productBodega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(numericUpDown1);
             Controls.Add(deleteBtn);
             Controls.Add(addStock);
             Controls.Add(dataGridViewInv);
@@ -153,7 +143,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewInv).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
 
@@ -165,6 +154,5 @@
         private Button addStock;
         private Button deleteBtn;
         private Panel panel1;
-        private NumericUpDown numericUpDown1;
     }
 }

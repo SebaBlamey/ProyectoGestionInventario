@@ -114,6 +114,7 @@ namespace aadea.Vistas
             textBox1.Text = nombre;
             textBox2.Text = desc;
             cambiarBox.Image = imagen;
+            idlocal = id;
         }
 
 
@@ -142,7 +143,7 @@ namespace aadea.Vistas
                 string extension = Path.GetExtension(selectorImagen.FileName).ToLower();
                 if (extension == ".png" || extension == ".jpeg" || extension == ".jpg")
                 {
-                    examinarPic.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
+                    examinarPic.Image = Image.FromStream(selectorImagen.OpenFile());
                     rutaSeleccionada = selectorImagen.FileName;
                 }
                 else
@@ -268,21 +269,6 @@ namespace aadea.Vistas
             tabControl.TabPages.Add(productList);
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
             resetCampos(sender, e);
-        }
-        public byte[] ConvertirImagenABytes(Image imagen)
-        {
-            if (imagen != null)
-            {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    imagen.Save(ms, imagen.RawFormat);
-                    return ms.ToArray();
-                }
-            }
-            else
-            {
-                return null;
-            }
         }
     }
 }
