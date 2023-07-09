@@ -58,12 +58,20 @@ namespace aadea
         private void PIN_box_Click(object sender, EventArgs e)
         {
             PIN_box.SelectAll();
+            if (PIN_box.Text == "Ingrese PIN")
+            {
+                PIN_box.Text = "";
+            }
             PIN_box.UseSystemPasswordChar = true;
         }
 
         private void PIN_box_MouseClick(object sender, MouseEventArgs e)
         {
             PIN_box.SelectAll();
+            if (PIN_box.Text == "Ingrese PIN")
+            {
+                PIN_box.Text = "";
+            }
             PIN_box.ForeColor = Color.Black;
             VerContrasena.Checked = false;
         }
