@@ -20,7 +20,7 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT a.Trabajador AS Rut, t.Nombre, t.Apellido, a.Dia, a.Llegada, a.Salida, a.[Horas trabajadas] " +
+                string SQLQuery = "SELECT a.id, a.Trabajador AS Rut, t.Nombre, t.Apellido, a.Dia, a.Llegada, a.Salida, a.[Horas trabajadas] " +
                                   "FROM Asistencia a " +
                                   "JOIN Trabajador t ON a.Trabajador = t.Rut";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
@@ -40,6 +40,35 @@ namespace aadea.Logicaq
         }
 
 
+
+
+        public void DeleteAssistance(string id)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "DELETE FROM Asistencia WHERE Id = @id";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand comando = new SQLiteCommand(SQLQuery, SQLCon);
+                comando.Parameters.AddWithValue("@id", id);
+                answer = comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de eliminación, intente nuevamente";
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open)
+                    SQLCon.Close();
+            }
+        }
 
 
         public DataTable listTrabajadoresAsist()

@@ -27,8 +27,8 @@ namespace aadea.Vistas
 
             InitializeComponent();
             DGV_Asist.CellFormatting += DGV_Asist_CellFormatting;
-            Disguise(Delete);
             dateTimePickerFecha.CustomFormat = "dd/MM/yyyy";
+            TabPrincipal.TabPages.Remove(Add);
         }
 
         public void ListadoAsist()
@@ -57,18 +57,30 @@ namespace aadea.Vistas
         private void Formato_Asist()
         {
             DGV_Asist.Columns[0].Width = 100;
+            
 
         }
 
 
+        private void resetCamp(object sender, EventArgs e)
+        { 
+            CheckIn.Text = string.Empty;
+            CheckOut.Text = string.Empty;
+            FormAsist_Load(sender, e);
+        }
 
 
-
-
+        //Boton Guardar en Añadir
         private void AddSave_Click(object sender, EventArgs e)
         {
-            queryCall(sender, e);
 
+            TabPrincipal.SelectedTab = History;
+            TabPrincipal.TabPages.Add(History);
+            TabPrincipal.TabPages.Remove(Add);
+
+            
+            queryCall(sender, e);
+            resetCamp(sender, e);
         }
 
         private void queryCall(object sender, EventArgs e)
@@ -128,75 +140,7 @@ namespace aadea.Vistas
             Windows("History");
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Diseño();
-                Windows("Edit");
 
-                int rowIndex = DGV_Asist.SelectedCells[0].RowIndex;
-                DataGridViewRow row = DGV_Asist.Rows[rowIndex];
-
-
-                newArrival.Text = Convert.ToDateTime(row.Cells["Dia"].Value).ToString();
-                DateTime Llegada = Convert.ToDateTime(row.Cells["Llegada"].Value);
-                DateTime Salida = Convert.ToDateTime(row.Cells["Salida"].Value);
-                float HorasTrabajadas = Convert.ToSingle(row.Cells["Horas trabajadas"].Value);
-
-
-
-
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
-
-
-
-        }
-        private void Diseño()
-        {
-            int rowIndex = DGV_Asist.SelectedCells[0].RowIndex;
-            DataGridViewRow row = DGV_Asist.Rows[rowIndex];
-
-            // Obtener los valores de la fila seleccionada
-
-            string Rut = row.Cells["Rut"].Value.ToString();
-            string Nombre = row.Cells["Nombre"].Value.ToString();
-            string Apellido = row.Cells["Apellido"].Value.ToString();
-            DateTime Fecha = Convert.ToDateTime(row.Cells["Dia"].Value);
-            DateTime Llegada = Convert.ToDateTime(row.Cells["Llegada"].Value);
-            DateTime Salida = Convert.ToDateTime(row.Cells["Salida"].Value);
-            float HorasTrabajadas = Convert.ToSingle(row.Cells["Horas trabajadas"].Value);
-
-            rut.Text = "Rut: " + Rut;
-            nombre.Text = "Nombre: " + Nombre;
-            lastName.Text = "Apellido: " + Apellido;
-
-
-            string[] dateList = Fecha.ToString().Split(' ');
-            string dia = dateList[0];
-            date.Text = "Fecha: " + dia;
-
-            string[] arrivalList = Llegada.ToString().Split(" ");
-            string llegadaString = dateList[1];
-            llegadaString += " " + dateList[2];
-            llegadaString += dateList[3];
-            Arrival.Text = "Hora de llegada: " + llegadaString;
-
-
-            string[] leaveList = Salida.ToString().Split(" ");
-            string salidaString = leaveList[1];
-            salidaString += " " + leaveList[2];
-            salidaString += leaveList[3];
-            leave.Text = "Hora de salida: " + salidaString;
-        }
 
         private void Windows(string pestaña)
         {
@@ -231,12 +175,22 @@ namespace aadea.Vistas
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            TabPrincipal.SelectedTab = Add;
+            TabPrincipal.TabPages.Add(Add);
+            TabPrincipal.TabPages.Remove(History);
+            resetCamp(sender, e);
             Windows("Add");
         }
 
+        //Cancelar boton de agregar
         private void CancelBT_Click(object sender, EventArgs e)
         {
+            TabPrincipal.SelectedTab = History;
+            TabPrincipal.TabPages.Add(History);
+            TabPrincipal.TabPages.Remove(Add);
+            resetCamp(sender, e);
             Windows("History");
+
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -251,7 +205,45 @@ namespace aadea.Vistas
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Proximamente");
+            L_Asistencia l_Asistencia = new L_Asistencia();
+            // Verificar si hay una fila seleccionada
+            if (DGV_Asist.SelectedRows.Count > 0)
+            {
+                // Obtener la fila seleccionada
+                DataGridViewRow filaSeleccionada = DGV_Asist.SelectedRows[0];
+
+                // Obtener los valores de las celdas de la fila
+                string id = filaSeleccionada.Cells["id"].Value.ToString();
+
+
+                // Llamar al método de eliminación en tu otra clase, pasando los valores necesarios
+                l_Asistencia.DeleteAssistance(id);
+
+                // Actualizar el DataGridView si es necesario
+                // dgvDatos.DataSource = ...;
+                Windows("History");
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar una fila antes de eliminar.");
+            }
+
+
+
+
+
+
+
+            TabPrincipal.TabPages.Remove(Add);
+            resetCamp(sender, e);
+        }
+
+        private void Cancel_Delete_Btn_Click(object sender, EventArgs e)
+        {
+            TabPrincipal.SelectedTab = History;
+            TabPrincipal.TabPages.Add(History);
+            TabPrincipal.TabPages.Remove(Add);
+
         }
     }
 }

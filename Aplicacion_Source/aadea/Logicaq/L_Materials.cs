@@ -171,6 +171,7 @@ namespace aadea.Logicaq
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 answer = ex.Message;
             }
             finally
