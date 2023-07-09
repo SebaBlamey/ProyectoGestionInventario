@@ -1,4 +1,6 @@
-﻿namespace aadea.Vistas
+﻿using aadea.Properties;
+
+namespace aadea.Vistas
 {
     partial class FormProductos
     {
@@ -60,45 +62,52 @@
             // 
             // tabControl
             // 
+            tabControl.Appearance = TabAppearance.FlatButtons;
             tabControl.Controls.Add(productList);
             tabControl.Controls.Add(AddP);
             tabControl.Controls.Add(EditP);
             tabControl.Dock = DockStyle.Top;
-            tabControl.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            tabControl.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            tabControl.ImeMode = ImeMode.On;
             tabControl.Location = new Point(0, 0);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(691, 423);
+            tabControl.Size = new Size(691, 473);
             tabControl.TabIndex = 2;
             // 
             // productList
             // 
+            productList.BackColor = SystemColors.Control;
             productList.Controls.Add(AddProduct);
             productList.Controls.Add(flowLayoutPanel1);
-            productList.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            productList.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
             productList.ForeColor = Color.Black;
-            productList.Location = new Point(4, 28);
+            productList.Location = new Point(4, 32);
             productList.Name = "productList";
             productList.Padding = new Padding(3);
-            productList.Size = new Size(683, 391);
+            productList.Size = new Size(683, 437);
             productList.TabIndex = 0;
             productList.Text = "ListaProductos";
-            productList.UseVisualStyleBackColor = true;
             // 
             // AddProduct
             // 
             AddProduct.BackColor = Color.FromArgb(40, 167, 69);
-            AddProduct.FlatAppearance.BorderColor = Color.Lime;
-            AddProduct.FlatAppearance.BorderSize = 0;
-            AddProduct.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            AddProduct.ForeColor = Color.White;
+            AddProduct.Cursor = Cursors.Hand;
+            AddProduct.FlatAppearance.BorderColor = Color.FromArgb(0, 127, 29);
+            AddProduct.FlatAppearance.BorderSize = 2;
+            AddProduct.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 127, 29);
+            AddProduct.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 147, 49);
+            AddProduct.FlatStyle = FlatStyle.Flat;
+            AddProduct.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            AddProduct.ForeColor = SystemColors.Control;
             AddProduct.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
-            AddProduct.IconColor = Color.White;
+            AddProduct.IconColor = SystemColors.Control;
             AddProduct.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            AddProduct.IconSize = 30;
-            AddProduct.Location = new Point(265, 6);
+            AddProduct.IconSize = 28;
+            AddProduct.ImageAlign = ContentAlignment.TopCenter;
+            AddProduct.Location = new Point(564, 400);
             AddProduct.Name = "AddProduct";
-            AddProduct.Size = new Size(112, 40);
+            AddProduct.Size = new Size(106, 33);
             AddProduct.TabIndex = 10;
             AddProduct.Text = "Agregar";
             AddProduct.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -108,11 +117,12 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            flowLayoutPanel1.BackColor = SystemColors.Control;
+            flowLayoutPanel1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             flowLayoutPanel1.ForeColor = Color.Black;
-            flowLayoutPanel1.Location = new Point(17, 68);
+            flowLayoutPanel1.Location = new Point(12, 6);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(658, 317);
+            flowLayoutPanel1.Size = new Size(658, 388);
             flowLayoutPanel1.TabIndex = 9;
             // 
             // AddP
@@ -125,17 +135,17 @@
             AddP.Controls.Add(txtProduct);
             AddP.Controls.Add(lbdesc);
             AddP.Controls.Add(label1);
-            AddP.Location = new Point(4, 28);
+            AddP.Location = new Point(4, 32);
             AddP.Name = "AddP";
             AddP.Padding = new Padding(3);
-            AddP.Size = new Size(683, 391);
+            AddP.Size = new Size(683, 455);
             AddP.TabIndex = 1;
             AddP.Text = "AgregarProductos";
             AddP.UseVisualStyleBackColor = true;
             // 
             // btCancelAdd
             // 
-            btCancelAdd.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btCancelAdd.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btCancelAdd.ForeColor = Color.Black;
             btCancelAdd.Location = new Point(184, 276);
             btCancelAdd.Name = "btCancelAdd";
@@ -147,7 +157,7 @@
             // 
             // btSaveAdd
             // 
-            btSaveAdd.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btSaveAdd.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btSaveAdd.ForeColor = Color.Black;
             btSaveAdd.Location = new Point(43, 276);
             btSaveAdd.Name = "btSaveAdd";
@@ -159,7 +169,7 @@
             // 
             // btExaminar
             // 
-            btExaminar.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btExaminar.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btExaminar.ForeColor = Color.Black;
             btExaminar.Location = new Point(405, 201);
             btExaminar.Name = "btExaminar";
@@ -174,12 +184,13 @@
             examinarPic.Location = new Point(364, 37);
             examinarPic.Name = "examinarPic";
             examinarPic.Size = new Size(153, 158);
-            examinarPic.SizeMode = PictureBoxSizeMode.Zoom;
+            examinarPic.SizeMode = PictureBoxSizeMode.StretchImage;
             examinarPic.TabIndex = 4;
             examinarPic.TabStop = false;
             // 
             // txtDesc
             // 
+            txtDesc.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtDesc.ForeColor = Color.Black;
             txtDesc.Location = new Point(43, 179);
             txtDesc.Multiline = true;
@@ -189,31 +200,32 @@
             // 
             // txtProduct
             // 
+            txtProduct.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtProduct.ForeColor = Color.Black;
             txtProduct.Location = new Point(43, 74);
             txtProduct.Name = "txtProduct";
-            txtProduct.Size = new Size(206, 27);
+            txtProduct.Size = new Size(206, 26);
             txtProduct.TabIndex = 2;
             // 
             // lbdesc
             // 
             lbdesc.AutoSize = true;
-            lbdesc.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbdesc.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbdesc.ForeColor = Color.Black;
             lbdesc.Location = new Point(40, 136);
             lbdesc.Name = "lbdesc";
-            lbdesc.Size = new Size(116, 22);
+            lbdesc.Size = new Size(110, 24);
             lbdesc.TabIndex = 1;
             lbdesc.Text = "Descripcion";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(40, 37);
             label1.Name = "label1";
-            label1.Size = new Size(176, 22);
+            label1.Size = new Size(159, 24);
             label1.TabIndex = 0;
             label1.Text = "Nombre producto";
             // 
@@ -227,17 +239,17 @@
             EditP.Controls.Add(label3);
             EditP.Controls.Add(textBox1);
             EditP.Controls.Add(label2);
-            EditP.Location = new Point(4, 28);
+            EditP.Location = new Point(4, 32);
             EditP.Name = "EditP";
             EditP.Padding = new Padding(3);
-            EditP.Size = new Size(683, 391);
+            EditP.Size = new Size(683, 455);
             EditP.TabIndex = 2;
             EditP.Text = "EditP";
             EditP.UseVisualStyleBackColor = true;
             // 
             // btCancelEdit
             // 
-            btCancelEdit.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btCancelEdit.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btCancelEdit.ForeColor = Color.Black;
             btCancelEdit.Location = new Point(183, 297);
             btCancelEdit.Name = "btCancelEdit";
@@ -249,7 +261,7 @@
             // 
             // btSaveEdit
             // 
-            btSaveEdit.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btSaveEdit.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btSaveEdit.ForeColor = Color.Black;
             btSaveEdit.Location = new Point(40, 297);
             btSaveEdit.Name = "btSaveEdit";
@@ -261,7 +273,7 @@
             // 
             // btexam
             // 
-            btexam.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btexam.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btexam.ForeColor = Color.Black;
             btexam.Location = new Point(387, 207);
             btexam.Name = "btexam";
@@ -276,11 +288,13 @@
             cambiarBox.Location = new Point(353, 47);
             cambiarBox.Name = "cambiarBox";
             cambiarBox.Size = new Size(160, 154);
+            cambiarBox.SizeMode = PictureBoxSizeMode.StretchImage;
             cambiarBox.TabIndex = 4;
             cambiarBox.TabStop = false;
             // 
             // textBox2
             // 
+            textBox2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBox2.ForeColor = Color.Black;
             textBox2.Location = new Point(40, 174);
             textBox2.Multiline = true;
@@ -291,30 +305,31 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Black;
             label3.Location = new Point(40, 141);
             label3.Name = "label3";
-            label3.Size = new Size(172, 22);
+            label3.Size = new Size(161, 24);
             label3.TabIndex = 2;
             label3.Text = "Editar descripcion";
             // 
             // textBox1
             // 
+            textBox1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.ForeColor = Color.Black;
             textBox1.Location = new Point(40, 87);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(218, 27);
+            textBox1.Size = new Size(218, 26);
             textBox1.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Black;
             label2.Location = new Point(40, 47);
             label2.Name = "label2";
-            label2.Size = new Size(139, 22);
+            label2.Size = new Size(129, 24);
             label2.TabIndex = 0;
             label2.Text = "Editar nombre";
             // 
@@ -322,7 +337,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(691, 421);
+            BackColor = Color.White;
+            ClientSize = new Size(691, 486);
             Controls.Add(tabControl);
             Name = "FormProductos";
             Text = "FormProductis";

@@ -30,7 +30,6 @@ namespace aadea.Vistas
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             iconButtonSalir = new FontAwesome.Sharp.IconButton();
             iconButtonAsistencia = new FontAwesome.Sharp.IconButton();
             iconButtonTrabajadores = new FontAwesome.Sharp.IconButton();
@@ -43,10 +42,13 @@ namespace aadea.Vistas
             panel2 = new Panel();
             menuTitleLaberl = new Label();
             panelDesk = new Panel();
+            logoGrande = new PictureBox();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
+            panelDesk.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)logoGrande).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -148,7 +150,7 @@ namespace aadea.Vistas
             iconButtonProductos.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
             iconButtonProductos.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
             iconButtonProductos.FlatStyle = FlatStyle.Flat;
-            iconButtonProductos.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonProductos.Font = new Font("Myanmar Text", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonProductos.ForeColor = Color.FromArgb(144, 147, 166);
             iconButtonProductos.IconChar = FontAwesome.Sharp.IconChar.BowlFood;
             iconButtonProductos.IconColor = Color.FromArgb(144, 147, 166);
@@ -263,10 +265,11 @@ namespace aadea.Vistas
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
+            pictureBox2.Visible = false;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.White;
+            panel2.BackColor = SystemColors.Control;
             panel2.Controls.Add(menuTitleLaberl);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(218, 0);
@@ -282,20 +285,33 @@ namespace aadea.Vistas
             // 
             menuTitleLaberl.Font = new Font("Tahoma", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
             menuTitleLaberl.ImageAlign = ContentAlignment.TopLeft;
-            menuTitleLaberl.Location = new Point(0, 9);
+            menuTitleLaberl.Location = new Point(0, 0);
             menuTitleLaberl.Name = "menuTitleLaberl";
-            menuTitleLaberl.Size = new Size(707, 42);
+            menuTitleLaberl.Size = new Size(707, 62);
             menuTitleLaberl.TabIndex = 0;
-            menuTitleLaberl.Text = "aaaaaaaaaaaaaaaaaaa";
+            menuTitleLaberl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelDesk
             // 
-            panelDesk.BackColor = Color.White;
+            panelDesk.BackColor = SystemColors.Control;
+            panelDesk.Controls.Add(logoGrande);
             panelDesk.Dock = DockStyle.Fill;
             panelDesk.Location = new Point(218, 62);
             panelDesk.Name = "panelDesk";
             panelDesk.Size = new Size(707, 460);
             panelDesk.TabIndex = 2;
+            // 
+            // logoGrande
+            // 
+            logoGrande.BackColor = Color.Transparent;
+            logoGrande.Image = Properties.Resource.logo3;
+            logoGrande.Location = new Point(0, -62);
+            logoGrande.Margin = new Padding(3, 2, 3, 2);
+            logoGrande.Name = "logoGrande";
+            logoGrande.Size = new Size(707, 522);
+            logoGrande.SizeMode = PictureBoxSizeMode.Zoom;
+            logoGrande.TabIndex = 18;
+            logoGrande.TabStop = false;
             // 
             // Principal
             // 
@@ -311,13 +327,14 @@ namespace aadea.Vistas
             Margin = new Padding(3, 2, 3, 2);
             Name = "Principal";
             StartPosition = FormStartPosition.CenterScreen;
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Text = "Principal";
             Load += Principal_Load;
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
+            panelDesk.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)logoGrande).EndInit();
             ResumeLayout(false);
         }
 
@@ -333,8 +350,9 @@ namespace aadea.Vistas
         private FontAwesome.Sharp.IconButton iconButtonProductos;
         private FontAwesome.Sharp.IconButton iconButtonSalir;
         private PictureBox pictureBox2;
-        private Label menuTitleLaberl;
         private Panel panelDesk;
         private FontAwesome.Sharp.IconButton iconButtonBodega;
+        public static Label menuTitleLaberl;
+        private PictureBox logoGrande;
     }
 }

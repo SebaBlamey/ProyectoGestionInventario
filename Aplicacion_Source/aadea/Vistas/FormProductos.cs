@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
-using System.Windows.Controls;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Data;
 using aadea.Logicaq;
+using aadea.Properties;
 using aadea.userControls;
 using Image = System.Drawing.Image;
-using FontAwesome.Sharp;
 
 namespace aadea.Vistas
 {
@@ -22,7 +10,7 @@ namespace aadea.Vistas
     public partial class FormProductos : Form
     {
         private string rutaSeleccionada;
-        private System.Windows.Forms.UserControl selectedUserControl;
+        private UserControl selectedUserControl;
         private int idlocal;
         public FormProductos()
         {
@@ -50,20 +38,25 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(productList);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(AddP);
+            Principal.menuTitleLaberl.Text = "AGREGAR PRODUCTOS";
             resetCampos(sender, e);
         }
+
         private void FormProductos_Load(object sender, EventArgs e)
         {
+            tabControl.ItemSize = new Size(0, 1);
+            tabControl.SizeMode = TabSizeMode.Fixed;
+            tabControl.Multiline = true;
             flowLayoutPanel1.Controls.Clear();
-            L_Products l_products = new L_Products();
-            DataTable dataTable = l_products.listProducts();
+            var l_products = new L_Products();
+            var dataTable = l_products.listProducts();
             foreach (DataRow row in dataTable.Rows)
             {
-                UserProduct userControl = new UserProduct();
-                int id = Convert.ToInt32(row["ID"]);
-                string nombre = row["nombre"].ToString();
-                string desc = row["descripcion"].ToString();
-                byte[] imagen = l_products.ObtenerImagenProducto(id);
+                var userControl = new UserProduct();
+                var id = Convert.ToInt32(row["ID"]);
+                var nombre = row["nombre"].ToString();
+                var desc = row["descripcion"].ToString();
+                var imagen = l_products.ObtenerImagenProducto(id);
                 userControl.Tittle = nombre;
                 userControl.Desc = desc;
                 userControl.ID = Convert.ToInt32(row["ID"]);
@@ -71,7 +64,7 @@ namespace aadea.Vistas
                 userControl.btDeleteProducto += (s, args) =>
                 {
                     UserControl_DeleteButtonClicked(userControl);
-                    idlocal=userControl.ID;
+                    idlocal = userControl.ID;
                 };
                 userControl.btModifyProducto += (s, args) =>
                 {
@@ -81,25 +74,31 @@ namespace aadea.Vistas
 
                 if (imagen != null && imagen.Length > 0)
                 {
-
-                    using (MemoryStream ms = new MemoryStream(imagen))
-                    {
-                        System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-                        userControl.PictureBox1 = img;
-                    }
+                    using var ms = new MemoryStream(imagen);
+                    var img = Image.FromStream(ms);
+                    userControl.PictureBox1 = img;
                 }
                 else
                 {
-                    userControl.PictureBox1 = Properties.Resource.defaultImage;
+                    userControl.PictureBox1 = Resource.defaultImage;
                 }
+
                 flowLayoutPanel1.Controls.Add(userControl);
+
+                if (row == dataTable.Rows[^1]) continue;
+                var separatorPanel = new Panel();
+                separatorPanel.AutoSize = false;
+                separatorPanel.Height = 2;
+                separatorPanel.BackColor = Color.Black;
+                separatorPanel.Width = 618;
+                separatorPanel.Dock = DockStyle.Bottom;
+                separatorPanel.BringToFront();
+                flowLayoutPanel1.Controls.Add(separatorPanel);
             }
         }
-        
-
         private void UserControl_ButtonModify(UserProduct user)
         {
-
+            Principal.menuTitleLaberl.Text = "MODIFICAR PRODUCTOS";
             string nombre = user.Tittle;
             string desc = user.Desc;
             int id = user.ID;
@@ -120,10 +119,15 @@ namespace aadea.Vistas
 
         private void UserControl_DeleteButtonClicked(UserProduct user)
         {
-            int id = Convert.ToInt32(user.ID);
-            L_Products l_Products = new L_Products();
-            flowLayoutPanel1.Controls.Remove(user);
-            l_Products.DeleteProduct(id);
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?", "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(user.ID);
+                L_Products l_Products = new L_Products();
+                flowLayoutPanel1.Controls.Remove(user);
+                l_Products.DeleteProduct(id);
+            }
         }
 
 
@@ -131,23 +135,58 @@ namespace aadea.Vistas
         {
             OpenFileDialog selectorImagen = new OpenFileDialog();
             selectorImagen.Title = "Seleccionar imagen";
+            selectorImagen.Filter = "Archivos de imagen|*.png;*.jpeg;*.jpg";
 
             if (selectorImagen.ShowDialog() == DialogResult.OK)
             {
-                examinarPic.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
-                rutaSeleccionada = selectorImagen.FileName;
+                string extension = Path.GetExtension(selectorImagen.FileName).ToLower();
+                if (extension == ".png" || extension == ".jpeg" || extension == ".jpg")
+                {
+                    examinarPic.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
+                    rutaSeleccionada = selectorImagen.FileName;
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
+        private void btexam_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selectorImagen = new OpenFileDialog();
+            selectorImagen.Title = "Seleccionar imagen";
+            selectorImagen.Filter = "Archivos de imagen|*.png;*.jpeg;*.jpg";
+
+            if (selectorImagen.ShowDialog() == DialogResult.OK)
+            {
+                string extension = Path.GetExtension(selectorImagen.FileName).ToLower();
+                if (extension == ".png" || extension == ".jpeg" || extension == ".jpg")
+                {
+                    cambiarBox.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
+                    rutaSeleccionada = selectorImagen.FileName;
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         //Boton guardar
         private void button1_Click(object sender, EventArgs e)
         {
-            string nombre;
-            string desc;
+            string nombre = txtProduct.Text;
+            string desc = txtDesc.Text;
+
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(desc))
+            {
+                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             L_Products ins = new L_Products();
-            nombre = txtProduct.Text;
-            desc = txtDesc.Text;
+
             if (!string.IsNullOrEmpty(rutaSeleccionada))
             {
                 byte[] bytesImagen = File.ReadAllBytes(rutaSeleccionada);
@@ -157,13 +196,12 @@ namespace aadea.Vistas
             {
                 ins.InsertProduct(nombre, desc);
             }
+
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
-            resetCampos(sender,e);
-            
-
+            Principal.menuTitleLaberl.Text = "PRODUCTOS";
         }
 
         private void btCancelAdd_Click(object sender, EventArgs e)
@@ -172,6 +210,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
+            Principal.menuTitleLaberl.Text = "PRODUCTOS";
             resetCampos(sender, e);
         }
 
@@ -181,6 +220,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
+            Principal.menuTitleLaberl.Text = "PRODUCTOS";
             resetCampos(sender, e);
         }
 
@@ -201,46 +241,33 @@ namespace aadea.Vistas
 
         private void btSaveEdit_Click(object sender, EventArgs e)
         {
-            
-            string nombre;
-            string desc;
-            
+            string nombre = textBox1.Text;
+            string desc = textBox2.Text;
+
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(desc))
+            {
+                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             L_Products ins = new L_Products();
 
             if (!string.IsNullOrEmpty(rutaSeleccionada))
             {
-
                 byte[] bytesImagen = File.ReadAllBytes(rutaSeleccionada);
-                nombre = textBox1.Text;
-                desc = textBox2.Text;
-                
-                ins.updateWI(idlocal,nombre, desc, bytesImagen);
+                ins.updateWI(idlocal, nombre, desc, bytesImagen);
             }
             else
             {
-                // No se ha seleccionado ninguna ruta, realiza acciones adicionales o muestra un mensaje de error
-                nombre = textBox1.Text;
-                desc = textBox2.Text;
-
                 ins.update(idlocal, nombre, desc);
             }
+
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
+            Principal.menuTitleLaberl.Text = "PRODUCTOS";
             resetCampos(sender, e);
-        }
-
-        private void btexam_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.OpenFileDialog selectorImagen = new System.Windows.Forms.OpenFileDialog();
-            selectorImagen.Title = "Seleccionar imagen";
-
-            if (selectorImagen.ShowDialog() == DialogResult.OK)
-            {
-                cambiarBox.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
-                rutaSeleccionada = selectorImagen.FileName;
-            }
         }
         public byte[] ConvertirImagenABytes(Image imagen)
         {

@@ -124,6 +124,7 @@ namespace aadea.Vistas
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
+            childForm.AutoSize = false;
             panelDesk.Controls.Add(childForm);
             panelDesk.Tag = childForm;
             childForm.BringToFront();
@@ -140,10 +141,17 @@ namespace aadea.Vistas
             Application.Exit();
         }
         private IconButton? actualButton;
+        private bool AlreadyHidde = false;
         private void SetActualButton(object sender, string text)
         {
             if (sender != null)
             {
+                if (AlreadyHidde == false)
+                {
+                    AlreadyHidde = true;
+                    logoGrande.Visible = false;
+                    pictureBox2.Visible = true;
+                }
                 UnsetActualButton();
                 actualButton = (IconButton?)sender;
                 menuTitleLaberl.Text = text;
@@ -253,5 +261,6 @@ namespace aadea.Vistas
         {
 
         }
+
     }
 }
