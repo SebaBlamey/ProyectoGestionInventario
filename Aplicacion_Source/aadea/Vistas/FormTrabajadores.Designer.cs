@@ -79,6 +79,7 @@
             DGV_T.GridColor = Color.DarkBlue;
             DGV_T.Location = new Point(6, 6);
             DGV_T.Name = "DGV_T";
+            DGV_T.ReadOnly = true;
             DGV_T.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             DGV_T.RowHeadersVisible = false;
             DGV_T.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;

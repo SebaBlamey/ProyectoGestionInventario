@@ -21,6 +21,8 @@ namespace aadea.userControls
         public event EventHandler buttonDeleteClick;
 
         #region Properties
+
+        public int ID { get; set; }
         public string Tittle
         {
             get { return nameProduct.Text; }
@@ -44,7 +46,10 @@ namespace aadea.userControls
             buttonModifyClick?.Invoke(this, EventArgs.Empty);
         }
 
-        private void btDelete_Click(object sender, EventArgs e)
+
+
+
+        private void deleteBtn_Click(object sender, EventArgs e)
         {
             buttonDeleteClick?.Invoke(this, EventArgs.Empty);
         }

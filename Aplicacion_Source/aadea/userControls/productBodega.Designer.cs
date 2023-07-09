@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             nameProduct = new Label();
             dataGridViewInv = new DataGridView();
             addStock = new Button();
-            deleteStock = new Button();
+            deleteBtn = new Button();
             panel1 = new Panel();
+            numericUpDown1 = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInv).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -59,14 +63,40 @@
             // 
             // dataGridViewInv
             // 
+            dataGridViewInv.AllowUserToAddRows = false;
+            dataGridViewInv.AllowUserToResizeColumns = false;
+            dataGridViewInv.AllowUserToResizeRows = false;
+            dataGridViewInv.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewInv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewInv.BackgroundColor = Color.White;
             dataGridViewInv.BorderStyle = BorderStyle.None;
-            dataGridViewInv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewInv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewInv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewInv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewInv.EnableHeadersVisualStyles = false;
+            dataGridViewInv.GridColor = Color.DarkBlue;
             dataGridViewInv.Location = new Point(199, 22);
             dataGridViewInv.Name = "dataGridViewInv";
+            dataGridViewInv.ReadOnly = true;
+            dataGridViewInv.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewInv.RowHeadersVisible = false;
+            dataGridViewInv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
+            dataGridViewInv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewInv.RowTemplate.Height = 25;
-            dataGridViewInv.Size = new Size(320, 191);
-            dataGridViewInv.TabIndex = 2;
+            dataGridViewInv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewInv.Size = new Size(281, 191);
+            dataGridViewInv.TabIndex = 0;
             // 
             // addStock
             // 
@@ -78,15 +108,16 @@
             addStock.Text = "Agregar";
             addStock.UseVisualStyleBackColor = true;
             // 
-            // deleteStock
+            // deleteBtn
             // 
-            deleteStock.ForeColor = Color.Black;
-            deleteStock.Location = new Point(525, 101);
-            deleteStock.Name = "deleteStock";
-            deleteStock.Size = new Size(75, 23);
-            deleteStock.TabIndex = 4;
-            deleteStock.Text = "Eliminar";
-            deleteStock.UseVisualStyleBackColor = true;
+            deleteBtn.ForeColor = Color.Black;
+            deleteBtn.Location = new Point(525, 101);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(75, 23);
+            deleteBtn.TabIndex = 4;
+            deleteBtn.Text = "Eliminar";
+            deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // panel1
             // 
@@ -98,12 +129,21 @@
             panel1.Size = new Size(201, 229);
             panel1.TabIndex = 5;
             // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(538, 35);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.ReadOnly = true;
+            numericUpDown1.Size = new Size(62, 23);
+            numericUpDown1.TabIndex = 6;
+            // 
             // productBodega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(deleteStock);
+            Controls.Add(numericUpDown1);
+            Controls.Add(deleteBtn);
             Controls.Add(addStock);
             Controls.Add(dataGridViewInv);
             Controls.Add(panel1);
@@ -113,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewInv).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
 
@@ -122,7 +163,8 @@
         private Label nameProduct;
         private DataGridView dataGridViewInv;
         private Button addStock;
-        private Button deleteStock;
+        private Button deleteBtn;
         private Panel panel1;
+        private NumericUpDown numericUpDown1;
     }
 }
