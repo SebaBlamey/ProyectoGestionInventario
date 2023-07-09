@@ -63,13 +63,25 @@ namespace aadea.userControls
 
         private void btModify_Click(object sender, EventArgs e)
         {
-            buttonModifyClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void btDelete_Click(object sender, EventArgs e)
         {
+        }
+
+        private void modify_iconButton_Click(object sender, EventArgs e)
+        {
+            buttonModifyClick?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void delete_iconButton_Click(object sender, EventArgs e)
+        {
             buttonDeleteClick?.Invoke(this, EventArgs.Empty);
         }
 
+        private void lblCantidada_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
