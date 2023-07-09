@@ -72,7 +72,7 @@ namespace aadea.Vistas
             tabControl.Location = new Point(0, 0);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(691, 473);
+            tabControl.Size = new Size(691, 474);
             tabControl.TabIndex = 2;
             // 
             // productList
@@ -85,7 +85,7 @@ namespace aadea.Vistas
             productList.Location = new Point(4, 32);
             productList.Name = "productList";
             productList.Padding = new Padding(3);
-            productList.Size = new Size(683, 437);
+            productList.Size = new Size(683, 438);
             productList.TabIndex = 0;
             productList.Text = "ListaProductos";
             // 
@@ -138,7 +138,7 @@ namespace aadea.Vistas
             AddP.Location = new Point(4, 32);
             AddP.Name = "AddP";
             AddP.Padding = new Padding(3);
-            AddP.Size = new Size(683, 455);
+            AddP.Size = new Size(683, 437);
             AddP.TabIndex = 1;
             AddP.Text = "AgregarProductos";
             AddP.UseVisualStyleBackColor = true;
@@ -242,7 +242,7 @@ namespace aadea.Vistas
             EditP.Location = new Point(4, 32);
             EditP.Name = "EditP";
             EditP.Padding = new Padding(3);
-            EditP.Size = new Size(683, 455);
+            EditP.Size = new Size(683, 437);
             EditP.TabIndex = 2;
             EditP.Text = "EditP";
             EditP.UseVisualStyleBackColor = true;
