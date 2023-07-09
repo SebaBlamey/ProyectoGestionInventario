@@ -272,6 +272,10 @@ namespace aadea.Vistas
             boxMedidaActual.Text = string.Empty;
             opcionBox.Text = string.Empty;
             rutaSeleccionada = null;
+            rutaModify = null;
+            picImagenModify = null;
+            iconPictureBox1 = null;
+
             FormMaterials_Load(sender, e);
         }
 
