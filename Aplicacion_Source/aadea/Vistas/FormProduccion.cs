@@ -9,7 +9,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media.Media3D;
 
@@ -17,17 +16,45 @@ namespace aadea.Vistas
 {
     public partial class FormProduccion : Form
     {
+        private List<List<string>> opcionesMateriales;
+        private List<string> materiales;
+        private List<ComboBox> comboBoxesMateriales;
+        private List<TextBox> textBoxesCantidad;
+        private int idLocal;
+
         public FormProduccion()
         {
             InitializeComponent();
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            DGVAddProduccion.Columns.Add("Material", "Material");
-            DGVAddProduccion.Columns.Add("Cantidad", "Cantidad");
+
+            comboBoxesMateriales = new List<ComboBox>();
+            textBoxesCantidad = new List<TextBox>();
+
+            L_Produccion l_list_mats = new L_Produccion();
+            materiales = l_list_mats.ObtenerMateriales();
+            opcionesMateriales = new List<List<string>>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                List<string> opciones = new List<string>(materiales); // Clona la lista original
+                opcionesMateriales.Add(opciones);
+            }
+
+        }
+        private void resertcampos(object sender, EventArgs e)
+        {
+            textBoxCantidad.Text = string.Empty;
         }
 
-        //HISTORIAL
+
+
+
+        //---------------------------------
+        // HISTORIAL DE PRODUCCION
+        //---------------------------------
+        //Boton ver historial de producción.
         private void bt1_Click(object sender, EventArgs e)
         {
             tabControlProduccion.SelectedTab = tabHistory;
@@ -57,28 +84,7 @@ namespace aadea.Vistas
                 userControl.DataGridViewProductos.DataSource = tableProduct;
             }
         }
-
-        private void btViewProduccion_Click(object sender, EventArgs e)
-        {
-            tabControlProduccion.SelectedTab = tabProduccionActual;
-            tabControlProduccion.TabPages.Remove(viewButtons);
-            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Add(tabProduccionActual);
-            FormLoadProduccionActual(sender, e);
-        }
-
-
-
-        private void btIngresarProduccion_Click(object sender, EventArgs e)
-        {
-            tabControlProduccion.SelectedTab = tabIngresarProduccion;
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Remove(viewButtons);
-            tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            tabControlProduccion.TabPages.Add(tabIngresarProduccion);
-        }
-
+        //salir de histotial de produccion.
         private void bttExitHistory_Click(object sender, EventArgs e)
         {
             tabControlProduccion.SelectedTab = viewButtons;
@@ -89,18 +95,82 @@ namespace aadea.Vistas
         }
 
 
+
+
+
+        //------------------------------------------------------
         //PRODUCCION ACTUAL
+        //------------------------------------------------------
+        //boton ver produccion actual
+        private void btViewProduccion_Click(object sender, EventArgs e)
+        {
+            tabControlProduccion.SelectedTab = tabProduccionActual;
+            tabControlProduccion.TabPages.Remove(viewButtons);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Add(tabProduccionActual);
+            FormLoadProduccionActual(sender, e);
+        }
+        //CARGAR PRODUCCION ACTUAL
         private void FormLoadProduccionActual(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            layoutPanelActualProduccion.Controls.Clear();
+            L_Produccion l_produccion = new L_Produccion();
+            DataTable dataTable = l_produccion.listarProduccionActual();
+
+            foreach (DataRow row in dataTable.Rows)
             {
                 produccionActual user = new produccionActual();
-                int producc = i;
-                user.Tittle = "Producción numero: " + i + 1;
-                flowLayoutPanel1.Controls.Add(user);
 
+                int id = Convert.ToInt32(row["ID"]);
+                string name = row["nombre"].ToString();
+                string fecha_inicio = row["fecha_inicio"].ToString();
+
+                user.Tittle = name;
+                user.fechaInicio = fecha_inicio;
+                user.ID = id;
+                user.ProduccionActualDelete += User_DeleteButtonClicked;
+                user.ProduccionActualEnd += User_ButtonEnd;
+                layoutPanelActualProduccion.Controls.Add(user);
+
+                DataTable dataTable2 = l_produccion.getMaterialProduccion(id);
+                user.DataGridViewMateriales.Rows.Clear();
+                user.DataGridViewMateriales.Columns.Add("Nombre", "Nombre");
+                user.DataGridViewMateriales.Columns.Add("Cantidad", "Cantidad");
+                foreach (DataRow rows in dataTable2.Rows)
+                {
+                    int idMaterial = Convert.ToInt32(rows["id_material"]);
+                    int cantidad = Convert.ToInt32(rows["cantidad"]);
+                    string nombreMaterial = l_produccion.getNameMaterial(idMaterial);
+
+                    user.DataGridViewMateriales.Rows.Add(nombreMaterial, cantidad);
+                }
             }
+        }
 
+
+        private void User_ButtonEnd(object sender, EventArgs e)
+        {
+            produccionActual user = (produccionActual)sender;
+            int idProduccion = user.ID;
+            L_Produccion l = new L_Produccion();
+            string termino = user.fechaterm;
+            string inicio = user.fechaInicio;
+            l.TerminarProduccion(idProduccion,termino,inicio);
+
+            // Eliminar el user control del panel
+            layoutPanelActualProduccion.Controls.Remove(user);
+        }
+
+        private void User_DeleteButtonClicked(object sender, EventArgs e)
+        {
+            produccionActual user = (produccionActual)sender;
+            int id = user.ID;
+            L_Produccion l = new L_Produccion();
+            l.EliminarProduccion(id);
+
+            // Eliminar el user control del panel
+            layoutPanelActualProduccion.Controls.Remove(user);
         }
 
         private void btExitProduccionActual_Click(object sender, EventArgs e)
@@ -112,65 +182,144 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Add(viewButtons);
         }
 
+
+
+
+
+        //------------------------------------------------------
         //INGRESAR PRODUCCION
-
-        /*
-        private void addProduccion(object sender, EventArgs e)
+        //------------------------------------------------------
+        //boton ingresar produccion
+        private void btIngresarProduccion_Click(object sender, EventArgs e)
         {
-            L_Produccion l_list = new L_Produccion();
-            // Obtener los materiales disponibles desde la base de datos
-            DataTable materialesTable = l_list.ObtenerMateriales();
+            tabControlProduccion.SelectedTab = tabIngresarProduccion;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(viewButtons);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Add(tabIngresarProduccion);
+            this.Load += FormIngresarProduccion_Load;
+            resertcampos(sender, e);
+        }
 
-            // Llenar el DataGridView con los datos de los materiales
-            DGVAddProduccion.Rows.Clear(); // Limpiar las filas existentes
-
-            foreach (DataRow row in materialesTable.Rows)
+        //cancelar producción
+        private void btCancelAddproduccion_Click(object sender, EventArgs e)
+        {
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Add(viewButtons);
+            resertcampos(sender, e);
+        }
+        //rellenar ingresar produccion
+        private void FormIngresarProduccion_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < materiales.Count; i++)
             {
-                int materialID = Convert.ToInt32(row["ID"]);
-                string nombre = row["Nombre"].ToString();
+                Label labelProducto = new Label();
+                labelProducto.Text = "Producto:";
+                labelProducto.AutoSize = true;
 
-                // Agregar una nueva fila al DataGridView
-                int rowIndex = DGVAddProduccion.Rows.Add();
+                ComboBox comboBoxMaterial = new ComboBox();
+                comboBoxMaterial.DisplayMember = "nombre";
+                comboBoxMaterial.DataSource = opcionesMateriales[i];
+                comboBoxMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                // Establecer los valores de las celdas en la nueva fila
-                DGVAddProduccion.Rows[rowIndex].Cells["Material"].Value = materialID;
-                DGVAddProduccion.Rows[rowIndex].Cells["Cantidad"].Value = 0; // Valor inicial de la cantidad, puedes cambiarlo según tus necesidades
+                Label labelCantidad = new Label();
+                labelCantidad.Text = "Ingrese la cantidad:";
+                labelCantidad.AutoSize = true;
+
+                TextBox textBoxCantidad = new TextBox();
+
+                comboBoxesMateriales.Add(comboBoxMaterial);
+                textBoxesCantidad.Add(textBoxCantidad);
+
+                flowLayoutPanelBox.Controls.Add(labelProducto);
+                flowLayoutPanelBox.Controls.Add(comboBoxMaterial);
+                flowLayoutPanelBox.Controls.Add(labelCantidad);
+                flowLayoutPanelBox.Controls.Add(textBoxCantidad);
             }
-
-        }*/
+        }
+        //campo de cantidad de materiales
         private void textBoxCantidad_TextChanged(object sender, EventArgs e)
         {
-            /*
-            DGVAddProduccion.Rows.Clear();
-            int cantidad = 0;
-            if (int.TryParse(textBoxCantidad.Text, out cantidad))
+            int cantidadMateriales = 0;
+
+            if (int.TryParse(textBoxCantidad.Text, out cantidadMateriales))
             {
-                for (int i = 1; i <= cantidad; i++)
+                flowLayoutPanelBox.Controls.Clear();
+
+                for (int i = 0; i < cantidadMateriales; i++)
                 {
-                    DataGridViewComboBoxCell comboCell = new DataGridViewComboBoxCell();
-                    comboCell.Items.Add("Material 1");
-                    comboCell.Items.Add("Material 2");
-                    // Agrega más elementos según los materiales disponibles
-                    DGVAddProduccion.Rows.Add(comboCell, "");
+                    Label labelProducto = new Label();
+                    labelProducto.Text = "Producto:";
+                    labelProducto.AutoSize = true;
+                    labelProducto.ForeColor = Color.Black;
+
+                    ComboBox comboBoxMaterial = new ComboBox();
+                    comboBoxMaterial.DisplayMember = "nombre";
+                    comboBoxMaterial.DataSource = opcionesMateriales[i];
+                    comboBoxMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    Label labelCantidad = new Label();
+                    labelCantidad.Text = "Ingrese la cantidad:";
+                    labelCantidad.AutoSize = true;
+                    labelCantidad.ForeColor = Color.Black;
+
+                    TextBox textBoxCantidad = new TextBox();
+                    comboBoxesMateriales.Add(comboBoxMaterial);
+                    textBoxesCantidad.Add(textBoxCantidad);
+
+                    flowLayoutPanelBox.Controls.Add(labelProducto);
+                    flowLayoutPanelBox.Controls.Add(comboBoxMaterial);
+                    flowLayoutPanelBox.Controls.Add(labelCantidad);
+                    flowLayoutPanelBox.Controls.Add(textBoxCantidad);
                 }
-            }*/
-
-            DGVAddProduccion.Rows.Clear();
-            DGVAddProduccion.Columns.Clear();
-            DGVAddProduccion.Columns.Add("Material", "Material");
-            DGVAddProduccion.Columns.Add("Cantidad", "Cantidad");
-            L_Produccion l_list= new L_Produccion();
-            DataTable dt = l_list.ObtenerMateriales();
-            // Agregar las filas al DataGridView
-            foreach (DataRow row in dt.Rows)
-            {
-                string nombreMaterial = row["Nombre"].ToString();
-
-                DataGridViewComboBoxCell comboCell = new DataGridViewComboBoxCell();
-                comboCell.Items.Add(nombreMaterial);
-
-                DGVAddProduccion.Rows.Add(comboCell, "");
             }
+            else
+            {
+                flowLayoutPanelBox.Controls.Clear();
+            }
+        }
+        //boton aceptar de ingresar produccion
+        private void btAceptar_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            int idProduccion = random.Next();
+
+            string nombreProduccion = txtName.Text;
+            string fechaInicio = dateAddProduccion.Value.ToString("dd-MM-yyyy");
+
+            L_Produccion l_list = new L_Produccion();
+            l_list.InsertarProduccion(idProduccion, nombreProduccion, fechaInicio);
+
+            for (int i = 0; i < comboBoxesMateriales.Count; i++)
+            {
+                ComboBox comboBoxMaterial = comboBoxesMateriales[i];
+                TextBox textBoxCantidad = textBoxesCantidad[i];
+
+                string nombreMaterial = comboBoxMaterial.SelectedItem.ToString();
+                int idMaterial = l_list.obtenerIdMaterial(nombreMaterial);
+
+                int cantidad;
+                string cantidadTexto = textBoxCantidad.Text;
+                if (Int32.TryParse(cantidadTexto, out cantidad))
+                {
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+                l_list.InsertarMaterialProduccion(idProduccion, idMaterial, cantidad);
+            }
+
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Add(viewButtons);
+            resertcampos(sender, e);
         }
     }
 }

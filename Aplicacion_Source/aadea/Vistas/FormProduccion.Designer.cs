@@ -42,21 +42,26 @@
             btExitProduccionActual = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             tabIngresarProduccion = new TabPage();
-            DGVAddProduccion = new DataGridView();
-            textBoxCantidad = new TextBox();
-            label2 = new Label();
-            btCancelAddproduccion = new Button();
-            btAceptar = new Button();
             dateAddProduccion = new DateTimePicker();
             label1 = new Label();
+            panel2 = new Panel();
+            textBoxCantidad = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            txtName = new TextBox();
+            flowLayoutPanelBox = new FlowLayoutPanel();
+            btAceptar = new Button();
+            btCancelAddproduccion = new Button();
             contextMenuStrip1 = new ContextMenuStrip(components);
+            entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
+            layoutPanelActualProduccion = new FlowLayoutPanel();
             panel1.SuspendLayout();
             tabControlProduccion.SuspendLayout();
             viewButtons.SuspendLayout();
             tabHistory.SuspendLayout();
             tabProduccionActual.SuspendLayout();
             tabIngresarProduccion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DGVAddProduccion).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -197,6 +202,7 @@
             // 
             // tabProduccionActual
             // 
+            tabProduccionActual.Controls.Add(layoutPanelActualProduccion);
             tabProduccionActual.Controls.Add(btExitProduccionActual);
             tabProduccionActual.Controls.Add(flowLayoutPanel1);
             tabProduccionActual.Location = new Point(4, 26);
@@ -222,18 +228,15 @@
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Location = new Point(6, 6);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(780, 383);
+            flowLayoutPanel1.Size = new Size(780, 0);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // tabIngresarProduccion
             // 
-            tabIngresarProduccion.Controls.Add(DGVAddProduccion);
-            tabIngresarProduccion.Controls.Add(textBoxCantidad);
-            tabIngresarProduccion.Controls.Add(label2);
-            tabIngresarProduccion.Controls.Add(btCancelAddproduccion);
-            tabIngresarProduccion.Controls.Add(btAceptar);
+            tabIngresarProduccion.AutoScroll = true;
             tabIngresarProduccion.Controls.Add(dateAddProduccion);
             tabIngresarProduccion.Controls.Add(label1);
+            tabIngresarProduccion.Controls.Add(panel2);
             tabIngresarProduccion.Location = new Point(4, 26);
             tabIngresarProduccion.Name = "tabIngresarProduccion";
             tabIngresarProduccion.Padding = new Padding(3);
@@ -241,53 +244,6 @@
             tabIngresarProduccion.TabIndex = 3;
             tabIngresarProduccion.Text = "Ingresar produccion";
             tabIngresarProduccion.UseVisualStyleBackColor = true;
-            // 
-            // DGVAddProduccion
-            // 
-            DGVAddProduccion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVAddProduccion.Location = new Point(29, 125);
-            DGVAddProduccion.Name = "DGVAddProduccion";
-            DGVAddProduccion.RowTemplate.Height = 25;
-            DGVAddProduccion.Size = new Size(732, 251);
-            DGVAddProduccion.TabIndex = 10;
-            // 
-            // textBoxCantidad
-            // 
-            textBoxCantidad.Location = new Point(194, 97);
-            textBoxCantidad.Name = "textBoxCantidad";
-            textBoxCantidad.Size = new Size(100, 22);
-            textBoxCantidad.TabIndex = 9;
-            textBoxCantidad.TextChanged += textBoxCantidad_TextChanged;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(29, 97);
-            label2.Name = "label2";
-            label2.Size = new Size(149, 17);
-            label2.TabIndex = 8;
-            label2.Text = "Cantidad de materiales";
-            // 
-            // btCancelAddproduccion
-            // 
-            btCancelAddproduccion.ForeColor = Color.Black;
-            btCancelAddproduccion.Location = new Point(220, 382);
-            btCancelAddproduccion.Name = "btCancelAddproduccion";
-            btCancelAddproduccion.Size = new Size(122, 23);
-            btCancelAddproduccion.TabIndex = 7;
-            btCancelAddproduccion.Text = "Cancelar";
-            btCancelAddproduccion.UseVisualStyleBackColor = true;
-            // 
-            // btAceptar
-            // 
-            btAceptar.ForeColor = Color.Black;
-            btAceptar.Location = new Point(50, 382);
-            btAceptar.Name = "btAceptar";
-            btAceptar.Size = new Size(122, 23);
-            btAceptar.TabIndex = 6;
-            btAceptar.Text = "Aceptar";
-            btAceptar.UseVisualStyleBackColor = true;
             // 
             // dateAddProduccion
             // 
@@ -310,10 +266,109 @@
             label1.TabIndex = 0;
             label1.Text = "Ingresar produccion";
             // 
+            // panel2
+            // 
+            panel2.AutoScroll = true;
+            panel2.Controls.Add(textBoxCantidad);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(txtName);
+            panel2.Controls.Add(flowLayoutPanelBox);
+            panel2.Controls.Add(btAceptar);
+            panel2.Controls.Add(btCancelAddproduccion);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(788, 432);
+            panel2.TabIndex = 11;
+            // 
+            // textBoxCantidad
+            // 
+            textBoxCantidad.Location = new Point(171, 91);
+            textBoxCantidad.Name = "textBoxCantidad";
+            textBoxCantidad.Size = new Size(100, 22);
+            textBoxCantidad.TabIndex = 9;
+            textBoxCantidad.TextChanged += textBoxCantidad_TextChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(277, 94);
+            label3.Name = "label3";
+            label3.Size = new Size(161, 17);
+            label3.TabIndex = 12;
+            label3.Text = "Nombre de la produccion";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(16, 94);
+            label2.Name = "label2";
+            label2.Size = new Size(149, 17);
+            label2.TabIndex = 8;
+            label2.Text = "Cantidad de materiales";
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(444, 94);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(121, 22);
+            txtName.TabIndex = 11;
+            // 
+            // flowLayoutPanelBox
+            // 
+            flowLayoutPanelBox.AutoScroll = true;
+            flowLayoutPanelBox.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanelBox.Location = new Point(27, 139);
+            flowLayoutPanelBox.Name = "flowLayoutPanelBox";
+            flowLayoutPanelBox.Size = new Size(538, 247);
+            flowLayoutPanelBox.TabIndex = 10;
+            flowLayoutPanelBox.WrapContents = false;
+            // 
+            // btAceptar
+            // 
+            btAceptar.ForeColor = Color.Black;
+            btAceptar.Location = new Point(43, 392);
+            btAceptar.Name = "btAceptar";
+            btAceptar.Size = new Size(122, 23);
+            btAceptar.TabIndex = 6;
+            btAceptar.Text = "Aceptar";
+            btAceptar.UseVisualStyleBackColor = true;
+            btAceptar.Click += btAceptar_Click;
+            // 
+            // btCancelAddproduccion
+            // 
+            btCancelAddproduccion.ForeColor = Color.Black;
+            btCancelAddproduccion.Location = new Point(191, 392);
+            btCancelAddproduccion.Name = "btCancelAddproduccion";
+            btCancelAddproduccion.Size = new Size(122, 23);
+            btCancelAddproduccion.TabIndex = 7;
+            btCancelAddproduccion.Text = "Cancelar";
+            btCancelAddproduccion.UseVisualStyleBackColor = true;
+            btCancelAddproduccion.Click += btCancelAddproduccion_Click;
+            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // entityCommand1
+            // 
+            entityCommand1.CommandTimeout = 0;
+            entityCommand1.CommandTree = null;
+            entityCommand1.Connection = null;
+            entityCommand1.EnablePlanCaching = true;
+            entityCommand1.Transaction = null;
+            // 
+            // layoutPanelActualProduccion
+            // 
+            layoutPanelActualProduccion.AutoScroll = true;
+            layoutPanelActualProduccion.Dock = DockStyle.Top;
+            layoutPanelActualProduccion.Location = new Point(3, 3);
+            layoutPanelActualProduccion.Name = "layoutPanelActualProduccion";
+            layoutPanelActualProduccion.Size = new Size(788, 398);
+            layoutPanelActualProduccion.TabIndex = 2;
             // 
             // FormProduccion
             // 
@@ -330,7 +385,8 @@
             tabProduccionActual.ResumeLayout(false);
             tabIngresarProduccion.ResumeLayout(false);
             tabIngresarProduccion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)DGVAddProduccion).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -356,6 +412,11 @@
         private DateTimePicker dateAddProduccion;
         private TextBox textBoxCantidad;
         private Label label2;
-        private DataGridView DGVAddProduccion;
+        private FlowLayoutPanel flowLayoutPanelBox;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
+        private Panel panel2;
+        private Label label3;
+        private TextBox txtName;
+        private FlowLayoutPanel layoutPanelActualProduccion;
     }
 }

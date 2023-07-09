@@ -29,43 +29,37 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            btEditProduccion = new Button();
             btDeleteProduccion = new Button();
             dateProduccion = new DateTimePicker();
             DGVmateriales = new DataGridView();
             lblProduccion = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            fecha_inicio = new Label();
             ((System.ComponentModel.ISupportInitialize)DGVmateriales).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(364, 31);
+            button1.Location = new Point(364, 42);
             button1.Name = "button1";
             button1.Size = new Size(158, 23);
             button1.TabIndex = 1;
             button1.Text = "Terminar producción";
             button1.UseVisualStyleBackColor = true;
-            // 
-            // btEditProduccion
-            // 
-            btEditProduccion.ForeColor = Color.Black;
-            btEditProduccion.Location = new Point(364, 71);
-            btEditProduccion.Name = "btEditProduccion";
-            btEditProduccion.Size = new Size(158, 23);
-            btEditProduccion.TabIndex = 2;
-            btEditProduccion.Text = "Editar produccion";
-            btEditProduccion.UseVisualStyleBackColor = true;
+            button1.Click += btEnd_Click;
             // 
             // btDeleteProduccion
             // 
             btDeleteProduccion.ForeColor = Color.Black;
-            btDeleteProduccion.Location = new Point(364, 116);
+            btDeleteProduccion.Location = new Point(364, 71);
             btDeleteProduccion.Name = "btDeleteProduccion";
             btDeleteProduccion.Size = new Size(158, 23);
             btDeleteProduccion.TabIndex = 3;
             btDeleteProduccion.Text = "Eliminar producción";
             btDeleteProduccion.UseVisualStyleBackColor = true;
+            btDeleteProduccion.Click += btDelete_Click;
             // 
             // dateProduccion
             // 
@@ -92,19 +86,48 @@
             lblProduccion.ForeColor = Color.Black;
             lblProduccion.Location = new Point(14, 13);
             lblProduccion.Name = "lblProduccion";
-            lblProduccion.Size = new Size(84, 15);
+            lblProduccion.Size = new Size(74, 15);
             lblProduccion.TabIndex = 6;
-            lblProduccion.Text = "Produccion n: ";
+            lblProduccion.Text = "Produccion: ";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(368, 140);
+            label1.Name = "label1";
+            label1.Size = new Size(83, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Fecha termino";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(368, 97);
+            label2.Name = "label2";
+            label2.Size = new Size(70, 15);
+            label2.TabIndex = 8;
+            label2.Text = "Fecha inicio";
+            // 
+            // fecha_inicio
+            // 
+            fecha_inicio.AutoSize = true;
+            fecha_inicio.Location = new Point(368, 121);
+            fecha_inicio.Name = "fecha_inicio";
+            fecha_inicio.Size = new Size(38, 15);
+            fecha_inicio.TabIndex = 9;
+            fecha_inicio.Text = "label3";
             // 
             // produccionActual
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(fecha_inicio);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(lblProduccion);
             Controls.Add(DGVmateriales);
             Controls.Add(dateProduccion);
             Controls.Add(btDeleteProduccion);
-            Controls.Add(btEditProduccion);
             Controls.Add(button1);
             Name = "produccionActual";
             Size = new Size(543, 201);
@@ -115,10 +138,12 @@
 
         #endregion
         private Button button1;
-        private Button btEditProduccion;
         private Button btDeleteProduccion;
         private DateTimePicker dateProduccion;
         private DataGridView DGVmateriales;
         private Label lblProduccion;
+        private Label label1;
+        private Label label2;
+        private Label fecha_inicio;
     }
 }
