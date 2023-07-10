@@ -24,6 +24,7 @@ namespace aadea.Vistas
 
             tabControl1.TabPages.Remove(addProdTab);
             tabControl1.TabPages.Remove(tabSizes);
+            tabControl1.TabPages.Remove(ModStock);
         }
         private void FormProduccion_Load(object? sender, EventArgs e)
         {
@@ -49,6 +50,7 @@ namespace aadea.Vistas
                 userControl.buttonModifyClick += (s, args) =>
                 {
                     UserControl_ButtonModify(userControl);
+
                 };
                 if (imagen != null && imagen.Length > 0)
                 {
@@ -60,26 +62,24 @@ namespace aadea.Vistas
                     }
                 }
                 flowLayoutPanel1.Controls.Add(userControl);
-                
+
                 L_bodega l_Bodega = new L_bodega();
                 DataTable list = l_Bodega.listInventarioporID(id);
                 userControl.DataGridView1.DataSource = list;
 
             }
-            DataTable dataTable1 = l_Inventario.listProductsNotInInventory();
-            DGV_P_AddT.DataSource = dataTable1;
-            DataTable dataTable2 = l_Inventario.listSizes();
-            DGV_Size_AddT.DataSource = dataTable2;
+            this.refreshDGV();
 
 
         }
 
         private void UserControl_ButtonModify(productBodega userControl)
         {
-            tabControl1.SelectedTab = addProdTab;
-            tabControl1.TabPages.Add(addProdTab);
+            tabControl1.SelectedTab = ModStock;
+            tabControl1.TabPages.Add(ModStock);
             tabControl1.TabPages.Remove(tabView);
             tabControl1.TabPages.Remove(tabSizes);
+            tabControl1.TabPages.Remove(addProdTab);
         }
 
         private void UserControl_DeleteButtonClicked(productBodega user, object sender, EventArgs e)
@@ -96,25 +96,19 @@ namespace aadea.Vistas
 
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void addProd_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = addProdTab;
             tabControl1.TabPages.Add(addProdTab);
             tabControl1.TabPages.Remove(tabView);
             tabControl1.TabPages.Remove(tabSizes);
+            tabControl1.TabPages.Remove(ModStock);
 
         }
 
         private void addProd_Back_Click(object sender, EventArgs e)
         {
             goToMainInventory();
-
-
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -145,6 +139,7 @@ namespace aadea.Vistas
             L_inventario ins = new L_inventario();
             ins.addToInventory(idProd, idSize, stock);
             goToMainInventory();
+            this.clearSelections();
             this.FormProduccion_Load(sender, e);
 
 
@@ -156,6 +151,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(tabView);
             tabControl1.TabPages.Remove(addProdTab);
             tabControl1.TabPages.Remove(tabSizes);
+            tabControl1.TabPages.Remove(ModStock);
 
 
         }
@@ -172,9 +168,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(tabSizes);
             tabControl1.TabPages.Remove(tabView);
             tabControl1.TabPages.Remove(addProdTab);
-            L_inventario list = new L_inventario();
-            DataTable dt = list.listSizes();
-            DGV_Sizes.DataSource = dt;
+            this.refreshDGV();
         }
 
         private void sizesBackBtn_Click(object sender, EventArgs e)
@@ -193,7 +187,42 @@ namespace aadea.Vistas
                 return;
             }
             int size = int.Parse(sizesAddTB.Text);
-            //   ins.addSize(size);
+            ins.addSize(size);
+            this.refreshDGV();
+            this.clearSelections();
+        }
+
+        private void clearSelections()
+        {
+            textBox1.Clear();
+            sizesAddTB.Clear();
+        }
+
+        private void refreshDGV()
+        {
+            L_inventario list = new L_inventario();
+            DataTable dt1 = list.listSizes();
+            DataTable dt2 = list.listProductsNotInInventory();
+            DGV_Sizes.DataSource = dt1;
+            DGV_Size_AddT.DataSource = dt1;
+            DGV_P_AddT.DataSource = dt2;
+        }
+
+        private void sizesDelBtn_Click(object sender, EventArgs e)
+        {
+            if (DGV_Sizes.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un tamaño para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            DialogResult result = MessageBox.Show("¿Estás seguro de realizar esta acción?", "Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(DGV_Sizes.SelectedRows[0].Cells["ID"].Value);
+                L_inventario del = new L_inventario();
+                del.delSize(id);
+                this.refreshDGV();
+            }
         }
     }
 }

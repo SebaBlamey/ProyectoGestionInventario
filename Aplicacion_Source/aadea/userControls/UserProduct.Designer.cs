@@ -48,9 +48,10 @@
             // lblTittle
             // 
             lblTittle.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTittle.Location = new Point(3, 12);
+            lblTittle.ImageAlign = ContentAlignment.MiddleLeft;
+            lblTittle.Location = new Point(0, 12);
             lblTittle.Name = "lblTittle";
-            lblTittle.Size = new Size(125, 31);
+            lblTittle.Size = new Size(549, 31);
             lblTittle.TabIndex = 1;
             lblTittle.Text = "label1";
             lblTittle.TextAlign = ContentAlignment.MiddleCenter;

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
-using aadea.Vistas;
 
 namespace aadea.Logicaq
 {
@@ -20,13 +13,17 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT a.Trabajador AS Rut, t.Nombre, t.Apellido, a.Dia, a.Llegada, a.Salida, a.[Horas trabajadas] " +
+                string SQLQuery = "SELECT a.id, a.Trabajador AS Rut, t.Nombre, t.Apellido, a.Dia, a.Llegada, a.Salida, ROUND(a.[Horas trabajadas], 1) AS [Horas trabajadas] " +
                                   "FROM Asistencia a " +
                                   "JOIN Trabajador t ON a.Trabajador = t.Rut";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 SQLCon.Open();
                 resultado = Comando.ExecuteReader();
                 tabla.Load(resultado);
+
+                // Eliminar la columna de ID
+                tabla.Columns.Remove("id");
+
                 return tabla;
             }
             catch (Exception ex)
@@ -39,7 +36,33 @@ namespace aadea.Logicaq
             }
         }
 
-
+        public void DeleteAssistance(string id)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "DELETE FROM Asistencia WHERE Id = @id";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand comando = new SQLiteCommand(SQLQuery, SQLCon);
+                comando.Parameters.AddWithValue("@id", id);
+                answer = comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de eliminación, intente nuevamente";
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open)
+                    SQLCon.Close();
+            }
+        }
 
 
         public DataTable listTrabajadoresAsist()

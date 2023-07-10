@@ -143,27 +143,52 @@ namespace aadea.Logicaq
 
         public void addSize(int size)
         {
-            int count;
             string answer = "";
-            //SQLiteTransaction transaction = null;
+
             SQLiteConnection SQLCon = new SQLiteConnection();
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT COUNT(*) FROM Frasco WHERE tamaño = @valor";
-                SQLCon.Open();
+                string SQLQuery = "INSERT INTO Frasco(Tamaño) VALUES (@valor)";
+                SQLCon.Open();              
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 Comando.Parameters.AddWithValue("@valor", size);
-                count = (int)Comando.ExecuteScalar();               
-                if (count == 0)
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No es posible añadir un tamaño ya existente";
+
+                if (answer.Equals("OK"))
                 {
-                    
+                    MessageBox.Show(answer);
                 }
                 else
                 {
-                    
+                    throw new Exception();
                 }
+            }
+            catch (Exception ex)
+            {                
+                MessageBox.Show(answer);
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
 
+        public void delSize(int id)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "DELETE FROM Frasco WHERE ID = @id";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@id", id);
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de eliminacion, intente nuevamente";
+                transaction.Commit();
             }
             catch (Exception ex)
             {

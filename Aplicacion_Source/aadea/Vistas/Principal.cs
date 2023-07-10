@@ -116,21 +116,27 @@ namespace aadea.Vistas
         }
         private void OpenChildForm(Form childForm)
         {
+            panelDesk.SuspendLayout(); // Suspender el diseño del panel antes de agregar el formulario
+
             if (currentChildForm != null)
             {
-                currentChildForm.Close();
+                currentChildForm.Hide(); // Ocultar el formulario anterior en lugar de cerrarlo
             }
+
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
             childForm.AutoSize = false;
+
             panelDesk.Controls.Add(childForm);
             panelDesk.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
 
+            panelDesk.ResumeLayout(); // Reanudar el diseño del panel después de agregar el formulario
         }
+
 
         private void iconButtonSalir_Click(object sender, EventArgs e)
         {

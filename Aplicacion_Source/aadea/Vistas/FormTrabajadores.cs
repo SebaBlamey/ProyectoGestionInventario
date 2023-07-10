@@ -1,26 +1,13 @@
-﻿using aadea.Logicaq;
-using aadea.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Forms;
-
-namespace aadea.Vistas
+﻿namespace aadea.Vistas
 {
     public partial class FormTrabajadores : Form
     {
         private int option;
+
         public FormTrabajadores()
         {
             InitializeComponent();
             tabControlE.TabPages.Remove(addE);
-
         }
 
         private void ListadoT()
@@ -33,46 +20,6 @@ namespace aadea.Vistas
         {
             this.ListadoT();
             DGV_T.ClearSelection();
-        }
-
-        private void AddBtn_Click(object sender, EventArgs e)
-        {
-            this.option = 1;
-            this.GoToAddTab();
-        }
-
-        private void EditBtn_Click(object sender, EventArgs e)
-        {
-            if (DGV_T.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Por favor seleccione una fila para editar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            textBoxRut.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Rut"].Value);
-            textBoxName.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Nombre"].Value);
-            textBoxSurname.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Apellido"].Value);
-            textBoxAddress.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Direccion"].Value);
-            textBoxPhNum.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Telefono"].Value);
-
-            this.option = 2;
-            this.GoToAddTab();
-            textBoxRut.ReadOnly = true;
-        }
-
-        private void DeleteBtn_Click(object sender, EventArgs e)
-        {
-            L_Trabajadores ins = new L_Trabajadores();
-            if (DGV_T.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Por favor seleccione una fila para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string rut = Convert.ToString(DGV_T.SelectedRows[0].Cells["Rut"].Value);
-            ins.EliminarTrabajador(rut);
-            DGV_T.DataSource = null;
-            DGV_T.Rows.Clear();
-            FormTrabajadores_Load(sender, e);
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
@@ -96,9 +43,11 @@ namespace aadea.Vistas
                 }
                 else
                 {
-                    MessageBox.Show("Llene los campos necesarios (Rut, Nombre y Apellido)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Llene los campos necesarios (Rut, Nombre y Apellido)", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
             if (this.option == 2)
             {
                 //textBoxRut.ReadOnly = true;
@@ -111,8 +60,10 @@ namespace aadea.Vistas
                 }
                 else
                 {
-                    MessageBox.Show("Llene los campos necesarios (Nombre y Apellido)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Llene los campos necesarios (Nombre y Apellido)", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
+
                 textBoxRut.ReadOnly = false;
             }
         }
@@ -135,6 +86,7 @@ namespace aadea.Vistas
 
         private void BackToEmpList()
         {
+            Principal.menuTitleLaberl.Text = "TRABAJADORES";
             tabControlE.SelectedTab = employeList;
             tabControlE.TabPages.Remove(addE);
             tabControlE.TabPages.Add(employeList);
@@ -155,6 +107,59 @@ namespace aadea.Vistas
         private void addE_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddProduct_Click(object sender, EventArgs e)
+        {
+            Principal.menuTitleLaberl.Text = "AGREGAR TRABAJADOR";
+            this.option = 1;
+            this.GoToAddTab();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (DGV_T.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor seleccione una fila para editar", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            textBoxRut.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Rut"].Value);
+            textBoxName.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Nombre"].Value);
+            textBoxSurname.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Apellido"].Value);
+            textBoxAddress.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Direccion"].Value);
+            textBoxPhNum.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Telefono"].Value);
+
+            Principal.menuTitleLaberl.Text = "MODIFICAR TRABAJADOR";
+            this.option = 2;
+            this.GoToAddTab();
+            textBoxRut.ReadOnly = true;
+        }
+
+        private void delete_iconButton_Click(object sender, EventArgs e)
+        {
+            L_Trabajadores ins = new L_Trabajadores();
+            if (DGV_T.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor seleccione una fila para eliminar", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            string rut = Convert.ToString(DGV_T.SelectedRows[0].Cells["Rut"].Value);
+
+            // Mostrar ventana emergente de confirmación
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar este trabajador?",
+                "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                ins.EliminarTrabajador(rut);
+                DGV_T.DataSource = null;
+                DGV_T.Rows.Clear();
+                FormTrabajadores_Load(sender, e);
+            }
         }
     }
 }
