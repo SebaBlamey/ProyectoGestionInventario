@@ -321,6 +321,7 @@
             txtStockActual.Name = "txtStockActual";
             txtStockActual.Size = new Size(125, 23);
             txtStockActual.TabIndex = 9;
+            txtStockActual.KeyPress += txtStockActual_KeyPress;
             // 
             // txtNameActual
             // 

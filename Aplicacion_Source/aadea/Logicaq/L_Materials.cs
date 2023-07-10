@@ -128,6 +128,7 @@ namespace aadea.Logicaq
             SQLiteConnection SQLCon = new SQLiteConnection();
             try
             {
+
                 SQLCon = Conexion.GetConexion().CrearConexion();
                 string SQLQuery = "SELECT imagen FROM Material WHERE ID = @id";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);

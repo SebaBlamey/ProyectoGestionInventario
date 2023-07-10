@@ -4,6 +4,8 @@ using System.Data;
 using aadea.Properties;
 using Image = System.Drawing.Image;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+using System.Globalization;
+using System.Windows.Forms;
 
 namespace aadea.Vistas
 {
@@ -56,13 +58,13 @@ namespace aadea.Vistas
 
                 int id = Convert.ToInt32(row["ID"]);
                 string name = row["nombre"].ToString();
-                float stock = 0;
-                float.TryParse(row["stock"].ToString(), out stock);
+                float stock = Convert.ToSingle(row["stock"]);
+                stock = (float)Math.Round(stock, 2, MidpointRounding.AwayFromZero);
                 string unidad = row["unidad"].ToString();
 
                 byte[] imagen = l_materials.ObtenerImagenMaterial(id);
                 userControl.nombretit = name;
-                userControl.Cantidad = stock.ToString();
+                userControl.Cantidad = stock.ToString("0.00");
                 userControl.Unidad = unidad;
                 userControl.ID = Convert.ToInt32(row["ID"]);
 
@@ -183,22 +185,32 @@ namespace aadea.Vistas
             string nombre = txtNameInsert.Text;
             string stocktext = txtStock.Text;
             string unidad = opcionBox.Text;
-
+            float valor;
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(stocktext) || string.IsNullOrEmpty(unidad))
             {
                 MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             L_Materials mat = new L_Materials();
-
-            if (!string.IsNullOrEmpty(rutaSeleccionada))
+            stocktext = stocktext.Replace(',', '.');
+            if (float.TryParse(stocktext, NumberStyles.Float, CultureInfo.InvariantCulture, out valor))
             {
-                byte[] bytesImage = File.ReadAllBytes(rutaSeleccionada);
-                mat.InsertMaterialWI(nombre, float.Parse(stocktext), bytesImage, unidad);
+                string mensaje = valor.ToString("F2", CultureInfo.InvariantCulture);
+                MessageBox.Show(mensaje);
             }
             else
             {
-                mat.InsertMaterial(nombre, float.Parse(stocktext), unidad);
+                MessageBox.Show("Error en el numero, intente nuevamente, recuerde que para agregar un numero decimal ocupe un '.' " );
+            }
+            if (!string.IsNullOrEmpty(rutaSeleccionada))
+            {
+                byte[] bytesImage = File.ReadAllBytes(rutaSeleccionada);
+
+                mat.InsertMaterialWI(nombre, valor, bytesImage, unidad);
+            }
+            else
+            {
+                mat.InsertMaterial(nombre, valor, unidad);
             }
 
             tabControl1.SelectedTab = ListaMateriales;
@@ -210,65 +222,59 @@ namespace aadea.Vistas
         }
         private void txtStock_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '\b')
             {
                 e.Handled = true;
+            }
+
+            if (e.KeyChar == ',')
+            {
+                if (((TextBox)sender).Text.Contains(','))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    // Reemplazar la coma por el punto en el TextBox
+                    ((TextBox)sender).Text += ".";
+                    ((TextBox)sender).SelectionStart = ((TextBox)sender).Text.Length;
+                    e.Handled = true;
+                }
             }
         }
 
         private void btSaveMod_Click(object sender, EventArgs e)
         {
-            /*string nombre;
-            float numero; // Cambio de tipo de float a decimal
-            string unidad;
-            byte[] img = null;
-            L_Materials ins = new L_Materials();
-            nombre = txtNameActual.Text;
-            unidad = boxMedidaActual.Text;
-            if (float.TryParse(txtStockActual.Text, out numero)) // Cambio de tipo de float a decimal
-            {
-                MessageBox.Show("El número ingresado es: " + numero.ToString());
-            }
-            else
-            {
-                MessageBox.Show("Por favor, ingresa un número decimal válido.");
-            }
-
-            if (!string.IsNullOrEmpty(rutaSeleccionada))
-            {
-                img = File.ReadAllBytes(rutaSeleccionada);
-                ins.updateMaterialWI(idLocal, nombre, numero, unidad, img);
-            }
-            else
-            {
-                ins.updateMaterial(idLocal, nombre, numero, unidad);
-            }
-            tabControl1.SelectedTab = ListaMateriales;
-            tabControl1.TabPages.Remove(AddMaterial);
-            tabControl1.TabPages.Remove(EditMaterial);
-            tabControl1.TabPages.Add(ListaMateriales);
-            resetCampos(sender, e);*/
             string nombre = txtNameActual.Text;
-            float cantidad = float.Parse(txtStockActual.Text);
+            string stocktext = txtStockActual.Text;
             string unidad = boxMedidaActual.Text;
-
-            if (string.IsNullOrEmpty(nombre) || (cantidad == null || cantidad == 0) || string.IsNullOrEmpty(unidad))
+            float valor;
+            if (string.IsNullOrEmpty(nombre) || (stocktext == null) || string.IsNullOrEmpty(unidad))
             {
                 MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
             }
-
+            stocktext = stocktext.Replace(',', '.');
+            if (float.TryParse(stocktext, NumberStyles.Float, CultureInfo.InvariantCulture, out valor))
+            {
+                string mensaje = valor.ToString("F2", CultureInfo.InvariantCulture);
+                MessageBox.Show(mensaje);
+            }
+            else
+            {
+                MessageBox.Show("Error en el numero, intente nuevamente, recuerde que para agregar un numero decimal ocupe un '.' ");
+            }
             L_Materials ins = new L_Materials();
 
             if (!string.IsNullOrEmpty(rutaSeleccionada))
             {
                 byte[] bytesImage = File.ReadAllBytes(rutaSeleccionada);
-                ins.updateMaterialWI(idLocal, nombre, cantidad, unidad, bytesImage);
+                ins.updateMaterialWI(idLocal, nombre, valor, unidad, bytesImage);
             }
             else
             {
-                ins.updateMaterial(idLocal, nombre, cantidad, unidad);
+                ins.updateMaterial(idLocal, nombre, valor, unidad);
             }
 
             tabControl1.SelectedTab = ListaMateriales;
@@ -320,6 +326,29 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(AddMaterial);
             tabControl1.TabPages.Remove(ListaMateriales);
             tabControl1.TabPages.Remove(EditMaterial);
+        }
+
+        private void txtStockActual_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == ',')
+            {
+                if (((TextBox)sender).Text.Contains(','))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    // Reemplazar la coma por el punto en el TextBox
+                    ((TextBox)sender).Text += ".";
+                    ((TextBox)sender).SelectionStart = ((TextBox)sender).Text.Length;
+                    e.Handled = true;
+                }
+            }
         }
     }
 }
