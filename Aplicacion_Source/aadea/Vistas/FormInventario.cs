@@ -73,13 +73,17 @@ namespace aadea.Vistas
 
         }
 
-        private void UserControl_ButtonModify(productBodega userControl)
+        private void UserControl_ButtonModify(productBodega user)
         {
+            L_inventario l_Inventario = new L_inventario();
+            DataTable list = l_Inventario.listStockID(user.ID);
             tabControl1.SelectedTab = ModStock;
             tabControl1.TabPages.Add(ModStock);
             tabControl1.TabPages.Remove(tabView);
             tabControl1.TabPages.Remove(tabSizes);
             tabControl1.TabPages.Remove(addProdTab);
+            this.idLocal = user.ID;
+            DGV_Stock.DataSource = list;
         }
 
         private void UserControl_DeleteButtonClicked(productBodega user, object sender, EventArgs e)
@@ -196,13 +200,14 @@ namespace aadea.Vistas
         {
             textBox1.Clear();
             sizesAddTB.Clear();
+            textBox2.Clear();
         }
 
         private void refreshDGV()
         {
             L_inventario list = new L_inventario();
             DataTable dt1 = list.listSizes();
-            DataTable dt2 = list.listProductsNotInInventory();
+            DataTable dt2 = list.listAllProducts();
             DGV_Sizes.DataSource = dt1;
             DGV_Size_AddT.DataSource = dt1;
             DGV_P_AddT.DataSource = dt2;
@@ -223,6 +228,55 @@ namespace aadea.Vistas
                 del.delSize(id);
                 this.refreshDGV();
             }
+        }
+
+        private void stockBackBtn_Click(object sender, EventArgs e)
+        {
+            this.goToMainInventory();
+            this.FormProduccion_Load(sender, e);
+        }
+
+        private void incStockBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox2.Text) || DGV_Stock.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un tamaño y llene el stock antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int incStock = Convert.ToInt32(textBox2.Text);
+            if (incStock == 0) return;
+            int size = Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Tamaño"].Value);
+            L_inventario inc = new L_inventario();
+            inc.incDecStock(this.idLocal, size, incStock);
+            this.clearSelections();
+            L_inventario list = new L_inventario();
+            DataTable dt1 = list.listStockID(this.idLocal);
+            DGV_Stock.DataSource = dt1;
+
+
+        }
+
+        private void decStockBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox2.Text) || DGV_Stock.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un tamaño y llene el stock antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int decStock = Convert.ToInt32(textBox2.Text);
+            if (decStock == 0) return;
+            if (decStock > Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Stock"].Value))
+            {
+                MessageBox.Show("No puede eliminar una cantidad mayor a la presentada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int size = Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Tamaño"].Value);
+            L_inventario dec = new L_inventario();
+            dec.incDecStock(this.idLocal, size, -decStock);
+            this.clearSelections();
+            L_inventario list = new L_inventario();
+            DataTable dt1 = list.listStockID(this.idLocal);
+            DGV_Stock.DataSource = dt1;
         }
     }
 }

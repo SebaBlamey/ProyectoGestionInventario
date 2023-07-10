@@ -37,7 +37,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public DataTable listProductsNotInInventory()
+        public DataTable listAllProducts()
         {
             SQLiteDataReader resultado;
             DataTable tabla = new DataTable();
@@ -45,7 +45,7 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT ID, nombre FROM producto WHERE ID NOT IN (SELECT ID_Producto FROM Bodega)";
+                string SQLQuery = "SELECT ID, nombre FROM producto";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 SQLCon.Open();
                 resultado = Comando.ExecuteReader();
@@ -89,25 +89,30 @@ namespace aadea.Logicaq
         public void addToInventory(string idProd, string idSize, int stock)
         {
             string answer = "";
-            SQLiteTransaction transaction = null;
             SQLiteConnection SQLCon = new SQLiteConnection();
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
                 string SQLQuery = "INSERT INTO Bodega(ID_Producto, ID_Frasco, Stock) VALUES (@prod, @size, @stock)";
                 SQLCon.Open();
-                transaction = SQLCon.BeginTransaction();
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 Comando.Parameters.AddWithValue("@prod", idProd);
                 Comando.Parameters.AddWithValue("@size", idSize);
                 Comando.Parameters.AddWithValue("@stock", stock);               
-                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de registro, intente nuevamente";
-                transaction.Commit();
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "";
 
+                if (answer.Equals("OK"))
+                {
+                    MessageBox.Show(answer);
+                }
+                else
+                {
+                    throw new Exception();
+                }
             }
             catch (Exception ex)
             {
-                answer = ex.Message;
+                MessageBox.Show("Ya existe un producto con ese tamaño en bodega");
             }
             finally
             {
@@ -153,7 +158,7 @@ namespace aadea.Logicaq
                 SQLCon.Open();              
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 Comando.Parameters.AddWithValue("@valor", size);
-                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No es posible añadir un tamaño ya existente";
+                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "";
 
                 if (answer.Equals("OK"))
                 {
@@ -166,7 +171,7 @@ namespace aadea.Logicaq
             }
             catch (Exception ex)
             {                
-                MessageBox.Show(answer);
+                MessageBox.Show("No es posible añadir un tamaño ya existente");
             }
             finally
             {
@@ -193,6 +198,59 @@ namespace aadea.Logicaq
             catch (Exception ex)
             {
                 answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
+
+        public DataTable listStockID(int id)
+        {
+            SQLiteDataReader resultado;
+            DataTable tabla = new DataTable();
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "SELECT b.Stock AS Stock, f.tamaño AS Tamaño\r\nFROM bodega AS b\r\nINNER JOIN frasco AS f ON b.id_frasco = f.id\r\nWHERE b.id_producto = @id";
+
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("id", id);
+                SQLCon.Open();
+                resultado = Comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
+        public void incDecStock(int id,int size, int stock)
+        {
+
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "UPDATE bodega SET stock = stock + @stock WHERE id_producto = @id and ID_Frasco = (SELECT ID FROM Frasco WHERE Tamaño = @size)";
+                SQLCon.Open();
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("id", id);
+                Comando.Parameters.AddWithValue("stock", stock);
+                Comando.Parameters.AddWithValue("size", size);
+                Comando.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             finally
             {
