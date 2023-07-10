@@ -33,11 +33,11 @@ namespace aadea.Logicaq
             }
             finally
             {
-                if (connection.State == ConnectionState.Open)  { connection.Close(); }
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
             }
         }
 
-        public void InsertMaterialWI(string nomb, float stock, byte[] im,string unidad)
+        public void InsertMaterialWI(string nomb, float stock, byte[] im, string unidad)
         {
             string answer = "%";
             SQLiteTransaction transaction = null;
@@ -67,7 +67,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void InsertMaterial(string nom, float stock,string unidad)
+        public void InsertMaterial(string nom, float stock, string unidad)
         {
             string answer = "";
             SQLiteTransaction transaction = null;
@@ -179,7 +179,7 @@ namespace aadea.Logicaq
                 if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
             }
         }
-        public void updateMaterialWI(int id,string nom, float stock, string unidad, byte[]im)
+        public void updateMaterialWI(int id, string nom, float stock, string unidad, byte[] im)
         {
             string answer = "";
             SQLiteTransaction transaction = null;

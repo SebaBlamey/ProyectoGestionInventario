@@ -11,17 +11,20 @@ namespace aadea.Vistas
     {
         private string rutaSeleccionada;
         private int idLocal;
+
         public FormMateriales()
         {
             InitializeComponent();
             tabControl1.TabPages.Remove(AddMaterial);
             tabControl1.TabPages.Remove(EditMaterial);
+
             opcionBox.Items.Add("KG");
             opcionBox.Items.Add("L");
             opcionBox.Items.Add("Unidad");
             boxMedidaActual.Items.Add("KG");
             boxMedidaActual.Items.Add("L");
             boxMedidaActual.Items.Add("Unidad");
+
         }
         private void resetCampos(object sender, EventArgs e)
         {
@@ -34,8 +37,9 @@ namespace aadea.Vistas
             opcionBox.Text = string.Empty;
             rutaSeleccionada = null;
             //picImagenModify = null;
-            add_PictureBox = null;
-            FormMaterials_Load(sender, e);
+            pictureBox1 = null;
+
+            FormMaterials_Load(this, EventArgs.Empty);
         }
 
         private void FormMaterials_Load(object sender, EventArgs e)
@@ -55,10 +59,11 @@ namespace aadea.Vistas
                 float stock = 0;
                 float.TryParse(row["stock"].ToString(), out stock);
                 string unidad = row["unidad"].ToString();
+
                 byte[] imagen = l_materials.ObtenerImagenMaterial(id);
                 userControl.nombretit = name;
-                userControl.Cantidad = $"{stock} {unidad}.";
-                userControl.Unidad = "";
+                userControl.Cantidad = stock.ToString();
+                userControl.Unidad = unidad;
                 userControl.ID = Convert.ToInt32(row["ID"]);
 
                 // Suscribirte al evento DeleteButtonClicked y pasar el UserControl
@@ -120,12 +125,14 @@ namespace aadea.Vistas
 
                 txtNameActual.Text = nombre;
                 txtStockActual.Text = cantidad;
-                var indice = boxMedidaActual.Items.IndexOf(unidad);
-                boxMedidaActual.SelectedIndex = indice;
+
+                boxMedidaActual.SelectedItem = unidad;
 
                 picImagenModify.Image = imagen;
                 idLocal = id;
-            }catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -159,8 +166,8 @@ namespace aadea.Vistas
                 string extension = Path.GetExtension(selectorImagen.FileName).ToLower();
                 if (extension == ".png" || extension == ".jpeg" || extension == ".jpg")
                 {
-                    add_PictureBox = new PictureBox(); // Agregar esta línea
-                    add_PictureBox.Image = Image.FromFile(selectorImagen.FileName);
+                    // Asignar la imagen al PictureBox existente
+                    pictureBox1.Image = Image.FromFile(selectorImagen.FileName);
                     rutaSeleccionada = selectorImagen.FileName;
                 }
                 else
@@ -198,6 +205,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Remove(AddMaterial);
             tabControl1.TabPages.Remove(EditMaterial);
             tabControl1.TabPages.Add(ListaMateriales);
+            resetCampos(sender, e);
 
         }
         private void txtStock_KeyPress(object sender, KeyPressEventArgs e)

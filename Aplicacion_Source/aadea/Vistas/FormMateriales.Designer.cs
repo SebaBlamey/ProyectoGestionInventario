@@ -34,7 +34,7 @@
             add_iconButton = new FontAwesome.Sharp.IconButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
             AddMaterial = new TabPage();
-            add_PictureBox = new PictureBox();
+            pictureBox1 = new PictureBox();
             labelResultado = new Label();
             opcionBox = new ComboBox();
             label5 = new Label();
@@ -60,7 +60,7 @@
             tabControl1.SuspendLayout();
             ListaMateriales.SuspendLayout();
             AddMaterial.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)add_PictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             EditMaterial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picImagenModify).BeginInit();
             SuspendLayout();
@@ -130,7 +130,7 @@
             // AddMaterial
             // 
             AddMaterial.BackColor = SystemColors.Control;
-            AddMaterial.Controls.Add(add_PictureBox);
+            AddMaterial.Controls.Add(pictureBox1);
             AddMaterial.Controls.Add(labelResultado);
             AddMaterial.Controls.Add(opcionBox);
             AddMaterial.Controls.Add(label5);
@@ -148,15 +148,15 @@
             AddMaterial.TabIndex = 1;
             AddMaterial.Text = "Agregar Material";
             // 
-            // add_PictureBox
+            // pictureBox1
             // 
-            add_PictureBox.InitialImage = Properties.Resource.defaultImage;
-            add_PictureBox.Location = new Point(346, 69);
-            add_PictureBox.Name = "add_PictureBox";
-            add_PictureBox.Size = new Size(153, 158);
-            add_PictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            add_PictureBox.TabIndex = 14;
-            add_PictureBox.TabStop = false;
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox1.Location = new Point(345, 53);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(153, 158);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
             // 
             // labelResultado
             // 
@@ -168,6 +168,7 @@
             // 
             // opcionBox
             // 
+            opcionBox.DropDownStyle = ComboBoxStyle.DropDownList;
             opcionBox.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             opcionBox.ForeColor = Color.Black;
             opcionBox.FormattingEnabled = true;
@@ -305,6 +306,7 @@
             // 
             // boxMedidaActual
             // 
+            boxMedidaActual.DropDownStyle = ComboBoxStyle.DropDownList;
             boxMedidaActual.ForeColor = Color.Black;
             boxMedidaActual.FormattingEnabled = true;
             boxMedidaActual.Location = new Point(186, 179);
@@ -403,7 +405,7 @@
             ListaMateriales.ResumeLayout(false);
             AddMaterial.ResumeLayout(false);
             AddMaterial.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)add_PictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             EditMaterial.ResumeLayout(false);
             EditMaterial.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picImagenModify).EndInit();
@@ -439,6 +441,6 @@
         private Button btExaminMod;
         private FontAwesome.Sharp.IconButton add_iconButton;
         private PictureBox picImagenModify;
-        private PictureBox add_PictureBox;
+        private PictureBox pictureBox1;
     }
 }

@@ -146,7 +146,7 @@
             // 
             lblUnidad.AutoSize = true;
             lblUnidad.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUnidad.Location = new Point(483, 12);
+            lblUnidad.Location = new Point(266, 74);
             lblUnidad.Name = "lblUnidad";
             lblUnidad.Size = new Size(46, 18);
             lblUnidad.TabIndex = 13;
