@@ -532,7 +532,6 @@ namespace aadea.Logicaq
             SQLiteConnection connection = new SQLiteConnection();
             try
             {
-                MessageBox.Show("insertando");
                 connection = Conexion.GetConexion().CrearConexion();
                 string query = "INSERT INTO Productos_Historial (id_historial, id_producto, cantidad,id_frasco) VALUES (@id_historial, @id_producto, @cantidad,@id_frasco)";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
@@ -562,7 +561,7 @@ namespace aadea.Logicaq
             SQLiteConnection connection = Conexion.GetConexion().CrearConexion();
             try
             {
-                string query = "SELECT cantidad FROM bodega WHERE id_producto = @id_producto AND id_frasco = @id_frasco";
+                string query = "SELECT stock FROM bodega WHERE id_producto = @id_producto AND id_frasco = @id_frasco";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.Parameters.AddWithValue("@id_producto", idProducto);
                 command.Parameters.AddWithValue("@id_frasco", idFrasco);
@@ -571,17 +570,17 @@ namespace aadea.Logicaq
                 object result = command.ExecuteScalar();
                 if (result != null && result != DBNull.Value) // El registro ya existe, realizar actualización
                 {
-                    int cantidadExistente = Convert.ToInt32(result);
-                    int nuevaCantidad = cantidadExistente + cantidad;
-
-                    query = "UPDATE bodega SET cantidad = @nueva_cantidad WHERE id_producto = @id_producto AND id_frasco = @id_frasco";
+                    query = "UPDATE bodega SET stock = stock + @nueva_cantidad WHERE id_producto = @id_producto AND id_frasco = @id_frasco";
                     command = new SQLiteCommand(query, connection);
-                    command.Parameters.AddWithValue("@nueva_cantidad", nuevaCantidad);
+                    command.Parameters.AddWithValue("@nueva_cantidad", cantidad);
+                    command.Parameters.AddWithValue("@id_producto", idProducto);
+                    command.Parameters.AddWithValue("@id_frasco", idFrasco);
                     command.ExecuteNonQuery();
+                    MessageBox.Show("ingresado");
                 }
                 else // El registro no existe, realizar inserción
                 {
-                    query = "INSERT INTO bodega (id_producto, id_frasco, cantidad) VALUES (@id_producto, @id_frasco, @cantidad)";
+                    query = "INSERT INTO bodega (id_producto, id_frasco, stock) VALUES (@id_producto, @id_frasco, @cantidad)";
                     command = new SQLiteCommand(query, connection);
                     command.Parameters.AddWithValue("@id_producto", idProducto);
                     command.Parameters.AddWithValue("@id_frasco", idFrasco);

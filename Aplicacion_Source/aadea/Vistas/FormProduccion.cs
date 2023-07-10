@@ -31,6 +31,7 @@ namespace aadea.Vistas
         private int idLocal;
         private List<string> unidades;
         private produccionActual userLocal;
+        private int cantProductLocal;
 
         public FormProduccion()
         {
@@ -207,12 +208,12 @@ namespace aadea.Vistas
             string termino = userLocal.fechaterm;
             string inicio = userLocal.fechaInicio;
 
+
             for (int i = 0; i < comboBoxesProductos.Count; i++)
             {
                 ComboBox comboBoxProducto = comboBoxesProductos[i];
                 ComboBox comboBoxFrasco = comboBoxesFrascos[i];
                 TextBox textBoxCantidadProducto = textBoxesCantidadProductos[i];
-                TextBox textBoxCantidadFrasco = textBoxesCantidadFrascos[i];
 
                 string nombreProducto = comboBoxProducto.SelectedItem.ToString();
                 int idProducto = l.obtenerIdProducto(nombreProducto);
@@ -220,33 +221,25 @@ namespace aadea.Vistas
                 string nombreFrasco = comboBoxFrasco.SelectedItem.ToString();
                 int idFrasco = l.obtenerIdFrasco(nombreFrasco);
 
-                int cantidadProducto;
-                string cantidadTextoProducto = textBoxCantidadProducto.Text;
+                int cantidad;
+                string cantidadTexto = textBoxCantidadProducto.Text;
 
-                if (Int32.TryParse(cantidadTextoProducto, out cantidadProducto))
+                if (Int32.TryParse(cantidadTexto, out cantidad))
                 {
-                    int cantidadFrasco;
-                    string cantidadTextoFrasco = textBoxCantidadFrasco.Text;
-
-                    if (Int32.TryParse(cantidadTextoFrasco, out cantidadFrasco))
-                    {
-                        l.insertProductoHistorial(idProduccion, idProducto, idFrasco, cantidadProducto);
-                        l.insertStock(idProducto, idFrasco, cantidadProducto);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error en la cantidad de frasco.");
-                    }
+                    MessageBox.Show("Converted: " + cantidad.ToString());
                 }
                 else
                 {
-                    MessageBox.Show("Error en la cantidad de producto.");
+                    MessageBox.Show("Error");
                 }
+
+                l.insertProductoHistorial(idProduccion, idProducto, idFrasco, cantidad);
+                l.insertStock(idProducto, idFrasco, cantidad);
             }
+
 
             l.TerminarProduccion(idProduccion, termino, inicio);
 
-            // Eliminar el user control del panel
             layoutPanelActualProduccion.Controls.Remove(userLocal);
 
             tabControlProduccion.SelectedTab = viewButtons;
@@ -491,10 +484,16 @@ namespace aadea.Vistas
                     comboBoxProductos.DataSource = opcionesProductos[i];
                     comboBoxProductos.DropDownStyle = ComboBoxStyle.DropDownList;
 
+                    Label labelFrasco = new Label();
+                    labelFrasco.Text = "Tamaño del frasco:";
+                    labelFrasco.AutoSize = true;
+                    labelFrasco.ForeColor = Color.Black;
+
                     ComboBox comboBoxFrascos = new ComboBox();
                     comboBoxFrascos.DisplayMember = "nombre";
                     comboBoxFrascos.DataSource = opcionesFrascos[i];
                     comboBoxFrascos.DropDownStyle = ComboBoxStyle.DropDownList;
+
 
                     Label labelCantidad = new Label();
                     labelCantidad.Text = "Ingrese la cantidad:";
@@ -502,15 +501,11 @@ namespace aadea.Vistas
                     labelCantidad.ForeColor = Color.Black;
 
                     TextBox textBoxCantidad = new TextBox();
-                    TextBox textBoxCantidadFr = new TextBox();
-                    comboBoxesProductos.Add(comboBoxProductos);
-                    textBoxesCantidadProductos.Add(textBoxCantidad);
-                    textBoxesCantidadFrascos.Add(textBoxCantidadFr);
 
-                    Label labelFrasco = new Label();
-                    labelFrasco.Text = "Tamaño del frasco:";
-                    labelFrasco.AutoSize = true;
-                    labelFrasco.ForeColor = Color.Black;
+                    comboBoxesProductos.Add(comboBoxProductos);
+                    comboBoxesFrascos.Add(comboBoxFrascos);
+                    textBoxesCantidadProductos.Add(textBoxCantidad);
+
 
                     layoutPanelProducts.Controls.Add(labelProducto);
                     layoutPanelProducts.Controls.Add(comboBoxProductos);
@@ -524,7 +519,7 @@ namespace aadea.Vistas
             {
                 layoutPanelProducts.Controls.Clear();
             }
-            cantiProductLocal = cantidadProductos;
+            cantProductLocal = cantidadProductos;
         }
     }
 }
