@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabView = new TabPage();
             sizesBtn = new Button();
@@ -60,16 +62,13 @@
             label1 = new Label();
             DGV_Sizes = new DataGridView();
             ModStock = new TabPage();
-            DGV_Stock = new DataGridView();
-            DGV_Stock_Sizes = new DataGridView();
-            incStockBtn = new Button();
-            decStockBtn = new Button();
-            numericUpDown1 = new NumericUpDown();
-            stockBackBtn = new Button();
-            delStockBtn = new Button();
-            addStockBtn = new Button();
+            textBox2 = new TextBox();
+            pictureBox1 = new PictureBox();
             label2 = new Label();
-            label3 = new Label();
+            stockBackBtn = new Button();
+            decStockBtn = new Button();
+            incStockBtn = new Button();
+            DGV_Stock = new DataGridView();
             tabControl1.SuspendLayout();
             tabView.SuspendLayout();
             addProdTab.SuspendLayout();
@@ -78,9 +77,8 @@
             tabSizes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Sizes).BeginInit();
             ModStock.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Stock).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DGV_Stock_Sizes).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -242,33 +240,33 @@
             DGV_Size_AddT.BackgroundColor = Color.White;
             DGV_Size_AddT.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_Size_AddT.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle10.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle10.SelectionForeColor = Color.White;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            DGV_Size_AddT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DGV_Size_AddT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DGV_Size_AddT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DGV_Size_AddT.EnableHeadersVisualStyles = false;
             DGV_Size_AddT.GridColor = Color.DarkBlue;
             DGV_Size_AddT.Location = new Point(423, 62);
             DGV_Size_AddT.Name = "DGV_Size_AddT";
             DGV_Size_AddT.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = SystemColors.Control;
-            dataGridViewCellStyle11.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.DimGray;
-            dataGridViewCellStyle11.SelectionBackColor = Color.Plum;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            DGV_Size_AddT.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            DGV_Size_AddT.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             DGV_Size_AddT.RowHeadersVisible = false;
             DGV_Size_AddT.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle12.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle12.SelectionBackColor = Color.Plum;
-            DGV_Size_AddT.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle3.SelectionBackColor = Color.Plum;
+            DGV_Size_AddT.RowsDefaultCellStyle = dataGridViewCellStyle3;
             DGV_Size_AddT.RowTemplate.Height = 25;
             DGV_Size_AddT.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_Size_AddT.Size = new Size(320, 132);
@@ -285,14 +283,14 @@
             DGV_P_AddT.BackgroundColor = Color.White;
             DGV_P_AddT.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_P_AddT.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle13.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle13.ForeColor = Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle13.SelectionForeColor = Color.White;
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
-            DGV_P_AddT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            DGV_P_AddT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             DGV_P_AddT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DGV_P_AddT.EnableHeadersVisualStyles = false;
             DGV_P_AddT.GridColor = Color.DarkBlue;
@@ -300,19 +298,19 @@
             DGV_P_AddT.Location = new Point(62, 62);
             DGV_P_AddT.Name = "DGV_P_AddT";
             DGV_P_AddT.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = SystemColors.Control;
-            dataGridViewCellStyle14.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = Color.DimGray;
-            dataGridViewCellStyle14.SelectionBackColor = Color.Plum;
-            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            DGV_P_AddT.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.DimGray;
+            dataGridViewCellStyle5.SelectionBackColor = Color.Plum;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            DGV_P_AddT.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             DGV_P_AddT.RowHeadersVisible = false;
             DGV_P_AddT.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle15.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle15.SelectionBackColor = Color.Plum;
-            DGV_P_AddT.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle6.SelectionBackColor = Color.Plum;
+            DGV_P_AddT.RowsDefaultCellStyle = dataGridViewCellStyle6;
             DGV_P_AddT.RowTemplate.Height = 25;
             DGV_P_AddT.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_P_AddT.Size = new Size(321, 132);
@@ -394,14 +392,14 @@
             DGV_Sizes.BackgroundColor = Color.White;
             DGV_Sizes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_Sizes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle16.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle16.ForeColor = Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle16.SelectionForeColor = Color.White;
-            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
-            DGV_Sizes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle7.SelectionForeColor = Color.White;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            DGV_Sizes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             DGV_Sizes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_Sizes.EnableHeadersVisualStyles = false;
             DGV_Sizes.GridColor = Color.DarkSlateBlue;
@@ -410,19 +408,19 @@
             DGV_Sizes.Name = "DGV_Sizes";
             DGV_Sizes.ReadOnly = true;
             DGV_Sizes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = SystemColors.Control;
-            dataGridViewCellStyle17.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle17.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle17.SelectionBackColor = Color.Plum;
-            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            DGV_Sizes.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Control;
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle8.SelectionBackColor = Color.Plum;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            DGV_Sizes.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             DGV_Sizes.RowHeadersVisible = false;
             DGV_Sizes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle18.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle18.SelectionBackColor = Color.Plum;
-            DGV_Sizes.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle9.SelectionBackColor = Color.Plum;
+            DGV_Sizes.RowsDefaultCellStyle = dataGridViewCellStyle9;
             DGV_Sizes.RowTemplate.Height = 25;
             DGV_Sizes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_Sizes.Size = new Size(240, 265);
@@ -430,15 +428,12 @@
             // 
             // ModStock
             // 
-            ModStock.Controls.Add(label3);
+            ModStock.Controls.Add(textBox2);
+            ModStock.Controls.Add(pictureBox1);
             ModStock.Controls.Add(label2);
-            ModStock.Controls.Add(addStockBtn);
-            ModStock.Controls.Add(delStockBtn);
             ModStock.Controls.Add(stockBackBtn);
-            ModStock.Controls.Add(numericUpDown1);
             ModStock.Controls.Add(decStockBtn);
             ModStock.Controls.Add(incStockBtn);
-            ModStock.Controls.Add(DGV_Stock_Sizes);
             ModStock.Controls.Add(DGV_Stock);
             ModStock.Location = new Point(4, 26);
             ModStock.Name = "ModStock";
@@ -447,95 +442,98 @@
             ModStock.Text = "ModStock";
             ModStock.UseVisualStyleBackColor = true;
             // 
-            // DGV_Stock
+            // textBox2
             // 
-            DGV_Stock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV_Stock.Location = new Point(62, 53);
-            DGV_Stock.Name = "DGV_Stock";
-            DGV_Stock.RowTemplate.Height = 25;
-            DGV_Stock.Size = new Size(240, 150);
-            DGV_Stock.TabIndex = 0;
+            textBox2.Location = new Point(382, 273);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 22);
+            textBox2.TabIndex = 10;
+            textBox2.KeyPress += textBox1_KeyPress;
             // 
-            // DGV_Stock_Sizes
+            // pictureBox1
             // 
-            DGV_Stock_Sizes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV_Stock_Sizes.Location = new Point(62, 234);
-            DGV_Stock_Sizes.Name = "DGV_Stock_Sizes";
-            DGV_Stock_Sizes.RowTemplate.Height = 25;
-            DGV_Stock_Sizes.Size = new Size(240, 150);
-            DGV_Stock_Sizes.TabIndex = 1;
+            pictureBox1.Location = new Point(62, 22);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(240, 141);
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
             // 
-            // incStockBtn
+            // label2
             // 
-            incStockBtn.Location = new Point(528, 81);
-            incStockBtn.Name = "incStockBtn";
-            incStockBtn.Size = new Size(44, 28);
-            incStockBtn.TabIndex = 2;
-            incStockBtn.Text = "+";
-            incStockBtn.UseVisualStyleBackColor = true;
-            // 
-            // decStockBtn
-            // 
-            decStockBtn.Location = new Point(578, 81);
-            decStockBtn.Name = "decStockBtn";
-            decStockBtn.Size = new Size(44, 28);
-            decStockBtn.TabIndex = 3;
-            decStockBtn.Text = "-";
-            decStockBtn.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(528, 53);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(94, 22);
-            numericUpDown1.TabIndex = 4;
+            label2.AutoSize = true;
+            label2.ForeColor = Color.FromArgb(64, 64, 64);
+            label2.Location = new Point(353, 253);
+            label2.Name = "label2";
+            label2.Size = new Size(161, 17);
+            label2.TabIndex = 8;
+            label2.Text = "Actualizar stock existente";
             // 
             // stockBackBtn
             // 
+            stockBackBtn.ForeColor = Color.Black;
             stockBackBtn.Location = new Point(8, 390);
             stockBackBtn.Name = "stockBackBtn";
             stockBackBtn.Size = new Size(75, 23);
             stockBackBtn.TabIndex = 5;
             stockBackBtn.Text = "Volver";
             stockBackBtn.UseVisualStyleBackColor = true;
+            stockBackBtn.Click += stockBackBtn_Click;
             // 
-            // delStockBtn
+            // decStockBtn
             // 
-            delStockBtn.Location = new Point(579, 292);
-            delStockBtn.Name = "delStockBtn";
-            delStockBtn.Size = new Size(75, 43);
-            delStockBtn.TabIndex = 6;
-            delStockBtn.Text = "Eliminar Tamaño";
-            delStockBtn.UseVisualStyleBackColor = true;
+            decStockBtn.ForeColor = Color.Black;
+            decStockBtn.Location = new Point(438, 301);
+            decStockBtn.Name = "decStockBtn";
+            decStockBtn.Size = new Size(44, 28);
+            decStockBtn.TabIndex = 3;
+            decStockBtn.Text = "-";
+            decStockBtn.UseVisualStyleBackColor = true;
+            decStockBtn.Click += decStockBtn_Click;
             // 
-            // addStockBtn
+            // incStockBtn
             // 
-            addStockBtn.Location = new Point(475, 292);
-            addStockBtn.Name = "addStockBtn";
-            addStockBtn.Size = new Size(75, 43);
-            addStockBtn.TabIndex = 7;
-            addStockBtn.Text = "Agregar Tamaño";
-            addStockBtn.UseVisualStyleBackColor = true;
+            incStockBtn.ForeColor = Color.Black;
+            incStockBtn.Location = new Point(388, 301);
+            incStockBtn.Name = "incStockBtn";
+            incStockBtn.Size = new Size(44, 28);
+            incStockBtn.TabIndex = 2;
+            incStockBtn.Text = "+";
+            incStockBtn.UseVisualStyleBackColor = true;
+            incStockBtn.Click += incStockBtn_Click;
             // 
-            // label2
+            // DGV_Stock
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.FromArgb(64, 64, 64);
-            label2.Location = new Point(493, 33);
-            label2.Name = "label2";
-            label2.Size = new Size(161, 17);
-            label2.TabIndex = 8;
-            label2.Text = "Actualizar stock existente";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.FromArgb(64, 64, 64);
-            label3.Location = new Point(493, 214);
-            label3.Name = "label3";
-            label3.Size = new Size(147, 17);
-            label3.TabIndex = 9;
-            label3.Text = "Añadir/Eliminar tamaño";
+            DGV_Stock.AllowUserToAddRows = false;
+            DGV_Stock.AllowUserToDeleteRows = false;
+            DGV_Stock.AllowUserToResizeColumns = false;
+            DGV_Stock.AllowUserToResizeRows = false;
+            DGV_Stock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_Stock.BackgroundColor = Color.White;
+            DGV_Stock.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGV_Stock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle10.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle10.SelectionForeColor = Color.White;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            DGV_Stock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            DGV_Stock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV_Stock.EnableHeadersVisualStyles = false;
+            DGV_Stock.GridColor = Color.DarkBlue;
+            DGV_Stock.Location = new Point(62, 201);
+            DGV_Stock.MultiSelect = false;
+            DGV_Stock.Name = "DGV_Stock";
+            DGV_Stock.ReadOnly = true;
+            DGV_Stock.RowHeadersVisible = false;
+            dataGridViewCellStyle11.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle11.SelectionBackColor = Color.Plum;
+            DGV_Stock.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            DGV_Stock.RowTemplate.Height = 25;
+            DGV_Stock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGV_Stock.Size = new Size(240, 150);
+            DGV_Stock.TabIndex = 0;
             // 
             // FormInventario
             // 
@@ -558,9 +556,8 @@
             ((System.ComponentModel.ISupportInitialize)DGV_Sizes).EndInit();
             ModStock.ResumeLayout(false);
             ModStock.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Stock).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DGV_Stock_Sizes).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
 
@@ -591,13 +588,10 @@
         private TabPage ModStock;
         private Button decStockBtn;
         private Button incStockBtn;
-        private DataGridView DGV_Stock_Sizes;
         private DataGridView DGV_Stock;
-        private Label label3;
         private Label label2;
-        private Button addStockBtn;
-        private Button delStockBtn;
         private Button stockBackBtn;
-        private NumericUpDown numericUpDown1;
+        private PictureBox pictureBox1;
+        private TextBox textBox2;
     }
 }

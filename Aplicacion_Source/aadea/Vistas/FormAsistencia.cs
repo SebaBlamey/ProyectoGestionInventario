@@ -72,16 +72,23 @@ namespace aadea.Vistas
         private void AddSave_Click(object sender, EventArgs e)
         {
 
-            TabPrincipal.SelectedTab = History;
-            TabPrincipal.TabPages.Add(History);
-            TabPrincipal.TabPages.Remove(Add);
-
-
-            queryCall(sender, e);
+            if (queryCall(sender, e))
+            {
+                TabPrincipal.SelectedTab = History;
+                TabPrincipal.TabPages.Add(History);
+                TabPrincipal.TabPages.Remove(Add);
+            }
             resetCamp(sender, e);
         }
+        private bool repeat(string rut, DateTime fecha, DateTime horallegada, DateTime horasalida)
+        {
+            L_Asistencia l_Asistencia = new L_Asistencia();
+            bool answer = l_Asistencia.checkRepeat(rut,fecha,horallegada,horasalida);
+            return answer;
 
-        private void queryCall(object sender, EventArgs e)
+        }
+
+        private bool queryCall(object sender, EventArgs e)
         {
             L_Asistencia l_Asistencia = new L_Asistencia();
 
@@ -104,7 +111,7 @@ namespace aadea.Vistas
             {
                 // No se seleccionó ninguna fila o celda
                 MessageBox.Show("Seleccione un trabajador o el valor del rut.", "Error");
-                return;
+                return false;
             }
 
             DateTime fechaSeleccionada = dateTimePickerFecha.Value.Date;
@@ -116,7 +123,8 @@ namespace aadea.Vistas
             {
                 // Mostrar mensaje de error o realizar alguna acción apropiada
                 MessageBox.Show("Formato de hora incorrecto. Utilice el formato HH:mm.", "Error");
-                return;
+                
+                return false;
             }
 
             // Calcular las horas trabajadas
@@ -131,11 +139,19 @@ namespace aadea.Vistas
             // Obtener las horas trabajadas en formato float
             float horasTrabajadasFloat = (float)horasTrabajadas.TotalHours;
             TotalsHours.Text = horasTrabajadasFloat.ToString();
+            bool answer = l_Asistencia.checkRepeat(rut, fechaSeleccionada, NewFormatLlegada, NewFormatSalida);
+            if (answer)
+            {
+                MessageBox.Show("La informacion que esta ingresando, esta repetida.");
+                Windows("Add");
+                return false;
+            }
 
             l_Asistencia.InsertAssistance(rut, fechaSeleccionada, NewFormatLlegada, NewFormatSalida, horasTrabajadasFloat);
             FormAsist_Load(sender, e);
             MessageBox.Show("Asistencia Agregada Correctamente");
             Windows("History");
+            return true;
         }
 
 
@@ -204,6 +220,7 @@ namespace aadea.Vistas
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             L_Asistencia l_Asistencia = new L_Asistencia();
+
             // Verificar si hay una fila seleccionada
             if (DGV_Asist.SelectedRows.Count > 0)
             {
@@ -211,11 +228,12 @@ namespace aadea.Vistas
                 DataGridViewRow filaSeleccionada = DGV_Asist.SelectedRows[0];
 
                 // Obtener los valores de las celdas de la fila
-                string id = filaSeleccionada.Cells["id"].Value.ToString();
-
-
-                // Llamar al método de eliminación en tu otra clase, pasando los valores necesarios
-                l_Asistencia.DeleteAssistance(id);
+                string rut = filaSeleccionada.Cells["rut"].Value.ToString();
+                DateTime fecha = Convert.ToDateTime(filaSeleccionada.Cells["Dia"].Value);
+                DateTime horaLlegada = Convert.ToDateTime(filaSeleccionada.Cells["Llegada"].Value);
+                // Obtener el ID utilizando el método GetID;
+                // Llamar al método de eliminación en tu otra clase, pasando el ID
+                l_Asistencia.DeleteAssistance(rut,fecha,horaLlegada);
 
                 // Actualizar el DataGridView si es necesario
                 // dgvDatos.DataSource = ...;
@@ -226,15 +244,10 @@ namespace aadea.Vistas
                 MessageBox.Show("Debes seleccionar una fila antes de eliminar.");
             }
 
-
-
-
-
-
-
             TabPrincipal.TabPages.Remove(Add);
             resetCamp(sender, e);
         }
+
 
         private void Cancel_Delete_Btn_Click(object sender, EventArgs e)
         {

@@ -33,7 +33,7 @@ namespace aadea.Vistas
             boxMedidaActual.Text = string.Empty;
             opcionBox.Text = string.Empty;
             rutaSeleccionada = null;
-            picImagenModify = null;
+            //picImagenModify = null;
             add_PictureBox = null;
             FormMaterials_Load(sender, e);
         }
@@ -67,6 +67,7 @@ namespace aadea.Vistas
                     UserControl_DeleteButtonClicked(userControl);
                     idLocal = userControl.ID;
                 };
+
                 userControl.buttonModifyClick += (s, args) =>
                 {
                     UserControl_ButtonModify(userControl);
@@ -102,26 +103,32 @@ namespace aadea.Vistas
 
         private void UserControl_ButtonModify(UserMaterial user)
         {
-            Principal.menuTitleLaberl.Text = "MODIFICAR MATERIAL";
-            string nombre = user.nombretit;
-            string cantidad = user.Cantidad;
-            string unidad = user.Unidad;
-            int id = user.ID;
-            idLocal = user.ID;
-            Image imagen = user.MaterialImage;
+            try
+            {
+                Principal.menuTitleLaberl.Text = "MODIFICAR MATERIAL";
+                string nombre = user.nombretit;
+                string cantidad = user.Cantidad;
+                string unidad = user.Unidad;
+                int id = user.ID;
+                idLocal = user.ID;
+                Image imagen = user.MaterialImage;
 
-            tabControl1.SelectedTab = EditMaterial;
-            tabControl1.TabPages.Add(EditMaterial);
-            tabControl1.TabPages.Remove(AddMaterial);
-            tabControl1.TabPages.Remove(ListaMateriales);
+                tabControl1.SelectedTab = EditMaterial;
+                tabControl1.TabPages.Add(EditMaterial);
+                tabControl1.TabPages.Remove(AddMaterial);
+                tabControl1.TabPages.Remove(ListaMateriales);
 
-            txtNameActual.Text = nombre;
-            txtStockActual.Text = cantidad;
-            var indice = boxMedidaActual.Items.IndexOf(unidad);
-            boxMedidaActual.SelectedIndex = indice;
+                txtNameActual.Text = nombre;
+                txtStockActual.Text = cantidad;
+                var indice = boxMedidaActual.Items.IndexOf(unidad);
+                boxMedidaActual.SelectedIndex = indice;
 
-            picImagenModify.Image = imagen;
-            idLocal = id;
+                picImagenModify.Image = imagen;
+                idLocal = id;
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void UserControl_DeleteButtonClicked(UserMaterial user)

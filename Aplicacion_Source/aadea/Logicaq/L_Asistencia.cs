@@ -36,7 +36,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void DeleteAssistance(string id)
+        public void DeleteAssistance(string rut, DateTime fecha, DateTime horaLlegada)
         {
             string answer = "";
             SQLiteTransaction transaction = null;
@@ -44,11 +44,13 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "DELETE FROM Asistencia WHERE Id = @id";
+                string SQLQuery = "DELETE FROM Asistencia WHERE Trabajador = @rut AND Dia = @fecha AND Llegada = @horaLlegada";
                 SQLCon.Open();
                 transaction = SQLCon.BeginTransaction();
                 SQLiteCommand comando = new SQLiteCommand(SQLQuery, SQLCon);
-                comando.Parameters.AddWithValue("@id", id);
+                comando.Parameters.AddWithValue("@rut", rut);
+                comando.Parameters.AddWithValue("@fecha", fecha.Date);
+                comando.Parameters.AddWithValue("@horaLlegada", horaLlegada);
                 answer = comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de eliminación, intente nuevamente";
                 transaction.Commit();
             }
@@ -63,6 +65,45 @@ namespace aadea.Logicaq
                     SQLCon.Close();
             }
         }
+
+
+        public bool checkRepeat(string rut, DateTime fecha, DateTime horaLlegada, DateTime horaSalida)
+        {
+            bool existeDuplicado = false;
+
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "SELECT COUNT(*) FROM Asistencia WHERE Trabajador = @rut AND Dia = @fecha AND (Llegada = @horaLlegada OR Salida = @horaSalida)";
+
+                SQLCon.Open();
+                SQLiteCommand comando = new SQLiteCommand(SQLQuery, SQLCon);
+                comando.Parameters.AddWithValue("@rut", rut);
+                comando.Parameters.AddWithValue("@fecha", fecha.Date);
+                comando.Parameters.AddWithValue("@horaLlegada", horaLlegada);
+                comando.Parameters.AddWithValue("@horaSalida", horaSalida);
+
+                int count = Convert.ToInt32(comando.ExecuteScalar());
+                if (count > 0)
+                {
+                    existeDuplicado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open)
+                    SQLCon.Close();
+            }
+
+            return existeDuplicado;
+        }
+
+
 
 
         public DataTable listTrabajadoresAsist()
