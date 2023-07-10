@@ -46,9 +46,9 @@ namespace aadea.Logicaq
             try
             {
                 connection = Conexion.GetConexion().CrearConexion();
-                string Query = "SELECT Material.nombre, Detalle_Historial.cantidad FROM Detalle_Historial JOIN Material ON Detalle_Historial.id_material = Material.ID WHERE Detalle_Historial.id_historial = 1";
+                string Query = "SELECT Material.nombre, Detalle_Historial.cantidad FROM Detalle_Historial JOIN Material ON Detalle_Historial.id_material = Material.ID WHERE Detalle_Historial.id_historial = @id";
                 SQLiteCommand Command = new SQLiteCommand(Query, connection);
-                Command.Parameters.AddWithValue("id", id);
+                Command.Parameters.AddWithValue("@id", id);
                 connection.Open();
                 resultado = Command.ExecuteReader();
                 tabla.Load(resultado);
@@ -72,9 +72,9 @@ namespace aadea.Logicaq
             try
             {
                 connection = Conexion.GetConexion().CrearConexion();
-                string Query = "SELECT Producto.nombre, Frasco.tamaño, Productos_Historial.cantidad\r\nFROM Productos_Historial\r\nJOIN Producto ON Productos_Historial.id_producto = Producto.ID\r\nJOIN Frasco ON Productos_Historial.id_frasco = Frasco.ID\r\nWHERE Productos_Historial.id_historial = @id;";
+                string Query = "SELECT producto.nombre, Frasco.tamaño, Productos_Historial.cantidad\r\nFROM Productos_Historial\r\nJOIN Producto ON Productos_Historial.id_producto = Producto.ID \r\nJOIN Frasco ON Productos_Historial.id_frasco = Frasco.ID \r\nWHERE Productos_Historial.id_historial = @id;";
                 SQLiteCommand Command = new SQLiteCommand(Query, connection);
-                Command.Parameters.AddWithValue("id", id);
+                Command.Parameters.AddWithValue("@id", id);
                 connection.Open();
                 resultado = Command.ExecuteReader();
                 tabla.Load(resultado);
@@ -322,7 +322,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void InsertarMaterialProduccion(int idProduccion, int idMaterial, int cantidad)
+        public void InsertarMaterialProduccion(int idProduccion, int idMaterial, float cantidad)
         {
             SQLiteConnection connection = new SQLiteConnection();
             try
@@ -576,7 +576,6 @@ namespace aadea.Logicaq
                     command.Parameters.AddWithValue("@id_producto", idProducto);
                     command.Parameters.AddWithValue("@id_frasco", idFrasco);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("ingresado");
                 }
                 else // El registro no existe, realizar inserción
                 {
@@ -598,7 +597,83 @@ namespace aadea.Logicaq
                 {
                     connection.Close();
                 }
-            } 
+            }
+        }
+
+        public float obtenerStockMaterial(int idMaterial)
+        {
+            float stock = 0;
+            SQLiteConnection connection = Conexion.GetConexion().CrearConexion();
+            try
+            {
+                string query = "SELECT Stock FROM Material WHERE ID = @idMaterial";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@idMaterial", idMaterial);
+
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    stock = Convert.ToSingle(result);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return stock;
+        }
+
+        public void DescontarStockMaterial(int idMaterial, float cantidad)
+        {
+            SQLiteConnection connection = Conexion.GetConexion().CrearConexion();
+
+            try
+            {
+                // Obtener el stock actual del material
+                float stockActual = obtenerStockMaterial(idMaterial);
+
+                // Verificar si hay suficiente stock para restar la cantidad deseada
+                if (stockActual >= cantidad)
+                {
+                    // Restar la cantidad al stock actual
+                    float nuevoStock = stockActual - cantidad;
+
+                    // Actualizar el stock en la base de datos
+                    string query = "UPDATE Material SET Stock = @nuevoStock WHERE ID = @idMaterial";
+                    SQLiteCommand command = new SQLiteCommand(query, connection);
+                    command.Parameters.AddWithValue("@nuevoStock", nuevoStock);
+                    command.Parameters.AddWithValue("@idMaterial", idMaterial);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                else
+                {
+                    // No hay suficiente stock, mostrar mensaje o tomar alguna acción adicional
+                    MessageBox.Show("No hay suficiente stock para restar la cantidad deseada.", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 

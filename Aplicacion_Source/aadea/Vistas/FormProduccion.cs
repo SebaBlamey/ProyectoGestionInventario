@@ -410,6 +410,28 @@ namespace aadea.Vistas
                             labelUnidad.Text = string.Empty;
                         }
                     };
+                    textBoxCantidad.KeyPress += (s, args) =>
+                    {
+                        if (!char.IsDigit(args.KeyChar) && args.KeyChar != ',' && args.KeyChar != '\b')
+                        {
+                            args.Handled = true;
+                        }
+
+                        if (args.KeyChar == ',')
+                        {
+                            if (textBoxCantidad.Text.Contains(','))
+                            {
+                                args.Handled = true;
+                            }
+                            else
+                            {
+                                // Reemplazar la coma por el punto en el TextBox
+                                textBoxCantidad.Text += ".";
+                                textBoxCantidad.SelectionStart = textBoxCantidad.Text.Length;
+                                args.Handled = true;
+                            }
+                        }
+                    };
                     flowLayoutPanelBox.Controls.Add(labelProducto);
                     flowLayoutPanelBox.Controls.Add(comboBoxMaterial);
                     flowLayoutPanelBox.Controls.Add(labelUnidad);
@@ -422,6 +444,8 @@ namespace aadea.Vistas
                 flowLayoutPanelBox.Controls.Clear();
             }
         }
+
+
         //boton aceptar de ingresar produccion
         private void btAceptar_Click(object sender, EventArgs e)
         {
@@ -434,6 +458,10 @@ namespace aadea.Vistas
             L_Produccion l_list = new L_Produccion();
             l_list.InsertarProduccion(idProduccion, nombreProduccion, fechaInicio);
 
+            bool suficienteMaterial = true; // Variable para verificar si hay suficiente material disponible
+
+            Dictionary<int, float> materialesCantidad = new Dictionary<int, float>(); // Diccionario para almacenar el ID del material y la cantidad utilizada
+
             for (int i = 0; i < comboBoxesMateriales.Count; i++)
             {
                 ComboBox comboBoxMaterial = comboBoxesMateriales[i];
@@ -442,26 +470,58 @@ namespace aadea.Vistas
                 string nombreMaterial = comboBoxMaterial.SelectedItem.ToString();
                 int idMaterial = l_list.obtenerIdMaterial(nombreMaterial);
 
-                int cantidad;
+                float cantidad;
                 string cantidadTexto = textBoxCantidad.Text;
-                if (Int32.TryParse(cantidadTexto, out cantidad))
+                if (float.TryParse(cantidadTexto, out cantidad))
                 {
+                    // Comprobar si hay suficiente material disponible
+                    float stockDisponible = l_list.obtenerStockMaterial(idMaterial);
+                    if (cantidad > stockDisponible)
+                    {
+                        suficienteMaterial = false;
+                        break; // Salir del bucle si no hay suficiente material
+                    }
+
+                    materialesCantidad[idMaterial] = cantidad;
                 }
                 else
                 {
                     MessageBox.Show("Error");
+                    suficienteMaterial = false;
+                    break; // Salir del bucle si hay un error en la cantidad
                 }
-
-                l_list.InsertarMaterialProduccion(idProduccion, idMaterial, cantidad);
             }
 
-            tabControlProduccion.SelectedTab = viewButtons;
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-            tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            tabControlProduccion.TabPages.Remove(tabBodega);
-            tabControlProduccion.TabPages.Add(viewButtons);
-            resertcampos(sender, e);
+            if (suficienteMaterial)
+            {
+                // Realizar la inserción de la producción y los materiales
+                foreach (var kvp in materialesCantidad)
+                {
+                    int idMaterial = kvp.Key;
+                    float cantidad = kvp.Value;
+
+                    l_list.InsertarMaterialProduccion(idProduccion, idMaterial, cantidad);
+
+                    // Descontar la cantidad utilizada del material en la base de datos
+                    l_list.DescontarStockMaterial(idMaterial, cantidad);
+                }
+
+                tabControlProduccion.SelectedTab = viewButtons;
+                tabControlProduccion.TabPages.Remove(tabHistory);
+                tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+                tabControlProduccion.TabPages.Remove(tabProduccionActual);
+                tabControlProduccion.TabPages.Remove(tabBodega);
+                tabControlProduccion.TabPages.Add(viewButtons);
+                resertcampos(sender, e);
+            }
+            else
+            {
+                // Eliminar la producción incompleta
+                l_list.EliminarProduccion(idProduccion);
+
+                MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void boxProductsCreate_TextChanged(object sender, EventArgs e)
