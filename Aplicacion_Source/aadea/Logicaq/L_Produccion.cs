@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Data.SQLite;
 using aadea.userControls;
+using System.Windows.Media.Media3D;
 
 namespace aadea.Logicaq
 {
@@ -71,7 +72,7 @@ namespace aadea.Logicaq
             try
             {
                 connection = Conexion.GetConexion().CrearConexion();
-                string Query = "SELECT Producto.nombre, Frasco.tamaño, Producto_Historial.cantidad\r\nFROM Producto_Historial\r\nJOIN Producto ON Producto_Historial.id_producto = Producto.ID\r\nJOIN Frasco ON Producto_Historial.id_frasco = Frasco.ID\r\nWHERE Producto_Historial.id_historial = @id;";
+                string Query = "SELECT Producto.nombre, Frasco.tamaño, Productos_Historial.cantidad\r\nFROM Productos_Historial\r\nJOIN Producto ON Productos_Historial.id_producto = Producto.ID\r\nJOIN Frasco ON Productos_Historial.id_frasco = Frasco.ID\r\nWHERE Productos_Historial.id_historial = @id;";
                 SQLiteCommand Command = new SQLiteCommand(Query, connection);
                 Command.Parameters.AddWithValue("id", id);
                 connection.Open();
@@ -235,6 +236,68 @@ namespace aadea.Logicaq
                 if (connection.State == ConnectionState.Open) { connection.Close(); }
             }
         }
+
+        public int obtenerIdProducto(string nombre)
+        {
+            int id = 0; // Inicializar con un valor predeterminado
+            SQLiteDataReader resultado;
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT ID FROM producto WHERE nombre = @nombre";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@nombre", nombre);
+                connection.Open();
+                resultado = command.ExecuteReader();
+                if (resultado.Read())
+                {
+                    id = resultado.GetInt32(0);
+                }
+                resultado.Close();
+                return id;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
+
+        public int obtenerIdFrasco(string nombre)
+        {
+            int id = 0; // Inicializar con un valor predeterminado
+            SQLiteDataReader resultado;
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT ID FROM Frasco WHERE Tamaño = @nombre";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@nombre", nombre);
+                connection.Open();
+                resultado = command.ExecuteReader();
+                if (resultado.Read())
+                {
+                    id = resultado.GetInt32(0);
+                }
+                resultado.Close();
+                return id;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
+
+
         public void InsertarProduccion(int idProduccion, string nombreProduccion, string fechaInicio)
         {
             SQLiteConnection connection = new SQLiteConnection();
@@ -400,7 +463,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void TerminarProduccion(int idProduccion,string fechaTermino,string fechaInicio)
+        public void TerminarProduccion(int idProduccion, string fechaTermino, string fechaInicio)
         {
             SQLiteConnection connection = null;
             try
@@ -418,7 +481,7 @@ namespace aadea.Logicaq
 
                 // Obtener los materiales de la producción desde la tabla "Material_Produccion"
                 DataTable materialesProduccion = getMaterialProduccion(idProduccion);
-                if (materialesProduccion!=null)
+                if (materialesProduccion != null)
                 {
                     MessageBox.Show("estalleno");
                 }
@@ -464,6 +527,80 @@ namespace aadea.Logicaq
             }
         }
 
+        public void insertProductoHistorial(int idHistorial, int idProducto, int idFrasco, int Cantidad)
+        {
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                MessageBox.Show("insertando");
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "INSERT INTO Productos_Historial (id_historial, id_producto, cantidad,id_frasco) VALUES (@id_historial, @id_producto, @cantidad,@id_frasco)";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@id_historial", idHistorial);
+                command.Parameters.AddWithValue("@id_producto", idProducto);
+                command.Parameters.AddWithValue("@cantidad", Cantidad);
+                command.Parameters.AddWithValue("@id_frasco", idFrasco);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
 
+
+        public void insertStock(int idProducto, int idFrasco, int cantidad)
+        {
+            SQLiteConnection connection = Conexion.GetConexion().CrearConexion();
+            try
+            {
+                string query = "SELECT cantidad FROM bodega WHERE id_producto = @id_producto AND id_frasco = @id_frasco";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@id_producto", idProducto);
+                command.Parameters.AddWithValue("@id_frasco", idFrasco);
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value) // El registro ya existe, realizar actualización
+                {
+                    int cantidadExistente = Convert.ToInt32(result);
+                    int nuevaCantidad = cantidadExistente + cantidad;
+
+                    query = "UPDATE bodega SET cantidad = @nueva_cantidad WHERE id_producto = @id_producto AND id_frasco = @id_frasco";
+                    command = new SQLiteCommand(query, connection);
+                    command.Parameters.AddWithValue("@nueva_cantidad", nuevaCantidad);
+                    command.ExecuteNonQuery();
+                }
+                else // El registro no existe, realizar inserción
+                {
+                    query = "INSERT INTO bodega (id_producto, id_frasco, cantidad) VALUES (@id_producto, @id_frasco, @cantidad)";
+                    command = new SQLiteCommand(query, connection);
+                    command.Parameters.AddWithValue("@id_producto", idProducto);
+                    command.Parameters.AddWithValue("@id_frasco", idFrasco);
+                    command.Parameters.AddWithValue("@cantidad", cantidad);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            } 
+        }
     }
+
 }

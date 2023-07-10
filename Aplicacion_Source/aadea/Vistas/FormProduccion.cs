@@ -25,11 +25,12 @@ namespace aadea.Vistas
         private List<ComboBox> comboBoxesProductos;
         private List<TextBox> textBoxesCantidadProductos;
         private List<List<string>> opcionesFrascos;
-        private List<string> Frascos;
+        private List<string> frascos;
         private List<ComboBox> comboBoxesFrascos;
         private List<TextBox> textBoxesCantidadFrascos;
         private int idLocal;
         private List<string> unidades;
+        private produccionActual userLocal;
 
         public FormProduccion()
         {
@@ -53,7 +54,7 @@ namespace aadea.Vistas
             productos = l_list_mats.ObtenerProductos();
             opcionesProductos = new List<List<string>>();
 
-            Frascos = l_list_mats.ObtenerFrascos();
+            frascos = l_list_mats.ObtenerFrascos();
             opcionesFrascos = new List<List<string>>();
 
             for (int i = 0; i < 20; i++)
@@ -70,7 +71,7 @@ namespace aadea.Vistas
 
             for (int i = 0; i < 20; i++)
             {
-                List<string> opcionesFrasc = new List<string>(Frascos);
+                List<string> opcionesFrasc = new List<string>(frascos);
                 opcionesFrascos.Add(opcionesFrasc);
             }
 
@@ -185,19 +186,81 @@ namespace aadea.Vistas
             }
         }
 
-
+        //boton terminar produccion
         private void User_ButtonEnd(object sender, EventArgs e)
         {
-            produccionActual user = (produccionActual)sender;
-            int idProduccion = user.ID;
+            userLocal = (produccionActual)sender;
+            tabControlProduccion.SelectedTab = tabBodega;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(viewButtons);
+            tabControlProduccion.TabPages.Add(tabBodega);
+            resertcampos(sender, e);
+
+        }
+        private void aceptInsertProduct_Click(object sender, EventArgs e)
+        {
+
+            int idProduccion = userLocal.ID;
             L_Produccion l = new L_Produccion();
-            string termino = user.fechaterm;
-            string inicio = user.fechaInicio;
+            string termino = userLocal.fechaterm;
+            string inicio = userLocal.fechaInicio;
+
+            for (int i = 0; i < comboBoxesProductos.Count; i++)
+            {
+                ComboBox comboBoxProducto = comboBoxesProductos[i];
+                ComboBox comboBoxFrasco = comboBoxesFrascos[i];
+                TextBox textBoxCantidadProducto = textBoxesCantidadProductos[i];
+                TextBox textBoxCantidadFrasco = textBoxesCantidadFrascos[i];
+
+                string nombreProducto = comboBoxProducto.SelectedItem.ToString();
+                int idProducto = l.obtenerIdProducto(nombreProducto);
+
+                string nombreFrasco = comboBoxFrasco.SelectedItem.ToString();
+                int idFrasco = l.obtenerIdFrasco(nombreFrasco);
+
+                int cantidadProducto;
+                string cantidadTextoProducto = textBoxCantidadProducto.Text;
+
+                if (Int32.TryParse(cantidadTextoProducto, out cantidadProducto))
+                {
+                    int cantidadFrasco;
+                    string cantidadTextoFrasco = textBoxCantidadFrasco.Text;
+
+                    if (Int32.TryParse(cantidadTextoFrasco, out cantidadFrasco))
+                    {
+                        l.insertProductoHistorial(idProduccion, idProducto, idFrasco, cantidadProducto);
+                        l.insertStock(idProducto, idFrasco, cantidadProducto);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en la cantidad de frasco.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error en la cantidad de producto.");
+                }
+            }
+
             l.TerminarProduccion(idProduccion, termino, inicio);
 
             // Eliminar el user control del panel
-            layoutPanelActualProduccion.Controls.Remove(user);
+            layoutPanelActualProduccion.Controls.Remove(userLocal);
+
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
+            tabControlProduccion.TabPages.Add(viewButtons);
+            resertcampos(sender, e);
+
         }
+
+
+
 
         private void User_DeleteButtonClicked(object sender, EventArgs e)
         {
@@ -220,7 +283,10 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Add(viewButtons);
         }
 
+        private void CancelInsertProduct_Click(object sender, EventArgs e)
+        {
 
+        }
 
 
 
@@ -458,18 +524,7 @@ namespace aadea.Vistas
             {
                 layoutPanelProducts.Controls.Clear();
             }
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tabControlProduccion.SelectedTab = tabBodega;
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-            tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            tabControlProduccion.TabPages.Remove(viewButtons);
-            tabControlProduccion.TabPages.Add(tabBodega);
-            resertcampos(sender, e);
+            cantiProductLocal = cantidadProductos;
         }
     }
 }

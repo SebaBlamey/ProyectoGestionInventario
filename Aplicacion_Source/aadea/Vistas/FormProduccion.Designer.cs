@@ -32,7 +32,6 @@
             panel1 = new Panel();
             tabControlProduccion = new TabControl();
             viewButtons = new TabPage();
-            button1 = new Button();
             btIngresarProduccion = new Model.BT();
             btViewProduccion = new Model.BT();
             bt1 = new Model.BT();
@@ -55,6 +54,8 @@
             btAceptar = new Button();
             btCancelAddproduccion = new Button();
             tabBodega = new TabPage();
+            CancelInsertProduct = new Button();
+            aceptInsertProduct = new Button();
             layoutPanelProducts = new FlowLayoutPanel();
             boxProductsCreate = new TextBox();
             label5 = new Label();
@@ -97,7 +98,6 @@
             // 
             // viewButtons
             // 
-            viewButtons.Controls.Add(button1);
             viewButtons.Controls.Add(btIngresarProduccion);
             viewButtons.Controls.Add(btViewProduccion);
             viewButtons.Controls.Add(bt1);
@@ -108,16 +108,6 @@
             viewButtons.TabIndex = 0;
             viewButtons.Text = "Produccion";
             viewButtons.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(340, 356);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // btIngresarProduccion
             // 
@@ -378,6 +368,8 @@
             // 
             // tabBodega
             // 
+            tabBodega.Controls.Add(CancelInsertProduct);
+            tabBodega.Controls.Add(aceptInsertProduct);
             tabBodega.Controls.Add(layoutPanelProducts);
             tabBodega.Controls.Add(boxProductsCreate);
             tabBodega.Controls.Add(label5);
@@ -389,6 +381,26 @@
             tabBodega.TabIndex = 4;
             tabBodega.Text = "Ingresar productos";
             tabBodega.UseVisualStyleBackColor = true;
+            // 
+            // CancelInsertProduct
+            // 
+            CancelInsertProduct.Location = new Point(246, 386);
+            CancelInsertProduct.Name = "CancelInsertProduct";
+            CancelInsertProduct.Size = new Size(147, 23);
+            CancelInsertProduct.TabIndex = 5;
+            CancelInsertProduct.Text = "Cancelar";
+            CancelInsertProduct.UseVisualStyleBackColor = true;
+            CancelInsertProduct.Click += CancelInsertProduct_Click;
+            // 
+            // aceptInsertProduct
+            // 
+            aceptInsertProduct.Location = new Point(57, 386);
+            aceptInsertProduct.Name = "aceptInsertProduct";
+            aceptInsertProduct.Size = new Size(147, 23);
+            aceptInsertProduct.TabIndex = 4;
+            aceptInsertProduct.Text = "Aceptar";
+            aceptInsertProduct.UseVisualStyleBackColor = true;
+            aceptInsertProduct.Click += aceptInsertProduct_Click;
             // 
             // layoutPanelProducts
             // 
@@ -495,6 +507,7 @@
         private TextBox boxProductsCreate;
         private Label label5;
         private Label label4;
-        private Button button1;
+        private Button CancelInsertProduct;
+        private Button aceptInsertProduct;
     }
 }
