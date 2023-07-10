@@ -63,7 +63,7 @@
             nametxt.ForeColor = Color.Black;
             nametxt.Location = new Point(3, 12);
             nametxt.Name = "nametxt";
-            nametxt.Size = new Size(125, 31);
+            nametxt.Size = new Size(546, 31);
             nametxt.TabIndex = 7;
             nametxt.Text = "label2";
             nametxt.TextAlign = ContentAlignment.MiddleCenter;

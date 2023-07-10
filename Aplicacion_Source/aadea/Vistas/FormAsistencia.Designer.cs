@@ -68,6 +68,7 @@
             // 
             // History
             // 
+            History.BackColor = SystemColors.Control;
             History.Controls.Add(DeleteButton);
             History.Controls.Add(addButton);
             History.Controls.Add(DGV_Asist);
@@ -79,14 +80,13 @@
             History.Size = new Size(681, 391);
             History.TabIndex = 0;
             History.Text = "Historial";
-            History.UseVisualStyleBackColor = true;
             // 
             // DeleteButton
             // 
             DeleteButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            DeleteButton.Location = new Point(583, 207);
+            DeleteButton.Location = new Point(583, 188);
             DeleteButton.Name = "DeleteButton";
-            DeleteButton.Size = new Size(90, 23);
+            DeleteButton.Size = new Size(90, 27);
             DeleteButton.TabIndex = 3;
             DeleteButton.Text = "Eliminar";
             DeleteButton.UseVisualStyleBackColor = true;
@@ -95,7 +95,7 @@
             // addButton
             // 
             addButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            addButton.Location = new Point(583, 162);
+            addButton.Location = new Point(583, 137);
             addButton.Name = "addButton";
             addButton.Size = new Size(90, 27);
             addButton.TabIndex = 1;
@@ -106,36 +106,42 @@
             // DGV_Asist
             // 
             DGV_Asist.AllowUserToAddRows = false;
-            DGV_Asist.AllowUserToDeleteRows = false;
+            DGV_Asist.AllowUserToResizeColumns = false;
+            DGV_Asist.AllowUserToResizeRows = false;
             DGV_Asist.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            DGV_Asist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGV_Asist.BackgroundColor = Color.White;
+            DGV_Asist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            DGV_Asist.BackgroundColor = SystemColors.Control;
+            DGV_Asist.BorderStyle = BorderStyle.None;
+            DGV_Asist.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGV_Asist.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 8.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             DGV_Asist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             DGV_Asist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            DGV_Asist.DefaultCellStyle = dataGridViewCellStyle2;
-            DGV_Asist.EditMode = DataGridViewEditMode.EditOnF2;
-            DGV_Asist.Location = new Point(8, 6);
+            DGV_Asist.EnableHeadersVisualStyles = false;
+            DGV_Asist.GridColor = Color.DarkBlue;
+            DGV_Asist.Location = new Point(6, 6);
             DGV_Asist.Name = "DGV_Asist";
-            DGV_Asist.RowTemplate.Height = 25;
-            DGV_Asist.Size = new Size(571, 377);
+            DGV_Asist.ReadOnly = true;
+            DGV_Asist.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DGV_Asist.RowHeadersVisible = false;
+            DGV_Asist.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
+            DGV_Asist.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            DGV_Asist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGV_Asist.Size = new Size(571, 375);
             DGV_Asist.TabIndex = 0;
             // 
             // Add
             // 
+            Add.BackColor = SystemColors.Control;
             Add.Controls.Add(CancelBT);
             Add.Controls.Add(TotalsHours);
             Add.Controls.Add(label4);
@@ -154,7 +160,6 @@
             Add.Size = new Size(681, 391);
             Add.TabIndex = 1;
             Add.Text = " Añadir";
-            Add.UseVisualStyleBackColor = true;
             // 
             // CancelBT
             // 
@@ -242,21 +247,34 @@
             AddSave.Name = "AddSave";
             AddSave.Size = new Size(75, 23);
             AddSave.TabIndex = 1;
-            AddSave.Text = "Añadir";
+            AddSave.Text = "Aceptar";
             AddSave.UseVisualStyleBackColor = true;
             AddSave.Click += AddSave_Click;
             // 
             // DGV_Trabajador
             // 
             DGV_Trabajador.AllowUserToAddRows = false;
-            DGV_Trabajador.AllowUserToDeleteRows = false;
+            DGV_Trabajador.AllowUserToResizeColumns = false;
+            DGV_Trabajador.AllowUserToResizeRows = false;
+            DGV_Trabajador.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DGV_Trabajador.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGV_Trabajador.BackgroundColor = Color.White;
-            DGV_Trabajador.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV_Trabajador.Location = new Point(8, 16);
+            DGV_Trabajador.BackgroundColor = SystemColors.Control;
+            DGV_Trabajador.BorderStyle = BorderStyle.None;
+            DGV_Trabajador.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DGV_Trabajador.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DGV_Trabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            DGV_Trabajador.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            DGV_Trabajador.EnableHeadersVisualStyles = false;
+            DGV_Trabajador.GridColor = Color.DarkBlue;
+            DGV_Trabajador.Location = new Point(6, 6);
             DGV_Trabajador.Name = "DGV_Trabajador";
-            DGV_Trabajador.RowTemplate.Height = 25;
-            DGV_Trabajador.Size = new Size(411, 355);
+            DGV_Trabajador.ReadOnly = true;
+            DGV_Trabajador.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            DGV_Trabajador.RowHeadersVisible = false;
+            DGV_Trabajador.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            DGV_Trabajador.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            DGV_Trabajador.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGV_Trabajador.Size = new Size(380, 375);
             DGV_Trabajador.TabIndex = 0;
             // 
             // FormAsistencia

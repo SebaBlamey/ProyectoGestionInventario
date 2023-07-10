@@ -35,8 +35,6 @@ namespace aadea.Vistas
         {
             L_Asistencia datos = new L_Asistencia();
             DGV_Asist.DataSource = datos.listAsist();
-
-
         }
         private void ListadoTrabajador()
         {
@@ -57,13 +55,13 @@ namespace aadea.Vistas
         private void Formato_Asist()
         {
             DGV_Asist.Columns[0].Width = 100;
-            
+
 
         }
 
 
         private void resetCamp(object sender, EventArgs e)
-        { 
+        {
             CheckIn.Text = string.Empty;
             CheckOut.Text = string.Empty;
             FormAsist_Load(sender, e);
@@ -78,7 +76,7 @@ namespace aadea.Vistas
             TabPrincipal.TabPages.Add(History);
             TabPrincipal.TabPages.Remove(Add);
 
-            
+
             queryCall(sender, e);
             resetCamp(sender, e);
         }
