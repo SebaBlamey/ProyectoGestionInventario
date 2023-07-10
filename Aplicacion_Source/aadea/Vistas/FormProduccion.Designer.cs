@@ -32,6 +32,7 @@
             panel1 = new Panel();
             tabControlProduccion = new TabControl();
             viewButtons = new TabPage();
+            button1 = new Button();
             btIngresarProduccion = new Model.BT();
             btViewProduccion = new Model.BT();
             bt1 = new Model.BT();
@@ -39,6 +40,7 @@
             LayoutHistorial = new FlowLayoutPanel();
             bttExitHistory = new Model.BT();
             tabProduccionActual = new TabPage();
+            layoutPanelActualProduccion = new FlowLayoutPanel();
             btExitProduccionActual = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             tabIngresarProduccion = new TabPage();
@@ -52,9 +54,13 @@
             flowLayoutPanelBox = new FlowLayoutPanel();
             btAceptar = new Button();
             btCancelAddproduccion = new Button();
+            tabBodega = new TabPage();
+            layoutPanelProducts = new FlowLayoutPanel();
+            boxProductsCreate = new TextBox();
+            label5 = new Label();
+            label4 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
-            layoutPanelActualProduccion = new FlowLayoutPanel();
             panel1.SuspendLayout();
             tabControlProduccion.SuspendLayout();
             viewButtons.SuspendLayout();
@@ -62,6 +68,7 @@
             tabProduccionActual.SuspendLayout();
             tabIngresarProduccion.SuspendLayout();
             panel2.SuspendLayout();
+            tabBodega.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -79,6 +86,7 @@
             tabControlProduccion.Controls.Add(tabHistory);
             tabControlProduccion.Controls.Add(tabProduccionActual);
             tabControlProduccion.Controls.Add(tabIngresarProduccion);
+            tabControlProduccion.Controls.Add(tabBodega);
             tabControlProduccion.Dock = DockStyle.Fill;
             tabControlProduccion.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tabControlProduccion.Location = new Point(0, 0);
@@ -89,6 +97,7 @@
             // 
             // viewButtons
             // 
+            viewButtons.Controls.Add(button1);
             viewButtons.Controls.Add(btIngresarProduccion);
             viewButtons.Controls.Add(btViewProduccion);
             viewButtons.Controls.Add(bt1);
@@ -99,6 +108,16 @@
             viewButtons.TabIndex = 0;
             viewButtons.Text = "Produccion";
             viewButtons.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(340, 356);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 3;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btIngresarProduccion
             // 
@@ -212,6 +231,15 @@
             tabProduccionActual.TabIndex = 2;
             tabProduccionActual.Text = "Produccion Actual";
             tabProduccionActual.UseVisualStyleBackColor = true;
+            // 
+            // layoutPanelActualProduccion
+            // 
+            layoutPanelActualProduccion.AutoScroll = true;
+            layoutPanelActualProduccion.Dock = DockStyle.Top;
+            layoutPanelActualProduccion.Location = new Point(3, 3);
+            layoutPanelActualProduccion.Name = "layoutPanelActualProduccion";
+            layoutPanelActualProduccion.Size = new Size(788, 398);
+            layoutPanelActualProduccion.TabIndex = 2;
             // 
             // btExitProduccionActual
             // 
@@ -348,6 +376,57 @@
             btCancelAddproduccion.UseVisualStyleBackColor = true;
             btCancelAddproduccion.Click += btCancelAddproduccion_Click;
             // 
+            // tabBodega
+            // 
+            tabBodega.Controls.Add(layoutPanelProducts);
+            tabBodega.Controls.Add(boxProductsCreate);
+            tabBodega.Controls.Add(label5);
+            tabBodega.Controls.Add(label4);
+            tabBodega.Location = new Point(4, 26);
+            tabBodega.Name = "tabBodega";
+            tabBodega.Padding = new Padding(3);
+            tabBodega.Size = new Size(794, 438);
+            tabBodega.TabIndex = 4;
+            tabBodega.Text = "Ingresar productos";
+            tabBodega.UseVisualStyleBackColor = true;
+            // 
+            // layoutPanelProducts
+            // 
+            layoutPanelProducts.AutoScroll = true;
+            layoutPanelProducts.FlowDirection = FlowDirection.TopDown;
+            layoutPanelProducts.Location = new Point(25, 140);
+            layoutPanelProducts.Name = "layoutPanelProducts";
+            layoutPanelProducts.Size = new Size(571, 221);
+            layoutPanelProducts.TabIndex = 3;
+            layoutPanelProducts.WrapContents = false;
+            // 
+            // boxProductsCreate
+            // 
+            boxProductsCreate.Location = new Point(255, 100);
+            boxProductsCreate.Name = "boxProductsCreate";
+            boxProductsCreate.Size = new Size(100, 22);
+            boxProductsCreate.TabIndex = 2;
+            boxProductsCreate.TextChanged += boxProductsCreate_TextChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(25, 100);
+            label5.Name = "label5";
+            label5.Size = new Size(199, 17);
+            label5.TabIndex = 1;
+            label5.Text = "Cantidad de productos creados";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(25, 29);
+            label4.Name = "label4";
+            label4.Size = new Size(222, 24);
+            label4.TabIndex = 0;
+            label4.Text = "Productos a bodega";
+            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.Name = "contextMenuStrip1";
@@ -360,15 +439,6 @@
             entityCommand1.Connection = null;
             entityCommand1.EnablePlanCaching = true;
             entityCommand1.Transaction = null;
-            // 
-            // layoutPanelActualProduccion
-            // 
-            layoutPanelActualProduccion.AutoScroll = true;
-            layoutPanelActualProduccion.Dock = DockStyle.Top;
-            layoutPanelActualProduccion.Location = new Point(3, 3);
-            layoutPanelActualProduccion.Name = "layoutPanelActualProduccion";
-            layoutPanelActualProduccion.Size = new Size(788, 398);
-            layoutPanelActualProduccion.TabIndex = 2;
             // 
             // FormProduccion
             // 
@@ -387,6 +457,8 @@
             tabIngresarProduccion.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            tabBodega.ResumeLayout(false);
+            tabBodega.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -418,5 +490,11 @@
         private Label label3;
         private TextBox txtName;
         private FlowLayoutPanel layoutPanelActualProduccion;
+        private TabPage tabBodega;
+        private FlowLayoutPanel layoutPanelProducts;
+        private TextBox boxProductsCreate;
+        private Label label5;
+        private Label label4;
+        private Button button1;
     }
 }

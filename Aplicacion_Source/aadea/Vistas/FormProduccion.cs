@@ -20,7 +20,16 @@ namespace aadea.Vistas
         private List<string> materiales;
         private List<ComboBox> comboBoxesMateriales;
         private List<TextBox> textBoxesCantidad;
+        private List<List<string>> opcionesProductos;
+        private List<string> productos;
+        private List<ComboBox> comboBoxesProductos;
+        private List<TextBox> textBoxesCantidadProductos;
+        private List<List<string>> opcionesFrascos;
+        private List<string> Frascos;
+        private List<ComboBox> comboBoxesFrascos;
+        private List<TextBox> textBoxesCantidadFrascos;
         private int idLocal;
+        private List<string> unidades;
 
         public FormProduccion()
         {
@@ -28,19 +37,44 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
 
             comboBoxesMateriales = new List<ComboBox>();
             textBoxesCantidad = new List<TextBox>();
+            comboBoxesProductos = new List<ComboBox>();
+            textBoxesCantidadProductos = new List<TextBox>();
+            comboBoxesFrascos = new List<ComboBox>();
+            textBoxesCantidadFrascos = new List<TextBox>();
 
             L_Produccion l_list_mats = new L_Produccion();
             materiales = l_list_mats.ObtenerMateriales();
             opcionesMateriales = new List<List<string>>();
 
-            for (int i = 0; i < 10; i++)
+            productos = l_list_mats.ObtenerProductos();
+            opcionesProductos = new List<List<string>>();
+
+            Frascos = l_list_mats.ObtenerFrascos();
+            opcionesFrascos = new List<List<string>>();
+
+            for (int i = 0; i < 20; i++)
             {
                 List<string> opciones = new List<string>(materiales); // Clona la lista original
                 opcionesMateriales.Add(opciones);
             }
+
+            for (int i = 0; i < 20; i++)
+            {
+                List<string> opcionesPr = new List<string>(productos); // Clona la lista original
+                opcionesProductos.Add(opcionesPr);
+            }
+
+            for (int i = 0; i < 20; i++)
+            {
+                List<string> opcionesFrasc = new List<string>(Frascos);
+                opcionesFrascos.Add(opcionesFrasc);
+            }
+
+            unidades = l_list_mats.unidadesMateriales();
 
         }
         private void resertcampos(object sender, EventArgs e)
@@ -61,6 +95,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(tabHistory);
 
 
@@ -91,6 +126,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
         }
 
@@ -108,6 +144,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(tabProduccionActual);
             FormLoadProduccionActual(sender, e);
         }
@@ -156,7 +193,7 @@ namespace aadea.Vistas
             L_Produccion l = new L_Produccion();
             string termino = user.fechaterm;
             string inicio = user.fechaInicio;
-            l.TerminarProduccion(idProduccion,termino,inicio);
+            l.TerminarProduccion(idProduccion, termino, inicio);
 
             // Eliminar el user control del panel
             layoutPanelActualProduccion.Controls.Remove(user);
@@ -179,6 +216,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
         }
 
@@ -196,8 +234,8 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(tabIngresarProduccion);
-            this.Load += FormIngresarProduccion_Load;
             resertcampos(sender, e);
         }
 
@@ -208,6 +246,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
         }
@@ -217,7 +256,7 @@ namespace aadea.Vistas
             for (int i = 0; i < materiales.Count; i++)
             {
                 Label labelProducto = new Label();
-                labelProducto.Text = "Producto:";
+                labelProducto.Text = "Material:";
                 labelProducto.AutoSize = true;
 
                 ComboBox comboBoxMaterial = new ComboBox();
@@ -233,9 +272,26 @@ namespace aadea.Vistas
 
                 comboBoxesMateriales.Add(comboBoxMaterial);
                 textBoxesCantidad.Add(textBoxCantidad);
+                Label labelUnidad = new Label();
+                labelUnidad.AutoSize = true;
+                labelUnidad.ForeColor = Color.Black;
+
+                comboBoxMaterial.SelectedIndexChanged += (s, args) =>
+                {
+                    if (comboBoxMaterial.SelectedIndex >= 0)
+                    {
+                        string unidad = unidades[comboBoxMaterial.SelectedIndex];
+                        labelUnidad.Text = unidad;
+                    }
+                    else
+                    {
+                        labelUnidad.Text = string.Empty;
+                    }
+                };
 
                 flowLayoutPanelBox.Controls.Add(labelProducto);
                 flowLayoutPanelBox.Controls.Add(comboBoxMaterial);
+                flowLayoutPanelBox.Controls.Add(labelCantidad);
                 flowLayoutPanelBox.Controls.Add(labelCantidad);
                 flowLayoutPanelBox.Controls.Add(textBoxCantidad);
             }
@@ -252,7 +308,7 @@ namespace aadea.Vistas
                 for (int i = 0; i < cantidadMateriales; i++)
                 {
                     Label labelProducto = new Label();
-                    labelProducto.Text = "Producto:";
+                    labelProducto.Text = "Material:";
                     labelProducto.AutoSize = true;
                     labelProducto.ForeColor = Color.Black;
 
@@ -270,8 +326,34 @@ namespace aadea.Vistas
                     comboBoxesMateriales.Add(comboBoxMaterial);
                     textBoxesCantidad.Add(textBoxCantidad);
 
+                    Label labelUnidad = new Label();
+                    labelUnidad.AutoSize = true;
+                    labelUnidad.ForeColor = Color.Black;
+
+                    comboBoxMaterial.SelectedIndexChanged += (s, args) =>
+                    {
+                        if (comboBoxMaterial.SelectedIndex >= 0)
+                        {
+                            string opcion = unidades[comboBoxMaterial.SelectedIndex];
+                            string unidad;
+                            if (opcion == string.Empty)
+                            {
+                                unidad = "El material no tiene una unidad definida";
+                            }
+                            else
+                            {
+                                unidad = "La unidad del material es: " + opcion;
+                            }
+                            labelUnidad.Text = unidad;
+                        }
+                        else
+                        {
+                            labelUnidad.Text = string.Empty;
+                        }
+                    };
                     flowLayoutPanelBox.Controls.Add(labelProducto);
                     flowLayoutPanelBox.Controls.Add(comboBoxMaterial);
+                    flowLayoutPanelBox.Controls.Add(labelUnidad);
                     flowLayoutPanelBox.Controls.Add(labelCantidad);
                     flowLayoutPanelBox.Controls.Add(textBoxCantidad);
                 }
@@ -318,7 +400,75 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
+            resertcampos(sender, e);
+        }
+
+        private void boxProductsCreate_TextChanged(object sender, EventArgs e)
+        {
+            int cantidadProductos = 0;
+
+            if (int.TryParse(boxProductsCreate.Text, out cantidadProductos))
+            {
+                layoutPanelProducts.Controls.Clear();
+
+                for (int i = 0; i < cantidadProductos; i++)
+                {
+                    Label labelProducto = new Label();
+                    labelProducto.Text = "Producto:";
+                    labelProducto.AutoSize = true;
+                    labelProducto.ForeColor = Color.Black;
+
+                    ComboBox comboBoxProductos = new ComboBox();
+                    comboBoxProductos.DisplayMember = "nombre";
+                    comboBoxProductos.DataSource = opcionesProductos[i];
+                    comboBoxProductos.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    ComboBox comboBoxFrascos = new ComboBox();
+                    comboBoxFrascos.DisplayMember = "nombre";
+                    comboBoxFrascos.DataSource = opcionesFrascos[i];
+                    comboBoxFrascos.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    Label labelCantidad = new Label();
+                    labelCantidad.Text = "Ingrese la cantidad:";
+                    labelCantidad.AutoSize = true;
+                    labelCantidad.ForeColor = Color.Black;
+
+                    TextBox textBoxCantidad = new TextBox();
+                    TextBox textBoxCantidadFr = new TextBox();
+                    comboBoxesProductos.Add(comboBoxProductos);
+                    textBoxesCantidadProductos.Add(textBoxCantidad);
+                    textBoxesCantidadFrascos.Add(textBoxCantidadFr);
+
+                    Label labelFrasco = new Label();
+                    labelFrasco.Text = "Tamaño del frasco:";
+                    labelFrasco.AutoSize = true;
+                    labelFrasco.ForeColor = Color.Black;
+
+                    layoutPanelProducts.Controls.Add(labelProducto);
+                    layoutPanelProducts.Controls.Add(comboBoxProductos);
+                    layoutPanelProducts.Controls.Add(labelFrasco);
+                    layoutPanelProducts.Controls.Add(comboBoxFrascos);
+                    layoutPanelProducts.Controls.Add(labelCantidad);
+                    layoutPanelProducts.Controls.Add(textBoxCantidad);
+                }
+            }
+            else
+            {
+                layoutPanelProducts.Controls.Clear();
+            }
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tabControlProduccion.SelectedTab = tabBodega;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(viewButtons);
+            tabControlProduccion.TabPages.Add(tabBodega);
             resertcampos(sender, e);
         }
     }

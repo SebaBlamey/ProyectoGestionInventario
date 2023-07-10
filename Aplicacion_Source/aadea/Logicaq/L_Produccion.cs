@@ -106,8 +106,94 @@ namespace aadea.Logicaq
                     string nombreMaterial = reader["nombre"].ToString();
                     materiales.Add(nombreMaterial);
                 }
-
                 return materiales;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
+
+        public List<string> ObtenerProductos()
+        {
+            List<string> productos = new List<string>();
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT nombre FROM producto";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                connection.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string nombreProductos = reader["nombre"].ToString();
+                    productos.Add(nombreProductos);
+                }
+                return productos;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
+
+        public List<string> ObtenerFrascos()
+        {
+            List<string> frascos = new List<string>();
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT tamaño FROM Frasco";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                connection.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string nombreFrasco = reader["Tamaño"].ToString();
+                    frascos.Add(nombreFrasco);
+                }
+                return frascos;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
+
+        public List<string> unidadesMateriales()
+        {
+            List<string> unidades = new List<string>();
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT unidad FROM Material";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                connection.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string unidad = reader["unidad"].ToString();
+                    unidades.Add(unidad);
+                }
+                return unidades;
             }
             catch (Exception e)
             {
