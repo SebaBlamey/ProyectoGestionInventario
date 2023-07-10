@@ -84,7 +84,7 @@
             // DeleteButton
             // 
             DeleteButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            DeleteButton.Location = new Point(583, 188);
+            DeleteButton.Location = new Point(585, 201);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(90, 27);
             DeleteButton.TabIndex = 3;
@@ -95,7 +95,7 @@
             // addButton
             // 
             addButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            addButton.Location = new Point(583, 137);
+            addButton.Location = new Point(585, 168);
             addButton.Name = "addButton";
             addButton.Size = new Size(90, 27);
             addButton.TabIndex = 1;
@@ -136,7 +136,7 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
             DGV_Asist.RowsDefaultCellStyle = dataGridViewCellStyle2;
             DGV_Asist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV_Asist.Size = new Size(571, 375);
+            DGV_Asist.Size = new Size(573, 377);
             DGV_Asist.TabIndex = 0;
             // 
             // Add
