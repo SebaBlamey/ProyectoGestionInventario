@@ -11,7 +11,8 @@ namespace aadea.Vistas
 {
     public partial class FormMateriales : Form
     {
-        private string rutaSeleccionada;
+        private string rutaSeleccionadaAdd;
+        private string rutaSeleccionadaMod;
         private int idLocal;
 
         public FormMateriales()
@@ -31,16 +32,10 @@ namespace aadea.Vistas
         private void resetCampos(object sender, EventArgs e)
         {
             idLocal = -1;
-            txtNameActual.Text = string.Empty;
             txtNameInsert.Text = string.Empty;
             txtStock.Text = string.Empty;
-            txtStockActual.Text = string.Empty;
-            boxMedidaActual.Text = string.Empty;
             opcionBox.Text = string.Empty;
-            rutaSeleccionada = null;
-            //picImagenModify = null;
-            pictureBox1 = null;
-
+            rutaSeleccionadaAdd = null;
             FormMaterials_Load(this, EventArgs.Empty);
         }
 
@@ -71,7 +66,7 @@ namespace aadea.Vistas
                 // Suscribirte al evento DeleteButtonClicked y pasar el UserControl
                 userControl.buttonDeleteClick += (s, args) =>
                 {
-                    UserControl_DeleteButtonClicked(userControl);
+                    UserControl_DeleteButtonClicked(sender, e, userControl);
                     idLocal = userControl.ID;
                 };
 
@@ -140,12 +135,13 @@ namespace aadea.Vistas
             }
         }
 
-        private void UserControl_DeleteButtonClicked(UserMaterial user)
+        private void UserControl_DeleteButtonClicked(object sender, EventArgs e, UserMaterial user)
         {
             int id = Convert.ToInt32(user.ID);
             L_Materials l_materials = new L_Materials();
             flowLayoutPanel1.Controls.Remove(user);
             l_materials.DeleteMaterial(id);
+            resetCampos(sender, e);
         }
 
         private void btCancel_Click(object sender, EventArgs e)
@@ -165,17 +161,9 @@ namespace aadea.Vistas
 
             if (selectorImagen.ShowDialog() == DialogResult.OK)
             {
-                string extension = Path.GetExtension(selectorImagen.FileName).ToLower();
-                if (extension == ".png" || extension == ".jpeg" || extension == ".jpg")
-                {
-                    // Asignar la imagen al PictureBox existente
-                    pictureBox1.Image = Image.FromFile(selectorImagen.FileName);
-                    rutaSeleccionada = selectorImagen.FileName;
-                }
-                else
-                {
-                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                rutaSeleccionadaAdd = selectorImagen.FileName;
+                Image imagen = Image.FromFile(rutaSeleccionadaAdd);
+                picAdd.Image = imagen;
             }
         }
 
@@ -200,11 +188,11 @@ namespace aadea.Vistas
             }
             else
             {
-                MessageBox.Show("Error en el numero, intente nuevamente, recuerde que para agregar un numero decimal ocupe un '.' " );
+                MessageBox.Show("Error en el numero, intente nuevamente, recuerde que para agregar un numero decimal ocupe un '.' ");
             }
-            if (!string.IsNullOrEmpty(rutaSeleccionada))
+            if (!string.IsNullOrEmpty(rutaSeleccionadaAdd))
             {
-                byte[] bytesImage = File.ReadAllBytes(rutaSeleccionada);
+                byte[] bytesImage = File.ReadAllBytes(rutaSeleccionadaAdd);
 
                 mat.InsertMaterialWI(nombre, valor, bytesImage, unidad);
             }
@@ -267,9 +255,9 @@ namespace aadea.Vistas
             }
             L_Materials ins = new L_Materials();
 
-            if (!string.IsNullOrEmpty(rutaSeleccionada))
+            if (!string.IsNullOrEmpty(rutaSeleccionadaMod))
             {
-                byte[] bytesImage = File.ReadAllBytes(rutaSeleccionada);
+                byte[] bytesImage = File.ReadAllBytes(rutaSeleccionadaMod);
                 ins.updateMaterialWI(idLocal, nombre, valor, unidad, bytesImage);
             }
             else
@@ -307,9 +295,8 @@ namespace aadea.Vistas
                 string extension = Path.GetExtension(selectorImagen.FileName).ToLower();
                 if (extension == ".png" || extension == ".jpeg" || extension == ".jpg")
                 {
-                    // Asignar la imagen seleccionada al control picImagenModify
                     picImagenModify.Image = Image.FromFile(selectorImagen.FileName);
-                    rutaSeleccionada = selectorImagen.FileName;
+                    rutaSeleccionadaMod = selectorImagen.FileName;
                 }
                 else
                 {

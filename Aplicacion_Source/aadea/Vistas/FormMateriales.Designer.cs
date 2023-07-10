@@ -34,7 +34,7 @@
             add_iconButton = new FontAwesome.Sharp.IconButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
             AddMaterial = new TabPage();
-            pictureBox1 = new PictureBox();
+            picAdd = new PictureBox();
             labelResultado = new Label();
             opcionBox = new ComboBox();
             label5 = new Label();
@@ -60,7 +60,7 @@
             tabControl1.SuspendLayout();
             ListaMateriales.SuspendLayout();
             AddMaterial.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picAdd).BeginInit();
             EditMaterial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picImagenModify).BeginInit();
             SuspendLayout();
@@ -130,7 +130,7 @@
             // AddMaterial
             // 
             AddMaterial.BackColor = SystemColors.Control;
-            AddMaterial.Controls.Add(pictureBox1);
+            AddMaterial.Controls.Add(picAdd);
             AddMaterial.Controls.Add(labelResultado);
             AddMaterial.Controls.Add(opcionBox);
             AddMaterial.Controls.Add(label5);
@@ -148,15 +148,14 @@
             AddMaterial.TabIndex = 1;
             AddMaterial.Text = "Agregar Material";
             // 
-            // pictureBox1
+            // picAdd
             // 
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(345, 53);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(153, 158);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 15;
-            pictureBox1.TabStop = false;
+            picAdd.Location = new Point(356, 67);
+            picAdd.Name = "picAdd";
+            picAdd.Size = new Size(127, 146);
+            picAdd.SizeMode = PictureBoxSizeMode.StretchImage;
+            picAdd.TabIndex = 13;
+            picAdd.TabStop = false;
             // 
             // labelResultado
             // 
@@ -406,7 +405,7 @@
             ListaMateriales.ResumeLayout(false);
             AddMaterial.ResumeLayout(false);
             AddMaterial.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picAdd).EndInit();
             EditMaterial.ResumeLayout(false);
             EditMaterial.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picImagenModify).EndInit();
@@ -442,6 +441,6 @@
         private Button btExaminMod;
         private FontAwesome.Sharp.IconButton add_iconButton;
         private PictureBox picImagenModify;
-        private PictureBox pictureBox1;
+        private PictureBox picAdd;
     }
 }
