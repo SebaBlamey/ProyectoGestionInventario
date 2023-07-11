@@ -163,6 +163,91 @@ namespace aadea.Logicaq
                 if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
             }
         }
+        public DataTable listNTrabajador()
+        {
+            SQLiteDataReader resultado;
+            DataTable tabla = new DataTable();
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "SELECT Rut FROM Trabajador";
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                SQLCon.Open();
+                resultado = Comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
+
+        public DataTable ListAsistFilterT(string rut)
+        {
+            SQLiteDataReader resultado;
+            DataTable tabla = new DataTable();
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "SELECT a.id, a.Trabajador AS Rut, t.Nombre, t.Apellido, a.Dia, a.Llegada, a.Salida, " +
+                                  "ROUND(a.[Horas trabajadas], 1) AS [Horas trabajadas]\r\n" +
+                                  "FROM Asistencia a\r\nJOIN Trabajador t ON a.Trabajador = t.Rut\r\n" +
+                                  "WHERE a.Trabajador = @rut\r\n";
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                Comando.Parameters.AddWithValue("@rut", rut); // Parámetro para filtrar por rut
+                SQLCon.Open();
+                resultado = Comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
+
+
+        public DataTable ListAsistFilterM(string mesSeleccionado)
+        {
+            SQLiteDataReader resultado;
+            DataTable tabla = new DataTable();
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "SELECT a.id, a.Trabajador AS Rut, t.Nombre, t.Apellido, a.Dia, a.Llegada, a.Salida, " +
+                                  "ROUND(a.[Horas trabajadas], 1) AS [Horas trabajadas]\r\n" +
+                                  "FROM Asistencia a\r\nJOIN Trabajador t ON a.Trabajador = t.Rut\r\n" +
+                                  "WHERE strftime('%m', a.Dia) = '" + mesSeleccionado + "'\r\n" +
+                                  "ORDER BY a.Dia ASC;\r\n";
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
+                SQLCon.Open();
+                resultado = Comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
+            }
+        }
 
         public void InsertAssistance(string rut, DateTime fecha, DateTime horaLlegada)
         {
@@ -196,6 +281,44 @@ namespace aadea.Logicaq
                     SQLCon.Close();
             }
         }
+
+
+        public DataTable ObtenerAsistenciaPorFecha(DateTime fecha)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                using (SQLiteConnection connection = Conexion.GetConexion().CrearConexion())
+                {
+                    connection.Open();
+
+                    string SQLQuery = @"SELECT a.Trabajador, a.Dia, a.Llegada, a.Salida, a.[Horas trabajadas]
+                                FROM Asistencia a
+                                JOIN Trabajador t ON a.Trabajador = t.Rut
+                                WHERE a.Dia = @fecha";
+
+                    using (SQLiteCommand command = new SQLiteCommand(SQLQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@fecha", fecha);
+
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return dt;
+        }
+
+
+
 
 
 

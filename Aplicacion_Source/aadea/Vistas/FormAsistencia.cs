@@ -13,14 +13,30 @@ using System.Globalization;
 using System.Drawing.Text;
 using System.Windows.Controls;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Documents;
 
 namespace aadea.Vistas
 {
     public partial class FormAsistencia : Form
     {
-
+        bool opcionSeleccionada = false;
         private readonly string expresionRegular = @"^([01][0-9]|2[0-3]):[0-5][0-9]$";
-
+        Mes[] meses = new[]
+        {
+            new Mes("Enero"),
+            new Mes("Febrero"),
+            new Mes("Marzo"),
+            new Mes("Abril"),
+            new Mes("Mayo"),
+            new Mes("Junio"),
+            new Mes("Julio"),
+            new Mes("Agosto"),
+            new Mes("Septiembre"),
+            new Mes("Octubre"),
+            new Mes("Noviembre"),
+            new Mes("Diciembre")
+        };
         public FormAsistencia()
         {
 
@@ -28,12 +44,25 @@ namespace aadea.Vistas
             InitializeComponent();
             DGV_Asist.CellFormatting += DGV_Asist_CellFormatting;
             dateTimePickerFecha.CustomFormat = "dd/MM/yyyy";
-            TabPrincipal.TabPages.Remove(Add);
-
+            Disguise(Add);
+            Disguise(Filtrar);
 
 
         }
-
+        public void editDGV_Meses()
+        {
+            DGV_Meses.DataSource = meses;
+            DGV_Meses.ReadOnly = true;
+            foreach (DataGridViewColumn column in DGV_Meses.Columns)
+            {
+                column.ReadOnly = true;
+            }
+        }
+        public void editDGV_Rut()
+        {
+            L_Asistencia l_Asistencia = new L_Asistencia();
+            DGV_Meses.DataSource = l_Asistencia.listNTrabajador();
+        }
         public void ListadoAsist()
         {
             L_Asistencia datos = new L_Asistencia();
@@ -45,33 +74,46 @@ namespace aadea.Vistas
             L_Asistencia datos = new L_Asistencia();
             DGV_Trabajador.DataSource = datos.listTrabajadoresAsist();
         }
-
-
-
+        private void ListadoFiltroTrabajador_M(string mes)
+        {
+            L_Asistencia datos = new L_Asistencia();
+            DGV_Filter.DataSource = datos.ListAsistFilterM(mes);
+        }
+        public void ListadoFiltroTrabajador_T(string rut)
+        {
+            L_Asistencia datos = new L_Asistencia();
+            DGV_Filter.DataSource = datos.ListAsistFilterT(rut);
+        }
+        public void ListadoAsist2()
+        {
+            L_Asistencia datos = new L_Asistencia();
+            DGV_Filter.DataSource = datos.listAsist();
+        }
         private void FormAsist_Load(object sender, EventArgs e)
         {
 
             this.ListadoAsist();
             this.ListadoTrabajador();
             this.Formato_Asist();
-        }
 
+            if (!opcionSeleccionada)
+            {
+                this.ListadoAsist2();
+                this.editDGV_Meses();
+            }
+
+        }
         private void Formato_Asist()
         {
             DGV_Asist.Columns[0].Width = 100;
 
 
-        }
-
-
+        } //FORMATO ASISTENCIA
         private void resetCamp(object sender, EventArgs e)
         {
             CheckIn.Text = string.Empty;
             FormAsist_Load(sender, e);
-        }
-
-
-        //Boton Guardar en Añadir
+        } //REINICIAR CAMPOS
         private void AddSave_Click(object sender, EventArgs e)
         {
 
@@ -82,15 +124,7 @@ namespace aadea.Vistas
                 TabPrincipal.TabPages.Remove(Add);
             }
             resetCamp(sender, e);
-        }
-        private bool repeat(string rut, DateTime fecha, DateTime horallegada, DateTime horasalida)
-        {
-            L_Asistencia l_Asistencia = new L_Asistencia();
-            bool answer = l_Asistencia.checkRepeat(rut, fecha, horallegada, horasalida);
-            return answer;
-
-        }
-
+        }//Boton Guardar en Añadir
         private bool queryCall(object sender, EventArgs e)
         {
             try
@@ -155,33 +189,20 @@ namespace aadea.Vistas
                 MessageBox.Show(ex.Message);
                 return false;
             }
-        }
-
-
-
-        private void Windows(string pestaña)
+        } //LOGICA PARA AGREGAR ASISTENCIA
+        private void Windows(TabPage pestaña)
         {
-            try
-            {
-                TabPrincipal.SelectTab(pestaña);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
+            TabPrincipal.SelectTab(pestaña);
+        } //LOGICA PARA CAMBIAR DE VENTANA
         private void Disguise(TabPage name)
         {
             TabPrincipal.TabPages.Remove(name);
-        }
-        private void Show(TabPage name)
+        } //LOGICA PARA ELIMINAR VENTANA
+        private void Show(TabPage name) //LOGICA PARA MOSTRAR VENTANA
         {
             TabPrincipal.TabPages.Add(name);
         }
-
-
-        private void DGV_Asist_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void DGV_Asist_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) //FORMATO DE DGV
         {
             if (DGV_Asist.Columns[e.ColumnIndex].Name == "Llegada" || DGV_Asist.Columns[e.ColumnIndex].Name == "Salida")
             {
@@ -195,38 +216,23 @@ namespace aadea.Vistas
                 }
             }
         }
-
-
         private void addButton_Click(object sender, EventArgs e)
         {
             TabPrincipal.SelectedTab = Add;
             TabPrincipal.TabPages.Add(Add);
             TabPrincipal.TabPages.Remove(History);
             resetCamp(sender, e);
-            Windows("Add");
-        }
-
-        //Cancelar boton de agregar
+            Windows(Add);
+        } //IR A AGREGAR
         private void CancelBT_Click(object sender, EventArgs e)
         {
             TabPrincipal.SelectedTab = History;
             TabPrincipal.TabPages.Add(History);
             TabPrincipal.TabPages.Remove(Add);
             resetCamp(sender, e);
-            Windows("History");
+            Windows(History);
 
-        }
-
-        private void Save_Click(object sender, EventArgs e)
-        {
-            Windows("History");
-        }
-
-        private void Cancel_Click(object sender, EventArgs e)
-        {
-            Windows("History");
-        }
-
+        } //Cancelar boton de agregar
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             L_Asistencia l_Asistencia = new L_Asistencia();
@@ -254,24 +260,14 @@ namespace aadea.Vistas
 
                 // Actualizar el DataGridView si es necesario
                 // dgvDatos.DataSource = ...;
-                Windows("History");
+                Windows(History);
 
 
                 TabPrincipal.TabPages.Remove(Add);
                 resetCamp(sender, e);
             }
 
-        }
-
-
-        private void Cancel_Delete_Btn_Click(object sender, EventArgs e)
-        {
-            TabPrincipal.SelectedTab = History;
-            TabPrincipal.TabPages.Add(History);
-            TabPrincipal.TabPages.Remove(Add);
-
-        }
-
+        } //BOTON DE ELIMINAR
         private void finalHourConfirm()
         {
             try
@@ -287,7 +283,7 @@ namespace aadea.Vistas
                 if (!regex.IsMatch(FinalHourTB.Text))
                 {
                     // Mostrar mensaje de error o realizar alguna acción apropiada
-                    MessageBox.Show("Formato de hora incorrecto. Utilice el formato HH:mm.", "Error");
+                    MessageBox.Show("Formato de hora no valida. Utilice el formato HH:mm.", "Error");
 
                     return;
                 }
@@ -305,8 +301,8 @@ namespace aadea.Vistas
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-        private bool ValidarHoraSalida(DateTime horaLlegada, DateTime horaSalida)
+        } //MODIFICACION DE HORA DE SALIDA
+        private bool ValidarHoraSalida(DateTime horaLlegada, DateTime horaSalida) //VERIFICACION DE HORA DE SALIDA PARA QUE NO SEA MENOR A LA DE LLEGADA
         {
             // Verificar si la hora de salida es menor a la hora de llegada
             if (horaSalida < horaLlegada)
@@ -316,13 +312,52 @@ namespace aadea.Vistas
 
             return true;
         }
-
-
-        private void FinalHouBTAccept_Click(object sender, EventArgs e)
+        private void FinalHouBTAccept_Click(object sender, EventArgs e) //ACEPTAR DE LA ELIMINACION
         {
 
             finalHourConfirm();
             FormAsist_Load(sender, e);
+        }
+        private void OpcionCB_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+
+            if (OpcionCB.Checked)
+            {
+                opcionSeleccionada = true;
+                this.editDGV_Rut();
+
+
+
+            }
+            else
+            {
+                opcionSeleccionada = false;
+                this.editDGV_Meses();
+
+            }
+        }// CAMBIAR DE MODO TRABAJADOR A MESES
+        private void DGV_Meses_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (opcionSeleccionada)
+            {
+                string rut = DGV_Meses.CurrentRow.Cells["Rut"].Value.ToString();
+                this.ListadoFiltroTrabajador_T(rut);
+            }
+            else
+            {
+                string mesSeleccionado = DGV_Meses.CurrentRow.Cells["Nombre"].Value.ToString();
+                int numeroMes = DateTime.ParseExact(mesSeleccionado, "MMMM", CultureInfo.CurrentCulture).Month;
+                string numeroMesFormateado = numeroMes.ToString("00");
+                this.ListadoFiltroTrabajador_M(numeroMesFormateado);
+            }
+
+        }
+
+        private void FilterBT_Click(object sender, EventArgs e)
+        {
+            Show(Filtrar);
+            Windows(Filtrar);
         }
     }
 }

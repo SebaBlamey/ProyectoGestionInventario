@@ -31,8 +31,15 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             TabPrincipal = new TabControl();
             History = new TabPage();
+            FilterBT = new Button();
             label3 = new Label();
             FinalHouBTAccept = new Button();
             FinalHourTB = new TextBox();
@@ -47,28 +54,37 @@
             label1 = new Label();
             AddSave = new Button();
             DGV_Trabajador = new DataGridView();
+            Filtrar = new TabPage();
+            DGV_Meses = new DataGridView();
+            OpcionCB = new CheckBox();
+            DGV_Filter = new DataGridView();
             TabPrincipal.SuspendLayout();
             History.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Asist).BeginInit();
             Add.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Trabajador).BeginInit();
+            Filtrar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGV_Meses).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DGV_Filter).BeginInit();
             SuspendLayout();
             // 
             // TabPrincipal
             // 
             TabPrincipal.Controls.Add(History);
             TabPrincipal.Controls.Add(Add);
+            TabPrincipal.Controls.Add(Filtrar);
             TabPrincipal.Dock = DockStyle.Fill;
             TabPrincipal.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
             TabPrincipal.Location = new Point(0, 0);
             TabPrincipal.Name = "TabPrincipal";
             TabPrincipal.SelectedIndex = 0;
-            TabPrincipal.Size = new Size(689, 421);
+            TabPrincipal.Size = new Size(691, 421);
             TabPrincipal.TabIndex = 0;
             // 
             // History
             // 
             History.BackColor = SystemColors.Control;
+            History.Controls.Add(FilterBT);
             History.Controls.Add(label3);
             History.Controls.Add(FinalHouBTAccept);
             History.Controls.Add(FinalHourTB);
@@ -80,9 +96,20 @@
             History.Location = new Point(4, 26);
             History.Name = "History";
             History.Padding = new Padding(3);
-            History.Size = new Size(681, 391);
+            History.Size = new Size(683, 391);
             History.TabIndex = 0;
             History.Text = "Historial";
+            // 
+            // FilterBT
+            // 
+            FilterBT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            FilterBT.Location = new Point(572, 201);
+            FilterBT.Name = "FilterBT";
+            FilterBT.Size = new Size(90, 23);
+            FilterBT.TabIndex = 7;
+            FilterBT.Text = "Filtrar";
+            FilterBT.UseVisualStyleBackColor = true;
+            FilterBT.Click += FilterBT_Click;
             // 
             // label3
             // 
@@ -113,7 +140,7 @@
             // DeleteButton
             // 
             DeleteButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            DeleteButton.Location = new Point(585, 201);
+            DeleteButton.Location = new Point(572, 168);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(90, 27);
             DeleteButton.TabIndex = 3;
@@ -124,7 +151,7 @@
             // addButton
             // 
             addButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            addButton.Location = new Point(585, 168);
+            addButton.Location = new Point(572, 135);
             addButton.Name = "addButton";
             addButton.Size = new Size(90, 27);
             addButton.TabIndex = 1;
@@ -165,7 +192,7 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
             DGV_Asist.RowsDefaultCellStyle = dataGridViewCellStyle2;
             DGV_Asist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV_Asist.Size = new Size(573, 277);
+            DGV_Asist.Size = new Size(542, 290);
             DGV_Asist.TabIndex = 0;
             // 
             // Add
@@ -274,11 +301,95 @@
             DGV_Trabajador.Size = new Size(380, 375);
             DGV_Trabajador.TabIndex = 0;
             // 
+            // Filtrar
+            // 
+            Filtrar.Controls.Add(DGV_Meses);
+            Filtrar.Controls.Add(OpcionCB);
+            Filtrar.Controls.Add(DGV_Filter);
+            Filtrar.Location = new Point(4, 26);
+            Filtrar.Name = "Filtrar";
+            Filtrar.Size = new Size(681, 391);
+            Filtrar.TabIndex = 2;
+            Filtrar.Text = "Filtrar...";
+            Filtrar.UseVisualStyleBackColor = true;
+            // 
+            // DGV_Meses
+            // 
+            DGV_Meses.BackgroundColor = Color.White;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            DGV_Meses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            DGV_Meses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            DGV_Meses.DefaultCellStyle = dataGridViewCellStyle5;
+            DGV_Meses.GridColor = Color.White;
+            DGV_Meses.Location = new Point(501, 23);
+            DGV_Meses.Name = "DGV_Meses";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            DGV_Meses.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.ForeColor = Color.Navy;
+            dataGridViewCellStyle7.SelectionForeColor = Color.White;
+            DGV_Meses.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            DGV_Meses.RowTemplate.Height = 25;
+            DGV_Meses.Size = new Size(121, 356);
+            DGV_Meses.TabIndex = 5;
+            DGV_Meses.CellClick += DGV_Meses_CellClick;
+            // 
+            // OpcionCB
+            // 
+            OpcionCB.AutoSize = true;
+            OpcionCB.ForeColor = Color.Black;
+            OpcionCB.Location = new Point(159, 361);
+            OpcionCB.Name = "OpcionCB";
+            OpcionCB.Size = new Size(187, 22);
+            OpcionCB.TabIndex = 4;
+            OpcionCB.Text = "Filtrar por Trabajadores?";
+            OpcionCB.UseVisualStyleBackColor = true;
+            OpcionCB.CheckedChanged += OpcionCB_CheckedChanged_1;
+            // 
+            // DGV_Filter
+            // 
+            DGV_Filter.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Tahoma", 10.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            DGV_Filter.DefaultCellStyle = dataGridViewCellStyle8;
+            DGV_Filter.Location = new Point(23, 23);
+            DGV_Filter.Name = "DGV_Filter";
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.Fuchsia;
+            dataGridViewCellStyle9.SelectionForeColor = Color.White;
+            DGV_Filter.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            DGV_Filter.RowTemplate.Height = 25;
+            DGV_Filter.Size = new Size(453, 318);
+            DGV_Filter.TabIndex = 0;
+            // 
             // FormAsistencia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(689, 421);
+            ClientSize = new Size(691, 421);
             Controls.Add(TabPrincipal);
             Name = "FormAsistencia";
             Text = "FormAsistencia";
@@ -290,6 +401,10 @@
             Add.ResumeLayout(false);
             Add.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGV_Trabajador).EndInit();
+            Filtrar.ResumeLayout(false);
+            Filtrar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DGV_Meses).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DGV_Filter).EndInit();
             ResumeLayout(false);
         }
 
@@ -311,5 +426,10 @@
         private Button FinalHouBTAccept;
         private TextBox FinalHourTB;
         private Label label3;
+        private TabPage Filtrar;
+        private DataGridView DGV_Filter;
+        private DataGridView DGV_Meses;
+        private CheckBox OpcionCB;
+        private Button FilterBT;
     }
 }
