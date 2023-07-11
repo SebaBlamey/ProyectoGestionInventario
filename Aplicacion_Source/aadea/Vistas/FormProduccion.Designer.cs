@@ -311,6 +311,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = Color.Black;
             label3.Location = new Point(277, 94);
             label3.Name = "label3";
             label3.Size = new Size(161, 17);

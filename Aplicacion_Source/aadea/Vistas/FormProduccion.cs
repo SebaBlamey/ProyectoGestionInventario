@@ -117,10 +117,30 @@ namespace aadea.Vistas
                 LayoutHistorial.Controls.Add(userControl);
                 DataTable tableMaterial = l_produccion.listMaterialForHistory(id);
                 DataTable tableProduct = l_produccion.GetProductHistory(id);
+                
+                foreach (DataRow materialRow in tableMaterial.Rows)
+                {
+                    // Verificar si el campo está vacío
+                    if (materialRow.IsNull("Nombre"))
+                    {
+                        // Reemplazar el valor vacío con "El material ha sido eliminado"
+                        materialRow.SetField("Nombre", "El material ha sido eliminado");
+                    }
+                }
+                foreach (DataRow productRow in tableProduct.Rows)
+                {
+                    // Verificar si el campo está vacío
+                    if (productRow.IsNull("Nombre"))
+                    {
+                        // Reemplazar el valor vacío con "El material ha sido eliminado"
+                        productRow.SetField("Nombre", "El producto ha sido eliminado");
+                    }
+                }
                 userControl.DataGridViewMateriales.DataSource = tableMaterial;
                 userControl.DataGridViewProductos.DataSource = tableProduct;
             }
         }
+
         //salir de histotial de produccion.
         private void bttExitHistory_Click(object sender, EventArgs e)
         {
@@ -181,7 +201,7 @@ namespace aadea.Vistas
                     int idMaterial = Convert.ToInt32(rows["id_material"]);
                     int cantidad = Convert.ToInt32(rows["cantidad"]);
                     string nombreMaterial = l_produccion.getNameMaterial(idMaterial);
-
+                    if (nombreMaterial == null) { nombreMaterial = "El material ha sido eliminado"; }
                     user.DataGridViewMateriales.Rows.Add(nombreMaterial, cantidad);
                 }
             }
@@ -276,9 +296,15 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Add(viewButtons);
         }
 
+        //boton calcelar ingresar productos
         private void CancelInsertProduct_Click(object sender, EventArgs e)
         {
-
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
+            tabControlProduccion.TabPages.Add(viewButtons);
         }
 
 

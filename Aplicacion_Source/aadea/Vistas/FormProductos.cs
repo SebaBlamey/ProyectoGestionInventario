@@ -63,7 +63,7 @@ namespace aadea.Vistas
 
                 userControl.btDeleteProducto += (s, args) =>
                 {
-                    UserControl_DeleteButtonClicked(userControl);
+                    UserControl_DeleteButtonClicked(sender,e,userControl);
                     idlocal = userControl.ID;
                 };
                 userControl.btModifyProducto += (s, args) =>
@@ -118,7 +118,7 @@ namespace aadea.Vistas
         }
 
 
-        private void UserControl_DeleteButtonClicked(UserProduct user)
+        private void UserControl_DeleteButtonClicked(object sender, EventArgs e,UserProduct user)
         {
             DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?", "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -129,6 +129,7 @@ namespace aadea.Vistas
                 flowLayoutPanel1.Controls.Remove(user);
                 l_Products.DeleteProduct(id);
             }
+            resetCampos(sender,e);
         }
 
 

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pictureBox1 = new PictureBox();
             nameProduct = new Label();
             dataGridViewInv = new DataGridView();
@@ -43,7 +43,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(30, 61);
+            pictureBox1.Location = new Point(30, 33);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(140, 152);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -53,7 +53,7 @@
             // nameProduct
             // 
             nameProduct.AutoSize = true;
-            nameProduct.Location = new Point(39, 43);
+            nameProduct.Location = new Point(39, 10);
             nameProduct.Name = "nameProduct";
             nameProduct.Size = new Size(122, 15);
             nameProduct.TabIndex = 1;
@@ -70,36 +70,36 @@
             dataGridViewInv.BorderStyle = BorderStyle.None;
             dataGridViewInv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewInv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSlateBlue;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewInv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewInv.EnableHeadersVisualStyles = false;
             dataGridViewInv.GridColor = Color.DarkBlue;
-            dataGridViewInv.Location = new Point(199, 22);
+            dataGridViewInv.Location = new Point(199, 10);
             dataGridViewInv.Name = "dataGridViewInv";
             dataGridViewInv.ReadOnly = true;
             dataGridViewInv.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewInv.RowHeadersVisible = false;
             dataGridViewInv.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.DimGray;
-            dataGridViewCellStyle4.SelectionBackColor = Color.Plum;
-            dataGridViewInv.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
+            dataGridViewInv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewInv.RowTemplate.Height = 25;
             dataGridViewInv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewInv.Size = new Size(281, 191);
+            dataGridViewInv.Size = new Size(281, 154);
             dataGridViewInv.TabIndex = 0;
             // 
             // addStock
             // 
             addStock.ForeColor = Color.Black;
-            addStock.Location = new Point(525, 61);
+            addStock.Location = new Point(525, 33);
             addStock.Name = "addStock";
             addStock.Size = new Size(75, 47);
             addStock.TabIndex = 3;
@@ -138,7 +138,7 @@
             Controls.Add(dataGridViewInv);
             Controls.Add(panel1);
             Name = "productBodega";
-            Size = new Size(625, 227);
+            Size = new Size(625, 206);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInv).EndInit();
             panel1.ResumeLayout(false);

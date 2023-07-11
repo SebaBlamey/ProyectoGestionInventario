@@ -93,6 +93,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(368, 140);
             label1.Name = "label1";
             label1.Size = new Size(83, 15);
@@ -102,6 +103,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = Color.Black;
             label2.Location = new Point(368, 97);
             label2.Name = "label2";
             label2.Size = new Size(70, 15);
@@ -111,6 +113,7 @@
             // fecha_inicio
             // 
             fecha_inicio.AutoSize = true;
+            fecha_inicio.ForeColor = Color.Black;
             fecha_inicio.Location = new Point(368, 121);
             fecha_inicio.Name = "fecha_inicio";
             fecha_inicio.Size = new Size(38, 15);

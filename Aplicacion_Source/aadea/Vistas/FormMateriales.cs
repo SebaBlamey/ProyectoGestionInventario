@@ -137,11 +137,16 @@ namespace aadea.Vistas
 
         private void UserControl_DeleteButtonClicked(object sender, EventArgs e, UserMaterial user)
         {
-            int id = Convert.ToInt32(user.ID);
-            L_Materials l_materials = new L_Materials();
-            flowLayoutPanel1.Controls.Remove(user);
-            l_materials.DeleteMaterial(id);
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este material?", "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(user.ID);
+                L_Materials l_materials = new L_Materials();
+                flowLayoutPanel1.Controls.Remove(user);
+                l_materials.DeleteMaterial(id);
+            }
             resetCampos(sender, e);
+
         }
 
         private void btCancel_Click(object sender, EventArgs e)
