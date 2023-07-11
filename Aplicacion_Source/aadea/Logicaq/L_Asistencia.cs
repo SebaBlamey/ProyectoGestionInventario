@@ -36,6 +36,39 @@ namespace aadea.Logicaq
             }
         }
 
+        public void UpdateAssistance(string rut, DateTime fecha, DateTime horaLlegada, DateTime horaSalida)
+        {
+            string answer = "";
+            SQLiteTransaction transaction = null;
+            SQLiteConnection SQLCon = new SQLiteConnection();
+            try
+            {
+                SQLCon = Conexion.GetConexion().CrearConexion();
+                string SQLQuery = "UPDATE Asistencia SET Salida = @horaSalida, [Horas trabajadas] = @horasTrabajadas WHERE Trabajador = @rut AND Dia = @fecha AND Llegada = @horaLlegada";
+                SQLCon.Open();
+                transaction = SQLCon.BeginTransaction();
+                SQLiteCommand comando = new SQLiteCommand(SQLQuery, SQLCon);
+                comando.Parameters.AddWithValue("@rut", rut);
+                comando.Parameters.AddWithValue("@fecha", fecha.Date);
+                comando.Parameters.AddWithValue("@horaLlegada", horaLlegada);
+                comando.Parameters.AddWithValue("@horaSalida", horaSalida);
+                comando.Parameters.AddWithValue("@horasTrabajadas", (horaSalida - horaLlegada).TotalHours);
+                answer = comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de actualización, intente nuevamente";
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                answer = ex.Message;
+            }
+            finally
+            {
+                if (SQLCon.State == ConnectionState.Open)
+                    SQLCon.Close();
+            }
+        }
+
+
         public void DeleteAssistance(string rut, DateTime fecha, DateTime horaLlegada)
         {
             string answer = "";
@@ -131,7 +164,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void InsertAssistance(string rut, DateTime fecha, DateTime horaLlegada, DateTime horaSalida, float horasTrabajadas)
+        public void InsertAssistance(string rut, DateTime fecha, DateTime horaLlegada)
         {
             string answer = "";
             SQLiteTransaction transaction = null;
@@ -139,16 +172,16 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "INSERT INTO Asistencia (Trabajador, Dia, Llegada, Salida, [Horas trabajadas]) " +
-                                  "VALUES (@rut, @fecha, @horaLlegada, @horaSalida, @horasTrabajadas)";
+                string SQLQuery = "INSERT INTO Asistencia (Trabajador, Dia, Llegada) " +
+                                  "VALUES (@rut, @fecha, @horaLlegada)";
                 SQLCon.Open();
                 transaction = SQLCon.BeginTransaction();
                 SQLiteCommand comando = new SQLiteCommand(SQLQuery, SQLCon);
                 comando.Parameters.AddWithValue("@rut", rut);
                 comando.Parameters.AddWithValue("@fecha", fecha);
                 comando.Parameters.AddWithValue("@horaLlegada", horaLlegada);
-                comando.Parameters.AddWithValue("@horaSalida", horaSalida);
-                comando.Parameters.AddWithValue("@horasTrabajadas", horasTrabajadas);
+                //comando.Parameters.AddWithValue("@horaSalida", horaSalida);
+                //comando.Parameters.AddWithValue("@horasTrabajadas", horasTrabajadas);
                 answer = comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de registro, intente nuevamente";
                 transaction.Commit();
             }

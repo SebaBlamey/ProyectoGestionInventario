@@ -29,12 +29,16 @@ namespace aadea.Vistas
             DGV_Asist.CellFormatting += DGV_Asist_CellFormatting;
             dateTimePickerFecha.CustomFormat = "dd/MM/yyyy";
             TabPrincipal.TabPages.Remove(Add);
+
+
+
         }
 
         public void ListadoAsist()
         {
             L_Asistencia datos = new L_Asistencia();
             DGV_Asist.DataSource = datos.listAsist();
+
         }
         private void ListadoTrabajador()
         {
@@ -63,7 +67,6 @@ namespace aadea.Vistas
         private void resetCamp(object sender, EventArgs e)
         {
             CheckIn.Text = string.Empty;
-            CheckOut.Text = string.Empty;
             FormAsist_Load(sender, e);
         }
 
@@ -83,82 +86,89 @@ namespace aadea.Vistas
         private bool repeat(string rut, DateTime fecha, DateTime horallegada, DateTime horasalida)
         {
             L_Asistencia l_Asistencia = new L_Asistencia();
-            bool answer = l_Asistencia.checkRepeat(rut,fecha,horallegada,horasalida);
+            bool answer = l_Asistencia.checkRepeat(rut, fecha, horallegada, horasalida);
             return answer;
 
         }
 
         private bool queryCall(object sender, EventArgs e)
         {
-            L_Asistencia l_Asistencia = new L_Asistencia();
+            try
+            {
+                L_Asistencia l_Asistencia = new L_Asistencia();
 
-            string rut;
+                string rut;
 
-            if (DGV_Trabajador.SelectedRows.Count > 0)
-            {
-                // Se seleccionó una fila completa del trabajador
-                DataGridViewRow filaSeleccionada = DGV_Trabajador.SelectedRows[0];
-                rut = filaSeleccionada.Cells["rut"].Value.ToString();
+                if (DGV_Trabajador.SelectedRows.Count > 0)
+                {
+                    // Se seleccionó una fila completa del trabajador
+                    DataGridViewRow filaSeleccionada = DGV_Trabajador.SelectedRows[0];
+                    rut = filaSeleccionada.Cells["rut"].Value.ToString();
+                }
+                else if (DGV_Trabajador.SelectedCells.Count > 0)
+                {
+                    // Se seleccionó solo el valor del rut
+                    int rowIndex = DGV_Trabajador.SelectedCells[0].RowIndex;
+                    DataGridViewRow filaSeleccionada = DGV_Trabajador.Rows[rowIndex];
+                    rut = filaSeleccionada.Cells["rut"].Value.ToString();
+                }
+                else
+                {
+                    // No se seleccionó ninguna fila o celda
+                    MessageBox.Show("Seleccione un trabajador o el valor del rut.", "Error");
+                    return false;
+                }
+                DateTime fechaSeleccionada = dateTimePickerFecha.Value.Date;
+                string horaLlegada = CheckIn.Text;
+                //string horaSalida = CheckOut.Text;
+                Regex regex = new Regex(@"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
+                if (!regex.IsMatch(horaLlegada))
+                {
+                    // Mostrar mensaje de error o realizar alguna acción apropiada
+                    MessageBox.Show("Formato de hora incorrecto. Utilice el formato HH:mm.", "Error");
+
+                    return false;
+                }
+                // Calcular las horas trabajadas
+                DateTime llegada = DateTime.ParseExact(horaLlegada, "HH:mm", CultureInfo.InvariantCulture);
+                //DateTime salida = DateTime.ParseExact(horaSalida, "HH:mm", CultureInfo.InvariantCulture);
+                DateTime NewFormatLlegada = llegada.Date + llegada.TimeOfDay;
+                //DateTime NewFormatSalida = salida.Date + salida.TimeOfDay;
+                //TimeSpan horasTrabajadas = salida - llegada;
+                // Obtener las horas trabajadas en formato float
+                //float horasTrabajadasFloat = (float)horasTrabajadas.TotalHours;
+                //TotalsHours.Text = horasTrabajadasFloat.ToString();
+                //bool answer = l_Asistencia.checkRepeat(rut, fechaSeleccionada, NewFormatLlegada, NewFormatSalida);
+
+                MessageBox.Show(rut);
+                MessageBox.Show(fechaSeleccionada.ToString());
+                //MessageBox.Show(NewFormatLlegada.ToString());
+                l_Asistencia.InsertAssistance(rut, fechaSeleccionada, NewFormatLlegada);
+
+                FormAsist_Load(sender, e);
+                MessageBox.Show("Asistencia Agregada Correctamente");
+
+                return true;
             }
-            else if (DGV_Trabajador.SelectedCells.Count > 0)
+            catch (Exception ex)
             {
-                // Se seleccionó solo el valor del rut
-                int rowIndex = DGV_Trabajador.SelectedCells[0].RowIndex;
-                DataGridViewRow filaSeleccionada = DGV_Trabajador.Rows[rowIndex];
-                rut = filaSeleccionada.Cells["rut"].Value.ToString();
-            }
-            else
-            {
-                // No se seleccionó ninguna fila o celda
-                MessageBox.Show("Seleccione un trabajador o el valor del rut.", "Error");
+                MessageBox.Show(ex.Message);
                 return false;
             }
-
-            DateTime fechaSeleccionada = dateTimePickerFecha.Value.Date;
-            string horaLlegada = CheckIn.Text;
-            string horaSalida = CheckOut.Text;
-
-            Regex regex = new Regex(@"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
-            if (!regex.IsMatch(horaLlegada) || !regex.IsMatch(horaSalida))
-            {
-                // Mostrar mensaje de error o realizar alguna acción apropiada
-                MessageBox.Show("Formato de hora incorrecto. Utilice el formato HH:mm.", "Error");
-                
-                return false;
-            }
-
-            // Calcular las horas trabajadas
-            DateTime llegada = DateTime.ParseExact(horaLlegada, "HH:mm", CultureInfo.InvariantCulture);
-            DateTime salida = DateTime.ParseExact(horaSalida, "HH:mm", CultureInfo.InvariantCulture);
-
-            DateTime NewFormatLlegada = llegada.Date + llegada.TimeOfDay;
-            DateTime NewFormatSalida = salida.Date + salida.TimeOfDay;
-
-            TimeSpan horasTrabajadas = salida - llegada;
-
-            // Obtener las horas trabajadas en formato float
-            float horasTrabajadasFloat = (float)horasTrabajadas.TotalHours;
-            TotalsHours.Text = horasTrabajadasFloat.ToString();
-            bool answer = l_Asistencia.checkRepeat(rut, fechaSeleccionada, NewFormatLlegada, NewFormatSalida);
-            if (answer)
-            {
-                MessageBox.Show("La informacion que esta ingresando, esta repetida.");
-                Windows("Add");
-                return false;
-            }
-
-            l_Asistencia.InsertAssistance(rut, fechaSeleccionada, NewFormatLlegada, NewFormatSalida, horasTrabajadasFloat);
-            FormAsist_Load(sender, e);
-            MessageBox.Show("Asistencia Agregada Correctamente");
-            Windows("History");
-            return true;
         }
 
 
 
         private void Windows(string pestaña)
         {
-            TabPrincipal.SelectTab(pestaña);
+            try
+            {
+                TabPrincipal.SelectTab(pestaña);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Disguise(TabPage name)
@@ -220,32 +230,37 @@ namespace aadea.Vistas
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             L_Asistencia l_Asistencia = new L_Asistencia();
-
             // Verificar si hay una fila seleccionada
-            if (DGV_Asist.SelectedRows.Count > 0)
+            if (DGV_Asist.SelectedRows.Count == 0)
             {
-                // Obtener la fila seleccionada
-                DataGridViewRow filaSeleccionada = DGV_Asist.SelectedRows[0];
+                MessageBox.Show("Debes seleccionar una fila antes de eliminar.");
+            }
 
+
+
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta asistencia?",
+            "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Obtener la fila seleccionada
+            if (result == DialogResult.Yes)
+            {
+                DataGridViewRow filaSeleccionada = DGV_Asist.SelectedRows[0];
                 // Obtener los valores de las celdas de la fila
                 string rut = filaSeleccionada.Cells["rut"].Value.ToString();
                 DateTime fecha = Convert.ToDateTime(filaSeleccionada.Cells["Dia"].Value);
                 DateTime horaLlegada = Convert.ToDateTime(filaSeleccionada.Cells["Llegada"].Value);
                 // Obtener el ID utilizando el método GetID;
                 // Llamar al método de eliminación en tu otra clase, pasando el ID
-                l_Asistencia.DeleteAssistance(rut,fecha,horaLlegada);
+                l_Asistencia.DeleteAssistance(rut, fecha, horaLlegada);
 
                 // Actualizar el DataGridView si es necesario
                 // dgvDatos.DataSource = ...;
                 Windows("History");
-            }
-            else
-            {
-                MessageBox.Show("Debes seleccionar una fila antes de eliminar.");
+
+
+                TabPrincipal.TabPages.Remove(Add);
+                resetCamp(sender, e);
             }
 
-            TabPrincipal.TabPages.Remove(Add);
-            resetCamp(sender, e);
         }
 
 
@@ -255,6 +270,59 @@ namespace aadea.Vistas
             TabPrincipal.TabPages.Add(History);
             TabPrincipal.TabPages.Remove(Add);
 
+        }
+
+        private void finalHourConfirm()
+        {
+            try
+            {
+
+                Regex regex = new Regex(@"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
+                L_Asistencia l_Asistencia = new L_Asistencia();
+                DataGridViewRow filaSeleccionada = DGV_Asist.SelectedRows[0];
+                // Obtener los valores de las celdas de la fila
+                string rut = filaSeleccionada.Cells["rut"].Value.ToString();
+                DateTime fecha = Convert.ToDateTime(filaSeleccionada.Cells["Dia"].Value);
+                DateTime horaLlegada = Convert.ToDateTime(filaSeleccionada.Cells["Llegada"].Value);
+                if (!regex.IsMatch(FinalHourTB.Text))
+                {
+                    // Mostrar mensaje de error o realizar alguna acción apropiada
+                    MessageBox.Show("Formato de hora incorrecto. Utilice el formato HH:mm.", "Error");
+
+                    return;
+                }
+                DateTime horaSalida = Convert.ToDateTime(FinalHourTB.Text);
+                if (!ValidarHoraSalida(horaLlegada, horaSalida))
+                {
+                    MessageBox.Show("Esta ingresando una hora de salida menor a la de llegada.", "Error");
+                    return;
+                }
+                l_Asistencia.UpdateAssistance(rut, fecha, horaLlegada, horaSalida);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private bool ValidarHoraSalida(DateTime horaLlegada, DateTime horaSalida)
+        {
+            // Verificar si la hora de salida es menor a la hora de llegada
+            if (horaSalida < horaLlegada)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        private void FinalHouBTAccept_Click(object sender, EventArgs e)
+        {
+
+            finalHourConfirm();
+            FormAsist_Load(sender, e);
         }
     }
 }

@@ -202,6 +202,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
+            resetCampos(sender, e);
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
         }
 

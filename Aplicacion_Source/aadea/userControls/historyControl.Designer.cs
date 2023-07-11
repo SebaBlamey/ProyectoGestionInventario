@@ -45,6 +45,7 @@
             // lblProduct
             // 
             lblProduct.AutoSize = true;
+            lblProduct.BackColor = SystemColors.Control;
             lblProduct.ForeColor = Color.Black;
             lblProduct.Location = new Point(13, 10);
             lblProduct.Name = "lblProduct";
@@ -147,6 +148,7 @@
             Controls.Add(DGV_materiales);
             Controls.Add(DGV_Producto);
             Controls.Add(lblProduct);
+            ForeColor = Color.Black;
             Name = "historyControl";
             Size = new Size(607, 151);
             ((System.ComponentModel.ISupportInitialize)DGV_Producto).EndInit();
