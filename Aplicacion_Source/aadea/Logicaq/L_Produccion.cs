@@ -46,7 +46,7 @@ namespace aadea.Logicaq
             try
             {
                 connection = Conexion.GetConexion().CrearConexion();
-                string Query = "SELECT Material.nombre, Detalle_Historial.cantidad FROM Detalle_Historial JOIN Material ON Detalle_Historial.id_material = Material.ID WHERE Detalle_Historial.id_historial = @id";
+                string Query = "SELECT * FROM Detalle_Historial WHERE id_historial=@id;";
                 SQLiteCommand Command = new SQLiteCommand(Query, connection);
                 Command.Parameters.AddWithValue("@id", id);
                 connection.Open();
@@ -72,7 +72,7 @@ namespace aadea.Logicaq
             try
             {
                 connection = Conexion.GetConexion().CrearConexion();
-                string Query = "SELECT producto.nombre, Frasco.tamaño, Productos_Historial.cantidad\r\nFROM Productos_Historial\r\nJOIN Producto ON Productos_Historial.id_producto = Producto.ID \r\nJOIN Frasco ON Productos_Historial.id_frasco = Frasco.ID \r\nWHERE Productos_Historial.id_historial = @id;";
+                string Query = "SELECT * FROM Productos_Historial WHERE id_historial=@id;";
                 SQLiteCommand Command = new SQLiteCommand(Query, connection);
                 Command.Parameters.AddWithValue("@id", id);
                 connection.Open();
@@ -297,6 +297,36 @@ namespace aadea.Logicaq
             }
         }
 
+        public string ObtenerFrascoN(int idFrasco)
+        {
+            string frasc = null; // Inicializar con un valor predeterminado
+            SQLiteDataReader resultado;
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT Tamaño FROM Frasco WHERE ID = @id";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", idFrasco);
+                connection.Open();
+                resultado = command.ExecuteReader();
+                if (resultado.Read())
+                {
+                    frasc = resultado.GetInt32(0).ToString();
+                }
+                resultado.Close();
+                return frasc;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
+
 
         public void InsertarProduccion(int idProduccion, string nombreProduccion, string fechaInicio)
         {
@@ -427,6 +457,36 @@ namespace aadea.Logicaq
             }
         }
 
+        public string getNameProducto(int id)
+        {
+            string name = null; // Inicializar con un valor predeterminado
+            SQLiteDataReader resultado;
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT nombre FROM producto WHERE ID = @id";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+                connection.Open();
+                resultado = command.ExecuteReader();
+                if (resultado.Read())
+                {
+                    name = resultado.GetString(0);
+                }
+                resultado.Close();
+                return name;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
+
         public void EliminarProduccion(int idProduccion)
         {
             SQLiteConnection connection = null;
@@ -463,7 +523,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void TerminarProduccion(int idProduccion, string fechaTermino, string fechaInicio)
+        public void TerminarProduccion(int idProduccion, string fechaTermino, string fechaInicio,string nombre)
         {
             SQLiteConnection connection = null;
             try
@@ -472,11 +532,12 @@ namespace aadea.Logicaq
                 connection.Open();
 
                 // Insertar los datos en la tabla "Historial"
-                string insertHistorialQuery = "INSERT INTO Historial (ID, fecha_inicio, fecha_termino) VALUES (@id, @fechaInicio, @fechaTermino)";
+                string insertHistorialQuery = "INSERT INTO Historial (ID, fecha_inicio, fecha_termino,nombre) VALUES (@id, @fechaInicio, @fechaTermino,@nombre)";
                 SQLiteCommand insertHistorialCommand = new SQLiteCommand(insertHistorialQuery, connection);
                 insertHistorialCommand.Parameters.AddWithValue("@id", idProduccion);
                 insertHistorialCommand.Parameters.AddWithValue("@fechaInicio", fechaInicio);
                 insertHistorialCommand.Parameters.AddWithValue("@fechaTermino", fechaTermino);
+                insertHistorialCommand.Parameters.AddWithValue("@nombre", nombre);
                 insertHistorialCommand.ExecuteNonQuery();
 
                 // Obtener los materiales de la producción desde la tabla "Material_Produccion"

@@ -1,6 +1,7 @@
 ﻿using aadea.Logicaq;
 using aadea.Model;
 using aadea.userControls;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,8 @@ namespace aadea.Vistas
         private List<string> unidades;
         private produccionActual userLocal;
         private int cantProductLocal;
-
+        private List<string> opcionesSeleccionadas;
+        private List<string> opcionesSeleccionadasProductos;
         public FormProduccion()
         {
             InitializeComponent();
@@ -40,7 +42,8 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
             tabControlProduccion.TabPages.Remove(tabBodega);
-
+            opcionesSeleccionadas = new List<string>();
+            opcionesSeleccionadasProductos = new List<string>();
             comboBoxesMateriales = new List<ComboBox>();
             textBoxesCantidad = new List<TextBox>();
             comboBoxesProductos = new List<ComboBox>();
@@ -110,34 +113,41 @@ namespace aadea.Vistas
                 int id = Convert.ToInt32(row["ID"]);
                 string fecha_inicio = row["fecha_inicio"].ToString();
                 string fecha_termino = row["fecha_termino"].ToString();
-
+                string nombre= row["nombre"].ToString();
                 userControl.fechaInicio = fecha_inicio;
                 userControl.fechaTermino = fecha_termino;
-                userControl.Tittle += " " + id;
+                userControl.Tittle += " " + nombre;
                 LayoutHistorial.Controls.Add(userControl);
                 DataTable tableMaterial = l_produccion.listMaterialForHistory(id);
                 DataTable tableProduct = l_produccion.GetProductHistory(id);
-                
-                foreach (DataRow materialRow in tableMaterial.Rows)
+
+
+                userControl.DataGridViewMateriales.Rows.Clear();
+                userControl.DataGridViewMateriales.Columns.Add("Nombre", "Nombre");
+                userControl.DataGridViewMateriales.Columns.Add("Cantidad", "Cantidad");
+                foreach (DataRow rows in tableMaterial.Rows)
                 {
-                    // Verificar si el campo está vacío
-                    if (materialRow.IsNull("Nombre"))
-                    {
-                        // Reemplazar el valor vacío con "El material ha sido eliminado"
-                        materialRow.SetField("Nombre", "El material ha sido eliminado");
-                    }
+                    int idMaterial = Convert.ToInt32(rows["id_material"]);
+                    int cantidad = Convert.ToInt32(rows["cantidad"]);
+                    string nombreMaterial = l_produccion.getNameMaterial(idMaterial);
+                    if (nombreMaterial == null) { nombreMaterial = "El material ha sido eliminado"; }
+                    userControl.DataGridViewMateriales.Rows.Add(nombreMaterial, cantidad);
                 }
-                foreach (DataRow productRow in tableProduct.Rows)
+
+                userControl.DataGridViewProductos.Rows.Clear();
+                userControl.DataGridViewProductos.Columns.Add("Nombre", "Nombre");
+                userControl.DataGridViewProductos.Columns.Add("Cantidad", "Cantidad");
+                userControl.DataGridViewProductos.Columns.Add("Frasco", "Frasco");
+                foreach (DataRow rows in tableProduct.Rows)
                 {
-                    // Verificar si el campo está vacío
-                    if (productRow.IsNull("Nombre"))
-                    {
-                        // Reemplazar el valor vacío con "El material ha sido eliminado"
-                        productRow.SetField("Nombre", "El producto ha sido eliminado");
-                    }
+                    int idProducto = Convert.ToInt32(rows["id_producto"]);
+                    int cantidad = Convert.ToInt32(rows["cantidad"]);
+                    int idfrasco = Convert.ToInt32(rows["id_frasco"]);
+                    string nombreProducto = l_produccion.getNameProducto(idProducto);
+                    string frasco = l_produccion.ObtenerFrascoN(idfrasco);
+                    if (nombreProducto == null) { nombreProducto = "El material ha sido eliminado"; }
+                    userControl.DataGridViewProductos.Rows.Add(nombreProducto, cantidad,frasco);
                 }
-                userControl.DataGridViewMateriales.DataSource = tableMaterial;
-                userControl.DataGridViewProductos.DataSource = tableProduct;
             }
         }
 
@@ -227,7 +237,7 @@ namespace aadea.Vistas
             L_Produccion l = new L_Produccion();
             string termino = userLocal.fechaterm;
             string inicio = userLocal.fechaInicio;
-
+            string nombre = userLocal.Tittle;
 
             for (int i = 0; i < comboBoxesProductos.Count; i++)
             {
@@ -258,7 +268,7 @@ namespace aadea.Vistas
             }
 
 
-            l.TerminarProduccion(idProduccion, termino, inicio);
+            l.TerminarProduccion(idProduccion, termino, inicio,nombre);
 
             layoutPanelActualProduccion.Controls.Remove(userLocal);
 
@@ -417,6 +427,7 @@ namespace aadea.Vistas
 
                     comboBoxMaterial.SelectedIndexChanged += (s, args) =>
                     {
+
                         if (comboBoxMaterial.SelectedIndex >= 0)
                         {
                             string opcion = unidades[comboBoxMaterial.SelectedIndex];
@@ -430,6 +441,16 @@ namespace aadea.Vistas
                                 unidad = "La unidad del material es: " + opcion;
                             }
                             labelUnidad.Text = unidad;
+
+                            if (opcionesSeleccionadas.Contains(comboBoxMaterial.SelectedItem.ToString()))
+                            {
+                                MessageBox.Show("El material ya ha sido seleccionado en otra opcion, procura elegir opciones unicas");
+                                comboBoxMaterial.SelectedIndex = -1; 
+                            }
+                            else
+                            {
+                                opcionesSeleccionadas.Add(comboBoxMaterial.SelectedItem.ToString());
+                            }
                         }
                         else
                         {
@@ -591,7 +612,6 @@ namespace aadea.Vistas
                     comboBoxesProductos.Add(comboBoxProductos);
                     comboBoxesFrascos.Add(comboBoxFrascos);
                     textBoxesCantidadProductos.Add(textBoxCantidad);
-
 
                     layoutPanelProducts.Controls.Add(labelProducto);
                     layoutPanelProducts.Controls.Add(comboBoxProductos);
