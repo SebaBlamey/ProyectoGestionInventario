@@ -263,10 +263,28 @@ namespace aadea.Vistas
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void menuTitleLaberl_MouseDown(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOffset = new Point(-e.X, -e.Y);
+                isMouseDown = true;
+            }
         }
 
+        private void menuTitleLaberl_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMouseDown = false;
+        }
+
+        private void menuTitleLaberl_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMouseDown)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouseOffset.X, mouseOffset.Y);
+                Location = mousePos;
+            }
+        }
     }
 }

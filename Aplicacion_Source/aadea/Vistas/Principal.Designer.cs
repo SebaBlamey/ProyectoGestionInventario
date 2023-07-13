@@ -291,6 +291,9 @@ namespace aadea.Vistas
             menuTitleLaberl.Size = new Size(707, 62);
             menuTitleLaberl.TabIndex = 0;
             menuTitleLaberl.TextAlign = ContentAlignment.MiddleCenter;
+            menuTitleLaberl.MouseDown += menuTitleLaberl_MouseDown;
+            menuTitleLaberl.MouseMove += menuTitleLaberl_MouseMove;
+            menuTitleLaberl.MouseUp += menuTitleLaberl_MouseUp;
             // 
             // panelDesk
             // 
