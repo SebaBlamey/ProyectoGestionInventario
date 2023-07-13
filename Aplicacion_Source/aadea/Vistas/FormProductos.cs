@@ -6,12 +6,12 @@ using Image = System.Drawing.Image;
 
 namespace aadea.Vistas
 {
-
     public partial class FormProductos : Form
     {
         private string rutaSeleccionada;
         private UserControl selectedUserControl;
         private int idlocal;
+
         public FormProductos()
         {
             InitializeComponent();
@@ -54,21 +54,6 @@ namespace aadea.Vistas
 
             foreach (DataRow row in dataTable.Rows)
             {
-                /*if (!isFirstRow)
-                {
-                    var separatorPanel = new Panel();
-                    separatorPanel.AutoSize = false;
-                    separatorPanel.Height = 2;
-                    separatorPanel.BackColor = Color.Black;
-                    separatorPanel.Width = 618;
-                    separatorPanel.Dock = DockStyle.Top;
-                    separatorPanel.BringToFront();
-                    flowLayoutPanel1.Controls.Add(separatorPanel);
-                }
-                else
-                {
-                    isFirstRow = false;
-                }*/
 
                 var userControl = new UserProduct();
                 var id = Convert.ToInt32(row["ID"]);
@@ -129,7 +114,8 @@ namespace aadea.Vistas
 
         private void UserControl_DeleteButtonClicked(object sender, EventArgs e, UserProduct user)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?", "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?",
+                "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -138,53 +124,8 @@ namespace aadea.Vistas
                 flowLayoutPanel1.Controls.Remove(user);
                 l_Products.DeleteProduct(id);
             }
+
             resetCampos(sender, e);
-        }
-
-
-        private void btExaminar_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btexam_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //Boton guardar
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btCancelAdd_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btCancelEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btDelete_Click_1(object sender, EventArgs e)
-        {
-            if (selectedUserControl != null)
-            {
-                L_Products l_Products = new L_Products();
-                int id = ((UserProduct)selectedUserControl).ID;
-                l_Products.DeleteProduct(id);
-                resetCampos(sender, e);
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un producto");
-            }
-        }
-
-        private void btSaveEdit_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void txtProduct_TextChanged(object sender, EventArgs e)
@@ -208,7 +149,8 @@ namespace aadea.Vistas
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -230,7 +172,8 @@ namespace aadea.Vistas
 
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(desc))
             {
-                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
 
@@ -271,7 +214,8 @@ namespace aadea.Vistas
 
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(desc))
             {
-                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
 
@@ -311,7 +255,8 @@ namespace aadea.Vistas
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
