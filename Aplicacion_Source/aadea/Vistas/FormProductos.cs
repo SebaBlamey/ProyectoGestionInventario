@@ -50,8 +50,26 @@ namespace aadea.Vistas
             flowLayoutPanel1.Controls.Clear();
             var l_products = new L_Products();
             var dataTable = l_products.listProducts();
+            bool isFirstRow = true; // Variable para controlar el primer elemento
+
             foreach (DataRow row in dataTable.Rows)
             {
+                /*if (!isFirstRow)
+                {
+                    var separatorPanel = new Panel();
+                    separatorPanel.AutoSize = false;
+                    separatorPanel.Height = 2;
+                    separatorPanel.BackColor = Color.Black;
+                    separatorPanel.Width = 618;
+                    separatorPanel.Dock = DockStyle.Top;
+                    separatorPanel.BringToFront();
+                    flowLayoutPanel1.Controls.Add(separatorPanel);
+                }
+                else
+                {
+                    isFirstRow = false;
+                }*/
+
                 var userControl = new UserProduct();
                 var id = Convert.ToInt32(row["ID"]);
                 var nombre = row["nombre"].ToString();
@@ -63,7 +81,7 @@ namespace aadea.Vistas
 
                 userControl.btDeleteProducto += (s, args) =>
                 {
-                    UserControl_DeleteButtonClicked(sender,e,userControl);
+                    UserControl_DeleteButtonClicked(sender, e, userControl);
                     idlocal = userControl.ID;
                 };
                 userControl.btModifyProducto += (s, args) =>
@@ -84,18 +102,9 @@ namespace aadea.Vistas
                 }
 
                 flowLayoutPanel1.Controls.Add(userControl);
-
-                if (row == dataTable.Rows[^1]) continue;
-                var separatorPanel = new Panel();
-                separatorPanel.AutoSize = false;
-                separatorPanel.Height = 2;
-                separatorPanel.BackColor = Color.Black;
-                separatorPanel.Width = 618;
-                separatorPanel.Dock = DockStyle.Bottom;
-                separatorPanel.BringToFront();
-                flowLayoutPanel1.Controls.Add(separatorPanel);
             }
         }
+
         private void UserControl_ButtonModify(UserProduct user)
         {
             Principal.menuTitleLaberl.Text = "MODIFICAR PRODUCTOS";
@@ -118,7 +127,7 @@ namespace aadea.Vistas
         }
 
 
-        private void UserControl_DeleteButtonClicked(object sender, EventArgs e,UserProduct user)
+        private void UserControl_DeleteButtonClicked(object sender, EventArgs e, UserProduct user)
         {
             DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?", "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -129,11 +138,61 @@ namespace aadea.Vistas
                 flowLayoutPanel1.Controls.Remove(user);
                 l_Products.DeleteProduct(id);
             }
-            resetCampos(sender,e);
+            resetCampos(sender, e);
         }
 
 
         private void btExaminar_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btexam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Boton guardar
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btCancelAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btCancelEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btDelete_Click_1(object sender, EventArgs e)
+        {
+            if (selectedUserControl != null)
+            {
+                L_Products l_Products = new L_Products();
+                int id = ((UserProduct)selectedUserControl).ID;
+                l_Products.DeleteProduct(id);
+                resetCampos(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un producto");
+            }
+        }
+
+        private void btSaveEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProduct_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconBtnExaminar_Click(object sender, EventArgs e)
         {
             OpenFileDialog selectorImagen = new OpenFileDialog();
             selectorImagen.Title = "Seleccionar imagen";
@@ -154,29 +213,17 @@ namespace aadea.Vistas
             }
         }
 
-        private void btexam_Click(object sender, EventArgs e)
+        private void cancelAdd_btn_Click(object sender, EventArgs e)
         {
-            OpenFileDialog selectorImagen = new OpenFileDialog();
-            selectorImagen.Title = "Seleccionar imagen";
-            selectorImagen.Filter = "Archivos de imagen|*.png;*.jpeg;*.jpg";
-
-            if (selectorImagen.ShowDialog() == DialogResult.OK)
-            {
-                string extension = Path.GetExtension(selectorImagen.FileName).ToLower();
-                if (extension == ".png" || extension == ".jpeg" || extension == ".jpg")
-                {
-                    cambiarBox.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
-                    rutaSeleccionada = selectorImagen.FileName;
-                }
-                else
-                {
-                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            tabControl.SelectedTab = productList;
+            tabControl.TabPages.Remove(AddP);
+            tabControl.TabPages.Remove(EditP);
+            tabControl.TabPages.Add(productList);
+            Principal.menuTitleLaberl.Text = "PRODUCTOS";
+            resetCampos(sender, e);
         }
 
-        //Boton guardar
-        private void button1_Click(object sender, EventArgs e)
+        private void save_iconBtn_Click(object sender, EventArgs e)
         {
             string nombre = txtProduct.Text;
             string desc = txtDesc.Text;
@@ -207,7 +254,7 @@ namespace aadea.Vistas
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
         }
 
-        private void btCancelAdd_Click(object sender, EventArgs e)
+        private void cancel_BtnEdit_Click(object sender, EventArgs e)
         {
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);
@@ -217,32 +264,7 @@ namespace aadea.Vistas
             resetCampos(sender, e);
         }
 
-        private void btCancelEdit_Click(object sender, EventArgs e)
-        {
-            tabControl.SelectedTab = productList;
-            tabControl.TabPages.Remove(AddP);
-            tabControl.TabPages.Remove(EditP);
-            tabControl.TabPages.Add(productList);
-            Principal.menuTitleLaberl.Text = "PRODUCTOS";
-            resetCampos(sender, e);
-        }
-
-        private void btDelete_Click_1(object sender, EventArgs e)
-        {
-            if (selectedUserControl != null)
-            {
-                L_Products l_Products = new L_Products();
-                int id = ((UserProduct)selectedUserControl).ID;
-                l_Products.DeleteProduct(id);
-                resetCampos(sender, e);
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar un producto");
-            }
-        }
-
-        private void btSaveEdit_Click(object sender, EventArgs e)
+        private void save_BtnEdit_Click(object sender, EventArgs e)
         {
             string nombre = textBox1.Text;
             string desc = textBox2.Text;
@@ -271,6 +293,27 @@ namespace aadea.Vistas
             tabControl.TabPages.Add(productList);
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
             resetCampos(sender, e);
+        }
+
+        private void search_BtnEdit_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog selectorImagen = new OpenFileDialog();
+            selectorImagen.Title = "Seleccionar imagen";
+            selectorImagen.Filter = "Archivos de imagen|*.png;*.jpeg;*.jpg";
+
+            if (selectorImagen.ShowDialog() == DialogResult.OK)
+            {
+                string extension = Path.GetExtension(selectorImagen.FileName).ToLower();
+                if (extension == ".png" || extension == ".jpeg" || extension == ".jpg")
+                {
+                    cambiarBox.Image = System.Drawing.Image.FromStream(selectorImagen.OpenFile());
+                    rutaSeleccionada = selectorImagen.FileName;
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

@@ -94,7 +94,7 @@ namespace aadea.Vistas
             {
                 DisableButton();
                 currentBtn = (IconButton)sender;
-                currentBtn.BackColor = Color.FromArgb(212, 104, 255);
+                currentBtn.BackColor = Color.FromArgb(115, 124, 141);
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
@@ -106,7 +106,7 @@ namespace aadea.Vistas
         {
             if (currentBtn != null)
             {
-                currentBtn.BackColor = Color.FromArgb(33, 36, 53);
+                currentBtn.BackColor = Color.FromArgb(33, 42, 62);
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;

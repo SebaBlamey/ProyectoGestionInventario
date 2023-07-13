@@ -41,11 +41,11 @@
             // 
             // loginButton
             // 
-            loginButton.BackColor = Color.FromArgb(33, 36, 53);
+            loginButton.BackColor = Color.FromArgb(33, 42, 62);
             loginButton.FlatAppearance.BorderColor = Color.White;
             loginButton.FlatAppearance.BorderSize = 2;
-            loginButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
-            loginButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            loginButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(155, 164, 181);
+            loginButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
             loginButton.FlatStyle = FlatStyle.Flat;
             loginButton.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             loginButton.ForeColor = SystemColors.Control;
@@ -135,7 +135,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(33, 36, 53);
+            BackColor = Color.FromArgb(33, 42, 62);
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(324, 407);
             Controls.Add(iconButton1);

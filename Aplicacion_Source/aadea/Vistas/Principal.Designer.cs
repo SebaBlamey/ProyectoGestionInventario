@@ -70,10 +70,10 @@ namespace aadea.Vistas
             // 
             // iconButtonSalir
             // 
-            iconButtonSalir.BackColor = Color.FromArgb(33, 36, 53);
+            iconButtonSalir.BackColor = Color.FromArgb(33, 42, 62);
             iconButtonSalir.FlatAppearance.BorderSize = 0;
-            iconButtonSalir.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
-            iconButtonSalir.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            iconButtonSalir.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonSalir.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
             iconButtonSalir.FlatStyle = FlatStyle.Flat;
             iconButtonSalir.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonSalir.ForeColor = Color.FromArgb(144, 147, 166);
@@ -95,10 +95,10 @@ namespace aadea.Vistas
             // 
             // iconButtonAsistencia
             // 
-            iconButtonAsistencia.BackColor = Color.FromArgb(33, 36, 53);
+            iconButtonAsistencia.BackColor = Color.FromArgb(33, 42, 62);
             iconButtonAsistencia.FlatAppearance.BorderSize = 0;
-            iconButtonAsistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
-            iconButtonAsistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            iconButtonAsistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonAsistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
             iconButtonAsistencia.FlatStyle = FlatStyle.Flat;
             iconButtonAsistencia.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonAsistencia.ForeColor = Color.FromArgb(144, 147, 166);
@@ -120,10 +120,10 @@ namespace aadea.Vistas
             // 
             // iconButtonTrabajadores
             // 
-            iconButtonTrabajadores.BackColor = Color.FromArgb(33, 36, 53);
+            iconButtonTrabajadores.BackColor = Color.FromArgb(33, 42, 62);
             iconButtonTrabajadores.FlatAppearance.BorderSize = 0;
-            iconButtonTrabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
-            iconButtonTrabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            iconButtonTrabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonTrabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
             iconButtonTrabajadores.FlatStyle = FlatStyle.Flat;
             iconButtonTrabajadores.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonTrabajadores.ForeColor = Color.FromArgb(144, 147, 166);
@@ -145,10 +145,10 @@ namespace aadea.Vistas
             // 
             // iconButtonProductos
             // 
-            iconButtonProductos.BackColor = Color.FromArgb(33, 36, 53);
+            iconButtonProductos.BackColor = Color.FromArgb(33, 42, 62);
             iconButtonProductos.FlatAppearance.BorderSize = 0;
-            iconButtonProductos.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
-            iconButtonProductos.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            iconButtonProductos.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonProductos.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
             iconButtonProductos.FlatStyle = FlatStyle.Flat;
             iconButtonProductos.Font = new Font("Myanmar Text", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonProductos.ForeColor = Color.FromArgb(144, 147, 166);
@@ -169,10 +169,10 @@ namespace aadea.Vistas
             // 
             // iconButtonProduccion
             // 
-            iconButtonProduccion.BackColor = Color.FromArgb(33, 36, 53);
+            iconButtonProduccion.BackColor = Color.FromArgb(33, 42, 62);
             iconButtonProduccion.FlatAppearance.BorderSize = 0;
-            iconButtonProduccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
-            iconButtonProduccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            iconButtonProduccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonProduccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
             iconButtonProduccion.FlatStyle = FlatStyle.Flat;
             iconButtonProduccion.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonProduccion.ForeColor = Color.FromArgb(144, 147, 166);
@@ -193,10 +193,10 @@ namespace aadea.Vistas
             // 
             // iconButtonMateriales
             // 
-            iconButtonMateriales.BackColor = Color.FromArgb(33, 36, 53);
+            iconButtonMateriales.BackColor = Color.FromArgb(33, 42, 62);
             iconButtonMateriales.FlatAppearance.BorderSize = 0;
-            iconButtonMateriales.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
-            iconButtonMateriales.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            iconButtonMateriales.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonMateriales.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
             iconButtonMateriales.FlatStyle = FlatStyle.Flat;
             iconButtonMateriales.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonMateriales.ForeColor = Color.FromArgb(144, 147, 166);
@@ -217,7 +217,7 @@ namespace aadea.Vistas
             // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(33, 36, 53);
+            panel3.BackColor = Color.FromArgb(33, 42, 62);
             panel3.Controls.Add(iconButtonBodega);
             panel3.Controls.Add(pictureBox2);
             panel3.Dock = DockStyle.Fill;
@@ -231,10 +231,10 @@ namespace aadea.Vistas
             // 
             // iconButtonBodega
             // 
-            iconButtonBodega.BackColor = Color.FromArgb(33, 36, 53);
+            iconButtonBodega.BackColor = Color.FromArgb(33, 42, 62);
             iconButtonBodega.FlatAppearance.BorderSize = 0;
-            iconButtonBodega.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 104, 255);
-            iconButtonBodega.FlatAppearance.MouseOverBackColor = Color.FromArgb(123, 72, 154);
+            iconButtonBodega.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonBodega.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
             iconButtonBodega.FlatStyle = FlatStyle.Flat;
             iconButtonBodega.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButtonBodega.ForeColor = Color.FromArgb(144, 147, 166);
@@ -283,6 +283,7 @@ namespace aadea.Vistas
             // 
             // menuTitleLaberl
             // 
+            menuTitleLaberl.BackColor = Color.FromArgb(115, 124, 141);
             menuTitleLaberl.Font = new Font("Tahoma", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
             menuTitleLaberl.ImageAlign = ContentAlignment.TopLeft;
             menuTitleLaberl.Location = new Point(0, 0);
@@ -293,7 +294,7 @@ namespace aadea.Vistas
             // 
             // panelDesk
             // 
-            panelDesk.BackColor = SystemColors.Control;
+            panelDesk.BackColor = Color.FromArgb(155, 164, 181);
             panelDesk.Controls.Add(logoGrande);
             panelDesk.Dock = DockStyle.Fill;
             panelDesk.Location = new Point(218, 62);
@@ -303,7 +304,7 @@ namespace aadea.Vistas
             // 
             // logoGrande
             // 
-            logoGrande.BackColor = Color.Transparent;
+            logoGrande.BackColor = Color.FromArgb(115, 124, 141);
             logoGrande.Image = Properties.Resource.logo3;
             logoGrande.Location = new Point(0, -62);
             logoGrande.Margin = new Padding(3, 2, 3, 2);
@@ -352,7 +353,7 @@ namespace aadea.Vistas
         private PictureBox pictureBox2;
         private Panel panelDesk;
         private FontAwesome.Sharp.IconButton iconButtonBodega;
-        public static Label menuTitleLaberl;
         private PictureBox logoGrande;
+        public static Label menuTitleLaberl;
     }
 }

@@ -38,7 +38,7 @@
             // 
             // picProducto
             // 
-            picProducto.Location = new Point(3, 46);
+            picProducto.Location = new Point(12, 46);
             picProducto.Name = "picProducto";
             picProducto.Size = new Size(125, 124);
             picProducto.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -47,7 +47,7 @@
             // 
             // lblTittle
             // 
-            lblTittle.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTittle.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblTittle.ImageAlign = ContentAlignment.MiddleLeft;
             lblTittle.Location = new Point(0, 12);
             lblTittle.Name = "lblTittle";
@@ -58,30 +58,31 @@
             // 
             // lblDescripcion
             // 
-            lblDescripcion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDescripcion.Location = new Point(134, 74);
+            lblDescripcion.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDescripcion.Location = new Point(143, 74);
             lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(298, 70);
+            lblDescripcion.Size = new Size(270, 70);
             lblDescripcion.TabIndex = 2;
             lblDescripcion.Text = "label1";
             // 
             // iconButton1
             // 
-            iconButton1.BackColor = Color.FromArgb(53, 152, 220);
-            iconButton1.FlatAppearance.BorderColor = Color.FromArgb(12, 98, 155);
+            iconButton1.BackColor = Color.FromArgb(121, 160, 191);
+            iconButton1.Cursor = Cursors.Hand;
+            iconButton1.FlatAppearance.BorderColor = Color.FromArgb(81, 120, 151);
             iconButton1.FlatAppearance.BorderSize = 2;
-            iconButton1.FlatAppearance.MouseDownBackColor = Color.FromArgb(12, 98, 155);
-            iconButton1.FlatAppearance.MouseOverBackColor = Color.FromArgb(42, 128, 185);
+            iconButton1.FlatAppearance.MouseDownBackColor = Color.FromArgb(81, 120, 151);
+            iconButton1.FlatAppearance.MouseOverBackColor = Color.FromArgb(101, 140, 171);
             iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            iconButton1.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             iconButton1.ForeColor = SystemColors.Control;
             iconButton1.IconChar = FontAwesome.Sharp.IconChar.PaintBrush;
             iconButton1.IconColor = SystemColors.Control;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 28;
-            iconButton1.Location = new Point(438, 74);
+            iconButton1.Location = new Point(419, 74);
             iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(106, 33);
+            iconButton1.Size = new Size(118, 33);
             iconButton1.TabIndex = 5;
             iconButton1.Text = "Modificar";
             iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -90,22 +91,22 @@
             // 
             // delete_iconButton
             // 
-            delete_iconButton.BackColor = Color.Red;
+            delete_iconButton.BackColor = Color.FromArgb(204, 102, 102);
             delete_iconButton.Cursor = Cursors.Hand;
-            delete_iconButton.FlatAppearance.BorderColor = Color.FromArgb(204, 0, 0);
+            delete_iconButton.FlatAppearance.BorderColor = Color.FromArgb(154, 52, 52);
             delete_iconButton.FlatAppearance.BorderSize = 2;
-            delete_iconButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(204, 0, 0);
-            delete_iconButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 0, 0);
+            delete_iconButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(154, 52, 52);
+            delete_iconButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(164, 62, 62);
             delete_iconButton.FlatStyle = FlatStyle.Flat;
-            delete_iconButton.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            delete_iconButton.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             delete_iconButton.ForeColor = SystemColors.Control;
             delete_iconButton.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             delete_iconButton.IconColor = SystemColors.Control;
             delete_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             delete_iconButton.IconSize = 28;
-            delete_iconButton.Location = new Point(438, 111);
+            delete_iconButton.Location = new Point(419, 111);
             delete_iconButton.Name = "delete_iconButton";
-            delete_iconButton.Size = new Size(106, 33);
+            delete_iconButton.Size = new Size(118, 33);
             delete_iconButton.TabIndex = 6;
             delete_iconButton.Text = "Eliminar";
             delete_iconButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -116,6 +117,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(155, 164, 181);
             Controls.Add(delete_iconButton);
             Controls.Add(iconButton1);
             Controls.Add(lblDescripcion);
