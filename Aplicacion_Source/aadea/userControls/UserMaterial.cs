@@ -1,16 +1,4 @@
-﻿using aadea.Vistas;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace aadea.userControls
+﻿namespace aadea.userControls
 {
     public partial class UserMaterial : UserControl
     {
@@ -60,14 +48,6 @@ namespace aadea.userControls
         }
 
         #endregion
-
-        private void btModify_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btDelete_Click(object sender, EventArgs e)
-        {
-        }
 
         private void modify_iconButton_Click(object sender, EventArgs e)
         {
