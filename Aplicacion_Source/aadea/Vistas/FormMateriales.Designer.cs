@@ -109,16 +109,16 @@ namespace aadea.Vistas
             add_iconButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 127, 29);
             add_iconButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 147, 49);
             add_iconButton.FlatStyle = FlatStyle.Flat;
-            add_iconButton.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            add_iconButton.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             add_iconButton.ForeColor = SystemColors.Control;
             add_iconButton.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
             add_iconButton.IconColor = SystemColors.Control;
             add_iconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             add_iconButton.IconSize = 28;
             add_iconButton.ImageAlign = ContentAlignment.TopCenter;
-            add_iconButton.Location = new Point(564, 400);
+            add_iconButton.Location = new Point(552, 400);
             add_iconButton.Name = "add_iconButton";
-            add_iconButton.Size = new Size(106, 33);
+            add_iconButton.Size = new Size(118, 33);
             add_iconButton.TabIndex = 17;
             add_iconButton.Text = "Agregar";
             add_iconButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -420,21 +420,23 @@ namespace aadea.Vistas
             // boxMedidaActual
             // 
             boxMedidaActual.DropDownStyle = ComboBoxStyle.DropDownList;
+            boxMedidaActual.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             boxMedidaActual.ForeColor = Color.Black;
             boxMedidaActual.FormattingEnabled = true;
             boxMedidaActual.Location = new Point(186, 172);
             boxMedidaActual.Name = "boxMedidaActual";
-            boxMedidaActual.Size = new Size(121, 28);
+            boxMedidaActual.Size = new Size(121, 29);
             boxMedidaActual.TabIndex = 10;
             // 
             // txtStockActual
             // 
             txtStockActual.BackColor = Color.FromArgb(155, 164, 181);
             txtStockActual.BorderStyle = BorderStyle.FixedSingle;
+            txtStockActual.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStockActual.ForeColor = Color.Black;
             txtStockActual.Location = new Point(39, 174);
             txtStockActual.Name = "txtStockActual";
-            txtStockActual.Size = new Size(104, 26);
+            txtStockActual.Size = new Size(104, 27);
             txtStockActual.TabIndex = 9;
             txtStockActual.KeyPress += txtStockActual_KeyPress;
             // 
@@ -444,7 +446,7 @@ namespace aadea.Vistas
             txtNameActual.BorderStyle = BorderStyle.FixedSingle;
             txtNameActual.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtNameActual.ForeColor = Color.Black;
-            txtNameActual.Location = new Point(41, 74);
+            txtNameActual.Location = new Point(39, 81);
             txtNameActual.Name = "txtNameActual";
             txtNameActual.Size = new Size(251, 27);
             txtNameActual.TabIndex = 8;

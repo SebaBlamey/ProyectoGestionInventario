@@ -19,60 +19,18 @@
         private void FormTrabajadores_Load(object sender, EventArgs e)
         {
             this.ListadoT();
+            tabControlE.ItemSize = new Size(0, 1);
+            tabControlE.SizeMode = TabSizeMode.Fixed;
+            tabControlE.Multiline = true;
             DGV_T.ClearSelection();
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-
-            L_Trabajadores ins = new L_Trabajadores();
-            string rut = textBoxRut.Text;
-            string name = textBoxName.Text;
-            string surname = textBoxSurname.Text;
-            string address = textBoxAddress.Text;
-            string phNum = textBoxPhNum.Text;
-
-            if (this.option == 1)
-            {
-                if (!string.IsNullOrEmpty(rut) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
-                {
-                    ins.InsertarTrabajador(rut, name, surname, address, phNum);
-                    this.BackToEmpList();
-                    this.CleanTextBoxes();
-                    this.FormTrabajadores_Load(sender, e);
-                }
-                else
-                {
-                    MessageBox.Show("Llene los campos necesarios (Rut, Nombre y Apellido)", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            if (this.option == 2)
-            {
-                //textBoxRut.ReadOnly = true;
-                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
-                {
-                    ins.EditEmployee(rut, name, surname, address, phNum);
-                    this.BackToEmpList();
-                    this.CleanTextBoxes();
-                    this.FormTrabajadores_Load(sender, e);
-                }
-                else
-                {
-                    MessageBox.Show("Llene los campos necesarios (Nombre y Apellido)", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                textBoxRut.ReadOnly = false;
-            }
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
-            this.BackToEmpList();
-            this.CleanTextBoxes();
-            this.FormTrabajadores_Load(sender, e);
         }
 
         private void CleanTextBoxes()
@@ -160,6 +118,59 @@
                 DGV_T.Rows.Clear();
                 FormTrabajadores_Load(sender, e);
             }
+        }
+
+        private void trabajadoresAdd_Click(object sender, EventArgs e)
+        {
+
+            L_Trabajadores ins = new L_Trabajadores();
+            string rut = textBoxRut.Text;
+            string name = textBoxName.Text;
+            string surname = textBoxSurname.Text;
+            string address = textBoxAddress.Text;
+            string phNum = textBoxPhNum.Text;
+
+            if (this.option == 1)
+            {
+                if (!string.IsNullOrEmpty(rut) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
+                {
+                    ins.InsertarTrabajador(rut, name, surname, address, phNum);
+                    this.BackToEmpList();
+                    this.CleanTextBoxes();
+                    this.FormTrabajadores_Load(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Llene los campos necesarios (Rut, Nombre y Apellido)", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            if (this.option == 2)
+            {
+                //textBoxRut.ReadOnly = true;
+                if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
+                {
+                    ins.EditEmployee(rut, name, surname, address, phNum);
+                    this.BackToEmpList();
+                    this.CleanTextBoxes();
+                    this.FormTrabajadores_Load(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Llene los campos necesarios (Nombre y Apellido)", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                textBoxRut.ReadOnly = false;
+            }
+        }
+
+        private void trabajadoresDelete_Click(object sender, EventArgs e)
+        {
+            this.BackToEmpList();
+            this.CleanTextBoxes();
+            this.FormTrabajadores_Load(sender, e);
         }
     }
 }

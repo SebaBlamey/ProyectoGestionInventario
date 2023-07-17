@@ -384,9 +384,9 @@ namespace aadea.Vistas
             AddProduct.IconFont = FontAwesome.Sharp.IconFont.Auto;
             AddProduct.IconSize = 28;
             AddProduct.ImageAlign = ContentAlignment.TopCenter;
-            AddProduct.Location = new Point(564, 400);
+            AddProduct.Location = new Point(552, 400);
             AddProduct.Name = "AddProduct";
-            AddProduct.Size = new Size(106, 33);
+            AddProduct.Size = new Size(118, 33);
             AddProduct.TabIndex = 10;
             AddProduct.Text = "Agregar";
             AddProduct.TextImageRelation = TextImageRelation.ImageBeforeText;
