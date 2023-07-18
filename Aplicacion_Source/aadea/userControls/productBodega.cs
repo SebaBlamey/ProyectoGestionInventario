@@ -41,15 +41,12 @@ namespace aadea.userControls
         }
         #endregion
 
-        private void btModify_Click(object sender, EventArgs e)
+        private void modificarBodega_Click(object sender, EventArgs e)
         {
             buttonModifyClick?.Invoke(this, EventArgs.Empty);
         }
 
-
-
-
-        private void deleteBtn_Click(object sender, EventArgs e)
+        private void eliminarBodega_Click(object sender, EventArgs e)
         {
             buttonDeleteClick?.Invoke(this, EventArgs.Empty);
         }

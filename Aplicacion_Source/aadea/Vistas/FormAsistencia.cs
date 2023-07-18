@@ -15,6 +15,7 @@ using System.Windows.Controls;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Windows.Documents;
+using aadea.Extras;
 
 namespace aadea.Vistas
 {
@@ -39,15 +40,14 @@ namespace aadea.Vistas
         };
         public FormAsistencia()
         {
-
-
             InitializeComponent();
+            TabPrincipal.ItemSize = new Size(0, 1);
+            TabPrincipal.SizeMode = TabSizeMode.Fixed;
+            TabPrincipal.Multiline = true;
             DGV_Asist.CellFormatting += DGV_Asist_CellFormatting;
             dateTimePickerFecha.CustomFormat = "dd/MM/yyyy";
             Disguise(Add);
             Disguise(Filtrar);
-
-
         }
         public void editDGV_Meses()
         {
@@ -116,14 +116,6 @@ namespace aadea.Vistas
         } //REINICIAR CAMPOS
         private void AddSave_Click(object sender, EventArgs e)
         {
-
-            if (queryCall(sender, e))
-            {
-                TabPrincipal.SelectedTab = History;
-                TabPrincipal.TabPages.Add(History);
-                TabPrincipal.TabPages.Remove(Add);
-            }
-            resetCamp(sender, e);
         }//Boton Guardar en Añadir
         private bool queryCall(object sender, EventArgs e)
         {
@@ -216,58 +208,6 @@ namespace aadea.Vistas
                 }
             }
         }
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            TabPrincipal.SelectedTab = Add;
-            TabPrincipal.TabPages.Add(Add);
-            TabPrincipal.TabPages.Remove(History);
-            resetCamp(sender, e);
-            Windows(Add);
-        } //IR A AGREGAR
-        private void CancelBT_Click(object sender, EventArgs e)
-        {
-            TabPrincipal.SelectedTab = History;
-            TabPrincipal.TabPages.Add(History);
-            TabPrincipal.TabPages.Remove(Add);
-            resetCamp(sender, e);
-            Windows(History);
-
-        } //Cancelar boton de agregar
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            L_Asistencia l_Asistencia = new L_Asistencia();
-            // Verificar si hay una fila seleccionada
-            if (DGV_Asist.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Debes seleccionar una fila antes de eliminar.");
-            }
-
-
-
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta asistencia?",
-            "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            // Obtener la fila seleccionada
-            if (result == DialogResult.Yes)
-            {
-                DataGridViewRow filaSeleccionada = DGV_Asist.SelectedRows[0];
-                // Obtener los valores de las celdas de la fila
-                string rut = filaSeleccionada.Cells["rut"].Value.ToString();
-                DateTime fecha = Convert.ToDateTime(filaSeleccionada.Cells["Dia"].Value);
-                DateTime horaLlegada = Convert.ToDateTime(filaSeleccionada.Cells["Llegada"].Value);
-                // Obtener el ID utilizando el método GetID;
-                // Llamar al método de eliminación en tu otra clase, pasando el ID
-                l_Asistencia.DeleteAssistance(rut, fecha, horaLlegada);
-
-                // Actualizar el DataGridView si es necesario
-                // dgvDatos.DataSource = ...;
-                Windows(History);
-
-
-                TabPrincipal.TabPages.Remove(Add);
-                resetCamp(sender, e);
-            }
-
-        } //BOTON DE ELIMINAR
         private void finalHourConfirm()
         {
             try
@@ -314,9 +254,6 @@ namespace aadea.Vistas
         }
         private void FinalHouBTAccept_Click(object sender, EventArgs e) //ACEPTAR DE LA ELIMINACION
         {
-
-            finalHourConfirm();
-            FormAsist_Load(sender, e);
         }
         private void OpcionCB_CheckedChanged_1(object sender, EventArgs e)
         {
@@ -356,8 +293,82 @@ namespace aadea.Vistas
 
         private void FilterBT_Click(object sender, EventArgs e)
         {
+        }
+
+        private void AddProduct_Click(object sender, EventArgs e)
+        {
+            TabPrincipal.SelectedTab = Add;
+            TabPrincipal.TabPages.Add(Add);
+            TabPrincipal.TabPages.Remove(History);
+            resetCamp(sender, e);
+            Windows(Add);
+        }
+
+        private void FilterAsistencia_Click(object sender, EventArgs e)
+        {
             Show(Filtrar);
             Windows(Filtrar);
+        }
+
+        private void delete_iconButton_Click(object sender, EventArgs e)
+        {
+            L_Asistencia l_Asistencia = new L_Asistencia();
+            // Verificar si hay una fila seleccionada
+            if (DGV_Asist.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debes seleccionar una fila antes de eliminar.");
+            }
+
+
+
+            DialogResult result = MessageBox.Show("¿Está seguro de que desea eliminar esta asistencia?",
+                "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            // Obtener la fila seleccionada
+            if (result == DialogResult.Yes)
+            {
+                DataGridViewRow filaSeleccionada = DGV_Asist.SelectedRows[0];
+                // Obtener los valores de las celdas de la fila
+                string rut = filaSeleccionada.Cells["rut"].Value.ToString();
+                DateTime fecha = Convert.ToDateTime(filaSeleccionada.Cells["Dia"].Value);
+                DateTime horaLlegada = Convert.ToDateTime(filaSeleccionada.Cells["Llegada"].Value);
+                // Obtener el ID utilizando el método GetID;
+                // Llamar al método de eliminación en tu otra clase, pasando el ID
+                l_Asistencia.DeleteAssistance(rut, fecha, horaLlegada);
+
+                // Actualizar el DataGridView si es necesario
+                // dgvDatos.DataSource = ...;
+                Windows(History);
+
+
+                TabPrincipal.TabPages.Remove(Add);
+                resetCamp(sender, e);
+            }
+        }
+
+        private void ConfirmAsistencia_Click(object sender, EventArgs e)
+        {
+            finalHourConfirm();
+            FormAsist_Load(sender, e);
+        }
+
+        private void AceptarAdd_Click(object sender, EventArgs e)
+        {
+            if (queryCall(sender, e))
+            {
+                TabPrincipal.SelectedTab = History;
+                TabPrincipal.TabPages.Add(History);
+                TabPrincipal.TabPages.Remove(Add);
+            }
+            resetCamp(sender, e);
+        }
+
+        private void cancelAdd_Click(object sender, EventArgs e)
+        {
+            TabPrincipal.SelectedTab = History;
+            TabPrincipal.TabPages.Add(History);
+            TabPrincipal.TabPages.Remove(Add);
+            resetCamp(sender, e);
+            Windows(History);
         }
     }
 }

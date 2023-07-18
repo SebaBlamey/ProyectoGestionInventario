@@ -1,4 +1,5 @@
 ﻿
+using aadea.Extras;
 using aadea.Logicaq;
 using aadea.userControls;
 using System;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using aadea.Properties;
 
 namespace aadea.Vistas
 {
@@ -28,6 +30,9 @@ namespace aadea.Vistas
         }
         private void FormProduccion_Load(object? sender, EventArgs e)
         {
+            tabControl1.ItemSize = new Size(0, 1);
+            tabControl1.SizeMode = TabSizeMode.Fixed;
+            tabControl1.Multiline = true;
             flowLayoutPanel1.Controls.Clear();
             L_inventario l_Inventario = new L_inventario();
             DataTable dataTable = l_Inventario.listProducts();
@@ -60,6 +65,10 @@ namespace aadea.Vistas
                         System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
                         userControl.PictureBox1 = img;
                     }
+                }
+                else
+                {
+                    userControl.PictureBox1 = Resource.defaultImage;
                 }
                 flowLayoutPanel1.Controls.Add(userControl);
 
@@ -102,17 +111,10 @@ namespace aadea.Vistas
 
         private void addProd_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = addProdTab;
-            tabControl1.TabPages.Add(addProdTab);
-            tabControl1.TabPages.Remove(tabView);
-            tabControl1.TabPages.Remove(tabSizes);
-            tabControl1.TabPages.Remove(ModStock);
-
         }
 
         private void addProd_Back_Click(object sender, EventArgs e)
         {
-            goToMainInventory();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -125,28 +127,6 @@ namespace aadea.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (DGV_P_AddT.SelectedRows.Count == 0 || DGV_Size_AddT.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione un producto y un tamaño antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (string.IsNullOrEmpty(textBox1.Text))
-            {
-                MessageBox.Show("Ingrese un stock inicial antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string idProd = Convert.ToString(DGV_P_AddT.SelectedRows[0].Cells["ID"].Value);
-            string idSize = Convert.ToString(DGV_Size_AddT.SelectedRows[0].Cells["ID"].Value);
-            int stock = int.Parse(textBox1.Text);
-
-            L_inventario ins = new L_inventario();
-            ins.addToInventory(idProd, idSize, stock);
-            goToMainInventory();
-            this.clearSelections();
-            this.FormProduccion_Load(sender, e);
-
-
         }
 
         private void goToMainInventory()
@@ -168,32 +148,14 @@ namespace aadea.Vistas
 
         private void sizesBtn_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabSizes;
-            tabControl1.TabPages.Add(tabSizes);
-            tabControl1.TabPages.Remove(tabView);
-            tabControl1.TabPages.Remove(addProdTab);
-            this.refreshDGV();
         }
 
         private void sizesBackBtn_Click(object sender, EventArgs e)
         {
-            this.goToMainInventory();
-            this.FormProduccion_Load(sender, e);
         }
 
         private void sizesAddBtn_Click(object sender, EventArgs e)
         {
-
-            L_inventario ins = new L_inventario();
-            if (string.IsNullOrEmpty(sizesAddTB.Text))
-            {
-                MessageBox.Show("Ingrese un numero para poder proceder");
-                return;
-            }
-            int size = int.Parse(sizesAddTB.Text);
-            ins.addSize(size);
-            this.refreshDGV();
-            this.clearSelections();
         }
 
         private void clearSelections()
@@ -215,6 +177,88 @@ namespace aadea.Vistas
 
         private void sizesDelBtn_Click(object sender, EventArgs e)
         {
+        }
+
+        private void stockBackBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void incStockBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void decStockBtn_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void addProdutcto_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = addProdTab;
+            tabControl1.TabPages.Add(addProdTab);
+            tabControl1.TabPages.Remove(tabView);
+            tabControl1.TabPages.Remove(tabSizes);
+            tabControl1.TabPages.Remove(ModStock);
+        }
+
+        private void verTamano_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabSizes;
+            tabControl1.TabPages.Add(tabSizes);
+            tabControl1.TabPages.Remove(tabView);
+            tabControl1.TabPages.Remove(addProdTab);
+            this.refreshDGV();
+        }
+
+        private void agregarInv_Click(object sender, EventArgs e)
+        {
+            if (DGV_P_AddT.SelectedRows.Count == 0 || DGV_Size_AddT.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un producto y un tamaño antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("Ingrese un stock inicial antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string idProd = Convert.ToString(DGV_P_AddT.SelectedRows[0].Cells["ID"].Value);
+            string idSize = Convert.ToString(DGV_Size_AddT.SelectedRows[0].Cells["ID"].Value);
+            int stock = int.Parse(textBox1.Text);
+
+            L_inventario ins = new L_inventario();
+            ins.addToInventory(idProd, idSize, stock);
+            goToMainInventory();
+            this.clearSelections();
+            this.FormProduccion_Load(sender, e);
+        }
+
+        private void volverBtn_Click(object sender, EventArgs e)
+        {
+            goToMainInventory();
+        }
+
+        private void backInventario_Click(object sender, EventArgs e)
+        {
+            this.goToMainInventory();
+            this.FormProduccion_Load(sender, e);
+        }
+
+        private void agregarInventario_Click(object sender, EventArgs e)
+        {
+            L_inventario ins = new L_inventario();
+            if (string.IsNullOrEmpty(sizesAddTB.Text))
+            {
+                MessageBox.Show("Ingrese un numero para poder proceder");
+                return;
+            }
+            int size = int.Parse(sizesAddTB.Text);
+            ins.addSize(size);
+            this.refreshDGV();
+            this.clearSelections();
+        }
+
+        private void quitarInventario_Click(object sender, EventArgs e)
+        {
             if (DGV_Sizes.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Seleccione un tamaño para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -230,13 +274,13 @@ namespace aadea.Vistas
             }
         }
 
-        private void stockBackBtn_Click(object sender, EventArgs e)
+        private void volverModStock_Click(object sender, EventArgs e)
         {
             this.goToMainInventory();
             this.FormProduccion_Load(sender, e);
         }
 
-        private void incStockBtn_Click(object sender, EventArgs e)
+        private void plus_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBox2.Text) || DGV_Stock.SelectedRows.Count == 0)
             {
@@ -252,11 +296,9 @@ namespace aadea.Vistas
             L_inventario list = new L_inventario();
             DataTable dt1 = list.listStockID(this.idLocal);
             DGV_Stock.DataSource = dt1;
-
-
         }
 
-        private void decStockBtn_Click(object sender, EventArgs e)
+        private void minu_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBox2.Text) || DGV_Stock.SelectedRows.Count == 0)
             {

@@ -1,4 +1,6 @@
-﻿namespace aadea.Vistas
+﻿using aadea.Extras;
+
+namespace aadea.Vistas
 {
     partial class FormInventario
     {
@@ -28,46 +30,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            tabControl1 = new TabControl();
+            DataGridViewCellStyle dataGridViewCellStyle42 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle43 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle44 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle45 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle46 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle47 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle48 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle49 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle50 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle51 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle52 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle40 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle41 = new DataGridViewCellStyle();
+            tabControl1 = new TabControlEx();
             tabView = new TabPage();
-            sizesBtn = new Button();
-            addProd = new Button();
+            verTamano = new FontAwesome.Sharp.IconButton();
+            addProdutcto = new FontAwesome.Sharp.IconButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
             addProdTab = new TabPage();
-            addProd_AddBtn = new Button();
+            volverBtn = new FontAwesome.Sharp.IconButton();
+            agregarInv = new FontAwesome.Sharp.IconButton();
             textBox1 = new TextBox();
             addProdLbl3 = new Label();
             addProdLbl2 = new Label();
             addProdLbl1 = new Label();
-            addProd_Back = new Button();
             DGV_Size_AddT = new DataGridView();
             DGV_P_AddT = new DataGridView();
             tabSizes = new TabPage();
+            label3 = new Label();
+            quitarInventario = new FontAwesome.Sharp.IconButton();
+            agregarInventario = new FontAwesome.Sharp.IconButton();
+            backInventario = new FontAwesome.Sharp.IconButton();
             sizesAddTB = new TextBox();
-            sizesDelBtn = new Button();
-            sizesAddBtn = new Button();
-            sizesBackBtn = new Button();
-            label1 = new Label();
             DGV_Sizes = new DataGridView();
             ModStock = new TabPage();
+            minu = new FontAwesome.Sharp.IconButton();
+            plus = new FontAwesome.Sharp.IconButton();
+            volverModStock = new FontAwesome.Sharp.IconButton();
             textBox2 = new TextBox();
             pictureBox1 = new PictureBox();
             label2 = new Label();
-            stockBackBtn = new Button();
-            decStockBtn = new Button();
-            incStockBtn = new Button();
             DGV_Stock = new DataGridView();
             tabControl1.SuspendLayout();
             tabView.SuspendLayout();
@@ -97,39 +101,65 @@
             // 
             // tabView
             // 
-            tabView.Controls.Add(sizesBtn);
-            tabView.Controls.Add(addProd);
+            tabView.BackColor = Color.FromArgb(115, 124, 141);
+            tabView.Controls.Add(verTamano);
+            tabView.Controls.Add(addProdutcto);
             tabView.Controls.Add(flowLayoutPanel1);
             tabView.Controls.Add(panel1);
             tabView.ForeColor = Color.Black;
-            tabView.Location = new Point(4, 26);
+            tabView.Location = new Point(-2, 20);
             tabView.Name = "tabView";
             tabView.Padding = new Padding(3);
-            tabView.Size = new Size(818, 430);
+            tabView.Size = new Size(830, 442);
             tabView.TabIndex = 0;
             tabView.Text = "Stock";
-            tabView.UseVisualStyleBackColor = true;
             // 
-            // sizesBtn
+            // verTamano
             // 
-            sizesBtn.AccessibleRole = AccessibleRole.None;
-            sizesBtn.Location = new Point(484, 381);
-            sizesBtn.Name = "sizesBtn";
-            sizesBtn.Size = new Size(97, 23);
-            sizesBtn.TabIndex = 3;
-            sizesBtn.Text = "Ver Tamaños";
-            sizesBtn.UseVisualStyleBackColor = true;
-            sizesBtn.Click += sizesBtn_Click;
+            verTamano.BackColor = Color.FromArgb(217, 145, 0);
+            verTamano.FlatAppearance.BorderColor = Color.FromArgb(177, 105, 0);
+            verTamano.FlatAppearance.BorderSize = 2;
+            verTamano.FlatAppearance.MouseDownBackColor = Color.FromArgb(177, 105, 0);
+            verTamano.FlatAppearance.MouseOverBackColor = Color.FromArgb(197, 125, 0);
+            verTamano.FlatStyle = FlatStyle.Flat;
+            verTamano.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            verTamano.ForeColor = SystemColors.Control;
+            verTamano.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            verTamano.IconColor = SystemColors.Control;
+            verTamano.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            verTamano.IconSize = 28;
+            verTamano.Location = new Point(566, 383);
+            verTamano.Name = "verTamano";
+            verTamano.Size = new Size(118, 33);
+            verTamano.TabIndex = 11;
+            verTamano.Text = "Tamaño";
+            verTamano.TextImageRelation = TextImageRelation.ImageBeforeText;
+            verTamano.UseVisualStyleBackColor = false;
+            verTamano.Click += verTamano_Click;
             // 
-            // addProd
+            // addProdutcto
             // 
-            addProd.Location = new Point(129, 381);
-            addProd.Name = "addProd";
-            addProd.Size = new Size(153, 23);
-            addProd.TabIndex = 2;
-            addProd.Text = "Agregar Producto";
-            addProd.UseVisualStyleBackColor = true;
-            addProd.Click += addProd_Click;
+            addProdutcto.BackColor = Color.FromArgb(40, 167, 69);
+            addProdutcto.FlatAppearance.BorderColor = Color.FromArgb(0, 127, 29);
+            addProdutcto.FlatAppearance.BorderSize = 2;
+            addProdutcto.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 127, 29);
+            addProdutcto.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 147, 49);
+            addProdutcto.FlatStyle = FlatStyle.Flat;
+            addProdutcto.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            addProdutcto.ForeColor = SystemColors.Control;
+            addProdutcto.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            addProdutcto.IconColor = SystemColors.Control;
+            addProdutcto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            addProdutcto.IconSize = 28;
+            addProdutcto.ImageAlign = ContentAlignment.TopCenter;
+            addProdutcto.Location = new Point(8, 383);
+            addProdutcto.Name = "addProdutcto";
+            addProdutcto.Size = new Size(118, 33);
+            addProdutcto.TabIndex = 11;
+            addProdutcto.Text = "Agregar";
+            addProdutcto.TextImageRelation = TextImageRelation.ImageBeforeText;
+            addProdutcto.UseVisualStyleBackColor = false;
+            addProdutcto.Click += addProdutcto_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -137,7 +167,7 @@
             flowLayoutPanel1.ForeColor = Color.Black;
             flowLayoutPanel1.Location = new Point(8, 9);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(793, 349);
+            flowLayoutPanel1.Size = new Size(793, 368);
             flowLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -147,88 +177,119 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(812, 0);
+            panel1.Size = new Size(824, 0);
             panel1.TabIndex = 0;
             // 
             // addProdTab
             // 
-            addProdTab.Controls.Add(addProd_AddBtn);
+            addProdTab.BackColor = Color.FromArgb(115, 124, 141);
+            addProdTab.Controls.Add(volverBtn);
+            addProdTab.Controls.Add(agregarInv);
             addProdTab.Controls.Add(textBox1);
             addProdTab.Controls.Add(addProdLbl3);
             addProdTab.Controls.Add(addProdLbl2);
             addProdTab.Controls.Add(addProdLbl1);
-            addProdTab.Controls.Add(addProd_Back);
             addProdTab.Controls.Add(DGV_Size_AddT);
             addProdTab.Controls.Add(DGV_P_AddT);
-            addProdTab.Location = new Point(4, 26);
+            addProdTab.Location = new Point(-2, 20);
             addProdTab.Name = "addProdTab";
             addProdTab.Padding = new Padding(3);
-            addProdTab.Size = new Size(818, 430);
+            addProdTab.Size = new Size(830, 442);
             addProdTab.TabIndex = 1;
             addProdTab.Text = "AddProd";
-            addProdTab.UseVisualStyleBackColor = true;
             addProdTab.Click += addProdTab_Click;
             // 
-            // addProd_AddBtn
+            // volverBtn
             // 
-            addProd_AddBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addProd_AddBtn.ForeColor = Color.FromArgb(64, 64, 64);
-            addProd_AddBtn.Location = new Point(344, 290);
-            addProd_AddBtn.Name = "addProd_AddBtn";
-            addProd_AddBtn.Size = new Size(106, 33);
-            addProd_AddBtn.TabIndex = 7;
-            addProd_AddBtn.Text = "Agregar";
-            addProd_AddBtn.UseVisualStyleBackColor = true;
-            addProd_AddBtn.Click += button1_Click;
+            volverBtn.BackColor = Color.FromArgb(204, 102, 102);
+            volverBtn.Cursor = Cursors.Hand;
+            volverBtn.FlatAppearance.BorderColor = Color.FromArgb(154, 52, 52);
+            volverBtn.FlatAppearance.BorderSize = 2;
+            volverBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(154, 52, 52);
+            volverBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(164, 62, 62);
+            volverBtn.FlatStyle = FlatStyle.Flat;
+            volverBtn.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            volverBtn.ForeColor = SystemColors.Control;
+            volverBtn.IconChar = FontAwesome.Sharp.IconChar.ArrowLeftLong;
+            volverBtn.IconColor = SystemColors.Control;
+            volverBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            volverBtn.IconSize = 28;
+            volverBtn.Location = new Point(14, 394);
+            volverBtn.Name = "volverBtn";
+            volverBtn.Size = new Size(118, 33);
+            volverBtn.TabIndex = 12;
+            volverBtn.Text = "Volver";
+            volverBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            volverBtn.UseVisualStyleBackColor = false;
+            volverBtn.Click += volverBtn_Click;
+            // 
+            // agregarInv
+            // 
+            agregarInv.BackColor = Color.FromArgb(40, 167, 69);
+            agregarInv.Cursor = Cursors.Hand;
+            agregarInv.FlatAppearance.BorderColor = Color.FromArgb(0, 127, 29);
+            agregarInv.FlatAppearance.BorderSize = 2;
+            agregarInv.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 127, 29);
+            agregarInv.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 147, 49);
+            agregarInv.FlatStyle = FlatStyle.Flat;
+            agregarInv.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            agregarInv.ForeColor = SystemColors.Control;
+            agregarInv.IconChar = FontAwesome.Sharp.IconChar.Check;
+            agregarInv.IconColor = SystemColors.Control;
+            agregarInv.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            agregarInv.IconSize = 28;
+            agregarInv.Location = new Point(356, 303);
+            agregarInv.Name = "agregarInv";
+            agregarInv.Size = new Size(118, 33);
+            agregarInv.TabIndex = 11;
+            agregarInv.Text = "Agregar";
+            agregarInv.TextImageRelation = TextImageRelation.ImageBeforeText;
+            agregarInv.UseVisualStyleBackColor = false;
+            agregarInv.Click += agregarInv_Click;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(225, 243);
+            textBox1.BackColor = Color.FromArgb(155, 164, 181);
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(62, 242);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 22);
+            textBox1.Size = new Size(257, 20);
             textBox1.TabIndex = 6;
             textBox1.KeyPress += textBox1_KeyPress;
             // 
             // addProdLbl3
             // 
             addProdLbl3.AutoSize = true;
-            addProdLbl3.ForeColor = Color.FromArgb(64, 64, 64);
-            addProdLbl3.Location = new Point(81, 246);
+            addProdLbl3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            addProdLbl3.ForeColor = Color.White;
+            addProdLbl3.Location = new Point(62, 216);
             addProdLbl3.Name = "addProdLbl3";
-            addProdLbl3.Size = new Size(138, 17);
+            addProdLbl3.Size = new Size(214, 23);
             addProdLbl3.TabIndex = 5;
             addProdLbl3.Text = "Ingrese el stock inicial";
             // 
             // addProdLbl2
             // 
             addProdLbl2.AutoSize = true;
-            addProdLbl2.ForeColor = Color.FromArgb(64, 64, 64);
-            addProdLbl2.Location = new Point(469, 24);
+            addProdLbl2.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            addProdLbl2.ForeColor = Color.White;
+            addProdLbl2.Location = new Point(423, 24);
             addProdLbl2.Name = "addProdLbl2";
-            addProdLbl2.Size = new Size(140, 17);
+            addProdLbl2.Size = new Size(213, 23);
             addProdLbl2.TabIndex = 4;
             addProdLbl2.Text = "Seleccione el tamaño";
             // 
             // addProdLbl1
             // 
             addProdLbl1.AutoSize = true;
-            addProdLbl1.ForeColor = Color.FromArgb(64, 64, 64);
-            addProdLbl1.Location = new Point(96, 24);
+            addProdLbl1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            addProdLbl1.ForeColor = Color.White;
+            addProdLbl1.Location = new Point(62, 24);
             addProdLbl1.Name = "addProdLbl1";
-            addProdLbl1.Size = new Size(149, 17);
+            addProdLbl1.Size = new Size(225, 23);
             addProdLbl1.TabIndex = 3;
             addProdLbl1.Text = "Seleccione el producto";
-            // 
-            // addProd_Back
-            // 
-            addProd_Back.ForeColor = Color.FromArgb(64, 64, 64);
-            addProd_Back.Location = new Point(21, 388);
-            addProd_Back.Name = "addProd_Back";
-            addProd_Back.Size = new Size(75, 23);
-            addProd_Back.TabIndex = 2;
-            addProd_Back.Text = "Volver";
-            addProd_Back.UseVisualStyleBackColor = true;
-            addProd_Back.Click += addProd_Back_Click;
             // 
             // DGV_Size_AddT
             // 
@@ -237,39 +298,54 @@
             DGV_Size_AddT.AllowUserToResizeRows = false;
             DGV_Size_AddT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DGV_Size_AddT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGV_Size_AddT.BackgroundColor = Color.White;
+            DGV_Size_AddT.BackgroundColor = Color.FromArgb(155, 164, 181);
+            DGV_Size_AddT.BorderStyle = BorderStyle.None;
             DGV_Size_AddT.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_Size_AddT.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            DGV_Size_AddT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle42.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle42.BackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle42.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle42.ForeColor = Color.White;
+            dataGridViewCellStyle42.SelectionBackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle42.SelectionForeColor = Color.White;
+            dataGridViewCellStyle42.WrapMode = DataGridViewTriState.True;
+            DGV_Size_AddT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
             DGV_Size_AddT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle43.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle43.BackColor = Color.FromArgb(155, 164, 181);
+            dataGridViewCellStyle43.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle43.ForeColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle43.SelectionBackColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle43.SelectionForeColor = Color.White;
+            dataGridViewCellStyle43.WrapMode = DataGridViewTriState.False;
+            DGV_Size_AddT.DefaultCellStyle = dataGridViewCellStyle43;
             DGV_Size_AddT.EnableHeadersVisualStyles = false;
-            DGV_Size_AddT.GridColor = Color.DarkBlue;
+            DGV_Size_AddT.GridColor = Color.FromArgb(115, 124, 141);
             DGV_Size_AddT.Location = new Point(423, 62);
+            DGV_Size_AddT.MultiSelect = false;
             DGV_Size_AddT.Name = "DGV_Size_AddT";
             DGV_Size_AddT.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.DimGray;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Plum;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DGV_Size_AddT.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle44.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle44.BackColor = SystemColors.Control;
+            dataGridViewCellStyle44.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle44.ForeColor = Color.DimGray;
+            dataGridViewCellStyle44.SelectionBackColor = Color.Plum;
+            dataGridViewCellStyle44.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle44.WrapMode = DataGridViewTriState.True;
+            DGV_Size_AddT.RowHeadersDefaultCellStyle = dataGridViewCellStyle44;
             DGV_Size_AddT.RowHeadersVisible = false;
             DGV_Size_AddT.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle3.SelectionBackColor = Color.Plum;
-            DGV_Size_AddT.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle45.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle45.BackColor = Color.FromArgb(155, 164, 181);
+            dataGridViewCellStyle45.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle45.ForeColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle45.SelectionBackColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle45.SelectionForeColor = Color.White;
+            dataGridViewCellStyle45.WrapMode = DataGridViewTriState.True;
+            DGV_Size_AddT.RowsDefaultCellStyle = dataGridViewCellStyle45;
             DGV_Size_AddT.RowTemplate.Height = 25;
             DGV_Size_AddT.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV_Size_AddT.Size = new Size(320, 132);
+            DGV_Size_AddT.Size = new Size(321, 132);
             DGV_Size_AddT.TabIndex = 1;
             // 
             // DGV_P_AddT
@@ -280,37 +356,52 @@
             DGV_P_AddT.AllowUserToResizeRows = false;
             DGV_P_AddT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DGV_P_AddT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGV_P_AddT.BackgroundColor = Color.White;
+            DGV_P_AddT.BackgroundColor = Color.FromArgb(155, 164, 181);
+            DGV_P_AddT.BorderStyle = BorderStyle.None;
             DGV_P_AddT.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_P_AddT.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            DGV_P_AddT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle46.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle46.BackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle46.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle46.ForeColor = Color.White;
+            dataGridViewCellStyle46.SelectionBackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle46.SelectionForeColor = Color.White;
+            dataGridViewCellStyle46.WrapMode = DataGridViewTriState.True;
+            DGV_P_AddT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
             DGV_P_AddT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle47.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = Color.FromArgb(155, 164, 181);
+            dataGridViewCellStyle47.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle47.ForeColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle47.SelectionBackColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle47.SelectionForeColor = Color.White;
+            dataGridViewCellStyle47.WrapMode = DataGridViewTriState.False;
+            DGV_P_AddT.DefaultCellStyle = dataGridViewCellStyle47;
             DGV_P_AddT.EnableHeadersVisualStyles = false;
-            DGV_P_AddT.GridColor = Color.DarkBlue;
+            DGV_P_AddT.GridColor = Color.FromArgb(115, 124, 141);
             DGV_P_AddT.ImeMode = ImeMode.NoControl;
             DGV_P_AddT.Location = new Point(62, 62);
+            DGV_P_AddT.MultiSelect = false;
             DGV_P_AddT.Name = "DGV_P_AddT";
             DGV_P_AddT.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.DimGray;
-            dataGridViewCellStyle5.SelectionBackColor = Color.Plum;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            DGV_P_AddT.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle48.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = SystemColors.Control;
+            dataGridViewCellStyle48.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle48.ForeColor = Color.DimGray;
+            dataGridViewCellStyle48.SelectionBackColor = Color.Plum;
+            dataGridViewCellStyle48.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = DataGridViewTriState.True;
+            DGV_P_AddT.RowHeadersDefaultCellStyle = dataGridViewCellStyle48;
             DGV_P_AddT.RowHeadersVisible = false;
             DGV_P_AddT.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle6.SelectionBackColor = Color.Plum;
-            DGV_P_AddT.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle49.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle49.BackColor = Color.FromArgb(155, 164, 181);
+            dataGridViewCellStyle49.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle49.ForeColor = Color.Black;
+            dataGridViewCellStyle49.SelectionBackColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle49.SelectionForeColor = Color.White;
+            dataGridViewCellStyle49.WrapMode = DataGridViewTriState.True;
+            DGV_P_AddT.RowsDefaultCellStyle = dataGridViewCellStyle49;
             DGV_P_AddT.RowTemplate.Height = 25;
             DGV_P_AddT.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_P_AddT.Size = new Size(321, 132);
@@ -318,69 +409,112 @@
             // 
             // tabSizes
             // 
+            tabSizes.BackColor = Color.FromArgb(115, 124, 141);
+            tabSizes.Controls.Add(label3);
+            tabSizes.Controls.Add(quitarInventario);
+            tabSizes.Controls.Add(agregarInventario);
+            tabSizes.Controls.Add(backInventario);
             tabSizes.Controls.Add(sizesAddTB);
-            tabSizes.Controls.Add(sizesDelBtn);
-            tabSizes.Controls.Add(sizesAddBtn);
-            tabSizes.Controls.Add(sizesBackBtn);
-            tabSizes.Controls.Add(label1);
             tabSizes.Controls.Add(DGV_Sizes);
-            tabSizes.Location = new Point(4, 26);
+            tabSizes.Location = new Point(-2, 20);
             tabSizes.Name = "tabSizes";
             tabSizes.Padding = new Padding(3);
-            tabSizes.Size = new Size(818, 430);
+            tabSizes.Size = new Size(830, 442);
             tabSizes.TabIndex = 2;
             tabSizes.Text = "Tamaños";
-            tabSizes.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(394, 132);
+            label3.Name = "label3";
+            label3.Size = new Size(240, 33);
+            label3.TabIndex = 16;
+            label3.Text = "Ingrese la cantidad";
+            label3.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // quitarInventario
+            // 
+            quitarInventario.BackColor = Color.FromArgb(217, 145, 0);
+            quitarInventario.FlatAppearance.BorderColor = Color.FromArgb(177, 105, 0);
+            quitarInventario.FlatAppearance.BorderSize = 2;
+            quitarInventario.FlatAppearance.MouseDownBackColor = Color.FromArgb(177, 105, 0);
+            quitarInventario.FlatAppearance.MouseOverBackColor = Color.FromArgb(197, 125, 0);
+            quitarInventario.FlatStyle = FlatStyle.Flat;
+            quitarInventario.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            quitarInventario.ForeColor = SystemColors.Control;
+            quitarInventario.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            quitarInventario.IconColor = SystemColors.Control;
+            quitarInventario.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            quitarInventario.IconSize = 28;
+            quitarInventario.Location = new Point(518, 207);
+            quitarInventario.Name = "quitarInventario";
+            quitarInventario.Size = new Size(118, 33);
+            quitarInventario.TabIndex = 15;
+            quitarInventario.Text = "Quitar";
+            quitarInventario.TextImageRelation = TextImageRelation.ImageBeforeText;
+            quitarInventario.UseVisualStyleBackColor = false;
+            quitarInventario.Click += quitarInventario_Click;
+            // 
+            // agregarInventario
+            // 
+            agregarInventario.BackColor = Color.FromArgb(40, 167, 69);
+            agregarInventario.FlatAppearance.BorderColor = Color.FromArgb(0, 127, 29);
+            agregarInventario.FlatAppearance.BorderSize = 2;
+            agregarInventario.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 127, 29);
+            agregarInventario.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 147, 49);
+            agregarInventario.FlatStyle = FlatStyle.Flat;
+            agregarInventario.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            agregarInventario.ForeColor = SystemColors.Control;
+            agregarInventario.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            agregarInventario.IconColor = SystemColors.Control;
+            agregarInventario.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            agregarInventario.IconSize = 28;
+            agregarInventario.ImageAlign = ContentAlignment.TopCenter;
+            agregarInventario.Location = new Point(394, 207);
+            agregarInventario.Name = "agregarInventario";
+            agregarInventario.Size = new Size(118, 33);
+            agregarInventario.TabIndex = 14;
+            agregarInventario.Text = "Agregar";
+            agregarInventario.TextImageRelation = TextImageRelation.ImageBeforeText;
+            agregarInventario.UseVisualStyleBackColor = false;
+            agregarInventario.Click += agregarInventario_Click;
+            // 
+            // backInventario
+            // 
+            backInventario.BackColor = Color.FromArgb(204, 102, 102);
+            backInventario.Cursor = Cursors.Hand;
+            backInventario.FlatAppearance.BorderColor = Color.FromArgb(154, 52, 52);
+            backInventario.FlatAppearance.BorderSize = 2;
+            backInventario.FlatAppearance.MouseDownBackColor = Color.FromArgb(154, 52, 52);
+            backInventario.FlatAppearance.MouseOverBackColor = Color.FromArgb(164, 62, 62);
+            backInventario.FlatStyle = FlatStyle.Flat;
+            backInventario.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            backInventario.ForeColor = SystemColors.Control;
+            backInventario.IconChar = FontAwesome.Sharp.IconChar.ArrowLeftLong;
+            backInventario.IconColor = SystemColors.Control;
+            backInventario.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            backInventario.IconSize = 28;
+            backInventario.Location = new Point(14, 394);
+            backInventario.Name = "backInventario";
+            backInventario.Size = new Size(118, 33);
+            backInventario.TabIndex = 13;
+            backInventario.Text = "Volver";
+            backInventario.TextImageRelation = TextImageRelation.ImageBeforeText;
+            backInventario.UseVisualStyleBackColor = false;
+            backInventario.Click += backInventario_Click;
             // 
             // sizesAddTB
             // 
-            sizesAddTB.Location = new Point(404, 111);
+            sizesAddTB.BackColor = Color.FromArgb(155, 164, 181);
+            sizesAddTB.BorderStyle = BorderStyle.None;
+            sizesAddTB.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            sizesAddTB.Location = new Point(394, 168);
             sizesAddTB.Name = "sizesAddTB";
-            sizesAddTB.Size = new Size(100, 22);
+            sizesAddTB.Size = new Size(242, 20);
             sizesAddTB.TabIndex = 5;
             sizesAddTB.KeyPress += textBox1_KeyPress;
-            // 
-            // sizesDelBtn
-            // 
-            sizesDelBtn.ForeColor = Color.Black;
-            sizesDelBtn.Location = new Point(404, 208);
-            sizesDelBtn.Name = "sizesDelBtn";
-            sizesDelBtn.Size = new Size(84, 43);
-            sizesDelBtn.TabIndex = 4;
-            sizesDelBtn.Text = "Eliminar Tamaño";
-            sizesDelBtn.UseVisualStyleBackColor = true;
-            sizesDelBtn.Click += sizesDelBtn_Click;
-            // 
-            // sizesAddBtn
-            // 
-            sizesAddBtn.ForeColor = Color.Black;
-            sizesAddBtn.Location = new Point(510, 101);
-            sizesAddBtn.Name = "sizesAddBtn";
-            sizesAddBtn.Size = new Size(84, 43);
-            sizesAddBtn.TabIndex = 3;
-            sizesAddBtn.Text = "Agregar Tamaño";
-            sizesAddBtn.UseVisualStyleBackColor = true;
-            sizesAddBtn.Click += sizesAddBtn_Click;
-            // 
-            // sizesBackBtn
-            // 
-            sizesBackBtn.Location = new Point(50, 380);
-            sizesBackBtn.Name = "sizesBackBtn";
-            sizesBackBtn.Size = new Size(75, 23);
-            sizesBackBtn.TabIndex = 2;
-            sizesBackBtn.Text = "Volver";
-            sizesBackBtn.UseVisualStyleBackColor = true;
-            sizesBackBtn.Click += sizesBackBtn_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.FromArgb(64, 64, 64);
-            label1.Location = new Point(168, 34);
-            label1.Name = "label1";
-            label1.Size = new Size(60, 17);
-            label1.TabIndex = 1;
-            label1.Text = "Tamaños";
             // 
             // DGV_Sizes
             // 
@@ -389,64 +523,137 @@
             DGV_Sizes.AllowUserToResizeColumns = false;
             DGV_Sizes.AllowUserToResizeRows = false;
             DGV_Sizes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGV_Sizes.BackgroundColor = Color.White;
+            DGV_Sizes.BackgroundColor = Color.FromArgb(155, 164, 181);
             DGV_Sizes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_Sizes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle7.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle7.SelectionForeColor = Color.White;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            DGV_Sizes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle50.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle50.BackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle50.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle50.ForeColor = Color.White;
+            dataGridViewCellStyle50.SelectionBackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle50.SelectionForeColor = Color.White;
+            dataGridViewCellStyle50.WrapMode = DataGridViewTriState.True;
+            DGV_Sizes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle50;
             DGV_Sizes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_Sizes.EnableHeadersVisualStyles = false;
             DGV_Sizes.GridColor = Color.DarkSlateBlue;
-            DGV_Sizes.Location = new Point(72, 71);
+            DGV_Sizes.Location = new Point(53, 54);
             DGV_Sizes.MultiSelect = false;
             DGV_Sizes.Name = "DGV_Sizes";
             DGV_Sizes.ReadOnly = true;
             DGV_Sizes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Control;
-            dataGridViewCellStyle8.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle8.SelectionBackColor = Color.Plum;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            DGV_Sizes.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle51.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.BackColor = SystemColors.Control;
+            dataGridViewCellStyle51.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle51.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle51.SelectionBackColor = Color.Plum;
+            dataGridViewCellStyle51.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle51.WrapMode = DataGridViewTriState.True;
+            DGV_Sizes.RowHeadersDefaultCellStyle = dataGridViewCellStyle51;
             DGV_Sizes.RowHeadersVisible = false;
             DGV_Sizes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle9.SelectionBackColor = Color.Plum;
-            DGV_Sizes.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle52.BackColor = Color.FromArgb(155, 164, 181);
+            dataGridViewCellStyle52.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle52.ForeColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle52.SelectionBackColor = Color.FromArgb(57, 72, 103);
+            DGV_Sizes.RowsDefaultCellStyle = dataGridViewCellStyle52;
             DGV_Sizes.RowTemplate.Height = 25;
             DGV_Sizes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV_Sizes.Size = new Size(240, 265);
+            DGV_Sizes.Size = new Size(289, 304);
             DGV_Sizes.TabIndex = 0;
             // 
             // ModStock
             // 
+            ModStock.BackColor = Color.FromArgb(115, 124, 141);
+            ModStock.Controls.Add(minu);
+            ModStock.Controls.Add(plus);
+            ModStock.Controls.Add(volverModStock);
             ModStock.Controls.Add(textBox2);
             ModStock.Controls.Add(pictureBox1);
             ModStock.Controls.Add(label2);
-            ModStock.Controls.Add(stockBackBtn);
-            ModStock.Controls.Add(decStockBtn);
-            ModStock.Controls.Add(incStockBtn);
             ModStock.Controls.Add(DGV_Stock);
-            ModStock.Location = new Point(4, 26);
+            ModStock.Location = new Point(-2, 20);
             ModStock.Name = "ModStock";
-            ModStock.Size = new Size(818, 430);
+            ModStock.Size = new Size(830, 442);
             ModStock.TabIndex = 3;
             ModStock.Text = "ModStock";
-            ModStock.UseVisualStyleBackColor = true;
+            // 
+            // minu
+            // 
+            minu.BackColor = Color.FromArgb(217, 145, 0);
+            minu.FlatAppearance.BorderColor = Color.FromArgb(177, 105, 0);
+            minu.FlatAppearance.BorderSize = 2;
+            minu.FlatAppearance.MouseDownBackColor = Color.FromArgb(177, 105, 0);
+            minu.FlatAppearance.MouseOverBackColor = Color.FromArgb(197, 125, 0);
+            minu.FlatStyle = FlatStyle.Flat;
+            minu.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            minu.ForeColor = SystemColors.Control;
+            minu.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            minu.IconColor = SystemColors.Control;
+            minu.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            minu.IconSize = 28;
+            minu.Location = new Point(490, 231);
+            minu.Name = "minu";
+            minu.Size = new Size(83, 33);
+            minu.TabIndex = 12;
+            minu.TextImageRelation = TextImageRelation.ImageBeforeText;
+            minu.UseVisualStyleBackColor = false;
+            minu.Click += minu_Click;
+            // 
+            // plus
+            // 
+            plus.BackColor = Color.FromArgb(40, 167, 69);
+            plus.FlatAppearance.BorderColor = Color.FromArgb(0, 127, 29);
+            plus.FlatAppearance.BorderSize = 2;
+            plus.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 127, 29);
+            plus.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 147, 49);
+            plus.FlatStyle = FlatStyle.Flat;
+            plus.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            plus.ForeColor = SystemColors.Control;
+            plus.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            plus.IconColor = SystemColors.Control;
+            plus.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            plus.IconSize = 28;
+            plus.Location = new Point(404, 231);
+            plus.Name = "plus";
+            plus.Size = new Size(80, 33);
+            plus.TabIndex = 15;
+            plus.TextImageRelation = TextImageRelation.ImageBeforeText;
+            plus.UseVisualStyleBackColor = false;
+            plus.Click += plus_Click;
+            // 
+            // volverModStock
+            // 
+            volverModStock.BackColor = Color.FromArgb(204, 102, 102);
+            volverModStock.Cursor = Cursors.Hand;
+            volverModStock.FlatAppearance.BorderColor = Color.FromArgb(154, 52, 52);
+            volverModStock.FlatAppearance.BorderSize = 2;
+            volverModStock.FlatAppearance.MouseDownBackColor = Color.FromArgb(154, 52, 52);
+            volverModStock.FlatAppearance.MouseOverBackColor = Color.FromArgb(164, 62, 62);
+            volverModStock.FlatStyle = FlatStyle.Flat;
+            volverModStock.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            volverModStock.ForeColor = SystemColors.Control;
+            volverModStock.IconChar = FontAwesome.Sharp.IconChar.ArrowLeftLong;
+            volverModStock.IconColor = SystemColors.Control;
+            volverModStock.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            volverModStock.IconSize = 28;
+            volverModStock.Location = new Point(14, 394);
+            volverModStock.Name = "volverModStock";
+            volverModStock.Size = new Size(118, 33);
+            volverModStock.TabIndex = 14;
+            volverModStock.Text = "Volver";
+            volverModStock.TextImageRelation = TextImageRelation.ImageBeforeText;
+            volverModStock.UseVisualStyleBackColor = false;
+            volverModStock.Click += volverModStock_Click;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(382, 273);
+            textBox2.BackColor = Color.FromArgb(155, 164, 181);
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox2.Location = new Point(404, 198);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 22);
+            textBox2.Size = new Size(169, 27);
             textBox2.TabIndex = 10;
             textBox2.KeyPress += textBox1_KeyPress;
             // 
@@ -455,51 +662,19 @@
             pictureBox1.Location = new Point(62, 22);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(240, 141);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.FromArgb(64, 64, 64);
-            label2.Location = new Point(353, 253);
+            label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(367, 163);
             label2.Name = "label2";
-            label2.Size = new Size(161, 17);
+            label2.Size = new Size(277, 32);
             label2.TabIndex = 8;
             label2.Text = "Actualizar stock existente";
-            // 
-            // stockBackBtn
-            // 
-            stockBackBtn.ForeColor = Color.Black;
-            stockBackBtn.Location = new Point(8, 390);
-            stockBackBtn.Name = "stockBackBtn";
-            stockBackBtn.Size = new Size(75, 23);
-            stockBackBtn.TabIndex = 5;
-            stockBackBtn.Text = "Volver";
-            stockBackBtn.UseVisualStyleBackColor = true;
-            stockBackBtn.Click += stockBackBtn_Click;
-            // 
-            // decStockBtn
-            // 
-            decStockBtn.ForeColor = Color.Black;
-            decStockBtn.Location = new Point(438, 301);
-            decStockBtn.Name = "decStockBtn";
-            decStockBtn.Size = new Size(44, 28);
-            decStockBtn.TabIndex = 3;
-            decStockBtn.Text = "-";
-            decStockBtn.UseVisualStyleBackColor = true;
-            decStockBtn.Click += decStockBtn_Click;
-            // 
-            // incStockBtn
-            // 
-            incStockBtn.ForeColor = Color.Black;
-            incStockBtn.Location = new Point(388, 301);
-            incStockBtn.Name = "incStockBtn";
-            incStockBtn.Size = new Size(44, 28);
-            incStockBtn.TabIndex = 2;
-            incStockBtn.Text = "+";
-            incStockBtn.UseVisualStyleBackColor = true;
-            incStockBtn.Click += incStockBtn_Click;
             // 
             // DGV_Stock
             // 
@@ -508,28 +683,30 @@
             DGV_Stock.AllowUserToResizeColumns = false;
             DGV_Stock.AllowUserToResizeRows = false;
             DGV_Stock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DGV_Stock.BackgroundColor = Color.White;
+            DGV_Stock.BackgroundColor = Color.FromArgb(155, 164, 181);
             DGV_Stock.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_Stock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle10.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = Color.DarkSlateBlue;
-            dataGridViewCellStyle10.SelectionForeColor = Color.White;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            DGV_Stock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle40.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle40.BackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle40.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle40.ForeColor = Color.White;
+            dataGridViewCellStyle40.SelectionBackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle40.SelectionForeColor = Color.White;
+            dataGridViewCellStyle40.WrapMode = DataGridViewTriState.True;
+            DGV_Stock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
             DGV_Stock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_Stock.EnableHeadersVisualStyles = false;
-            DGV_Stock.GridColor = Color.DarkBlue;
+            DGV_Stock.GridColor = Color.FromArgb(115, 124, 141);
             DGV_Stock.Location = new Point(62, 201);
             DGV_Stock.MultiSelect = false;
             DGV_Stock.Name = "DGV_Stock";
             DGV_Stock.ReadOnly = true;
             DGV_Stock.RowHeadersVisible = false;
-            dataGridViewCellStyle11.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle11.SelectionBackColor = Color.Plum;
-            DGV_Stock.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle41.BackColor = Color.FromArgb(155, 164, 181);
+            dataGridViewCellStyle41.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle41.ForeColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle41.SelectionBackColor = Color.FromArgb(57, 72, 103);
+            DGV_Stock.RowsDefaultCellStyle = dataGridViewCellStyle41;
             DGV_Stock.RowTemplate.Height = 25;
             DGV_Stock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_Stock.Size = new Size(240, 150);
@@ -562,36 +739,35 @@
         }
 
         #endregion
-
-        private TabControl tabControl1;
         private TabPage tabView;
         private TabPage addProdTab;
         private Panel panel1;
         private FlowLayoutPanel flowLayoutPanel1;
         private TabPage tabSizes;
-        private Button addProd;
         private DataGridView DGV_Size_AddT;
         private DataGridView DGV_P_AddT;
-        private Button addProd_Back;
         private TextBox textBox1;
         private Label addProdLbl3;
         private Label addProdLbl2;
         private Label addProdLbl1;
-        private Button addProd_AddBtn;
-        private Button sizesBtn;
         private DataGridView DGV_Sizes;
-        private Button sizesDelBtn;
-        private Button sizesAddBtn;
-        private Button sizesBackBtn;
-        private Label label1;
         private TextBox sizesAddTB;
         private TabPage ModStock;
-        private Button decStockBtn;
-        private Button incStockBtn;
         private DataGridView DGV_Stock;
         private Label label2;
-        private Button stockBackBtn;
         private PictureBox pictureBox1;
         private TextBox textBox2;
+        private FontAwesome.Sharp.IconButton addProdutcto;
+        private TabControlEx tabControl1;
+        private FontAwesome.Sharp.IconButton verTamano;
+        private FontAwesome.Sharp.IconButton agregarInv;
+        private FontAwesome.Sharp.IconButton volverBtn;
+        private FontAwesome.Sharp.IconButton backInventario;
+        private FontAwesome.Sharp.IconButton quitarInventario;
+        private FontAwesome.Sharp.IconButton agregarInventario;
+        private Label label3;
+        private FontAwesome.Sharp.IconButton volverModStock;
+        private FontAwesome.Sharp.IconButton plus;
+        private FontAwesome.Sharp.IconButton minu;
     }
 }

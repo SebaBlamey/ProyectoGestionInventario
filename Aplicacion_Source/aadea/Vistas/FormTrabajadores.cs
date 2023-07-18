@@ -25,14 +25,6 @@
             DGV_T.ClearSelection();
         }
 
-        private void SaveBtn_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CancelBtn_Click(object sender, EventArgs e)
-        {
-        }
-
         private void CleanTextBoxes()
         {
             textBoxRut.Text = string.Empty;
