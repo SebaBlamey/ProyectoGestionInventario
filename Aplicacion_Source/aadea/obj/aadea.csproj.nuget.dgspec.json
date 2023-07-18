@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {}
+    "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {
+    "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
+        "projectUniqueName": "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
         "projectName": "aadea",
-        "projectPath": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
-        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danie\\OneDrive - alumnos.ucn.cl\\Universidad\\Septimo Semestre\\Ing. de Software\\Proyecto\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\obj\\",
+        "projectPath": "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\aadea.csproj",
+        "packagesPath": "C:\\Users\\eweew\\.nuget\\packages\\",
+        "outputPath": "D:\\universidad\\INGENIERIA_DE_SOFTWARE\\PROYECTO\\ProyectoGestionInventario\\Aplicacion_Source\\aadea\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eweew\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,6 +64,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.19, 6.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.19, 6.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.19, 6.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.19, 6.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -68,7 +90,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }
