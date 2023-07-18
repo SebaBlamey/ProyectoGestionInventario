@@ -45,7 +45,6 @@ namespace aadea.Vistas
             layoutPanelActualProduccion = new FlowLayoutPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             tabIngresarProduccion = new TabPage();
-            label1 = new Label();
             cancelarIngresar = new FontAwesome.Sharp.IconButton();
             aceptarIngresar = new FontAwesome.Sharp.IconButton();
             textBoxCantidad = new TextBox();
@@ -273,7 +272,6 @@ namespace aadea.Vistas
             // 
             tabIngresarProduccion.AutoScroll = true;
             tabIngresarProduccion.BackColor = Color.FromArgb(115, 124, 141);
-            tabIngresarProduccion.Controls.Add(label1);
             tabIngresarProduccion.Controls.Add(cancelarIngresar);
             tabIngresarProduccion.Controls.Add(aceptarIngresar);
             tabIngresarProduccion.Controls.Add(textBoxCantidad);
@@ -288,17 +286,6 @@ namespace aadea.Vistas
             tabIngresarProduccion.Size = new Size(679, 459);
             tabIngresarProduccion.TabIndex = 3;
             tabIngresarProduccion.Text = "Ingresar produccion";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(158, 416);
-            label1.Name = "label1";
-            label1.Size = new Size(196, 22);
-            label1.TabIndex = 0;
-            label1.Text = "Ingresar produccion";
             // 
             // cancelarIngresar
             // 
@@ -563,7 +550,6 @@ namespace aadea.Vistas
         private Model.BT bt1;
         private FlowLayoutPanel LayoutHistorial;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Label label1;
         private DateTimePicker dateAddProduccion;
         private TextBox textBoxCantidad;
         private Label label2;
