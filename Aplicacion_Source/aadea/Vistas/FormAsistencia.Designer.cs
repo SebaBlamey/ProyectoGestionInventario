@@ -37,8 +37,11 @@ namespace aadea.Vistas
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             TabPrincipal = new TabControlEx();
             History = new TabPage();
+            HelpBTHistory = new FontAwesome.Sharp.IconPictureBox();
             ConfirmAsistencia = new FontAwesome.Sharp.IconButton();
             delete_iconButton = new FontAwesome.Sharp.IconButton();
             FilterAsistencia = new FontAwesome.Sharp.IconButton();
@@ -47,6 +50,7 @@ namespace aadea.Vistas
             FinalHourTB = new TextBox();
             DGV_Asist = new DataGridView();
             Add = new TabPage();
+            iconPictureBoxBTAdd = new FontAwesome.Sharp.IconPictureBox();
             AceptarAdd = new FontAwesome.Sharp.IconButton();
             cancelAdd = new FontAwesome.Sharp.IconButton();
             CheckIn = new TextBox();
@@ -54,15 +58,19 @@ namespace aadea.Vistas
             dateTimePickerFecha = new DateTimePicker();
             DGV_Trabajador = new DataGridView();
             Filtrar = new TabPage();
+            iconPictureBoxBTFilter = new FontAwesome.Sharp.IconPictureBox();
             DGV_Meses = new DataGridView();
             OpcionCB = new CheckBox();
             DGV_Filter = new DataGridView();
             TabPrincipal.SuspendLayout();
             History.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)HelpBTHistory).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Asist).BeginInit();
             Add.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBoxBTAdd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Trabajador).BeginInit();
             Filtrar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBoxBTFilter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Meses).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Filter).BeginInit();
             SuspendLayout();
@@ -83,6 +91,7 @@ namespace aadea.Vistas
             // History
             // 
             History.BackColor = Color.FromArgb(115, 124, 141);
+            History.Controls.Add(HelpBTHistory);
             History.Controls.Add(ConfirmAsistencia);
             History.Controls.Add(delete_iconButton);
             History.Controls.Add(FilterAsistencia);
@@ -98,6 +107,22 @@ namespace aadea.Vistas
             History.Size = new Size(679, 459);
             History.TabIndex = 0;
             History.Text = "Historial";
+            // 
+            // HelpBTHistory
+            // 
+            HelpBTHistory.BackColor = Color.FromArgb(115, 124, 141);
+            HelpBTHistory.ForeColor = Color.Black;
+            HelpBTHistory.IconChar = FontAwesome.Sharp.IconChar.Question;
+            HelpBTHistory.IconColor = Color.Black;
+            HelpBTHistory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            HelpBTHistory.IconSize = 24;
+            HelpBTHistory.Location = new Point(666, 430);
+            HelpBTHistory.Name = "HelpBTHistory";
+            HelpBTHistory.Size = new Size(24, 26);
+            HelpBTHistory.TabIndex = 18;
+            HelpBTHistory.TabStop = false;
+            HelpBTHistory.Click += iconPictureBox1_Click;
+            HelpBTHistory.MouseEnter += HelpBTHistory_MouseEnter;
             // 
             // ConfirmAsistencia
             // 
@@ -223,7 +248,7 @@ namespace aadea.Vistas
             DGV_Asist.AllowUserToResizeColumns = false;
             DGV_Asist.AllowUserToResizeRows = false;
             DGV_Asist.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            DGV_Asist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_Asist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DGV_Asist.BackgroundColor = Color.FromArgb(155, 164, 181);
             DGV_Asist.BorderStyle = BorderStyle.None;
             DGV_Asist.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -265,10 +290,12 @@ namespace aadea.Vistas
             DGV_Asist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_Asist.Size = new Size(503, 388);
             DGV_Asist.TabIndex = 0;
+            DGV_Asist.CellFormatting += DGV_Asist_CellFormatting;
             // 
             // Add
             // 
             Add.BackColor = Color.FromArgb(115, 124, 141);
+            Add.Controls.Add(iconPictureBoxBTAdd);
             Add.Controls.Add(AceptarAdd);
             Add.Controls.Add(cancelAdd);
             Add.Controls.Add(CheckIn);
@@ -282,6 +309,21 @@ namespace aadea.Vistas
             Add.Size = new Size(679, 459);
             Add.TabIndex = 1;
             Add.Text = " Añadir";
+            // 
+            // iconPictureBoxBTAdd
+            // 
+            iconPictureBoxBTAdd.BackColor = Color.FromArgb(115, 124, 141);
+            iconPictureBoxBTAdd.ForeColor = Color.Black;
+            iconPictureBoxBTAdd.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconPictureBoxBTAdd.IconColor = Color.Black;
+            iconPictureBoxBTAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBoxBTAdd.IconSize = 24;
+            iconPictureBoxBTAdd.Location = new Point(670, 431);
+            iconPictureBoxBTAdd.Name = "iconPictureBoxBTAdd";
+            iconPictureBoxBTAdd.Size = new Size(24, 26);
+            iconPictureBoxBTAdd.TabIndex = 22;
+            iconPictureBoxBTAdd.TabStop = false;
+            iconPictureBoxBTAdd.Click += iconPictureBoxBTAdd_Click;
             // 
             // AceptarAdd
             // 
@@ -404,6 +446,7 @@ namespace aadea.Vistas
             // Filtrar
             // 
             Filtrar.BackColor = Color.FromArgb(115, 124, 141);
+            Filtrar.Controls.Add(iconPictureBoxBTFilter);
             Filtrar.Controls.Add(DGV_Meses);
             Filtrar.Controls.Add(OpcionCB);
             Filtrar.Controls.Add(DGV_Filter);
@@ -412,6 +455,21 @@ namespace aadea.Vistas
             Filtrar.Size = new Size(679, 459);
             Filtrar.TabIndex = 2;
             Filtrar.Text = "Filtrar...";
+            // 
+            // iconPictureBoxBTFilter
+            // 
+            iconPictureBoxBTFilter.BackColor = Color.FromArgb(115, 124, 141);
+            iconPictureBoxBTFilter.ForeColor = Color.Black;
+            iconPictureBoxBTFilter.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconPictureBoxBTFilter.IconColor = Color.Black;
+            iconPictureBoxBTFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBoxBTFilter.IconSize = 24;
+            iconPictureBoxBTFilter.Location = new Point(671, 431);
+            iconPictureBoxBTFilter.Name = "iconPictureBoxBTFilter";
+            iconPictureBoxBTFilter.Size = new Size(24, 26);
+            iconPictureBoxBTFilter.TabIndex = 23;
+            iconPictureBoxBTFilter.TabStop = false;
+            iconPictureBoxBTFilter.Click += iconPictureBoxBTFilter_Click;
             // 
             // DGV_Meses
             // 
@@ -427,9 +485,10 @@ namespace aadea.Vistas
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             DGV_Meses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             DGV_Meses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV_Meses.ColumnHeadersVisible = false;
             DGV_Meses.GridColor = Color.White;
             DGV_Meses.ImeMode = ImeMode.On;
-            DGV_Meses.Location = new Point(501, 6);
+            DGV_Meses.Location = new Point(549, 6);
             DGV_Meses.MultiSelect = false;
             DGV_Meses.Name = "DGV_Meses";
             DGV_Meses.ReadOnly = true;
@@ -450,7 +509,7 @@ namespace aadea.Vistas
             dataGridViewCellStyle7.SelectionForeColor = Color.White;
             DGV_Meses.RowsDefaultCellStyle = dataGridViewCellStyle7;
             DGV_Meses.RowTemplate.Height = 25;
-            DGV_Meses.Size = new Size(164, 318);
+            DGV_Meses.Size = new Size(116, 318);
             DGV_Meses.TabIndex = 5;
             DGV_Meses.CellClick += DGV_Meses_CellClick;
             // 
@@ -460,7 +519,7 @@ namespace aadea.Vistas
             OpcionCB.FlatStyle = FlatStyle.Flat;
             OpcionCB.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             OpcionCB.ForeColor = Color.White;
-            OpcionCB.Location = new Point(159, 361);
+            OpcionCB.Location = new Point(124, 345);
             OpcionCB.Name = "OpcionCB";
             OpcionCB.Size = new Size(237, 27);
             OpcionCB.TabIndex = 4;
@@ -474,15 +533,21 @@ namespace aadea.Vistas
             DGV_Filter.AllowUserToResizeColumns = false;
             DGV_Filter.AllowUserToResizeRows = false;
             DGV_Filter.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            DGV_Filter.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_Filter.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DGV_Filter.BackgroundColor = Color.FromArgb(155, 164, 181);
             DGV_Filter.BorderStyle = BorderStyle.None;
             DGV_Filter.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_Filter.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             DGV_Filter.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            DGV_Filter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(33, 36, 53);
+            dataGridViewCellStyle8.SelectionForeColor = Color.White;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            DGV_Filter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             DGV_Filter.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            DGV_Filter.DefaultCellStyle = dataGridViewCellStyle2;
             DGV_Filter.EnableHeadersVisualStyles = false;
             DGV_Filter.GridColor = Color.FromArgb(115, 124, 141);
             DGV_Filter.Location = new Point(12, 6);
@@ -491,9 +556,14 @@ namespace aadea.Vistas
             DGV_Filter.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             DGV_Filter.RowHeadersVisible = false;
             DGV_Filter.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            DGV_Filter.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(155, 164, 181);
+            dataGridViewCellStyle9.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(57, 72, 103);
+            dataGridViewCellStyle9.SelectionForeColor = Color.White;
+            DGV_Filter.RowsDefaultCellStyle = dataGridViewCellStyle9;
             DGV_Filter.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV_Filter.Size = new Size(446, 318);
+            DGV_Filter.Size = new Size(492, 318);
             DGV_Filter.TabIndex = 0;
             // 
             // FormAsistencia
@@ -508,12 +578,15 @@ namespace aadea.Vistas
             TabPrincipal.ResumeLayout(false);
             History.ResumeLayout(false);
             History.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)HelpBTHistory).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Asist).EndInit();
             Add.ResumeLayout(false);
             Add.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBoxBTAdd).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Trabajador).EndInit();
             Filtrar.ResumeLayout(false);
             Filtrar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBoxBTFilter).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Meses).EndInit();
             ((System.ComponentModel.ISupportInitialize)DGV_Filter).EndInit();
             ResumeLayout(false);
@@ -540,5 +613,8 @@ namespace aadea.Vistas
         private FontAwesome.Sharp.IconButton ConfirmAsistencia;
         private FontAwesome.Sharp.IconButton AceptarAdd;
         private FontAwesome.Sharp.IconButton cancelAdd;
+        private FontAwesome.Sharp.IconPictureBox HelpBTHistory;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBoxBTAdd;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBoxBTFilter;
     }
 }

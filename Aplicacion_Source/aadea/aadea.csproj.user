@@ -43,6 +43,9 @@
     <Compile Update="Vistas\FormTrabajadores.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\PINmod.cs">
       <SubType>Form</SubType>
     </Compile>
