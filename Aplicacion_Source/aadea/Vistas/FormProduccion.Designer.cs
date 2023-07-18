@@ -1,4 +1,6 @@
-﻿namespace aadea.Vistas
+﻿using aadea.Extras;
+
+namespace aadea.Vistas
 {
     partial class FormProduccion
     {
@@ -30,32 +32,31 @@
         {
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
-            tabControlProduccion = new TabControl();
+            tabControlProduccion = new TabControlEx();
             viewButtons = new TabPage();
             btIngresarProduccion = new Model.BT();
             btViewProduccion = new Model.BT();
             bt1 = new Model.BT();
             tabHistory = new TabPage();
+            volverBtn = new FontAwesome.Sharp.IconButton();
             LayoutHistorial = new FlowLayoutPanel();
-            bttExitHistory = new Model.BT();
             tabProduccionActual = new TabPage();
+            volerProdActual = new FontAwesome.Sharp.IconButton();
             layoutPanelActualProduccion = new FlowLayoutPanel();
-            btExitProduccionActual = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             tabIngresarProduccion = new TabPage();
-            dateAddProduccion = new DateTimePicker();
             label1 = new Label();
-            panel2 = new Panel();
+            cancelarIngresar = new FontAwesome.Sharp.IconButton();
+            aceptarIngresar = new FontAwesome.Sharp.IconButton();
             textBoxCantidad = new TextBox();
-            label3 = new Label();
-            label2 = new Label();
-            txtName = new TextBox();
+            dateAddProduccion = new DateTimePicker();
             flowLayoutPanelBox = new FlowLayoutPanel();
-            btAceptar = new Button();
-            btCancelAddproduccion = new Button();
+            txtName = new TextBox();
+            label2 = new Label();
+            label3 = new Label();
             tabBodega = new TabPage();
-            CancelInsertProduct = new Button();
-            aceptInsertProduct = new Button();
+            aceptarIngresarBodega = new FontAwesome.Sharp.IconButton();
+            cancelarIngresarBodega = new FontAwesome.Sharp.IconButton();
             layoutPanelProducts = new FlowLayoutPanel();
             boxProductsCreate = new TextBox();
             label5 = new Label();
@@ -68,7 +69,6 @@
             tabHistory.SuspendLayout();
             tabProduccionActual.SuspendLayout();
             tabIngresarProduccion.SuspendLayout();
-            panel2.SuspendLayout();
             tabBodega.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,7 +78,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(802, 468);
+            panel1.Size = new Size(675, 477);
             panel1.TabIndex = 0;
             // 
             // tabControlProduccion
@@ -93,34 +93,34 @@
             tabControlProduccion.Location = new Point(0, 0);
             tabControlProduccion.Name = "tabControlProduccion";
             tabControlProduccion.SelectedIndex = 0;
-            tabControlProduccion.Size = new Size(802, 468);
+            tabControlProduccion.Size = new Size(675, 477);
             tabControlProduccion.TabIndex = 0;
             // 
             // viewButtons
             // 
+            viewButtons.BackColor = Color.FromArgb(115, 124, 141);
             viewButtons.Controls.Add(btIngresarProduccion);
             viewButtons.Controls.Add(btViewProduccion);
             viewButtons.Controls.Add(bt1);
-            viewButtons.Location = new Point(4, 26);
+            viewButtons.Location = new Point(-2, 20);
             viewButtons.Name = "viewButtons";
             viewButtons.Padding = new Padding(3);
-            viewButtons.Size = new Size(794, 438);
+            viewButtons.Size = new Size(679, 459);
             viewButtons.TabIndex = 0;
             viewButtons.Text = "Produccion";
-            viewButtons.UseVisualStyleBackColor = true;
             // 
             // btIngresarProduccion
             // 
-            btIngresarProduccion.BackColor = Color.MediumSlateBlue;
-            btIngresarProduccion.BackgroundColor = Color.MediumSlateBlue;
+            btIngresarProduccion.BackColor = Color.FromArgb(155, 164, 181);
+            btIngresarProduccion.BackgroundColor = Color.FromArgb(155, 164, 181);
             btIngresarProduccion.BorderColor = Color.PaleVioletRed;
             btIngresarProduccion.BorderRadius = 20;
             btIngresarProduccion.BorderSize = 0;
             btIngresarProduccion.FlatAppearance.BorderSize = 0;
             btIngresarProduccion.FlatStyle = FlatStyle.Flat;
-            btIngresarProduccion.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btIngresarProduccion.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btIngresarProduccion.ForeColor = Color.White;
-            btIngresarProduccion.Location = new Point(237, 258);
+            btIngresarProduccion.Location = new Point(210, 258);
             btIngresarProduccion.Name = "btIngresarProduccion";
             btIngresarProduccion.Size = new Size(270, 60);
             btIngresarProduccion.TabIndex = 2;
@@ -131,16 +131,16 @@
             // 
             // btViewProduccion
             // 
-            btViewProduccion.BackColor = Color.MediumSlateBlue;
-            btViewProduccion.BackgroundColor = Color.MediumSlateBlue;
+            btViewProduccion.BackColor = Color.FromArgb(155, 164, 181);
+            btViewProduccion.BackgroundColor = Color.FromArgb(155, 164, 181);
             btViewProduccion.BorderColor = Color.PaleVioletRed;
             btViewProduccion.BorderRadius = 20;
             btViewProduccion.BorderSize = 0;
             btViewProduccion.FlatAppearance.BorderSize = 0;
             btViewProduccion.FlatStyle = FlatStyle.Flat;
-            btViewProduccion.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btViewProduccion.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btViewProduccion.ForeColor = Color.White;
-            btViewProduccion.Location = new Point(237, 172);
+            btViewProduccion.Location = new Point(210, 172);
             btViewProduccion.Name = "btViewProduccion";
             btViewProduccion.Size = new Size(270, 60);
             btViewProduccion.TabIndex = 1;
@@ -151,16 +151,16 @@
             // 
             // bt1
             // 
-            bt1.BackColor = Color.MediumSlateBlue;
-            bt1.BackgroundColor = Color.MediumSlateBlue;
-            bt1.BorderColor = Color.PaleVioletRed;
+            bt1.BackColor = Color.FromArgb(155, 164, 181);
+            bt1.BackgroundColor = Color.FromArgb(155, 164, 181);
+            bt1.BorderColor = Color.FromArgb(155, 164, 181);
             bt1.BorderRadius = 20;
             bt1.BorderSize = 0;
             bt1.FlatAppearance.BorderSize = 0;
             bt1.FlatStyle = FlatStyle.Flat;
-            bt1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            bt1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             bt1.ForeColor = Color.White;
-            bt1.Location = new Point(237, 82);
+            bt1.Location = new Point(210, 82);
             bt1.Name = "bt1";
             bt1.Size = new Size(270, 60);
             bt1.TabIndex = 0;
@@ -171,75 +171,95 @@
             // 
             // tabHistory
             // 
+            tabHistory.BackColor = Color.FromArgb(115, 124, 141);
+            tabHistory.Controls.Add(volverBtn);
             tabHistory.Controls.Add(LayoutHistorial);
-            tabHistory.Controls.Add(bttExitHistory);
-            tabHistory.Location = new Point(4, 26);
+            tabHistory.Location = new Point(-2, 20);
             tabHistory.Name = "tabHistory";
             tabHistory.Padding = new Padding(3);
             tabHistory.RightToLeft = RightToLeft.No;
-            tabHistory.Size = new Size(794, 438);
+            tabHistory.Size = new Size(679, 459);
             tabHistory.TabIndex = 1;
             tabHistory.Text = "Historial de produccion";
-            tabHistory.UseVisualStyleBackColor = true;
+            // 
+            // volverBtn
+            // 
+            volverBtn.BackColor = Color.FromArgb(204, 102, 102);
+            volverBtn.Cursor = Cursors.Hand;
+            volverBtn.FlatAppearance.BorderColor = Color.FromArgb(154, 52, 52);
+            volverBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(154, 52, 52);
+            volverBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(164, 62, 62);
+            volverBtn.FlatStyle = FlatStyle.Flat;
+            volverBtn.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            volverBtn.ForeColor = SystemColors.Control;
+            volverBtn.IconChar = FontAwesome.Sharp.IconChar.ArrowLeftLong;
+            volverBtn.IconColor = SystemColors.Control;
+            volverBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            volverBtn.IconSize = 28;
+            volverBtn.Location = new Point(12, 400);
+            volverBtn.Name = "volverBtn";
+            volverBtn.Size = new Size(118, 33);
+            volverBtn.TabIndex = 13;
+            volverBtn.Text = "Volver";
+            volverBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            volverBtn.UseVisualStyleBackColor = false;
+            volverBtn.Click += volverBtn_Click;
             // 
             // LayoutHistorial
             // 
             LayoutHistorial.AutoScroll = true;
-            LayoutHistorial.Location = new Point(3, 6);
+            LayoutHistorial.BackColor = Color.FromArgb(155, 164, 181);
+            LayoutHistorial.Location = new Point(12, 6);
             LayoutHistorial.Name = "LayoutHistorial";
-            LayoutHistorial.Size = new Size(783, 382);
+            LayoutHistorial.Size = new Size(653, 388);
             LayoutHistorial.TabIndex = 1;
-            // 
-            // bttExitHistory
-            // 
-            bttExitHistory.BackColor = Color.MediumSlateBlue;
-            bttExitHistory.BackgroundColor = Color.MediumSlateBlue;
-            bttExitHistory.BorderColor = Color.PaleVioletRed;
-            bttExitHistory.BorderRadius = 20;
-            bttExitHistory.BorderSize = 0;
-            bttExitHistory.FlatAppearance.BorderSize = 0;
-            bttExitHistory.FlatStyle = FlatStyle.Flat;
-            bttExitHistory.ForeColor = Color.White;
-            bttExitHistory.Location = new Point(638, 394);
-            bttExitHistory.Name = "bttExitHistory";
-            bttExitHistory.Size = new Size(150, 40);
-            bttExitHistory.TabIndex = 0;
-            bttExitHistory.Text = "Salir";
-            bttExitHistory.TextColor = Color.White;
-            bttExitHistory.UseVisualStyleBackColor = false;
-            bttExitHistory.Click += bttExitHistory_Click;
+            LayoutHistorial.Paint += LayoutHistorial_Paint;
             // 
             // tabProduccionActual
             // 
+            tabProduccionActual.BackColor = Color.FromArgb(115, 124, 141);
+            tabProduccionActual.Controls.Add(volerProdActual);
             tabProduccionActual.Controls.Add(layoutPanelActualProduccion);
-            tabProduccionActual.Controls.Add(btExitProduccionActual);
             tabProduccionActual.Controls.Add(flowLayoutPanel1);
-            tabProduccionActual.Location = new Point(4, 26);
+            tabProduccionActual.Location = new Point(-2, 20);
             tabProduccionActual.Name = "tabProduccionActual";
             tabProduccionActual.Padding = new Padding(3);
-            tabProduccionActual.Size = new Size(794, 438);
+            tabProduccionActual.Size = new Size(679, 459);
             tabProduccionActual.TabIndex = 2;
             tabProduccionActual.Text = "Produccion Actual";
-            tabProduccionActual.UseVisualStyleBackColor = true;
+            // 
+            // volerProdActual
+            // 
+            volerProdActual.BackColor = Color.FromArgb(204, 102, 102);
+            volerProdActual.Cursor = Cursors.Hand;
+            volerProdActual.FlatAppearance.BorderColor = Color.FromArgb(154, 52, 52);
+            volerProdActual.FlatAppearance.BorderSize = 2;
+            volerProdActual.FlatAppearance.MouseDownBackColor = Color.FromArgb(154, 52, 52);
+            volerProdActual.FlatAppearance.MouseOverBackColor = Color.FromArgb(164, 62, 62);
+            volerProdActual.FlatStyle = FlatStyle.Flat;
+            volerProdActual.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            volerProdActual.ForeColor = SystemColors.Control;
+            volerProdActual.IconChar = FontAwesome.Sharp.IconChar.ArrowLeftLong;
+            volerProdActual.IconColor = SystemColors.Control;
+            volerProdActual.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            volerProdActual.IconSize = 28;
+            volerProdActual.Location = new Point(12, 400);
+            volerProdActual.Name = "volerProdActual";
+            volerProdActual.Size = new Size(118, 33);
+            volerProdActual.TabIndex = 14;
+            volerProdActual.Text = "Volver";
+            volerProdActual.TextImageRelation = TextImageRelation.ImageBeforeText;
+            volerProdActual.UseVisualStyleBackColor = false;
+            volerProdActual.Click += volerProdActual_Click;
             // 
             // layoutPanelActualProduccion
             // 
             layoutPanelActualProduccion.AutoScroll = true;
-            layoutPanelActualProduccion.Dock = DockStyle.Top;
-            layoutPanelActualProduccion.Location = new Point(3, 3);
+            layoutPanelActualProduccion.BackColor = Color.FromArgb(155, 164, 181);
+            layoutPanelActualProduccion.Location = new Point(12, 6);
             layoutPanelActualProduccion.Name = "layoutPanelActualProduccion";
-            layoutPanelActualProduccion.Size = new Size(788, 398);
+            layoutPanelActualProduccion.Size = new Size(653, 388);
             layoutPanelActualProduccion.TabIndex = 2;
-            // 
-            // btExitProduccionActual
-            // 
-            btExitProduccionActual.Location = new Point(676, 407);
-            btExitProduccionActual.Name = "btExitProduccionActual";
-            btExitProduccionActual.Size = new Size(95, 23);
-            btExitProduccionActual.TabIndex = 1;
-            btExitProduccionActual.Text = "Salir";
-            btExitProduccionActual.UseVisualStyleBackColor = true;
-            btExitProduccionActual.Click += btExitProduccionActual_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -252,181 +272,238 @@
             // tabIngresarProduccion
             // 
             tabIngresarProduccion.AutoScroll = true;
-            tabIngresarProduccion.Controls.Add(dateAddProduccion);
+            tabIngresarProduccion.BackColor = Color.FromArgb(115, 124, 141);
             tabIngresarProduccion.Controls.Add(label1);
-            tabIngresarProduccion.Controls.Add(panel2);
-            tabIngresarProduccion.Location = new Point(4, 26);
+            tabIngresarProduccion.Controls.Add(cancelarIngresar);
+            tabIngresarProduccion.Controls.Add(aceptarIngresar);
+            tabIngresarProduccion.Controls.Add(textBoxCantidad);
+            tabIngresarProduccion.Controls.Add(dateAddProduccion);
+            tabIngresarProduccion.Controls.Add(flowLayoutPanelBox);
+            tabIngresarProduccion.Controls.Add(txtName);
+            tabIngresarProduccion.Controls.Add(label2);
+            tabIngresarProduccion.Controls.Add(label3);
+            tabIngresarProduccion.Location = new Point(-2, 20);
             tabIngresarProduccion.Name = "tabIngresarProduccion";
             tabIngresarProduccion.Padding = new Padding(3);
-            tabIngresarProduccion.Size = new Size(794, 438);
+            tabIngresarProduccion.Size = new Size(679, 459);
             tabIngresarProduccion.TabIndex = 3;
             tabIngresarProduccion.Text = "Ingresar produccion";
-            tabIngresarProduccion.UseVisualStyleBackColor = true;
-            // 
-            // dateAddProduccion
-            // 
-            dateAddProduccion.CalendarFont = new Font("Tahoma", 8.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dateAddProduccion.Font = new Font("Tahoma", 8.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dateAddProduccion.Format = DateTimePickerFormat.Custom;
-            dateAddProduccion.Location = new Point(352, 45);
-            dateAddProduccion.Name = "dateAddProduccion";
-            dateAddProduccion.Size = new Size(216, 22);
-            dateAddProduccion.TabIndex = 5;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(29, 45);
+            label1.Location = new Point(158, 416);
             label1.Name = "label1";
             label1.Size = new Size(196, 22);
             label1.TabIndex = 0;
             label1.Text = "Ingresar produccion";
             // 
-            // panel2
+            // cancelarIngresar
             // 
-            panel2.AutoScroll = true;
-            panel2.Controls.Add(textBoxCantidad);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(txtName);
-            panel2.Controls.Add(flowLayoutPanelBox);
-            panel2.Controls.Add(btAceptar);
-            panel2.Controls.Add(btCancelAddproduccion);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 3);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(788, 432);
-            panel2.TabIndex = 11;
+            cancelarIngresar.BackColor = Color.FromArgb(204, 102, 102);
+            cancelarIngresar.FlatAppearance.BorderColor = Color.FromArgb(154, 52, 52);
+            cancelarIngresar.FlatAppearance.BorderSize = 2;
+            cancelarIngresar.FlatAppearance.MouseDownBackColor = Color.FromArgb(154, 52, 52);
+            cancelarIngresar.FlatAppearance.MouseOverBackColor = Color.FromArgb(164, 62, 62);
+            cancelarIngresar.FlatStyle = FlatStyle.Flat;
+            cancelarIngresar.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelarIngresar.ForeColor = SystemColors.Control;
+            cancelarIngresar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            cancelarIngresar.IconColor = SystemColors.Control;
+            cancelarIngresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            cancelarIngresar.IconSize = 28;
+            cancelarIngresar.Location = new Point(559, 161);
+            cancelarIngresar.Name = "cancelarIngresar";
+            cancelarIngresar.Size = new Size(118, 33);
+            cancelarIngresar.TabIndex = 23;
+            cancelarIngresar.Text = "Cancelar";
+            cancelarIngresar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            cancelarIngresar.UseVisualStyleBackColor = false;
+            cancelarIngresar.Click += cancelarIngresar_Click;
+            // 
+            // aceptarIngresar
+            // 
+            aceptarIngresar.BackColor = Color.FromArgb(40, 167, 69);
+            aceptarIngresar.FlatAppearance.BorderColor = Color.FromArgb(0, 127, 29);
+            aceptarIngresar.FlatAppearance.BorderSize = 2;
+            aceptarIngresar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 127, 29);
+            aceptarIngresar.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 147, 49);
+            aceptarIngresar.FlatStyle = FlatStyle.Flat;
+            aceptarIngresar.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            aceptarIngresar.ForeColor = SystemColors.Control;
+            aceptarIngresar.IconChar = FontAwesome.Sharp.IconChar.Check;
+            aceptarIngresar.IconColor = SystemColors.Control;
+            aceptarIngresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            aceptarIngresar.IconSize = 28;
+            aceptarIngresar.Location = new Point(559, 122);
+            aceptarIngresar.Name = "aceptarIngresar";
+            aceptarIngresar.Size = new Size(118, 33);
+            aceptarIngresar.TabIndex = 24;
+            aceptarIngresar.Text = "Aceptar";
+            aceptarIngresar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            aceptarIngresar.UseVisualStyleBackColor = false;
+            aceptarIngresar.Click += aceptarIngresar_Click;
             // 
             // textBoxCantidad
             // 
-            textBoxCantidad.Location = new Point(171, 91);
+            textBoxCantidad.BackColor = Color.FromArgb(155, 164, 181);
+            textBoxCantidad.BorderStyle = BorderStyle.FixedSingle;
+            textBoxCantidad.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxCantidad.Location = new Point(14, 48);
             textBoxCantidad.Name = "textBoxCantidad";
-            textBoxCantidad.Size = new Size(100, 22);
+            textBoxCantidad.Size = new Size(244, 27);
             textBoxCantidad.TabIndex = 9;
             textBoxCantidad.TextChanged += textBoxCantidad_TextChanged;
             // 
-            // label3
+            // dateAddProduccion
             // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.Black;
-            label3.Location = new Point(277, 94);
-            label3.Name = "label3";
-            label3.Size = new Size(161, 17);
-            label3.TabIndex = 12;
-            label3.Text = "Nombre de la produccion";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(16, 94);
-            label2.Name = "label2";
-            label2.Size = new Size(149, 17);
-            label2.TabIndex = 8;
-            label2.Text = "Cantidad de materiales";
-            // 
-            // txtName
-            // 
-            txtName.Location = new Point(444, 94);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(121, 22);
-            txtName.TabIndex = 11;
+            dateAddProduccion.CalendarFont = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateAddProduccion.CalendarMonthBackground = Color.FromArgb(155, 164, 181);
+            dateAddProduccion.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateAddProduccion.Format = DateTimePickerFormat.Custom;
+            dateAddProduccion.Location = new Point(559, 48);
+            dateAddProduccion.Name = "dateAddProduccion";
+            dateAddProduccion.Size = new Size(127, 27);
+            dateAddProduccion.TabIndex = 5;
             // 
             // flowLayoutPanelBox
             // 
             flowLayoutPanelBox.AutoScroll = true;
+            flowLayoutPanelBox.BackColor = Color.FromArgb(155, 164, 181);
             flowLayoutPanelBox.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanelBox.Location = new Point(27, 139);
+            flowLayoutPanelBox.Location = new Point(14, 99);
             flowLayoutPanelBox.Name = "flowLayoutPanelBox";
-            flowLayoutPanelBox.Size = new Size(538, 247);
+            flowLayoutPanelBox.Size = new Size(523, 269);
             flowLayoutPanelBox.TabIndex = 10;
             flowLayoutPanelBox.WrapContents = false;
             // 
-            // btAceptar
+            // txtName
             // 
-            btAceptar.ForeColor = Color.Black;
-            btAceptar.Location = new Point(43, 392);
-            btAceptar.Name = "btAceptar";
-            btAceptar.Size = new Size(122, 23);
-            btAceptar.TabIndex = 6;
-            btAceptar.Text = "Aceptar";
-            btAceptar.UseVisualStyleBackColor = true;
-            btAceptar.Click += btAceptar_Click;
+            txtName.BackColor = Color.FromArgb(155, 164, 181);
+            txtName.BorderStyle = BorderStyle.FixedSingle;
+            txtName.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(287, 48);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(250, 27);
+            txtName.TabIndex = 11;
             // 
-            // btCancelAddproduccion
+            // label2
             // 
-            btCancelAddproduccion.ForeColor = Color.Black;
-            btCancelAddproduccion.Location = new Point(191, 392);
-            btCancelAddproduccion.Name = "btCancelAddproduccion";
-            btCancelAddproduccion.Size = new Size(122, 23);
-            btCancelAddproduccion.TabIndex = 7;
-            btCancelAddproduccion.Text = "Cancelar";
-            btCancelAddproduccion.UseVisualStyleBackColor = true;
-            btCancelAddproduccion.Click += btCancelAddproduccion_Click;
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(14, 22);
+            label2.Name = "label2";
+            label2.Size = new Size(232, 23);
+            label2.TabIndex = 8;
+            label2.Text = "Cantidad de materiales";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(287, 22);
+            label3.Name = "label3";
+            label3.Size = new Size(250, 23);
+            label3.TabIndex = 12;
+            label3.Text = "Nombre de la produccion";
             // 
             // tabBodega
             // 
-            tabBodega.Controls.Add(CancelInsertProduct);
-            tabBodega.Controls.Add(aceptInsertProduct);
+            tabBodega.BackColor = Color.FromArgb(115, 124, 141);
+            tabBodega.Controls.Add(aceptarIngresarBodega);
+            tabBodega.Controls.Add(cancelarIngresarBodega);
             tabBodega.Controls.Add(layoutPanelProducts);
             tabBodega.Controls.Add(boxProductsCreate);
             tabBodega.Controls.Add(label5);
             tabBodega.Controls.Add(label4);
-            tabBodega.Location = new Point(4, 26);
+            tabBodega.Location = new Point(-2, 20);
             tabBodega.Name = "tabBodega";
             tabBodega.Padding = new Padding(3);
-            tabBodega.Size = new Size(794, 438);
+            tabBodega.Size = new Size(679, 459);
             tabBodega.TabIndex = 4;
             tabBodega.Text = "Ingresar productos";
-            tabBodega.UseVisualStyleBackColor = true;
             // 
-            // CancelInsertProduct
+            // aceptarIngresarBodega
             // 
-            CancelInsertProduct.Location = new Point(246, 386);
-            CancelInsertProduct.Name = "CancelInsertProduct";
-            CancelInsertProduct.Size = new Size(147, 23);
-            CancelInsertProduct.TabIndex = 5;
-            CancelInsertProduct.Text = "Cancelar";
-            CancelInsertProduct.UseVisualStyleBackColor = true;
-            CancelInsertProduct.Click += CancelInsertProduct_Click;
+            aceptarIngresarBodega.BackColor = Color.FromArgb(40, 167, 69);
+            aceptarIngresarBodega.FlatAppearance.BorderColor = Color.FromArgb(0, 127, 29);
+            aceptarIngresarBodega.FlatAppearance.BorderSize = 2;
+            aceptarIngresarBodega.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 127, 29);
+            aceptarIngresarBodega.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 147, 49);
+            aceptarIngresarBodega.FlatStyle = FlatStyle.Flat;
+            aceptarIngresarBodega.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            aceptarIngresarBodega.ForeColor = SystemColors.Control;
+            aceptarIngresarBodega.IconChar = FontAwesome.Sharp.IconChar.Check;
+            aceptarIngresarBodega.IconColor = SystemColors.Control;
+            aceptarIngresarBodega.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            aceptarIngresarBodega.IconSize = 28;
+            aceptarIngresarBodega.Location = new Point(567, 129);
+            aceptarIngresarBodega.Name = "aceptarIngresarBodega";
+            aceptarIngresarBodega.Size = new Size(118, 33);
+            aceptarIngresarBodega.TabIndex = 26;
+            aceptarIngresarBodega.Text = "Aceptar";
+            aceptarIngresarBodega.TextImageRelation = TextImageRelation.ImageBeforeText;
+            aceptarIngresarBodega.UseVisualStyleBackColor = false;
+            aceptarIngresarBodega.Click += aceptarIngresarBodega_Click;
             // 
-            // aceptInsertProduct
+            // cancelarIngresarBodega
             // 
-            aceptInsertProduct.Location = new Point(57, 386);
-            aceptInsertProduct.Name = "aceptInsertProduct";
-            aceptInsertProduct.Size = new Size(147, 23);
-            aceptInsertProduct.TabIndex = 4;
-            aceptInsertProduct.Text = "Aceptar";
-            aceptInsertProduct.UseVisualStyleBackColor = true;
-            aceptInsertProduct.Click += aceptInsertProduct_Click;
+            cancelarIngresarBodega.BackColor = Color.FromArgb(204, 102, 102);
+            cancelarIngresarBodega.FlatAppearance.BorderColor = Color.FromArgb(154, 52, 52);
+            cancelarIngresarBodega.FlatAppearance.BorderSize = 2;
+            cancelarIngresarBodega.FlatAppearance.MouseDownBackColor = Color.FromArgb(154, 52, 52);
+            cancelarIngresarBodega.FlatAppearance.MouseOverBackColor = Color.FromArgb(164, 62, 62);
+            cancelarIngresarBodega.FlatStyle = FlatStyle.Flat;
+            cancelarIngresarBodega.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            cancelarIngresarBodega.ForeColor = SystemColors.Control;
+            cancelarIngresarBodega.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            cancelarIngresarBodega.IconColor = SystemColors.Control;
+            cancelarIngresarBodega.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            cancelarIngresarBodega.IconSize = 28;
+            cancelarIngresarBodega.Location = new Point(567, 168);
+            cancelarIngresarBodega.Name = "cancelarIngresarBodega";
+            cancelarIngresarBodega.Size = new Size(118, 33);
+            cancelarIngresarBodega.TabIndex = 25;
+            cancelarIngresarBodega.Text = "Cancelar";
+            cancelarIngresarBodega.TextImageRelation = TextImageRelation.ImageBeforeText;
+            cancelarIngresarBodega.UseVisualStyleBackColor = false;
+            cancelarIngresarBodega.Click += cancelarIngresarBodega_Click;
             // 
             // layoutPanelProducts
             // 
             layoutPanelProducts.AutoScroll = true;
+            layoutPanelProducts.BackColor = Color.FromArgb(155, 164, 181);
             layoutPanelProducts.FlowDirection = FlowDirection.TopDown;
-            layoutPanelProducts.Location = new Point(25, 140);
+            layoutPanelProducts.Location = new Point(27, 108);
             layoutPanelProducts.Name = "layoutPanelProducts";
-            layoutPanelProducts.Size = new Size(571, 221);
+            layoutPanelProducts.Size = new Size(523, 269);
             layoutPanelProducts.TabIndex = 3;
             layoutPanelProducts.WrapContents = false;
             // 
             // boxProductsCreate
             // 
-            boxProductsCreate.Location = new Point(255, 100);
+            boxProductsCreate.BackColor = Color.FromArgb(155, 164, 181);
+            boxProductsCreate.BorderStyle = BorderStyle.FixedSingle;
+            boxProductsCreate.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            boxProductsCreate.Location = new Point(25, 60);
             boxProductsCreate.Name = "boxProductsCreate";
-            boxProductsCreate.Size = new Size(100, 22);
+            boxProductsCreate.Size = new Size(343, 27);
             boxProductsCreate.TabIndex = 2;
             boxProductsCreate.TextChanged += boxProductsCreate_TextChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(25, 100);
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(25, 34);
             label5.Name = "label5";
-            label5.Size = new Size(199, 17);
+            label5.Size = new Size(308, 23);
             label5.TabIndex = 1;
             label5.Text = "Cantidad de productos creados";
             // 
@@ -434,7 +511,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(25, 29);
+            label4.Location = new Point(196, 390);
             label4.Name = "label4";
             label4.Size = new Size(222, 24);
             label4.TabIndex = 0;
@@ -457,7 +534,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(802, 468);
+            ClientSize = new Size(675, 477);
             Controls.Add(panel1);
             Name = "FormProduccion";
             Text = "FormProduccion";
@@ -468,8 +545,6 @@
             tabProduccionActual.ResumeLayout(false);
             tabIngresarProduccion.ResumeLayout(false);
             tabIngresarProduccion.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             tabBodega.ResumeLayout(false);
             tabBodega.PerformLayout();
             ResumeLayout(false);
@@ -478,7 +553,6 @@
         #endregion
 
         private Panel panel1;
-        private TabControl tabControlProduccion;
         private TabPage viewButtons;
         private TabPage tabHistory;
         private ContextMenuStrip contextMenuStrip1;
@@ -487,19 +561,14 @@
         private Model.BT btIngresarProduccion;
         private Model.BT btViewProduccion;
         private Model.BT bt1;
-        private Model.BT bttExitHistory;
         private FlowLayoutPanel LayoutHistorial;
-        private Button btExitProduccionActual;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label1;
-        private Button btCancelAddproduccion;
-        private Button btAceptar;
         private DateTimePicker dateAddProduccion;
         private TextBox textBoxCantidad;
         private Label label2;
         private FlowLayoutPanel flowLayoutPanelBox;
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
-        private Panel panel2;
         private Label label3;
         private TextBox txtName;
         private FlowLayoutPanel layoutPanelActualProduccion;
@@ -508,7 +577,12 @@
         private TextBox boxProductsCreate;
         private Label label5;
         private Label label4;
-        private Button CancelInsertProduct;
-        private Button aceptInsertProduct;
+        private FontAwesome.Sharp.IconButton volverBtn;
+        private TabControlEx tabControlProduccion;
+        private FontAwesome.Sharp.IconButton volerProdActual;
+        private FontAwesome.Sharp.IconButton aceptarIngresar;
+        private FontAwesome.Sharp.IconButton cancelarIngresar;
+        private FontAwesome.Sharp.IconButton aceptarIngresarBodega;
+        private FontAwesome.Sharp.IconButton cancelarIngresarBodega;
     }
 }

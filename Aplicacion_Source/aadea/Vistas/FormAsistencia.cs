@@ -169,8 +169,6 @@ namespace aadea.Vistas
                 //TotalsHours.Text = horasTrabajadasFloat.ToString();
                 //bool answer = l_Asistencia.checkRepeat(rut, fechaSeleccionada, NewFormatLlegada, NewFormatSalida);
 
-                MessageBox.Show(rut);
-                MessageBox.Show(fechaSeleccionada.ToString());
                 //MessageBox.Show(NewFormatLlegada.ToString());
                 l_Asistencia.InsertAssistance(rut, fechaSeleccionada, NewFormatLlegada);
 
@@ -312,22 +310,19 @@ namespace aadea.Vistas
             }
 
         }
-
-        private void FilterBT_Click(object sender, EventArgs e)
-        {
-        }
-
         private void AddProduct_Click(object sender, EventArgs e)
         {
             TabPrincipal.SelectedTab = Add;
             TabPrincipal.TabPages.Add(Add);
             TabPrincipal.TabPages.Remove(History);
             resetCamp(sender, e);
+            Principal.menuTitleLaberl.Text = "AGREGAR ASISTENCIA";
             Windows(Add);
         }
 
         private void FilterAsistencia_Click(object sender, EventArgs e)
         {
+            Principal.menuTitleLaberl.Text = "FILTRAR ASISTENCIA";
             Show(Filtrar);
             Windows(Filtrar);
         }
@@ -386,6 +381,7 @@ namespace aadea.Vistas
 
         private void cancelAdd_Click(object sender, EventArgs e)
         {
+            Principal.menuTitleLaberl.Text = "ASISTENCIA";
             TabPrincipal.SelectedTab = History;
             TabPrincipal.TabPages.Add(History);
             TabPrincipal.TabPages.Remove(Add);
@@ -442,10 +438,6 @@ namespace aadea.Vistas
 
             ¡Asegúrate de ingresar los datos correctamente antes de guardar la asistencia!
             ";
-
-
-
-
             help.TextoAyuda = ayudaTexto;
             help.StartPosition = FormStartPosition.CenterScreen;
             help.ShowDialog();
@@ -468,11 +460,6 @@ namespace aadea.Vistas
 
             Utiliza estas opciones de filtrado para visualizar las asistencias de acuerdo a tus necesidades y realizar un seguimiento más preciso de las asistencias registradas.
             ";
-
-
-
-
-
             help.TextoAyuda = ayudaTexto;
             help.StartPosition = FormStartPosition.CenterScreen;
             help.ShowDialog();
@@ -481,6 +468,10 @@ namespace aadea.Vistas
         private void HelpBTHistory_MouseEnter(object sender, EventArgs e)
         {
             BackColor = Color.Red;
+        }
+
+        private void volverBtn_Click(object sender, EventArgs e)
+        {
         }
     }
 }

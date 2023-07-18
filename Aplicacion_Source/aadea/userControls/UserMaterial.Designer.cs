@@ -43,11 +43,11 @@ namespace aadea.userControls
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(143, 74);
             label1.Name = "label1";
-            label1.Size = new Size(57, 18);
+            label1.Size = new Size(53, 18);
             label1.TabIndex = 2;
             label1.Text = "Stock:";
             // 
@@ -65,10 +65,10 @@ namespace aadea.userControls
             // lblCantidada
             // 
             lblCantidada.AutoSize = true;
-            lblCantidada.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCantidada.Location = new Point(206, 74);
+            lblCantidada.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCantidada.Location = new Point(196, 74);
             lblCantidada.Name = "lblCantidada";
-            lblCantidada.Size = new Size(46, 18);
+            lblCantidada.Size = new Size(53, 20);
             lblCantidada.TabIndex = 10;
             lblCantidada.Text = "label2";
             lblCantidada.TextAlign = ContentAlignment.MiddleLeft;
@@ -125,10 +125,10 @@ namespace aadea.userControls
             // lblUnidad
             // 
             lblUnidad.AutoSize = true;
-            lblUnidad.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUnidad.Location = new Point(249, 74);
+            lblUnidad.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUnidad.Location = new Point(255, 74);
             lblUnidad.Name = "lblUnidad";
-            lblUnidad.Size = new Size(46, 18);
+            lblUnidad.Size = new Size(53, 20);
             lblUnidad.TabIndex = 13;
             lblUnidad.Text = "label2";
             lblUnidad.TextAlign = ContentAlignment.MiddleLeft;

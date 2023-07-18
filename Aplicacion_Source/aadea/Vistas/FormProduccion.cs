@@ -38,6 +38,9 @@ namespace aadea.Vistas
         public FormProduccion()
         {
             InitializeComponent();
+            tabControlProduccion.ItemSize = new Size(0, 1);
+            tabControlProduccion.SizeMode = TabSizeMode.Fixed;
+            tabControlProduccion.Multiline = true;
             tabControlProduccion.TabPages.Remove(tabHistory);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
@@ -84,6 +87,7 @@ namespace aadea.Vistas
         }
         private void resertcampos(object sender, EventArgs e)
         {
+            //Principal.menuTitleLaberl.Text = "PRODUCCION";
             textBoxCantidad.Text = string.Empty;
         }
 
@@ -96,6 +100,7 @@ namespace aadea.Vistas
         //Boton ver historial de producción.
         private void bt1_Click(object sender, EventArgs e)
         {
+            Principal.menuTitleLaberl.Text = "HISTORIAL PRODUCCION";
             tabControlProduccion.SelectedTab = tabHistory;
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
@@ -113,7 +118,7 @@ namespace aadea.Vistas
                 int id = Convert.ToInt32(row["ID"]);
                 string fecha_inicio = row["fecha_inicio"].ToString();
                 string fecha_termino = row["fecha_termino"].ToString();
-                string nombre= row["nombre"].ToString();
+                string nombre = row["nombre"].ToString();
                 userControl.fechaInicio = fecha_inicio;
                 userControl.fechaTermino = fecha_termino;
                 userControl.Tittle += " " + nombre;
@@ -146,7 +151,7 @@ namespace aadea.Vistas
                     string nombreProducto = l_produccion.getNameProducto(idProducto);
                     string frasco = l_produccion.ObtenerFrascoN(idfrasco);
                     if (nombreProducto == null) { nombreProducto = "El material ha sido eliminado"; }
-                    userControl.DataGridViewProductos.Rows.Add(nombreProducto, cantidad,frasco);
+                    userControl.DataGridViewProductos.Rows.Add(nombreProducto, cantidad, frasco);
                 }
             }
         }
@@ -154,12 +159,6 @@ namespace aadea.Vistas
         //salir de histotial de produccion.
         private void bttExitHistory_Click(object sender, EventArgs e)
         {
-            tabControlProduccion.SelectedTab = viewButtons;
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-            tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            tabControlProduccion.TabPages.Remove(tabBodega);
-            tabControlProduccion.TabPages.Add(viewButtons);
         }
 
 
@@ -172,6 +171,7 @@ namespace aadea.Vistas
         //boton ver produccion actual
         private void btViewProduccion_Click(object sender, EventArgs e)
         {
+            Principal.menuTitleLaberl.Text = "PRODUCCION ACTUAL";
             tabControlProduccion.SelectedTab = tabProduccionActual;
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
@@ -233,53 +233,6 @@ namespace aadea.Vistas
         private void aceptInsertProduct_Click(object sender, EventArgs e)
         {
 
-            int idProduccion = userLocal.ID;
-            L_Produccion l = new L_Produccion();
-            string termino = userLocal.fechaterm;
-            string inicio = userLocal.fechaInicio;
-            string nombre = userLocal.Tittle;
-
-            for (int i = 0; i < comboBoxesProductos.Count; i++)
-            {
-                ComboBox comboBoxProducto = comboBoxesProductos[i];
-                ComboBox comboBoxFrasco = comboBoxesFrascos[i];
-                TextBox textBoxCantidadProducto = textBoxesCantidadProductos[i];
-
-                string nombreProducto = comboBoxProducto.SelectedItem.ToString();
-                int idProducto = l.obtenerIdProducto(nombreProducto);
-
-                string nombreFrasco = comboBoxFrasco.SelectedItem.ToString();
-                int idFrasco = l.obtenerIdFrasco(nombreFrasco);
-
-                int cantidad;
-                string cantidadTexto = textBoxCantidadProducto.Text;
-
-                if (Int32.TryParse(cantidadTexto, out cantidad))
-                {
-                    MessageBox.Show("Converted: " + cantidad.ToString());
-                }
-                else
-                {
-                    MessageBox.Show("Error");
-                }
-
-                l.insertProductoHistorial(idProduccion, idProducto, idFrasco, cantidad);
-                l.insertStock(idProducto, idFrasco, cantidad);
-            }
-
-
-            l.TerminarProduccion(idProduccion, termino, inicio,nombre);
-
-            layoutPanelActualProduccion.Controls.Remove(userLocal);
-
-            tabControlProduccion.SelectedTab = viewButtons;
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-            tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            tabControlProduccion.TabPages.Remove(tabBodega);
-            tabControlProduccion.TabPages.Add(viewButtons);
-            resertcampos(sender, e);
-
         }
 
 
@@ -298,23 +251,11 @@ namespace aadea.Vistas
 
         private void btExitProduccionActual_Click(object sender, EventArgs e)
         {
-            tabControlProduccion.SelectedTab = viewButtons;
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-            tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            tabControlProduccion.TabPages.Remove(tabBodega);
-            tabControlProduccion.TabPages.Add(viewButtons);
         }
 
         //boton calcelar ingresar productos
         private void CancelInsertProduct_Click(object sender, EventArgs e)
         {
-            tabControlProduccion.SelectedTab = viewButtons;
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-            tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            tabControlProduccion.TabPages.Remove(tabBodega);
-            tabControlProduccion.TabPages.Add(viewButtons);
         }
 
 
@@ -332,18 +273,12 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(tabIngresarProduccion);
             resertcampos(sender, e);
+            Principal.menuTitleLaberl.Text = "INGRESAR PRODUCCION";
         }
 
         //cancelar producción
         private void btCancelAddproduccion_Click(object sender, EventArgs e)
         {
-            tabControlProduccion.SelectedTab = viewButtons;
-            tabControlProduccion.TabPages.Remove(tabHistory);
-            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-            tabControlProduccion.TabPages.Remove(tabProduccionActual);
-            tabControlProduccion.TabPages.Remove(tabBodega);
-            tabControlProduccion.TabPages.Add(viewButtons);
-            resertcampos(sender, e);
         }
         //rellenar ingresar produccion
         private void FormIngresarProduccion_Load(object sender, EventArgs e)
@@ -403,6 +338,7 @@ namespace aadea.Vistas
                 for (int i = 0; i < cantidadMateriales; i++)
                 {
                     Label labelProducto = new Label();
+                    //labelProducto.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point);
                     labelProducto.Text = "Material:";
                     labelProducto.AutoSize = true;
                     labelProducto.ForeColor = Color.Black;
@@ -413,6 +349,7 @@ namespace aadea.Vistas
                     comboBoxMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
 
                     Label labelCantidad = new Label();
+                    //labelCantidad.Font = Font = new Font("Century Gothic", 8f, FontStyle.Regular, GraphicsUnit.Point);
                     labelCantidad.Text = "Ingrese la cantidad:";
                     labelCantidad.AutoSize = true;
                     labelCantidad.ForeColor = Color.Black;
@@ -445,7 +382,7 @@ namespace aadea.Vistas
                             if (opcionesSeleccionadas.Contains(comboBoxMaterial.SelectedItem.ToString()))
                             {
                                 MessageBox.Show("El material ya ha sido seleccionado en otra opcion, procura elegir opciones unicas");
-                                comboBoxMaterial.SelectedIndex = -1; 
+                                comboBoxMaterial.SelectedIndex = -1;
                             }
                             else
                             {
@@ -495,6 +432,94 @@ namespace aadea.Vistas
 
         //boton aceptar de ingresar produccion
         private void btAceptar_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void boxProductsCreate_TextChanged(object sender, EventArgs e)
+        {
+            int cantidadProductos = 0;
+
+            if (int.TryParse(boxProductsCreate.Text, out cantidadProductos))
+            {
+                layoutPanelProducts.Controls.Clear();
+
+                for (int i = 0; i < cantidadProductos; i++)
+                {
+                    Label labelProducto = new Label();
+                    labelProducto.Text = "Producto:";
+                    labelProducto.AutoSize = true;
+                    labelProducto.ForeColor = Color.Black;
+
+                    ComboBox comboBoxProductos = new ComboBox();
+                    comboBoxProductos.DisplayMember = "nombre";
+                    comboBoxProductos.DataSource = opcionesProductos[i];
+                    comboBoxProductos.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    Label labelFrasco = new Label();
+                    labelFrasco.Text = "Tamaño del frasco:";
+                    labelFrasco.AutoSize = true;
+                    labelFrasco.ForeColor = Color.Black;
+
+                    ComboBox comboBoxFrascos = new ComboBox();
+                    comboBoxFrascos.DisplayMember = "nombre";
+                    comboBoxFrascos.DataSource = opcionesFrascos[i];
+                    comboBoxFrascos.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
+                    Label labelCantidad = new Label();
+                    labelCantidad.Text = "Ingrese la cantidad:";
+                    labelCantidad.AutoSize = true;
+                    labelCantidad.ForeColor = Color.Black;
+
+                    TextBox textBoxCantidad = new TextBox();
+
+                    comboBoxesProductos.Add(comboBoxProductos);
+                    comboBoxesFrascos.Add(comboBoxFrascos);
+                    textBoxesCantidadProductos.Add(textBoxCantidad);
+
+                    layoutPanelProducts.Controls.Add(labelProducto);
+                    layoutPanelProducts.Controls.Add(comboBoxProductos);
+                    layoutPanelProducts.Controls.Add(labelFrasco);
+                    layoutPanelProducts.Controls.Add(comboBoxFrascos);
+                    layoutPanelProducts.Controls.Add(labelCantidad);
+                    layoutPanelProducts.Controls.Add(textBoxCantidad);
+                }
+            }
+            else
+            {
+                layoutPanelProducts.Controls.Clear();
+            }
+            cantProductLocal = cantidadProductos;
+        }
+
+        private void LayoutHistorial_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void volverBtn_Click(object sender, EventArgs e)
+        {
+            Principal.menuTitleLaberl.Text = "PRODUCCION";
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
+            tabControlProduccion.TabPages.Add(viewButtons);
+        }
+
+        private void volerProdActual_Click(object sender, EventArgs e)
+        {
+            Principal.menuTitleLaberl.Text = "PRODUCCION";
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
+            tabControlProduccion.TabPages.Add(viewButtons);
+        }
+
+        private void aceptarIngresar_Click(object sender, EventArgs e)
         {
             Random random = new Random();
             int idProduccion = random.Next();
@@ -571,61 +596,77 @@ namespace aadea.Vistas
             }
         }
 
-        private void boxProductsCreate_TextChanged(object sender, EventArgs e)
+        private void cancelarIngresar_Click(object sender, EventArgs e)
         {
-            int cantidadProductos = 0;
+            Principal.menuTitleLaberl.Text = "PRODUCCION";
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
+            tabControlProduccion.TabPages.Add(viewButtons);
+            resertcampos(sender, e);
+        }
 
-            if (int.TryParse(boxProductsCreate.Text, out cantidadProductos))
+        private void aceptarIngresarBodega_Click(object sender, EventArgs e)
+        {
+            int idProduccion = userLocal.ID;
+            L_Produccion l = new L_Produccion();
+            string termino = userLocal.fechaterm;
+            string inicio = userLocal.fechaInicio;
+            string nombre = userLocal.Tittle;
+
+            for (int i = 0; i < comboBoxesProductos.Count; i++)
             {
-                layoutPanelProducts.Controls.Clear();
+                ComboBox comboBoxProducto = comboBoxesProductos[i];
+                ComboBox comboBoxFrasco = comboBoxesFrascos[i];
+                TextBox textBoxCantidadProducto = textBoxesCantidadProductos[i];
 
-                for (int i = 0; i < cantidadProductos; i++)
+                string nombreProducto = comboBoxProducto.SelectedItem.ToString();
+                int idProducto = l.obtenerIdProducto(nombreProducto);
+
+                string nombreFrasco = comboBoxFrasco.SelectedItem.ToString();
+                int idFrasco = l.obtenerIdFrasco(nombreFrasco);
+
+                int cantidad;
+                string cantidadTexto = textBoxCantidadProducto.Text;
+
+                if (Int32.TryParse(cantidadTexto, out cantidad))
                 {
-                    Label labelProducto = new Label();
-                    labelProducto.Text = "Producto:";
-                    labelProducto.AutoSize = true;
-                    labelProducto.ForeColor = Color.Black;
-
-                    ComboBox comboBoxProductos = new ComboBox();
-                    comboBoxProductos.DisplayMember = "nombre";
-                    comboBoxProductos.DataSource = opcionesProductos[i];
-                    comboBoxProductos.DropDownStyle = ComboBoxStyle.DropDownList;
-
-                    Label labelFrasco = new Label();
-                    labelFrasco.Text = "Tamaño del frasco:";
-                    labelFrasco.AutoSize = true;
-                    labelFrasco.ForeColor = Color.Black;
-
-                    ComboBox comboBoxFrascos = new ComboBox();
-                    comboBoxFrascos.DisplayMember = "nombre";
-                    comboBoxFrascos.DataSource = opcionesFrascos[i];
-                    comboBoxFrascos.DropDownStyle = ComboBoxStyle.DropDownList;
-
-
-                    Label labelCantidad = new Label();
-                    labelCantidad.Text = "Ingrese la cantidad:";
-                    labelCantidad.AutoSize = true;
-                    labelCantidad.ForeColor = Color.Black;
-
-                    TextBox textBoxCantidad = new TextBox();
-
-                    comboBoxesProductos.Add(comboBoxProductos);
-                    comboBoxesFrascos.Add(comboBoxFrascos);
-                    textBoxesCantidadProductos.Add(textBoxCantidad);
-
-                    layoutPanelProducts.Controls.Add(labelProducto);
-                    layoutPanelProducts.Controls.Add(comboBoxProductos);
-                    layoutPanelProducts.Controls.Add(labelFrasco);
-                    layoutPanelProducts.Controls.Add(comboBoxFrascos);
-                    layoutPanelProducts.Controls.Add(labelCantidad);
-                    layoutPanelProducts.Controls.Add(textBoxCantidad);
+                    MessageBox.Show("Converted: " + cantidad.ToString());
                 }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+                l.insertProductoHistorial(idProduccion, idProducto, idFrasco, cantidad);
+                l.insertStock(idProducto, idFrasco, cantidad);
             }
-            else
-            {
-                layoutPanelProducts.Controls.Clear();
-            }
-            cantProductLocal = cantidadProductos;
+
+
+            l.TerminarProduccion(idProduccion, termino, inicio, nombre);
+
+            layoutPanelActualProduccion.Controls.Remove(userLocal);
+
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
+            tabControlProduccion.TabPages.Add(viewButtons);
+            resertcampos(sender, e);
+        }
+
+        private void cancelarIngresarBodega_Click(object sender, EventArgs e)
+        {
+            Principal.menuTitleLaberl.Text = "PRODUCCION";
+            tabControlProduccion.SelectedTab = viewButtons;
+            tabControlProduccion.TabPages.Remove(tabHistory);
+            tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+            tabControlProduccion.TabPages.Remove(tabProduccionActual);
+            tabControlProduccion.TabPages.Remove(tabBodega);
+            tabControlProduccion.TabPages.Add(viewButtons);
         }
     }
 }

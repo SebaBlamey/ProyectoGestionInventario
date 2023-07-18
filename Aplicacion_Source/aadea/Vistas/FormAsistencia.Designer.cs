@@ -463,10 +463,10 @@ namespace aadea.Vistas
             iconPictureBoxBTFilter.IconChar = FontAwesome.Sharp.IconChar.Question;
             iconPictureBoxBTFilter.IconColor = Color.Black;
             iconPictureBoxBTFilter.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBoxBTFilter.IconSize = 24;
-            iconPictureBoxBTFilter.Location = new Point(671, 431);
+            iconPictureBoxBTFilter.IconSize = 26;
+            iconPictureBoxBTFilter.Location = new Point(651, 430);
             iconPictureBoxBTFilter.Name = "iconPictureBoxBTFilter";
-            iconPictureBoxBTFilter.Size = new Size(24, 26);
+            iconPictureBoxBTFilter.Size = new Size(28, 26);
             iconPictureBoxBTFilter.TabIndex = 23;
             iconPictureBoxBTFilter.TabStop = false;
             iconPictureBoxBTFilter.Click += iconPictureBoxBTFilter_Click;

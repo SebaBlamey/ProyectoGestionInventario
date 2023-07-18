@@ -57,13 +57,22 @@ namespace aadea.userControls
 
         public void btDelete_Click(object sender, EventArgs e)
         {
-            ProduccionActualDelete?.Invoke(this, EventArgs.Empty);
         }
 
         public void btEnd_Click(object sender, EventArgs e)
         {
-            ProduccionActualEnd?.Invoke(this, EventArgs.Empty);
         }
 
+        private void terminarProd_Click(object sender, EventArgs e)
+        {
+            ProduccionActualEnd?.Invoke(this, EventArgs.Empty);
+
+        }
+
+        private void eliminarBodega_Click(object sender, EventArgs e)
+        {
+            ProduccionActualDelete?.Invoke(this, EventArgs.Empty);
+
+        }
     }
 }

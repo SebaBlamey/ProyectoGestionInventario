@@ -85,6 +85,7 @@ namespace aadea.Vistas
         private void UserControl_ButtonModify(productBodega user)
         {
             L_inventario l_Inventario = new L_inventario();
+            Principal.menuTitleLaberl.Text = "MODIFICAR PRODUCTO DE BODEGA";
             DataTable list = l_Inventario.listStockID(user.ID);
             tabControl1.SelectedTab = ModStock;
             tabControl1.TabPages.Add(ModStock);
@@ -131,13 +132,12 @@ namespace aadea.Vistas
 
         private void goToMainInventory()
         {
+            Principal.menuTitleLaberl.Text = "BODEGA";
             tabControl1.SelectedTab = tabView;
             tabControl1.TabPages.Add(tabView);
             tabControl1.TabPages.Remove(addProdTab);
             tabControl1.TabPages.Remove(tabSizes);
             tabControl1.TabPages.Remove(ModStock);
-
-
         }
 
         private void addProdTab_Click(object sender, EventArgs e)
@@ -193,6 +193,7 @@ namespace aadea.Vistas
 
         private void addProdutcto_Click(object sender, EventArgs e)
         {
+            Principal.menuTitleLaberl.Text = "AGREGAR A BODEGA";
             tabControl1.SelectedTab = addProdTab;
             tabControl1.TabPages.Add(addProdTab);
             tabControl1.TabPages.Remove(tabView);
@@ -202,6 +203,7 @@ namespace aadea.Vistas
 
         private void verTamano_Click(object sender, EventArgs e)
         {
+            Principal.menuTitleLaberl.Text = "VER TAMAÑO";
             tabControl1.SelectedTab = tabSizes;
             tabControl1.TabPages.Add(tabSizes);
             tabControl1.TabPages.Remove(tabView);
