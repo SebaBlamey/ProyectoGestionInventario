@@ -125,7 +125,7 @@ namespace aadea.Vistas
                 L_Products l_Products = new L_Products();
                 flowLayoutPanel1.Controls.Remove(user);
                 l_Products.DeleteProduct(id);
-                this.ParentForm.MostrarNotificacion("Producto eliminado", Color.Red, 3);
+                this.ParentForm.MostrarNotificacion("Producto eliminado", 3);
             }
 
             resetCampos(sender, e);
@@ -199,7 +199,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Add(productList);
             resetCampos(sender, e);
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
-            this.ParentForm.MostrarNotificacion("Producto guardado", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Producto guardado", 1);
         }
 
         private void cancel_BtnEdit_Click(object sender, EventArgs e)
@@ -242,7 +242,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Add(productList);
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
             resetCampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Producto editado", Color.Blue, 2);
+            this.ParentForm.MostrarNotificacion("Producto editado", 2);
         }
 
         private void search_BtnEdit_Click(object sender, EventArgs e)

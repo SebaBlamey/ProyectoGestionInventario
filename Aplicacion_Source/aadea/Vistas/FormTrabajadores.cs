@@ -111,7 +111,7 @@ namespace aadea.Vistas
                 DGV_T.DataSource = null;
                 DGV_T.Rows.Clear();
                 FormTrabajadores_Load(sender, e);
-                this.ParentForm.MostrarNotificacion("Trabajador eliminado", Color.Red, 3);
+                this.ParentForm.MostrarNotificacion("Trabajador eliminado",3);
             }
         }
 
@@ -133,7 +133,7 @@ namespace aadea.Vistas
                     this.BackToEmpList();
                     this.CleanTextBoxes();
                     this.FormTrabajadores_Load(sender, e);
-                    this.ParentForm.MostrarNotificacion("Trabajador guardado", Color.Green, 1);
+                    this.ParentForm.MostrarNotificacion("Trabajador guardado",1);
                 }
                 else
                 {
@@ -151,7 +151,7 @@ namespace aadea.Vistas
                     this.BackToEmpList();
                     this.CleanTextBoxes();
                     this.FormTrabajadores_Load(sender, e);
-                    this.ParentForm.MostrarNotificacion("Trabajador modificado", Color.Blue, 2);
+                    this.ParentForm.MostrarNotificacion("Trabajador modificado",2);
                 }
                 else
                 {

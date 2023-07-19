@@ -232,7 +232,7 @@ namespace aadea.Vistas
             goToMainInventory();
             this.clearSelections();
             this.FormProduccion_Load(sender, e);
-            this.ParentForm.MostrarNotificacion("Producto ingresado a bodega", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Producto ingresado a bodega", 1);
         }
 
         private void volverBtn_Click(object sender, EventArgs e)
@@ -258,7 +258,7 @@ namespace aadea.Vistas
             ins.addSize(size);
             this.refreshDGV();
             this.clearSelections();
-            this.ParentForm.MostrarNotificacion("Tamaño agregado", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Tamaño agregado",  1);
         }
 
         private void quitarInventario_Click(object sender, EventArgs e)
@@ -275,7 +275,7 @@ namespace aadea.Vistas
                 L_inventario del = new L_inventario();
                 del.delSize(id);
                 this.refreshDGV();
-                this.ParentForm.MostrarNotificacion("Tamaño eliminado", Color.Red, 3);
+                this.ParentForm.MostrarNotificacion("Tamaño eliminado", 3);
             }
         }
 
@@ -301,7 +301,7 @@ namespace aadea.Vistas
             L_inventario list = new L_inventario();
             DataTable dt1 = list.listStockID(this.idLocal);
             DGV_Stock.DataSource = dt1;
-            this.ParentForm.MostrarNotificacion("Stock aumentado", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Stock aumentado", 1);
         }
 
         private void minu_Click(object sender, EventArgs e)
@@ -325,7 +325,7 @@ namespace aadea.Vistas
             L_inventario list = new L_inventario();
             DataTable dt1 = list.listStockID(this.idLocal);
             DGV_Stock.DataSource = dt1;
-            this.ParentForm.MostrarNotificacion("Stcok disminuido", Color.Blue, 2);
+            this.ParentForm.MostrarNotificacion("Stcok disminuido", 2);
         }
 
         private void DGV_P_AddT_CellContentClick(object sender, DataGridViewCellEventArgs e)

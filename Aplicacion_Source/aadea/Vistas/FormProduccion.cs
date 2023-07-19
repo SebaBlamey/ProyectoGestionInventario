@@ -233,7 +233,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Add(tabBodega);
             resertcampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Produccion terminada", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Produccion terminada",1);
 
         }
         private void aceptInsertProduct_Click(object sender, EventArgs e)
@@ -255,23 +255,11 @@ namespace aadea.Vistas
                 L_Produccion l = new L_Produccion();
                 l.EliminarProduccion(id);
                 layoutPanelActualProduccion.Controls.Remove(user);
-                this.ParentForm.MostrarNotificacion("Produccion eliminada", Color.Red, 3);
+                this.ParentForm.MostrarNotificacion("Produccion eliminada",  3);
             }
             resertcampos(sender, e);
 
         }
-
-        private void btExitProduccionActual_Click(object sender, EventArgs e)
-        {
-        }
-
-        //boton calcelar ingresar productos
-        private void CancelInsertProduct_Click(object sender, EventArgs e)
-        {
-        }
-
-
-
         //------------------------------------------------------
         //INGRESAR PRODUCCION
         //------------------------------------------------------
@@ -289,55 +277,6 @@ namespace aadea.Vistas
         }
 
         //cancelar producción
-        private void btCancelAddproduccion_Click(object sender, EventArgs e)
-        {
-        }
-        //rellenar ingresar produccion
-        private void FormIngresarProduccion_Load(object sender, EventArgs e)
-        {
-            for (int i = 0; i < materiales.Count; i++)
-            {
-                Label labelProducto = new Label();
-                labelProducto.Text = "Material:";
-                labelProducto.AutoSize = true;
-
-                ComboBox comboBoxMaterial = new ComboBox();
-                comboBoxMaterial.DisplayMember = "nombre";
-                comboBoxMaterial.DataSource = opcionesMateriales[i];
-                comboBoxMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
-
-                Label labelCantidad = new Label();
-                labelCantidad.Text = "Ingrese la cantidad:";
-                labelCantidad.AutoSize = true;
-
-                TextBox textBoxCantidad = new TextBox();
-
-                comboBoxesMateriales.Add(comboBoxMaterial);
-                textBoxesCantidad.Add(textBoxCantidad);
-                Label labelUnidad = new Label();
-                labelUnidad.AutoSize = true;
-                labelUnidad.ForeColor = Color.Black;
-
-                comboBoxMaterial.SelectedIndexChanged += (s, args) =>
-                {
-                    if (comboBoxMaterial.SelectedIndex >= 0)
-                    {
-                        string unidad = unidades[comboBoxMaterial.SelectedIndex];
-                        labelUnidad.Text = unidad;
-                    }
-                    else
-                    {
-                        labelUnidad.Text = string.Empty;
-                    }
-                };
-
-                flowLayoutPanelBox.Controls.Add(labelProducto);
-                flowLayoutPanelBox.Controls.Add(comboBoxMaterial);
-                flowLayoutPanelBox.Controls.Add(labelCantidad);
-                flowLayoutPanelBox.Controls.Add(labelCantidad);
-                flowLayoutPanelBox.Controls.Add(textBoxCantidad);
-            }
-        }
         //campo de cantidad de materiales
         private void textBoxCantidad_TextChanged(object sender, EventArgs e)
         {
@@ -603,7 +542,7 @@ namespace aadea.Vistas
                 MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            this.ParentForm.MostrarNotificacion("Produccion ingresada", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Produccion ingresada",  1);
         }
 
         private void cancelarIngresar_Click(object sender, EventArgs e)
@@ -616,7 +555,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Produccion no ingresada", Color.Red, 3);
+            this.ParentForm.MostrarNotificacion("Produccion no ingresada", 3);
         }
 
         private void aceptarIngresarBodega_Click(object sender, EventArgs e)
@@ -667,7 +606,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Productos ingresados a bodega", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Productos ingresados a bodega",  1);
         }
 
         private void cancelarIngresarBodega_Click(object sender, EventArgs e)
@@ -679,7 +618,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
-            this.ParentForm.MostrarNotificacion("Productos no ingresados a la bodega", Color.Red, 3);
+            this.ParentForm.MostrarNotificacion("Productos no ingresados a la bodega", 3);
         }
     }
 }

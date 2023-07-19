@@ -4,9 +4,9 @@ namespace aadea.Extras;
 
 public static class HelpMSG
 {
-    public static void MostrarNotificacion(this Form form, string mensaje, Color color, int tipo)
+    public static void MostrarNotificacion(this Form form, string mensaje, int tipo)
     {
-        Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
+        Notificaciones notificacion = new Notificaciones(mensaje, tipo);
 
         int x = form.Right - notificacion.Width;
         int y = form.Bottom - notificacion.Height;

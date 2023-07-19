@@ -140,7 +140,7 @@ namespace aadea.Vistas
                 L_Materials l_materials = new L_Materials();
                 flowLayoutPanel1.Controls.Remove(user);
                 l_materials.DeleteMaterial(id);
-                this.ParentForm.MostrarNotificacion("Material eliminado", Color.Red, 3);
+                this.ParentForm.MostrarNotificacion("Material eliminado", 3);
             }
 
             resetCampos(sender, e);
@@ -268,7 +268,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Remove(EditMaterial);
             tabControl1.TabPages.Add(ListaMateriales);
             resetCampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Material agregado", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Material agregado",1);
         }
 
         private void searchBtnMod_Click(object sender, EventArgs e)
@@ -345,7 +345,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(ListaMateriales);
             Principal.menuTitleLaberl.Text = "MATERIALES";
             resetCampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Material modificado", Color.Blue, 2);
+            this.ParentForm.MostrarNotificacion("Material modificado",2);
         }
     }
 }
