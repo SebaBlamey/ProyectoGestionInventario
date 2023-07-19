@@ -38,6 +38,30 @@ namespace aadea.Logicaq
             }
         }
 
+        public int cantMaterial()
+        {
+            int cant = 0;
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT COUNT(*) FROM Material;";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                connection.Open();
+                cant = Convert.ToInt32(command.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+
+            return cant; 
+        }
+
         public DataTable listMaterialForHistory(int id)
         {
             SQLiteDataReader resultado;

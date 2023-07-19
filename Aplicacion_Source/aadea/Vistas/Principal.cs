@@ -241,13 +241,22 @@ namespace aadea.Vistas
             try
             {
                 SetActualButton(sender, "ASISTENCIA");
-                OpenChildForm(new FormAsistencia());
+                var formAsistencia = new FormAsistencia();
+                formAsistencia.FormClosed += FormAsistencia_Closed;
+                OpenChildForm(formAsistencia);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error en la base de datos " + ex.Message);
             }
         }
+        private void FormAsistencia_Closed(object sender, FormClosedEventArgs e)
+        {
+            var formAsistencia = new FormAsistencia();
+            formAsistencia.FormClosed += FormAsistencia_Closed;
+            OpenChildForm(formAsistencia);
+        }
+
 
         private void iconButtonBodega_Click(object sender, EventArgs e)
         {

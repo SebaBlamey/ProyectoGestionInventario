@@ -33,8 +33,10 @@ namespace aadea.Vistas
         private List<string> unidades;
         private produccionActual userLocal;
         private int cantProductLocal;
-        private List<string> opcionesSeleccionadas;
-        private List<string> opcionesSeleccionadasProductos;
+
+        private int cantMaterialesTot;
+
+
         public FormProduccion()
         {
             InitializeComponent();
@@ -45,8 +47,6 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
             tabControlProduccion.TabPages.Remove(tabBodega);
-            opcionesSeleccionadas = new List<string>();
-            opcionesSeleccionadasProductos = new List<string>();
             comboBoxesMateriales = new List<ComboBox>();
             textBoxesCantidad = new List<TextBox>();
             comboBoxesProductos = new List<ComboBox>();
@@ -64,7 +64,9 @@ namespace aadea.Vistas
             frascos = l_list_mats.ObtenerFrascos();
             opcionesFrascos = new List<List<string>>();
 
-            for (int i = 0; i < 20; i++)
+            cantMaterialesTot=l_list_mats.cantMaterial();
+
+            for (int i = 0; i < cantMaterialesTot; i++)
             {
                 List<string> opciones = new List<string>(materiales); // Clona la lista original
                 opcionesMateriales.Add(opciones);
@@ -333,6 +335,13 @@ namespace aadea.Vistas
 
             if (int.TryParse(textBoxCantidad.Text, out cantidadMateriales))
             {
+                if (cantidadMateriales > cantMaterialesTot)
+                {
+                    MessageBox.Show("No puedes ingresar un número mayor a los materiales que tienes\nla cantidad de materiales que tienes son: ."+cantMaterialesTot, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxCantidad.Clear(); ; // Restaurar el valor máximo permitido
+                    return;
+                }
+
                 flowLayoutPanelBox.Controls.Clear();
 
                 for (int i = 0; i < cantidadMateriales; i++)
@@ -377,17 +386,7 @@ namespace aadea.Vistas
                             {
                                 unidad = "La unidad del material es: " + opcion;
                             }
-                            labelUnidad.Text = unidad;
-
-                            if (opcionesSeleccionadas.Contains(comboBoxMaterial.SelectedItem.ToString()))
-                            {
-                                MessageBox.Show("El material ya ha sido seleccionado en otra opcion, procura elegir opciones unicas");
-                                comboBoxMaterial.SelectedIndex = -1;
-                            }
-                            else
-                            {
-                                opcionesSeleccionadas.Add(comboBoxMaterial.SelectedItem.ToString());
-                            }
+                            labelUnidad.Text = unidad; 
                         }
                         else
                         {

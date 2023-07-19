@@ -43,6 +43,7 @@ namespace aadea.Vistas
         public FormAsistencia()
         {
             InitializeComponent();
+            iconButton1.Click += Cancelar_Click;
             TabPrincipal.ItemSize = new Size(0, 1);
             TabPrincipal.SizeMode = TabSizeMode.Fixed;
             TabPrincipal.Multiline = true;
@@ -275,6 +276,8 @@ namespace aadea.Vistas
         private void FinalHouBTAccept_Click(object sender, EventArgs e) //ACEPTAR DE LA ELIMINACION
         {
         }
+
+
         private void OpcionCB_CheckedChanged_1(object sender, EventArgs e)
         {
 
@@ -325,6 +328,7 @@ namespace aadea.Vistas
             Principal.menuTitleLaberl.Text = "FILTRAR ASISTENCIA";
             Show(Filtrar);
             Windows(Filtrar);
+
         }
 
         private void delete_iconButton_Click(object sender, EventArgs e)
@@ -472,6 +476,16 @@ namespace aadea.Vistas
 
         private void volverBtn_Click(object sender, EventArgs e)
         {
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
