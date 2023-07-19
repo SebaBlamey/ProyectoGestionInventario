@@ -357,6 +357,6 @@ namespace aadea.Vistas
         private Panel panelDesk;
         private FontAwesome.Sharp.IconButton iconButtonBodega;
         private PictureBox logoGrande;
-        public Label menuTitleLaberl;
+        public static Label menuTitleLaberl;
     }
 }

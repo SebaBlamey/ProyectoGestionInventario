@@ -207,7 +207,7 @@ namespace aadea.Vistas
             // LayoutHistorial
             // 
             LayoutHistorial.AutoScroll = true;
-            LayoutHistorial.BackColor = Color.FromArgb(155, 164, 181);
+            LayoutHistorial.BackColor = Color.Transparent;
             LayoutHistorial.Location = new Point(12, 6);
             LayoutHistorial.Name = "LayoutHistorial";
             LayoutHistorial.Size = new Size(653, 388);
@@ -254,7 +254,7 @@ namespace aadea.Vistas
             // layoutPanelActualProduccion
             // 
             layoutPanelActualProduccion.AutoScroll = true;
-            layoutPanelActualProduccion.BackColor = Color.FromArgb(155, 164, 181);
+            layoutPanelActualProduccion.BackColor = Color.Transparent;
             layoutPanelActualProduccion.Location = new Point(12, 6);
             layoutPanelActualProduccion.Name = "layoutPanelActualProduccion";
             layoutPanelActualProduccion.Size = new Size(653, 388);

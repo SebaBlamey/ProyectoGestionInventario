@@ -64,7 +64,7 @@ namespace aadea.Vistas
             frascos = l_list_mats.ObtenerFrascos();
             opcionesFrascos = new List<List<string>>();
 
-            cantMaterialesTot=l_list_mats.cantMaterial();
+            cantMaterialesTot = l_list_mats.cantMaterial();
 
             for (int i = 0; i < cantMaterialesTot; i++)
             {
@@ -346,7 +346,7 @@ namespace aadea.Vistas
             {
                 if (cantidadMateriales > cantMaterialesTot)
                 {
-                    MessageBox.Show("No puedes ingresar un número mayor a los materiales que tienes\nla cantidad de materiales que tienes son: ."+cantMaterialesTot, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No puedes ingresar un número mayor a los materiales que tienes\nla cantidad de materiales que tienes son: ." + cantMaterialesTot, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxCantidad.Clear(); ; // Restaurar el valor máximo permitido
                     return;
                 }
@@ -395,7 +395,7 @@ namespace aadea.Vistas
                             {
                                 unidad = "La unidad del material es: " + opcion;
                             }
-                            labelUnidad.Text = unidad; 
+                            labelUnidad.Text = unidad;
                         }
                         else
                         {
@@ -612,7 +612,7 @@ namespace aadea.Vistas
             int x = this.Right - notificacion.Width;
             int y = this.Bottom;
             notificacion.StartPosition = FormStartPosition.Manual;
-            notificacion.Location=new Point(x, y);
+            notificacion.Location = new Point(x, y);
 
             notificacion.Show(this);
         }
@@ -655,7 +655,7 @@ namespace aadea.Vistas
 
                 if (Int32.TryParse(cantidadTexto, out cantidad))
                 {
-                    
+
                 }
                 else
                 {

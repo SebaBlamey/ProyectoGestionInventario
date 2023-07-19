@@ -242,7 +242,7 @@ namespace aadea.Vistas
             int x = this.Right - notificacion.Width;
             int y = this.Bottom;
             notificacion.StartPosition = FormStartPosition.Manual;
-            notificacion.Location=new Point(x, y);
+            notificacion.Location = new Point(x, y);
 
             notificacion.Show(this);
         }
@@ -338,6 +338,11 @@ namespace aadea.Vistas
             DataTable dt1 = list.listStockID(this.idLocal);
             DGV_Stock.DataSource = dt1;
             MostrarNotificacion("Stcok disminuido", Color.Blue, 2);
+        }
+
+        private void DGV_P_AddT_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

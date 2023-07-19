@@ -351,3 +351,4 @@ C:\Users\pipen\OneDrive\Documentos\ProyectoGestionInventario\Aplicacion_Source\a
 C:\Users\pipen\OneDrive\Documentos\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.genruntimeconfig.cache
 C:\Users\pipen\OneDrive\Documentos\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\ref\aadea.dll
 C:\Users\pipen\OneDrive\Documentos\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.Notificaciones.resources
+D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.Notificaciones.resources

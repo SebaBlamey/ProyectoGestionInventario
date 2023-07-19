@@ -45,7 +45,7 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT ID, nombre FROM producto";
+                string SQLQuery = "SELECT nombre FROM producto";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 SQLCon.Open();
                 resultado = Comando.ExecuteReader();
@@ -70,7 +70,7 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT * FROM Frasco";
+                string SQLQuery = "SELECT Tamaño FROM Frasco";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 SQLCon.Open();
                 resultado = Comando.ExecuteReader();
