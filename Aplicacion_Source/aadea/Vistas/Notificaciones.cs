@@ -10,7 +10,6 @@ namespace aadea.Vistas
         {
             InitializeComponent();
         }
-
         public Notificaciones(string Mensaje, Color color, int tipo)
         {
             InitializeComponent();

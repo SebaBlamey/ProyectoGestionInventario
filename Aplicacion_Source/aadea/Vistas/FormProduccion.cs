@@ -1,4 +1,5 @@
-﻿using aadea.Logicaq;
+﻿using aadea.Extras;
+using aadea.Logicaq;
 using aadea.Model;
 using aadea.userControls;
 using Microsoft.VisualBasic.ApplicationServices;
@@ -232,7 +233,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Add(tabBodega);
             resertcampos(sender, e);
-            MostrarNotificacion("Produccion terminada", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Produccion terminada", Color.Green, 1);
 
         }
         private void aceptInsertProduct_Click(object sender, EventArgs e)
@@ -254,7 +255,7 @@ namespace aadea.Vistas
                 L_Produccion l = new L_Produccion();
                 l.EliminarProduccion(id);
                 layoutPanelActualProduccion.Controls.Remove(user);
-                MostrarNotificacion("Produccion eliminada", Color.Red, 3);
+                this.ParentForm.MostrarNotificacion("Produccion eliminada", Color.Red, 3);
             }
             resertcampos(sender, e);
 
@@ -602,19 +603,7 @@ namespace aadea.Vistas
                 MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            MostrarNotificacion("Produccion ingresada", Color.Green, 1);
-        }
-
-        private void MostrarNotificacion(string mensaje, Color color, int tipo)
-        {
-            Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
-
-            int x = this.Right - notificacion.Width;
-            int y = this.Bottom;
-            notificacion.StartPosition = FormStartPosition.Manual;
-            notificacion.Location = new Point(x, y);
-
-            notificacion.Show(this);
+            this.ParentForm.MostrarNotificacion("Produccion ingresada", Color.Green, 1);
         }
 
         private void cancelarIngresar_Click(object sender, EventArgs e)
@@ -627,7 +616,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
-            MostrarNotificacion("Produccion no ingresada", Color.Red, 3);
+            this.ParentForm.MostrarNotificacion("Produccion no ingresada", Color.Red, 3);
         }
 
         private void aceptarIngresarBodega_Click(object sender, EventArgs e)
@@ -678,7 +667,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
-            MostrarNotificacion("Productos ingresados a bodega", Color.Green, 1);
+            this.ParentForm.MostrarNotificacion("Productos ingresados a bodega", Color.Green, 1);
         }
 
         private void cancelarIngresarBodega_Click(object sender, EventArgs e)
@@ -690,7 +679,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
-            MostrarNotificacion("Productos no ingresados a la bodega", Color.Red, 3);
+            this.ParentForm.MostrarNotificacion("Productos no ingresados a la bodega", Color.Red, 3);
         }
     }
 }

@@ -6,6 +6,7 @@ using Image = System.Drawing.Image;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using System.Globalization;
 using System.Windows.Forms;
+using aadea.Extras;
 
 namespace aadea.Vistas
 {
@@ -139,7 +140,7 @@ namespace aadea.Vistas
                 L_Materials l_materials = new L_Materials();
                 flowLayoutPanel1.Controls.Remove(user);
                 l_materials.DeleteMaterial(id);
-                MostrarNotificacion("Material eliminado", Color.Red, 3);
+                this.ParentForm.MostrarNotificacion("Material eliminado", Color.Red, 3);
             }
 
             resetCampos(sender, e);
@@ -267,19 +268,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Remove(EditMaterial);
             tabControl1.TabPages.Add(ListaMateriales);
             resetCampos(sender, e);
-            MostrarNotificacion("Material agregado", Color.Green, 1);
-        }
-
-        private void MostrarNotificacion(string mensaje, Color color, int tipo)
-        {
-            Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
-
-            int x = this.Right - notificacion.Width;
-            int y = this.Bottom;
-            notificacion.StartPosition = FormStartPosition.Manual;
-            notificacion.Location=new Point(x, y);
-
-            notificacion.Show(this);
+            this.ParentForm.MostrarNotificacion("Material agregado", Color.Green, 1);
         }
 
         private void searchBtnMod_Click(object sender, EventArgs e)
@@ -356,7 +345,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(ListaMateriales);
             Principal.menuTitleLaberl.Text = "MATERIALES";
             resetCampos(sender, e);
-            MostrarNotificacion("Material modificado", Color.Blue, 2);
+            this.ParentForm.MostrarNotificacion("Material modificado", Color.Blue, 2);
         }
     }
 }

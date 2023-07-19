@@ -1,4 +1,6 @@
-﻿namespace aadea.Vistas
+﻿using aadea.Extras;
+
+namespace aadea.Vistas
 {
     public partial class FormTrabajadores : Form
     {
@@ -109,7 +111,7 @@
                 DGV_T.DataSource = null;
                 DGV_T.Rows.Clear();
                 FormTrabajadores_Load(sender, e);
-                MostrarNotificacion("Trabajador eliminado", Color.Red, 3);
+                this.ParentForm.MostrarNotificacion("Trabajador eliminado", Color.Red, 3);
             }
         }
 
@@ -131,7 +133,7 @@
                     this.BackToEmpList();
                     this.CleanTextBoxes();
                     this.FormTrabajadores_Load(sender, e);
-                    MostrarNotificacion("Trabajador guardado", Color.Green, 1);
+                    this.ParentForm.MostrarNotificacion("Trabajador guardado", Color.Green, 1);
                 }
                 else
                 {
@@ -149,7 +151,7 @@
                     this.BackToEmpList();
                     this.CleanTextBoxes();
                     this.FormTrabajadores_Load(sender, e);
-                    MostrarNotificacion("Trabajador modificado", Color.Blue, 2);
+                    this.ParentForm.MostrarNotificacion("Trabajador modificado", Color.Blue, 2);
                 }
                 else
                 {
@@ -168,18 +170,5 @@
             this.CleanTextBoxes();
             this.FormTrabajadores_Load(sender, e);
         }
-
-        private void MostrarNotificacion(string mensaje, Color color, int tipo)
-        {
-            Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
-
-            int x = this.Right - notificacion.Width;
-            int y = this.Bottom;
-            notificacion.StartPosition = FormStartPosition.Manual;
-            notificacion.Location=new Point(x, y);
-
-            notificacion.Show(this);
-        }
-
     }
 }
