@@ -139,6 +139,7 @@ namespace aadea.Vistas
                 L_Materials l_materials = new L_Materials();
                 flowLayoutPanel1.Controls.Remove(user);
                 l_materials.DeleteMaterial(id);
+                MostrarNotificacion("Material eliminado", Color.Red, 3);
             }
 
             resetCampos(sender, e);
@@ -266,6 +267,19 @@ namespace aadea.Vistas
             tabControl1.TabPages.Remove(EditMaterial);
             tabControl1.TabPages.Add(ListaMateriales);
             resetCampos(sender, e);
+            MostrarNotificacion("Material agregado", Color.Green, 1);
+        }
+
+        private void MostrarNotificacion(string mensaje, Color color, int tipo)
+        {
+            Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
+
+            int x = this.Right - notificacion.Width;
+            int y = this.Bottom;
+            notificacion.StartPosition = FormStartPosition.Manual;
+            notificacion.Location=new Point(x, y);
+
+            notificacion.Show(this);
         }
 
         private void searchBtnMod_Click(object sender, EventArgs e)
@@ -316,8 +330,7 @@ namespace aadea.Vistas
             stocktext = stocktext.Replace(',', '.');
             if (float.TryParse(stocktext, NumberStyles.Float, CultureInfo.InvariantCulture, out valor))
             {
-                string mensaje = valor.ToString("F2", CultureInfo.InvariantCulture);
-                MessageBox.Show(mensaje);
+                
             }
             else
             {
@@ -343,6 +356,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(ListaMateriales);
             Principal.menuTitleLaberl.Text = "MATERIALES";
             resetCampos(sender, e);
+            MostrarNotificacion("Material modificado", Color.Blue, 2);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Windows.Forms;
 using aadea.Logicaq;
 using aadea.Properties;
 using aadea.userControls;
@@ -123,6 +124,7 @@ namespace aadea.Vistas
                 L_Products l_Products = new L_Products();
                 flowLayoutPanel1.Controls.Remove(user);
                 l_Products.DeleteProduct(id);
+                MostrarNotificacion("Producto eliminado", Color.Red, 3);
             }
 
             resetCampos(sender, e);
@@ -189,12 +191,26 @@ namespace aadea.Vistas
                 ins.InsertProduct(nombre, desc);
             }
 
+
             tabControl.SelectedTab = productList;
             tabControl.TabPages.Remove(AddP);
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(productList);
             resetCampos(sender, e);
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
+            MostrarNotificacion("Producto guardado", Color.Green, 1);
+        }
+
+        private void MostrarNotificacion(string mensaje, Color color, int tipo)
+        {
+            Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
+
+            int x = this.Right - notificacion.Width;
+            int y = this.Bottom;
+            notificacion.StartPosition = FormStartPosition.Manual;
+            notificacion.Location=new Point(x, y);
+
+            notificacion.Show(this);
         }
 
         private void cancel_BtnEdit_Click(object sender, EventArgs e)
@@ -237,6 +253,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Add(productList);
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
             resetCampos(sender, e);
+            MostrarNotificacion("Producto editado", Color.Blue, 2);
         }
 
         private void search_BtnEdit_Click(object sender, EventArgs e)

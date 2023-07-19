@@ -363,6 +363,7 @@ namespace aadea.Vistas
 
                 TabPrincipal.TabPages.Remove(Add);
                 resetCamp(sender, e);
+                MostrarNotificacion("Asistencia eliminada", Color.Red, 3);
             }
         }
 
@@ -370,6 +371,19 @@ namespace aadea.Vistas
         {
             finalHourConfirm();
             FormAsist_Load(sender, e);
+            MostrarNotificacion("Hora de salida Ingresada", Color.Green, 1);
+        }
+
+        private void MostrarNotificacion(string mensaje, Color color, int tipo)
+        {
+            Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
+
+            int x = this.Right - notificacion.Width;
+            int y = this.Bottom;
+            notificacion.StartPosition = FormStartPosition.Manual;
+            notificacion.Location=new Point(x, y);
+
+            notificacion.Show(this);
         }
 
         private void AceptarAdd_Click(object sender, EventArgs e)

@@ -109,8 +109,12 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(tabHistory);
+            FormLoadHistory(sender, e);
+        }
 
-
+        private void FormLoadHistory(object sender, EventArgs e)
+        {
+            LayoutHistorial.Controls.Clear();
             L_Produccion l_produccion = new L_Produccion();
             DataTable dataTable = l_produccion.ListHistorial();
             foreach (DataRow row in dataTable.Rows)
@@ -162,8 +166,6 @@ namespace aadea.Vistas
         private void bttExitHistory_Click(object sender, EventArgs e)
         {
         }
-
-
 
 
 
@@ -230,6 +232,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Add(tabBodega);
             resertcampos(sender, e);
+            MostrarNotificacion("Produccion terminada", Color.Green, 1);
 
         }
         private void aceptInsertProduct_Click(object sender, EventArgs e)
@@ -242,13 +245,19 @@ namespace aadea.Vistas
 
         private void User_DeleteButtonClicked(object sender, EventArgs e)
         {
-            produccionActual user = (produccionActual)sender;
-            int id = user.ID;
-            L_Produccion l = new L_Produccion();
-            l.EliminarProduccion(id);
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar esta producción?",
+               "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                produccionActual user = (produccionActual)sender;
+                int id = user.ID;
+                L_Produccion l = new L_Produccion();
+                l.EliminarProduccion(id);
+                layoutPanelActualProduccion.Controls.Remove(user);
+                MostrarNotificacion("Produccion eliminada", Color.Red, 3);
+            }
+            resertcampos(sender, e);
 
-            // Eliminar el user control del panel
-            layoutPanelActualProduccion.Controls.Remove(user);
         }
 
         private void btExitProduccionActual_Click(object sender, EventArgs e)
@@ -593,6 +602,19 @@ namespace aadea.Vistas
                 MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            MostrarNotificacion("Produccion ingresada", Color.Green, 1);
+        }
+
+        private void MostrarNotificacion(string mensaje, Color color, int tipo)
+        {
+            Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
+
+            int x = this.Right - notificacion.Width;
+            int y = this.Bottom;
+            notificacion.StartPosition = FormStartPosition.Manual;
+            notificacion.Location=new Point(x, y);
+
+            notificacion.Show(this);
         }
 
         private void cancelarIngresar_Click(object sender, EventArgs e)
@@ -605,6 +627,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
+            MostrarNotificacion("Produccion no ingresada", Color.Red, 3);
         }
 
         private void aceptarIngresarBodega_Click(object sender, EventArgs e)
@@ -632,7 +655,7 @@ namespace aadea.Vistas
 
                 if (Int32.TryParse(cantidadTexto, out cantidad))
                 {
-                    MessageBox.Show("Converted: " + cantidad.ToString());
+                    
                 }
                 else
                 {
@@ -655,6 +678,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
+            MostrarNotificacion("Productos ingresados a bodega", Color.Green, 1);
         }
 
         private void cancelarIngresarBodega_Click(object sender, EventArgs e)
@@ -666,6 +690,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabProduccionActual);
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
+            MostrarNotificacion("Productos no ingresados a la bodega", Color.Red, 3);
         }
     }
 }

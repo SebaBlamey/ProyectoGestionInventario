@@ -232,6 +232,19 @@ namespace aadea.Vistas
             goToMainInventory();
             this.clearSelections();
             this.FormProduccion_Load(sender, e);
+            MostrarNotificacion("Producto ingresado a bodega", Color.Green, 1);
+        }
+
+        private void MostrarNotificacion(string mensaje, Color color, int tipo)
+        {
+            Notificaciones notificacion = new Notificaciones(mensaje, color, tipo);
+
+            int x = this.Right - notificacion.Width;
+            int y = this.Bottom;
+            notificacion.StartPosition = FormStartPosition.Manual;
+            notificacion.Location=new Point(x, y);
+
+            notificacion.Show(this);
         }
 
         private void volverBtn_Click(object sender, EventArgs e)
@@ -257,6 +270,7 @@ namespace aadea.Vistas
             ins.addSize(size);
             this.refreshDGV();
             this.clearSelections();
+            MostrarNotificacion("Tamaño agregado", Color.Green, 1);
         }
 
         private void quitarInventario_Click(object sender, EventArgs e)
@@ -273,6 +287,7 @@ namespace aadea.Vistas
                 L_inventario del = new L_inventario();
                 del.delSize(id);
                 this.refreshDGV();
+                MostrarNotificacion("Tamaño eliminado", Color.Red, 3);
             }
         }
 
@@ -298,6 +313,7 @@ namespace aadea.Vistas
             L_inventario list = new L_inventario();
             DataTable dt1 = list.listStockID(this.idLocal);
             DGV_Stock.DataSource = dt1;
+            MostrarNotificacion("Stock aumentado", Color.Green, 1);
         }
 
         private void minu_Click(object sender, EventArgs e)
@@ -321,6 +337,7 @@ namespace aadea.Vistas
             L_inventario list = new L_inventario();
             DataTable dt1 = list.listStockID(this.idLocal);
             DGV_Stock.DataSource = dt1;
+            MostrarNotificacion("Stcok disminuido", Color.Blue, 2);
         }
     }
 }
