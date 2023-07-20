@@ -171,7 +171,7 @@ namespace aadea.Logicaq
 
                 if (answer.Equals("OK"))
                 {
-                    MessageBox.Show(answer);
+                    //MessageBox.Show(answer);
                 }
                 else
                 {

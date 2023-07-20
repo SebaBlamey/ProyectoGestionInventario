@@ -93,6 +93,8 @@ namespace aadea.Vistas
         {
             //Principal.menuTitleLaberl.Text = "PRODUCCION";
             textBoxCantidad.Text = string.Empty;
+            txtName.Text = string.Empty;
+            boxProductsCreate.Text = string.Empty;
         }
 
 
@@ -234,7 +236,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Add(tabBodega);
             resertcampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Produccion terminada", 1);
+            
 
         }
         private void aceptInsertProduct_Click(object sender, EventArgs e)
@@ -287,7 +289,7 @@ namespace aadea.Vistas
             {
                 if (cantidadMateriales > cantMaterialesTot)
                 {
-                    MessageBox.Show("No puedes ingresar un número mayor a los materiales que tienes\nla cantidad de materiales que tienes son: ." + cantMaterialesTot, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No puedes ingresar un número mayor a los materiales que tienes\nla cantidad de materiales que tienes son: " + cantMaterialesTot, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxCantidad.Clear(); ; // Restaurar el valor máximo permitido
                     return;
                 }

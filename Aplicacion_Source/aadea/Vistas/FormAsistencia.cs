@@ -118,6 +118,7 @@ namespace aadea.Vistas
         private void resetCamp(object sender, EventArgs e)
         {
             CheckIn.Text = string.Empty;
+            FinalHourTB.Text = string.Empty;
             FormAsist_Load(sender, e);
         } //REINICIAR CAMPOS
 
@@ -376,11 +377,12 @@ namespace aadea.Vistas
                 FormAsist_Load(sender, e);
                 this.ParentForm.MostrarNotificacion("Hora de salida Ingresada", 1);
             }
+            resetCamp(sender, e);
         }
 
 
 
-            private void AceptarAdd_Click(object sender, EventArgs e)
+        private void AceptarAdd_Click(object sender, EventArgs e)
         {
             if (queryCall(sender, e))
             {
