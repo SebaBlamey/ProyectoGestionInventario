@@ -75,7 +75,6 @@ namespace aadea.Vistas
                 L_bodega l_Bodega = new L_bodega();
                 DataTable list = l_Bodega.listInventarioporID(id);
                 userControl.DataGridView1.DataSource = list;
-
             }
             this.refreshDGV();
 
@@ -215,18 +214,20 @@ namespace aadea.Vistas
         {
             if (DGV_P_AddT.SelectedRows.Count == 0 || DGV_Size_AddT.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un producto y un tamaño antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Seleccione un producto y un tamaño antes de continuar", 3);
                 return;
             }
             if (string.IsNullOrEmpty(textBox1.Text))
             {
-                MessageBox.Show("Ingrese un stock inicial antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Ingrese un stock inicial antes de continuar", 3);
                 return;
             }
             string idProd = Convert.ToString(DGV_P_AddT.SelectedRows[0].Cells["ID"].Value);
-            string idSize = Convert.ToString(DGV_Size_AddT.SelectedRows[0].Cells["ID"].Value);
+            string size = Convert.ToString(DGV_Size_AddT.SelectedRows[0].Cells["Tamaño"].Value);
             int stock = int.Parse(textBox1.Text);
 
+            L_Produccion getId = new L_Produccion();
+            string idSize = getId.obtenerIdFrasco(size).ToString();
             L_inventario ins = new L_inventario();
             ins.addToInventory(idProd, idSize, stock);
             goToMainInventory();
@@ -251,27 +252,27 @@ namespace aadea.Vistas
             L_inventario ins = new L_inventario();
             if (string.IsNullOrEmpty(sizesAddTB.Text))
             {
-                MessageBox.Show("Ingrese un numero para poder proceder");
+                this.ParentForm.MostrarNotificacion("Debe ingresar un numero", 3);
                 return;
             }
             int size = int.Parse(sizesAddTB.Text);
             ins.addSize(size);
             this.refreshDGV();
             this.clearSelections();
-            this.ParentForm.MostrarNotificacion("Tamaño agregado",  1);
+            this.ParentForm.MostrarNotificacion("Tamaño agregado", 1);
         }
 
         private void quitarInventario_Click(object sender, EventArgs e)
         {
             if (DGV_Sizes.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un tamaño para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Seleccione un tamaño para eliminar", 3);
                 return;
             }
             DialogResult result = MessageBox.Show("¿Estás seguro de realizar esta acción?", "Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(DGV_Sizes.SelectedRows[0].Cells["ID"].Value);
+                int id = Convert.ToInt32(DGV_Sizes.SelectedRows[0].Cells["Tamaño"].Value);
                 L_inventario del = new L_inventario();
                 del.delSize(id);
                 this.refreshDGV();
@@ -289,7 +290,7 @@ namespace aadea.Vistas
         {
             if (string.IsNullOrEmpty(textBox2.Text) || DGV_Stock.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un tamaño y llene el stock antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Seleccione un tamaño y llene el stock antes de continuar", 3);
                 return;
             }
             int incStock = Convert.ToInt32(textBox2.Text);
@@ -308,14 +309,14 @@ namespace aadea.Vistas
         {
             if (string.IsNullOrEmpty(textBox2.Text) || DGV_Stock.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un tamaño y llene el stock antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Seleccione un tamaño y llene el stock antes de continuar", 3);
                 return;
             }
             int decStock = Convert.ToInt32(textBox2.Text);
             if (decStock == 0) return;
             if (decStock > Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Stock"].Value))
             {
-                MessageBox.Show("No puede eliminar una cantidad mayor a la presentada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("No puede eliminar una cantidad mayor a la presentada", 3);
                 return;
             }
             int size = Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Tamaño"].Value);
@@ -325,7 +326,7 @@ namespace aadea.Vistas
             L_inventario list = new L_inventario();
             DataTable dt1 = list.listStockID(this.idLocal);
             DGV_Stock.DataSource = dt1;
-            this.ParentForm.MostrarNotificacion("Stcok disminuido", 2);
+            this.ParentForm.MostrarNotificacion("Stock disminuido", 1);
         }
 
         private void DGV_P_AddT_CellContentClick(object sender, DataGridViewCellEventArgs e)

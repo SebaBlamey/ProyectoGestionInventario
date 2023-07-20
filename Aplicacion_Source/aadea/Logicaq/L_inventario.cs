@@ -45,7 +45,7 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "SELECT nombre FROM producto";
+                string SQLQuery = "SELECT ID, nombre FROM producto";
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
                 SQLCon.Open();
                 resultado = Comando.ExecuteReader();
@@ -86,20 +86,29 @@ namespace aadea.Logicaq
                 if (SQLCon.State == ConnectionState.Open) SQLCon.Close();
             }
         }
-        public void addToInventory(string idProd, string idSize, int stock)
+
+        
+
+        public void addToInventory(string idProd, string size, int stock)
         {
             string answer = "";
             SQLiteConnection SQLCon = new SQLiteConnection();
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "INSERT INTO Bodega(ID_Producto, ID_Frasco, Stock) VALUES (@prod, @size, @stock)";
+                string SQLQuery2 = "INSERT INTO Bodega(ID_Producto, ID_Frasco, Stock) VALUES (@prod, @IDsize, @stock)";
+               // string SQLQuery = "SELECT ID FROM Frasco WHERE Tamaño = @size";
                 SQLCon.Open();
-                SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
-                Comando.Parameters.AddWithValue("@prod", idProd);
-                Comando.Parameters.AddWithValue("@size", idSize);
-                Comando.Parameters.AddWithValue("@stock", stock);               
-                answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "";
+                /*
+                SQLiteCommand Comando = new SQLiteCommand(SQLQuery,SQLCon);
+                Comando.Parameters.AddWithValue("@size", size);
+                string dato = (string)Comando.ExecuteScalar();
+                */
+                SQLiteCommand Comando2 = new SQLiteCommand(SQLQuery2, SQLCon);
+                Comando2.Parameters.AddWithValue("@prod", idProd);
+                Comando2.Parameters.AddWithValue("@IDsize", size);
+                Comando2.Parameters.AddWithValue("@stock", stock);               
+                answer = Comando2.ExecuteNonQuery() >= 1 ? "OK" : "";
 
                 if (answer.Equals("OK"))
                 {
@@ -179,7 +188,7 @@ namespace aadea.Logicaq
             }
         }
 
-        public void delSize(int id)
+        public void delSize(int size)
         {
             string answer = "";
             SQLiteTransaction transaction = null;
@@ -187,11 +196,11 @@ namespace aadea.Logicaq
             try
             {
                 SQLCon = Conexion.GetConexion().CrearConexion();
-                string SQLQuery = "DELETE FROM Frasco WHERE ID = @id";
+                string SQLQuery = "DELETE FROM Frasco WHERE Tamaño = @size";
                 SQLCon.Open();
                 transaction = SQLCon.BeginTransaction();
                 SQLiteCommand Comando = new SQLiteCommand(SQLQuery, SQLCon);
-                Comando.Parameters.AddWithValue("@id", id);
+                Comando.Parameters.AddWithValue("@size", size);
                 answer = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo completar el proceso de eliminacion, intente nuevamente";
                 transaction.Commit();
             }

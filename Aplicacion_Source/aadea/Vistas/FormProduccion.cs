@@ -234,7 +234,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Add(tabBodega);
             resertcampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Produccion terminada",1);
+            this.ParentForm.MostrarNotificacion("Produccion terminada", 1);
 
         }
         private void aceptInsertProduct_Click(object sender, EventArgs e)
@@ -256,7 +256,7 @@ namespace aadea.Vistas
                 L_Produccion l = new L_Produccion();
                 l.EliminarProduccion(id);
                 layoutPanelActualProduccion.Controls.Remove(user);
-                this.ParentForm.MostrarNotificacion("Produccion eliminada",  3);
+                this.ParentForm.MostrarNotificacion("Produccion eliminada", 3);
             }
             resertcampos(sender, e);
 
@@ -479,7 +479,7 @@ namespace aadea.Vistas
             L_Produccion l_list = new L_Produccion();
             l_list.InsertarProduccion(idProduccion, nombreProduccion, fechaInicio);
 
-            bool suficienteMaterial = true; 
+            bool suficienteMaterial = true;
 
             Dictionary<int, float> materialesCantidad = new Dictionary<int, float>(); // Diccionario para almacenar el ID del material y la cantidad utilizada
 
@@ -500,7 +500,7 @@ namespace aadea.Vistas
                     if (cantidad > stockDisponible)
                     {
                         suficienteMaterial = false;
-                        break; 
+                        break;
                     }
 
                     materialesCantidad[idMaterial] = cantidad;
@@ -509,7 +509,7 @@ namespace aadea.Vistas
                 {
                     MessageBox.Show("Error");
                     suficienteMaterial = false;
-                    break; 
+                    break;
                 }
             }
 
@@ -540,7 +540,7 @@ namespace aadea.Vistas
                 MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
         private void cancelarIngresar_Click(object sender, EventArgs e)
@@ -553,7 +553,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Produccion no ingresada", 3);
+            //this.ParentForm.MostrarNotificacion("Produccion no ingresada", 3);
         }
 
         private void aceptarIngresarBodega_Click(object sender, EventArgs e)
@@ -604,7 +604,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Productos ingresados a bodega",  1);
+            this.ParentForm.MostrarNotificacion("Productos ingresados a bodega", 1);
         }
 
         private void cancelarIngresarBodega_Click(object sender, EventArgs e)

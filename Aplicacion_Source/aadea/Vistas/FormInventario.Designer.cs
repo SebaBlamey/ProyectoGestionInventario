@@ -50,6 +50,9 @@ namespace aadea.Vistas
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
             addProdTab = new TabPage();
+            label4 = new Label();
+            label1 = new Label();
+            label6 = new Label();
             volverBtn = new FontAwesome.Sharp.IconButton();
             agregarInv = new FontAwesome.Sharp.IconButton();
             textBox1 = new TextBox();
@@ -59,6 +62,7 @@ namespace aadea.Vistas
             DGV_Size_AddT = new DataGridView();
             DGV_P_AddT = new DataGridView();
             tabSizes = new TabPage();
+            label5 = new Label();
             label3 = new Label();
             quitarInventario = new FontAwesome.Sharp.IconButton();
             agregarInventario = new FontAwesome.Sharp.IconButton();
@@ -183,6 +187,9 @@ namespace aadea.Vistas
             // addProdTab
             // 
             addProdTab.BackColor = Color.FromArgb(115, 124, 141);
+            addProdTab.Controls.Add(label4);
+            addProdTab.Controls.Add(label1);
+            addProdTab.Controls.Add(label6);
             addProdTab.Controls.Add(volverBtn);
             addProdTab.Controls.Add(agregarInv);
             addProdTab.Controls.Add(textBox1);
@@ -198,6 +205,39 @@ namespace aadea.Vistas
             addProdTab.TabIndex = 1;
             addProdTab.Text = "AddProd";
             addProdTab.Click += addProdTab_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(282, 216);
+            label4.Name = "label4";
+            label4.Size = new Size(18, 23);
+            label4.TabIndex = 15;
+            label4.Text = "*";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(642, 24);
+            label1.Name = "label1";
+            label1.Size = new Size(18, 23);
+            label1.TabIndex = 14;
+            label1.Text = "*";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(293, 24);
+            label6.Name = "label6";
+            label6.Size = new Size(18, 23);
+            label6.TabIndex = 13;
+            label6.Text = "*";
             // 
             // volverBtn
             // 
@@ -356,6 +396,7 @@ namespace aadea.Vistas
             DGV_P_AddT.AllowUserToResizeRows = false;
             DGV_P_AddT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DGV_P_AddT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_P_AddT.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             DGV_P_AddT.BackgroundColor = Color.FromArgb(155, 164, 181);
             DGV_P_AddT.BorderStyle = BorderStyle.None;
             DGV_P_AddT.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -411,6 +452,7 @@ namespace aadea.Vistas
             // tabSizes
             // 
             tabSizes.BackColor = Color.FromArgb(115, 124, 141);
+            tabSizes.Controls.Add(label5);
             tabSizes.Controls.Add(label3);
             tabSizes.Controls.Add(quitarInventario);
             tabSizes.Controls.Add(agregarInventario);
@@ -423,6 +465,17 @@ namespace aadea.Vistas
             tabSizes.Size = new Size(830, 442);
             tabSizes.TabIndex = 2;
             tabSizes.Text = "Tamaños";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.ForeColor = Color.Red;
+            label5.Location = new Point(664, 137);
+            label5.Name = "label5";
+            label5.Size = new Size(18, 23);
+            label5.TabIndex = 17;
+            label5.Text = "*";
             // 
             // label3
             // 
@@ -770,5 +823,9 @@ namespace aadea.Vistas
         private FontAwesome.Sharp.IconButton volverModStock;
         private FontAwesome.Sharp.IconButton plus;
         private FontAwesome.Sharp.IconButton minu;
+        private Label label4;
+        private Label label1;
+        private Label label6;
+        private Label label5;
     }
 }

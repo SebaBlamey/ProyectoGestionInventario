@@ -229,40 +229,46 @@ namespace aadea.Vistas
             }
         }
 
-        private void finalHourConfirm()
+        private bool FinalHourConfirm()
         {
             try
             {
-
                 Regex regex = new Regex(@"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
                 L_Asistencia l_Asistencia = new L_Asistencia();
                 DataGridViewRow filaSeleccionada = DGV_Asist.SelectedRows[0];
+
                 // Obtener los valores de las celdas de la fila
                 string rut = filaSeleccionada.Cells["rut"].Value.ToString();
                 DateTime fecha = Convert.ToDateTime(filaSeleccionada.Cells["Dia"].Value);
                 DateTime horaLlegada = Convert.ToDateTime(filaSeleccionada.Cells["Llegada"].Value);
+
                 if (!regex.IsMatch(FinalHourTB.Text))
                 {
                     // Mostrar mensaje de error o realizar alguna acción apropiada
-                    MessageBox.Show("Formato de hora no valida. Utilice el formato HH:mm.", "Error");
-
-                    return;
+                    MessageBox.Show("Formato de hora no válida. Utilice el formato HH:mm.", "Error");
+                    return false;
                 }
+
                 DateTime horaSalida = Convert.ToDateTime(FinalHourTB.Text);
+
                 if (!ValidarHoraSalida(horaLlegada, horaSalida))
                 {
-                    MessageBox.Show("Esta ingresando una hora de salida menor a la de llegada.", "Error");
-                    return;
+                    MessageBox.Show("Está ingresando una hora de salida menor a la de llegada.", "Error");
+                    return false;
                 }
+
                 l_Asistencia.UpdateAssistance(rut, fecha, horaLlegada, horaSalida);
 
-
+                // El proceso se ha realizado correctamente
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
-        } //MODIFICACION DE HORA DE SALIDA
+        }
+        //MODIFICACION DE HORA DE SALIDA
         private bool ValidarHoraSalida(DateTime horaLlegada, DateTime horaSalida) //VERIFICACION DE HORA DE SALIDA PARA QUE NO SEA MENOR A LA DE LLEGADA
         {
             // Verificar si la hora de salida es menor a la hora de llegada
@@ -273,11 +279,6 @@ namespace aadea.Vistas
 
             return true;
         }
-        private void FinalHouBTAccept_Click(object sender, EventArgs e) //ACEPTAR DE LA ELIMINACION
-        {
-        }
-
-
         private void OpcionCB_CheckedChanged_1(object sender, EventArgs e)
         {
 
@@ -369,14 +370,16 @@ namespace aadea.Vistas
 
         private void ConfirmAsistencia_Click(object sender, EventArgs e)
         {
-            finalHourConfirm();
-            FormAsist_Load(sender, e);
-            this.ParentForm.MostrarNotificacion("Hora de salida Ingresada",  1);
+            if (FinalHourConfirm())
+            {
+                FormAsist_Load(sender, e);
+                this.ParentForm.MostrarNotificacion("Hora de salida Ingresada", 1);
+            }
         }
 
-        
 
-        private void AceptarAdd_Click(object sender, EventArgs e)
+
+            private void AceptarAdd_Click(object sender, EventArgs e)
         {
             if (queryCall(sender, e))
             {
