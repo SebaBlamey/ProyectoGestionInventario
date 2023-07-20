@@ -34,11 +34,13 @@ namespace aadea.Vistas
             rutaSeleccionada = null;
             FormProductos_Load(sender, e);
         }
+        private string ogProductoName = "";
 
         private void AddProduct_Click_1(object sender, EventArgs e)
         {
             tabControl.SelectedTab = AddP;
             tabControl.TabPages.Remove(productList);
+            ogProductoName = "";
             tabControl.TabPages.Remove(EditP);
             tabControl.TabPages.Add(AddP);
             Principal.menuTitleLaberl.Text = "AGREGAR PRODUCTOS";
@@ -97,6 +99,7 @@ namespace aadea.Vistas
         {
             Principal.menuTitleLaberl.Text = "MODIFICAR PRODUCTOS";
             string nombre = user.Tittle;
+            ogProductoName = user.Tittle;
             string desc = user.Desc;
             int id = user.ID;
             idlocal = user.ID;
@@ -153,8 +156,7 @@ namespace aadea.Vistas
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.ParentForm.MostrarNotificacion("Por favor, selecciona una imagen en formato PNG o JPEG",3);
                 }
             }
         }
@@ -203,7 +205,7 @@ namespace aadea.Vistas
 
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(desc))
             {
-                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Por favor, complete todos los campos", 3);
                 return;
             }
 
@@ -263,9 +265,17 @@ namespace aadea.Vistas
 
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(desc))
             {
-                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Por favor, complete todos los campos", 3);
                 return;
+            }
+
+            if (ogProductoName != nombre)
+            {
+                if (ProductoExiste(nombre))
+                {
+                    this.ParentForm.MostrarNotificacion($"Ya existe el producto '{nombre}'", 3);
+                    return;
+                }
             }
 
             L_Products ins = new L_Products();
@@ -305,8 +315,7 @@ namespace aadea.Vistas
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.ParentForm.MostrarNotificacion("Por favor, selecciona una imagen en formato PNG o JPEG", 3);
                 }
             }
         }

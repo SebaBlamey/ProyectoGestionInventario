@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Extras\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Model\BT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="userControls\historyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="userControls\produccionActual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="userControls\productBodega.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="userControls\UserMaterial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="userControls\UserProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Vistas\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\FormAsistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\FormInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\FormMateriales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\FormProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\FormProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\FormTrabajadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\Notificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\PINmod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Vistas\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

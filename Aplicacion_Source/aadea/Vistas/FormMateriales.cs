@@ -324,8 +324,7 @@ namespace aadea.Vistas
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecciona una imagen en formato PNG o JPEG.", "Formato incorrecto",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.ParentForm.MostrarNotificacion("Por favor, selecciona una imagen en formato PNG o JPEG", 3);
                 }
             }
         }
