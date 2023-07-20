@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.SQLite;
 using System.Windows.Forms;
 using aadea.Extras;
 using aadea.Logicaq;
@@ -168,6 +169,33 @@ namespace aadea.Vistas
             resetCampos(sender, e);
         }
 
+        private bool ProductoExiste(string nombre)
+        {
+            try
+            {
+                using (SQLiteConnection connection = Conexion.GetConexion().CrearConexion())
+                {
+                    string query = "SELECT Nombre FROM Producto WHERE Nombre = @nombre";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre", nombre);
+                        connection.Open();
+                        using (SQLiteDataReader resultado = command.ExecuteReader())
+                        {
+                            // Si el resultado tiene filas, significa que se encontró un producto con el mismo nombre
+                            return resultado.HasRows;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // Manejo de excepciones: muestra un mensaje y registra el error para depuración
+                Console.WriteLine("Error al conectar a la base de datos: " + e.Message);
+                return false;
+            }
+        }
+
         private void save_iconBtn_Click(object sender, EventArgs e)
         {
             string nombre = txtProduct.Text;
@@ -175,32 +203,48 @@ namespace aadea.Vistas
 
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(desc))
             {
-                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            L_Products ins = new L_Products();
-
-            if (!string.IsNullOrEmpty(rutaSeleccionada))
+            try
             {
-                byte[] bytesImagen = File.ReadAllBytes(rutaSeleccionada);
-                ins.InsertProductWI(nombre, desc, bytesImagen);
+                if (ProductoExiste(nombre))
+                {
+                    this.ParentForm.MostrarNotificacion($"Ya existe el producto '{nombre}'", 3);
+                    return;
+                }
+
+                // El producto no existe, procedemos a guardarlo en la base de datos
+                L_Products ins = new L_Products();
+
+                if (!string.IsNullOrEmpty(rutaSeleccionada))
+                {
+                    byte[] bytesImagen = File.ReadAllBytes(rutaSeleccionada);
+                    ins.InsertProductWI(nombre, desc, bytesImagen);
+                }
+                else
+                {
+                    ins.InsertProduct(nombre, desc);
+                }
+
+                tabControl.SelectedTab = productList;
+                tabControl.TabPages.Remove(AddP);
+                tabControl.TabPages.Remove(EditP);
+                tabControl.TabPages.Add(productList);
+                resetCampos(sender, e);
+                Principal.menuTitleLaberl.Text = "PRODUCTOS";
+                this.ParentForm.MostrarNotificacion("Producto guardado", 1);
             }
-            else
+            catch (Exception ex)
             {
-                ins.InsertProduct(nombre, desc);
+                // Manejo de excepciones: muestra un mensaje y registra el error para depuración
+                this.ParentForm.MostrarNotificacion("Ha ocurrido un error al guardar el producto.", 3);
+                Console.WriteLine(ex.Message);
             }
-
-
-            tabControl.SelectedTab = productList;
-            tabControl.TabPages.Remove(AddP);
-            tabControl.TabPages.Remove(EditP);
-            tabControl.TabPages.Add(productList);
-            resetCampos(sender, e);
-            Principal.menuTitleLaberl.Text = "PRODUCTOS";
-            this.ParentForm.MostrarNotificacion("Producto guardado", 1);
         }
+
+
 
         private void cancel_BtnEdit_Click(object sender, EventArgs e)
         {

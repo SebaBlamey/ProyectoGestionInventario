@@ -4,6 +4,12 @@ namespace aadea.Extras;
 
 public static class HelpMSG
 {
+    /// <summary>
+    /// Mostar notificacion
+    /// </summary>
+    /// <param name="form"></param>
+    /// <param name="mensaje">string</param>
+    /// <param name="tipo">1 Succes. 2 Info. 3 Error</param>
     public static void MostrarNotificacion(this Form form, string mensaje, int tipo)
     {
         Notificaciones notificacion = new Notificaciones(mensaje, tipo);

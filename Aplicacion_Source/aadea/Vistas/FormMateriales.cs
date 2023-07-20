@@ -7,6 +7,7 @@ using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using System.Globalization;
 using System.Windows.Forms;
 using aadea.Extras;
+using System.Data.SQLite;
 
 namespace aadea.Vistas
 {
@@ -35,6 +36,7 @@ namespace aadea.Vistas
         {
             Principal.menuTitleLaberl.Text = "MATERIALES";
             idLocal = -1;
+            ogMaterialName = "";
             txtNameInsert.Text = string.Empty;
             txtStock.Text = string.Empty;
             opcionBox.Text = string.Empty;
@@ -62,8 +64,8 @@ namespace aadea.Vistas
 
                 byte[] imagen = l_materials.ObtenerImagenMaterial(id);
                 userControl.nombretit = name;
-                userControl.Cantidad = $"{stock.ToString("0.0")} {unidad}";
-                userControl.Unidad = "";
+                userControl.Cantidad = $"{stock.ToString("0.0")}";
+                userControl.Unidad = unidad;
                 userControl.ID = Convert.ToInt32(row["ID"]);
 
                 // Suscribirte al evento DeleteButtonClicked y pasar el UserControl
@@ -98,12 +100,15 @@ namespace aadea.Vistas
             }
         }
 
+        private string ogMaterialName = "";
+
         private void UserControl_ButtonModify(UserMaterial user)
         {
             try
             {
                 Principal.menuTitleLaberl.Text = "MODIFICAR MATERIAL";
                 string nombre = user.nombretit;
+                ogMaterialName = user.nombretit;
                 string cantidad = user.Cantidad;
                 string unidad = user.Unidad;
                 int id = user.ID;
@@ -140,7 +145,7 @@ namespace aadea.Vistas
                 L_Materials l_materials = new L_Materials();
                 flowLayoutPanel1.Controls.Remove(user);
                 l_materials.DeleteMaterial(id);
-                this.ParentForm.MostrarNotificacion("Material eliminado", 3);
+                this.ParentForm.MostrarNotificacion("Material eliminado", 1);
             }
 
             resetCampos(sender, e);
@@ -226,6 +231,34 @@ namespace aadea.Vistas
             tabControl1.TabPages.Remove(EditMaterial);
         }
 
+        private bool MaterialExiste(string nombre)
+        {
+            try
+            {
+                using (SQLiteConnection connection = Conexion.GetConexion().CrearConexion())
+                {
+                    string query = "SELECT Nombre FROM Material WHERE Nombre = @nombre";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombre", nombre);
+                        connection.Open();
+                        using (SQLiteDataReader resultado = command.ExecuteReader())
+                        {
+                            // Si el resultado tiene filas, significa que se encontró un producto con el mismo nombre
+                            return resultado.HasRows;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // Manejo de excepciones: muestra un mensaje y registra el error para depuración
+                Console.WriteLine("Error al conectar a la base de datos: " + e.Message);
+                return false;
+            }
+        }
+
+
         private void save_iconBtn_Click(object sender, EventArgs e)
         {
             string nombre = txtNameInsert.Text;
@@ -234,8 +267,13 @@ namespace aadea.Vistas
             float valor;
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(stocktext) || string.IsNullOrEmpty(unidad))
             {
-                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Por favor, complete todos los campos",3);
+                return;
+            }
+
+            if (MaterialExiste(nombre))
+            {
+                this.ParentForm.MostrarNotificacion($"Ya existe el material '{nombre}'", 3);
                 return;
             }
 
@@ -244,12 +282,11 @@ namespace aadea.Vistas
             if (float.TryParse(stocktext, NumberStyles.Float, CultureInfo.InvariantCulture, out valor))
             {
                 string mensaje = valor.ToString("F2", CultureInfo.InvariantCulture);
-                MessageBox.Show(mensaje);
             }
             else
             {
-                MessageBox.Show(
-                    "Error en el numero, intente nuevamente, recuerde que para agregar un numero decimal ocupe un '.' ");
+                this.ParentForm.MostrarNotificacion("Utilice '.' cuando quiera usar decimal", 3);
+                return;
             }
 
             if (!string.IsNullOrEmpty(rutaSeleccionadaAdd))
@@ -311,9 +348,17 @@ namespace aadea.Vistas
             float valor;
             if (string.IsNullOrEmpty(nombre) || (stocktext == null) || string.IsNullOrEmpty(unidad))
             {
-                MessageBox.Show("Por favor, completa todos los campos.", "Campos vacíos", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Por favor, complete todos los campos", 3);
                 return;
+            }
+
+            if (ogMaterialName != nombre)
+            {
+                if (MaterialExiste(nombre))
+                {
+                    this.ParentForm.MostrarNotificacion($"Ya existe el material '{nombre}'", 3);
+                    return;
+                }
             }
 
             stocktext = stocktext.Replace(',', '.');
@@ -323,8 +368,8 @@ namespace aadea.Vistas
             }
             else
             {
-                MessageBox.Show(
-                    "Error en el numero, intente nuevamente, recuerde que para agregar un numero decimal ocupe un '.' ");
+                this.ParentForm.MostrarNotificacion("Utilice '.' cuando quiera usar decimal", 3);
+                return;
             }
 
             L_Materials ins = new L_Materials();
@@ -345,7 +390,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(ListaMateriales);
             Principal.menuTitleLaberl.Text = "MATERIALES";
             resetCampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Material modificado",2);
+            this.ParentForm.MostrarNotificacion("Material modificado",1);
         }
     }
 }
