@@ -47,6 +47,9 @@
     <Compile Update="Vistas\Help.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\Notificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\Notificaciones.cs">
       <SubType>Form</SubType>
     </Compile>

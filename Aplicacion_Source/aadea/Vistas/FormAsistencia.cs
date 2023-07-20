@@ -174,7 +174,8 @@ namespace aadea.Vistas
                 l_Asistencia.InsertAssistance(rut, fechaSeleccionada, NewFormatLlegada);
 
                 FormAsist_Load(sender, e);
-                MessageBox.Show("Asistencia Agregada Correctamente");
+                this.ParentForm.MostrarNotificacion("Asistencia Agregada Correctamente", 1);
+
 
                 return true;
             }

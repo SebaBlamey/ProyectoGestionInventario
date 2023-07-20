@@ -618,5 +618,113 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Add(viewButtons);
             this.ParentForm.MostrarNotificacion("Productos no ingresados a la bodega", 3);
         }
+
+        private void HelpBTHistory_Click(object sender, EventArgs e)
+        {
+            Help help = new Help();
+            string ayudaTexto = @"Ayuda: Pestaña de Producción
+
+            En esta pestaña, encontrarás tres botones relacionados con la producción. A continuación se explica cómo utilizarlos:
+
+            1. Botón 'Ingresar Producción': Al hacer clic en este botón, se abrirá el apartado de ingreso de una nueva producción. Aquí podrás utilizar los materiales existentes para crear nuevos productos. Sigue las instrucciones proporcionadas en esa sección para ingresar los detalles de la producción.
+
+            2. Botón 'Ver Producción Actual': Al hacer clic en este botón, podrás ver las producciones que están en desarrollo y aún no se han terminado. Esta sección te proporcionará información sobre el estado actual de las producciones en curso.
+
+            3. Botón 'Ver Todas las Producciones': Al hacer clic en este botón, podrás ver todas las producciones que se han realizado. Esta sección te mostrará un historial completo de las producciones anteriores.
+
+            Utiliza estos botones según tus necesidades para acceder a las diferentes funcionalidades relacionadas con la producción. Asegúrate de seguir las instrucciones correspondientes en cada sección para realizar las acciones deseadas correctamente.
+            ";
+
+
+
+
+            help.TextoAyuda = ayudaTexto;
+            help.StartPosition = FormStartPosition.CenterScreen;
+            help.ShowDialog();
+        }
+
+        private void iconPictureBox1_Click(object sender, EventArgs e)
+        {
+            Help help = new Help();
+            string ayudaTexto = @"Ayuda: Pestaña de Ingresar Producción
+
+            En esta pestaña, puedes ingresar una nueva producción y utilizar los materiales existentes para crear nuevos productos. A continuación se explica cómo utilizarla:
+
+            1. Cantidad de Materiales: En este apartado, ingresa el número de materiales que se utilizarán en la producción. Por ejemplo, si seleccionas el número 2, aparecerán 2 apartados adicionales a continuación para que puedas seleccionar los materiales específicos y su stock.
+
+            2. Selección de Materiales: En el apartado inferior, encontrarás una lista de materiales disponibles junto con su stock. Si ingresaste 2 en la cantidad de materiales, aparecerán 2 apartados, cada uno con una lista desplegable para que puedas seleccionar los materiales que deseas utilizar en la producción y ver su stock actual.
+
+            3. Nombre de la Producción: En la parte superior derecha, puedes ingresar un nombre para identificar la producción. Este nombre es solo un identificador y no afectará la funcionalidad de la producción. Podrás ver el producto resultante en el catálogo con el nombre que ingreses aquí.
+
+            4. Calendario: Utiliza el calendario para asignar una fecha específica para el inicio de la producción. Si no seleccionas una fecha, se tomará el día actual como la fecha de inicio.
+
+            5. Botones 'Aceptar' y 'Cancelar': Al final de la pestaña, encontrarás dos botones. Utiliza el botón 'Aceptar' para guardar los detalles de la producción y registrarla. Si deseas cancelar y no ingresar la producción, utiliza el botón 'Cancelar'.
+
+            Recuerda ingresar los datos correctamente y seleccionar los materiales adecuados para la producción. Una vez que hayas ingresado la producción, esta se transformará en un producto en el catálogo con el nombre que hayas proporcionado.
+            ";
+
+
+
+
+            help.TextoAyuda = ayudaTexto;
+            help.StartPosition = FormStartPosition.CenterScreen;
+            help.ShowDialog();
+
+        }
+
+        private void iconPictureBox2_Click(object sender, EventArgs e)
+        {
+            Help help = new Help();
+            string ayudaTexto = @"Ayuda: Sección de Producción Actual
+
+            En esta sección, puedes observar todas las producciones en curso. Cada producción se muestra en forma de tabla con la información del material utilizado, cantidad, fecha de inicio y fecha de término.
+
+            - Nombre del Material: Nombre del material utilizado en la producción.
+            - Cantidad: Cantidad del material utilizada en la producción.
+            - Fecha de Inicio: Fecha de inicio de la producción.
+            - Fecha de Término: Fecha prevista para finalizar la producción. Puedes modificarla si es necesario.
+            - Botón 'Eliminar': Utiliza este botón para eliminar la producción completa.
+
+            Utiliza la tabla para tener una vista general de todas las producciones en curso. Si necesitas eliminar una producción, haz clic en el botón 'Eliminar'.
+
+            Asegúrate de verificar las fechas de inicio y término para una gestión eficiente de la producción.
+            ";
+
+
+
+
+            help.TextoAyuda = ayudaTexto;
+            help.StartPosition = FormStartPosition.CenterScreen;
+            help.ShowDialog();
+        }
+
+        private void iconPictureBox3_Click(object sender, EventArgs e)
+        {
+            Help help = new Help();
+            string ayudaTexto = @"Ayuda: Pestaña de Contabilizar Producción
+
+            En esta pestaña, podrás contabilizar la cantidad de productos creados por la producción y agregarlos al stock de la bodega. A continuación se explica cómo utilizarla:
+
+            1. Espacio para Escribir la Cantidad de Productos Creados: En esta sección, encontrarás espacios para ingresar la cantidad de productos creados por la producción. Puedes ingresar la cantidad correspondiente para cada variedad de producto producido.
+
+            2. Tamaño del Frasco: Junto a cada espacio de cantidad, podrás indicar el tamaño del frasco para el producto correspondiente.
+
+            3. Cantidad: Además del tamaño del frasco, también podrás ingresar la cantidad de productos creados para cada variedad.
+
+            4. Botón 'Aceptar': Una vez que hayas ingresado la cantidad de productos creados y su respectivo tamaño de frasco, presiona este botón para agregar la cantidad producida al stock de la bodega.
+
+            Verifica cuidadosamente la información ingresada antes de presionar 'Aceptar', ya que esta acción actualizará el stock de la bodega con los nuevos productos producidos. Puedes utilizar esta pestaña para contabilizar los productos generados por la producción y mantener un registro actualizado del stock de la bodega.
+
+            Recuerda ingresar la información correctamente para una gestión eficiente del stock de productos en la bodega.
+            ";
+
+
+
+
+
+            help.TextoAyuda = ayudaTexto;
+            help.StartPosition = FormStartPosition.CenterScreen;
+            help.ShowDialog();
+        }
     }
 }

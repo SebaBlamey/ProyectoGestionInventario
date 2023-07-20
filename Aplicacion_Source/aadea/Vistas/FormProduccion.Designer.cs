@@ -34,6 +34,7 @@ namespace aadea.Vistas
             panel1 = new Panel();
             tabControlProduccion = new TabControlEx();
             viewButtons = new TabPage();
+            HelpBTHistory = new FontAwesome.Sharp.IconPictureBox();
             btIngresarProduccion = new Model.BT();
             btViewProduccion = new Model.BT();
             bt1 = new Model.BT();
@@ -41,10 +42,12 @@ namespace aadea.Vistas
             volverBtn = new FontAwesome.Sharp.IconButton();
             LayoutHistorial = new FlowLayoutPanel();
             tabProduccionActual = new TabPage();
+            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             volerProdActual = new FontAwesome.Sharp.IconButton();
             layoutPanelActualProduccion = new FlowLayoutPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             tabIngresarProduccion = new TabPage();
+            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             cancelarIngresar = new FontAwesome.Sharp.IconButton();
             aceptarIngresar = new FontAwesome.Sharp.IconButton();
             textBoxCantidad = new TextBox();
@@ -62,13 +65,18 @@ namespace aadea.Vistas
             label4 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
+            iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             panel1.SuspendLayout();
             tabControlProduccion.SuspendLayout();
             viewButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)HelpBTHistory).BeginInit();
             tabHistory.SuspendLayout();
             tabProduccionActual.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             tabIngresarProduccion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             tabBodega.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -98,6 +106,7 @@ namespace aadea.Vistas
             // viewButtons
             // 
             viewButtons.BackColor = Color.FromArgb(115, 124, 141);
+            viewButtons.Controls.Add(HelpBTHistory);
             viewButtons.Controls.Add(btIngresarProduccion);
             viewButtons.Controls.Add(btViewProduccion);
             viewButtons.Controls.Add(bt1);
@@ -107,6 +116,21 @@ namespace aadea.Vistas
             viewButtons.Size = new Size(679, 459);
             viewButtons.TabIndex = 0;
             viewButtons.Text = "Produccion";
+            // 
+            // HelpBTHistory
+            // 
+            HelpBTHistory.BackColor = Color.FromArgb(115, 124, 141);
+            HelpBTHistory.ForeColor = Color.Black;
+            HelpBTHistory.IconChar = FontAwesome.Sharp.IconChar.Question;
+            HelpBTHistory.IconColor = Color.Black;
+            HelpBTHistory.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            HelpBTHistory.IconSize = 24;
+            HelpBTHistory.Location = new Point(668, 430);
+            HelpBTHistory.Name = "HelpBTHistory";
+            HelpBTHistory.Size = new Size(24, 26);
+            HelpBTHistory.TabIndex = 19;
+            HelpBTHistory.TabStop = false;
+            HelpBTHistory.Click += HelpBTHistory_Click;
             // 
             // btIngresarProduccion
             // 
@@ -217,6 +241,7 @@ namespace aadea.Vistas
             // tabProduccionActual
             // 
             tabProduccionActual.BackColor = Color.FromArgb(115, 124, 141);
+            tabProduccionActual.Controls.Add(iconPictureBox2);
             tabProduccionActual.Controls.Add(volerProdActual);
             tabProduccionActual.Controls.Add(layoutPanelActualProduccion);
             tabProduccionActual.Controls.Add(flowLayoutPanel1);
@@ -226,6 +251,21 @@ namespace aadea.Vistas
             tabProduccionActual.Size = new Size(679, 459);
             tabProduccionActual.TabIndex = 2;
             tabProduccionActual.Text = "Produccion Actual";
+            // 
+            // iconPictureBox2
+            // 
+            iconPictureBox2.BackColor = Color.FromArgb(115, 124, 141);
+            iconPictureBox2.ForeColor = Color.Black;
+            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconPictureBox2.IconColor = Color.Black;
+            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox2.IconSize = 24;
+            iconPictureBox2.Location = new Point(668, 430);
+            iconPictureBox2.Name = "iconPictureBox2";
+            iconPictureBox2.Size = new Size(24, 26);
+            iconPictureBox2.TabIndex = 26;
+            iconPictureBox2.TabStop = false;
+            iconPictureBox2.Click += iconPictureBox2_Click;
             // 
             // volerProdActual
             // 
@@ -272,6 +312,7 @@ namespace aadea.Vistas
             // 
             tabIngresarProduccion.AutoScroll = true;
             tabIngresarProduccion.BackColor = Color.FromArgb(115, 124, 141);
+            tabIngresarProduccion.Controls.Add(iconPictureBox1);
             tabIngresarProduccion.Controls.Add(cancelarIngresar);
             tabIngresarProduccion.Controls.Add(aceptarIngresar);
             tabIngresarProduccion.Controls.Add(textBoxCantidad);
@@ -286,6 +327,21 @@ namespace aadea.Vistas
             tabIngresarProduccion.Size = new Size(679, 459);
             tabIngresarProduccion.TabIndex = 3;
             tabIngresarProduccion.Text = "Ingresar produccion";
+            // 
+            // iconPictureBox1
+            // 
+            iconPictureBox1.BackColor = Color.FromArgb(115, 124, 141);
+            iconPictureBox1.ForeColor = Color.Black;
+            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconPictureBox1.IconColor = Color.Black;
+            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox1.IconSize = 24;
+            iconPictureBox1.Location = new Point(673, 410);
+            iconPictureBox1.Name = "iconPictureBox1";
+            iconPictureBox1.Size = new Size(24, 26);
+            iconPictureBox1.TabIndex = 25;
+            iconPictureBox1.TabStop = false;
+            iconPictureBox1.Click += iconPictureBox1_Click;
             // 
             // cancelarIngresar
             // 
@@ -401,6 +457,7 @@ namespace aadea.Vistas
             // tabBodega
             // 
             tabBodega.BackColor = Color.FromArgb(115, 124, 141);
+            tabBodega.Controls.Add(iconPictureBox3);
             tabBodega.Controls.Add(aceptarIngresarBodega);
             tabBodega.Controls.Add(cancelarIngresarBodega);
             tabBodega.Controls.Add(layoutPanelProducts);
@@ -517,6 +574,21 @@ namespace aadea.Vistas
             entityCommand1.EnablePlanCaching = true;
             entityCommand1.Transaction = null;
             // 
+            // iconPictureBox3
+            // 
+            iconPictureBox3.BackColor = Color.FromArgb(115, 124, 141);
+            iconPictureBox3.ForeColor = Color.Black;
+            iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconPictureBox3.IconColor = Color.Black;
+            iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox3.IconSize = 24;
+            iconPictureBox3.Location = new Point(661, 433);
+            iconPictureBox3.Name = "iconPictureBox3";
+            iconPictureBox3.Size = new Size(24, 26);
+            iconPictureBox3.TabIndex = 27;
+            iconPictureBox3.TabStop = false;
+            iconPictureBox3.Click += iconPictureBox3_Click;
+            // 
             // FormProduccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -528,12 +600,16 @@ namespace aadea.Vistas
             panel1.ResumeLayout(false);
             tabControlProduccion.ResumeLayout(false);
             viewButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)HelpBTHistory).EndInit();
             tabHistory.ResumeLayout(false);
             tabProduccionActual.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
             tabIngresarProduccion.ResumeLayout(false);
             tabIngresarProduccion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
             tabBodega.ResumeLayout(false);
             tabBodega.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).EndInit();
             ResumeLayout(false);
         }
 
@@ -570,5 +646,9 @@ namespace aadea.Vistas
         private FontAwesome.Sharp.IconButton cancelarIngresar;
         private FontAwesome.Sharp.IconButton aceptarIngresarBodega;
         private FontAwesome.Sharp.IconButton cancelarIngresarBodega;
+        private FontAwesome.Sharp.IconPictureBox HelpBTHistory;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
     }
 }

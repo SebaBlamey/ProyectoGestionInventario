@@ -354,3 +354,5 @@ C:\Users\pipen\OneDrive\Documentos\ProyectoGestionInventario\Aplicacion_Source\a
 D:\universidad\INGENIERIA_DE_SOFTWARE\PROYECTO\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.Notificaciones.resources
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.Help.resources
 C:\Users\luis-\Documents\Ingeso\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.Notificaciones.resources
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.Notificacion.resources
+C:\Users\danie\OneDrive - alumnos.ucn.cl\Universidad\Septimo Semestre\Ing. de Software\Proyecto\ProyectoGestionInventario\Aplicacion_Source\aadea\obj\Debug\net6.0-windows\aadea.Vistas.Notificaciones.resources
