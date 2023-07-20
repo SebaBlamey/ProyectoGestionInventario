@@ -62,8 +62,8 @@ namespace aadea.Vistas
 
                 byte[] imagen = l_materials.ObtenerImagenMaterial(id);
                 userControl.nombretit = name;
-                userControl.Cantidad = stock.ToString("0.00");
-                userControl.Unidad = unidad;
+                userControl.Cantidad = $"{stock.ToString("0.0")} {unidad}";
+                userControl.Unidad = "";
                 userControl.ID = Convert.ToInt32(row["ID"]);
 
                 // Suscribirte al evento DeleteButtonClicked y pasar el UserControl
