@@ -1,4 +1,5 @@
 ﻿using aadea.Extras;
+using System.Data.SQLite;
 
 namespace aadea.Vistas
 {
@@ -94,8 +95,7 @@ namespace aadea.Vistas
             L_Trabajadores ins = new L_Trabajadores();
             if (DGV_T.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Por favor seleccione una fila para eliminar", "Error", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Por favor, seleccione una fila para eliminar",3);
                 return;
             }
 
@@ -111,7 +111,34 @@ namespace aadea.Vistas
                 DGV_T.DataSource = null;
                 DGV_T.Rows.Clear();
                 FormTrabajadores_Load(sender, e);
-                this.ParentForm.MostrarNotificacion("Trabajador eliminado",3);
+                this.ParentForm.MostrarNotificacion("Trabajador eliminado", 1);
+            }
+        }
+
+        private bool TrabajadorExiste(string rut)
+        {
+            try
+            {
+                using (SQLiteConnection connection = Conexion.GetConexion().CrearConexion())
+                {
+                    string query = "SELECT rut FROM Trabajador WHERE rut = @rut";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@rut", rut);
+                        connection.Open();
+                        using (SQLiteDataReader resultado = command.ExecuteReader())
+                        {
+                            // Si el resultado tiene filas, significa que se encontró un producto con el mismo nombre
+                            return resultado.HasRows;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // Manejo de excepciones: muestra un mensaje y registra el error para depuración
+                Console.WriteLine("Error al conectar a la base de datos: " + e.Message);
+                return false;
             }
         }
 
@@ -125,6 +152,12 @@ namespace aadea.Vistas
             string address = textBoxAddress.Text;
             string phNum = textBoxPhNum.Text;
 
+            if (TrabajadorExiste(rut) == true)
+            {
+                    this.ParentForm.MostrarNotificacion($"El trabajador con rut {rut} ya existe", 3);
+                    return;
+            }
+
             if (this.option == 1)
             {
                 if (!string.IsNullOrEmpty(rut) && !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname))
@@ -133,12 +166,11 @@ namespace aadea.Vistas
                     this.BackToEmpList();
                     this.CleanTextBoxes();
                     this.FormTrabajadores_Load(sender, e);
-                    this.ParentForm.MostrarNotificacion("Trabajador guardado",1);
+                    this.ParentForm.MostrarNotificacion("Trabajador guardado", 1);
                 }
                 else
                 {
-                    MessageBox.Show("Llene los campos necesarios (Rut, Nombre y Apellido)", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.ParentForm.MostrarNotificacion("Llene los campos necesarios", 3);
                 }
             }
 
@@ -151,17 +183,19 @@ namespace aadea.Vistas
                     this.BackToEmpList();
                     this.CleanTextBoxes();
                     this.FormTrabajadores_Load(sender, e);
-                    this.ParentForm.MostrarNotificacion("Trabajador modificado",2);
+                    this.ParentForm.MostrarNotificacion("Trabajador modificado", 1);
                 }
                 else
                 {
-                    MessageBox.Show("Llene los campos necesarios (Nombre y Apellido)", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    //MessageBox.Show("Llene los campos necesarios (Nombre y Apellido)", "Error", MessageBoxButtons.OK,
+                    //    MessageBoxIcon.Error);
+                    this.ParentForm.MostrarNotificacion("Llene los campos necesarios", 3);
+
                 }
 
                 textBoxRut.ReadOnly = false;
             }
-            
+
         }
 
         private void trabajadoresDelete_Click(object sender, EventArgs e)

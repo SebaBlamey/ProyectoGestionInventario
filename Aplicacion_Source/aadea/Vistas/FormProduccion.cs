@@ -553,7 +553,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(tabBodega);
             tabControlProduccion.TabPages.Add(viewButtons);
             resertcampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Produccion no ingresada", 3);
+            //this.ParentForm.MostrarNotificacion("Produccion no ingresada", 3);
         }
 
         private void aceptarIngresarBodega_Click(object sender, EventArgs e)

@@ -75,6 +75,7 @@ namespace aadea.Vistas
                 L_bodega l_Bodega = new L_bodega();
                 DataTable list = l_Bodega.listInventarioporID(id);
                 userControl.DataGridView1.DataSource = list;
+                this.ParentForm.MostrarNotificacion("Producto en bodega eliminado",1);
 
             }
             this.refreshDGV();
@@ -215,12 +216,12 @@ namespace aadea.Vistas
         {
             if (DGV_P_AddT.SelectedRows.Count == 0 || DGV_Size_AddT.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un producto y un tamaño antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Seleccione un producto y un tamaño antes de continuar",3);
                 return;
             }
             if (string.IsNullOrEmpty(textBox1.Text))
             {
-                MessageBox.Show("Ingrese un stock inicial antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Ingrese un stock inicial antes de continuar", 3);
                 return;
             }
             string idProd = Convert.ToString(DGV_P_AddT.SelectedRows[0].Cells["ID"].Value);
@@ -253,7 +254,7 @@ namespace aadea.Vistas
             L_inventario ins = new L_inventario();
             if (string.IsNullOrEmpty(sizesAddTB.Text))
             {
-                MessageBox.Show("Ingrese un numero para poder proceder");
+                this.ParentForm.MostrarNotificacion("Debe ingresar un numero",3);
                 return;
             }
             int size = int.Parse(sizesAddTB.Text);
@@ -267,7 +268,7 @@ namespace aadea.Vistas
         {
             if (DGV_Sizes.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un tamaño para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Seleccione un tamaño para eliminar", 3);
                 return;
             }
             DialogResult result = MessageBox.Show("¿Estás seguro de realizar esta acción?", "Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -291,7 +292,7 @@ namespace aadea.Vistas
         {
             if (string.IsNullOrEmpty(textBox2.Text) || DGV_Stock.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un tamaño y llene el stock antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Seleccione un tamaño y llene el stock antes de continuar", 3);
                 return;
             }
             int incStock = Convert.ToInt32(textBox2.Text);
@@ -310,14 +311,14 @@ namespace aadea.Vistas
         {
             if (string.IsNullOrEmpty(textBox2.Text) || DGV_Stock.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Seleccione un tamaño y llene el stock antes de continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("Seleccione un tamaño y llene el stock antes de continuar", 3);
                 return;
             }
             int decStock = Convert.ToInt32(textBox2.Text);
             if (decStock == 0) return;
             if (decStock > Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Stock"].Value))
             {
-                MessageBox.Show("No puede eliminar una cantidad mayor a la presentada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.ParentForm.MostrarNotificacion("No puede eliminar una cantidad mayor a la presentada", 3);
                 return;
             }
             int size = Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Tamaño"].Value);
@@ -327,7 +328,7 @@ namespace aadea.Vistas
             L_inventario list = new L_inventario();
             DataTable dt1 = list.listStockID(this.idLocal);
             DGV_Stock.DataSource = dt1;
-            this.ParentForm.MostrarNotificacion("Stcok disminuido", 2);
+            this.ParentForm.MostrarNotificacion("Stock disminuido", 1);
         }
 
         private void DGV_P_AddT_CellContentClick(object sender, DataGridViewCellEventArgs e)

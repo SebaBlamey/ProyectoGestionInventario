@@ -129,7 +129,7 @@ namespace aadea.Vistas
                 L_Products l_Products = new L_Products();
                 flowLayoutPanel1.Controls.Remove(user);
                 l_Products.DeleteProduct(id);
-                this.ParentForm.MostrarNotificacion("Producto eliminado", 3);
+                this.ParentForm.MostrarNotificacion("Producto eliminado", 1);
             }
 
             resetCampos(sender, e);
@@ -296,7 +296,7 @@ namespace aadea.Vistas
             tabControl.TabPages.Add(productList);
             Principal.menuTitleLaberl.Text = "PRODUCTOS";
             resetCampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Producto editado", 2);
+            this.ParentForm.MostrarNotificacion("Producto editado", 1);
         }
 
         private void search_BtnEdit_Click(object sender, EventArgs e)
