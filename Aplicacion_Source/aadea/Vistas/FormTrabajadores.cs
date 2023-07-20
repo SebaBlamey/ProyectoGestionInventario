@@ -69,6 +69,8 @@ namespace aadea.Vistas
             this.GoToAddTab();
         }
 
+        private string ogTrabajadorName = "";
+
         private void iconButton1_Click(object sender, EventArgs e)
         {
             if (DGV_T.SelectedRows.Count == 0)
@@ -79,6 +81,7 @@ namespace aadea.Vistas
             }
 
             textBoxRut.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Rut"].Value);
+            ogTrabajadorName = textBoxRut.Text;
             textBoxName.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Nombre"].Value);
             textBoxSurname.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Apellido"].Value);
             textBoxAddress.Text = Convert.ToString(DGV_T.SelectedRows[0].Cells["Direccion"].Value);
@@ -152,10 +155,13 @@ namespace aadea.Vistas
             string address = textBoxAddress.Text;
             string phNum = textBoxPhNum.Text;
 
-            if (TrabajadorExiste(rut) == true)
+            if (ogTrabajadorName != rut)
             {
+                if (TrabajadorExiste(rut) == true)
+                {
                     this.ParentForm.MostrarNotificacion($"El trabajador con rut {rut} ya existe", 3);
                     return;
+                }
             }
 
             if (this.option == 1)
