@@ -156,7 +156,7 @@ namespace aadea.Vistas
                 }
                 else
                 {
-                    this.ParentForm.MostrarNotificacion("Por favor, selecciona una imagen en formato PNG o JPEG",3);
+                    this.ParentForm.MostrarNotificacion("Por favor, selecciona una imagen en formato PNG o JPEG", 3);
                 }
             }
         }

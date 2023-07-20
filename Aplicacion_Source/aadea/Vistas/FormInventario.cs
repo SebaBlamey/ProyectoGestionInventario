@@ -75,7 +75,7 @@ namespace aadea.Vistas
                 L_bodega l_Bodega = new L_bodega();
                 DataTable list = l_Bodega.listInventarioporID(id);
                 userControl.DataGridView1.DataSource = list;
-                this.ParentForm.MostrarNotificacion("Producto en bodega eliminado",1);
+                this.ParentForm.MostrarNotificacion("Producto en bodega eliminado", 1);
 
             }
             this.refreshDGV();
@@ -216,7 +216,7 @@ namespace aadea.Vistas
         {
             if (DGV_P_AddT.SelectedRows.Count == 0 || DGV_Size_AddT.SelectedRows.Count == 0)
             {
-                this.ParentForm.MostrarNotificacion("Seleccione un producto y un tamaño antes de continuar",3);
+                this.ParentForm.MostrarNotificacion("Seleccione un producto y un tamaño antes de continuar", 3);
                 return;
             }
             if (string.IsNullOrEmpty(textBox1.Text))
@@ -254,14 +254,14 @@ namespace aadea.Vistas
             L_inventario ins = new L_inventario();
             if (string.IsNullOrEmpty(sizesAddTB.Text))
             {
-                this.ParentForm.MostrarNotificacion("Debe ingresar un numero",3);
+                this.ParentForm.MostrarNotificacion("Debe ingresar un numero", 3);
                 return;
             }
             int size = int.Parse(sizesAddTB.Text);
             ins.addSize(size);
             this.refreshDGV();
             this.clearSelections();
-            this.ParentForm.MostrarNotificacion("Tamaño agregado",  1);
+            this.ParentForm.MostrarNotificacion("Tamaño agregado", 1);
         }
 
         private void quitarInventario_Click(object sender, EventArgs e)

@@ -267,7 +267,7 @@ namespace aadea.Vistas
             float valor;
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(stocktext) || string.IsNullOrEmpty(unidad))
             {
-                this.ParentForm.MostrarNotificacion("Por favor, complete todos los campos",3);
+                this.ParentForm.MostrarNotificacion("Por favor, complete todos los campos", 3);
                 return;
             }
 
@@ -305,7 +305,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Remove(EditMaterial);
             tabControl1.TabPages.Add(ListaMateriales);
             resetCampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Material agregado",1);
+            this.ParentForm.MostrarNotificacion("Material agregado", 1);
         }
 
         private void searchBtnMod_Click(object sender, EventArgs e)
@@ -363,7 +363,7 @@ namespace aadea.Vistas
             stocktext = stocktext.Replace(',', '.');
             if (float.TryParse(stocktext, NumberStyles.Float, CultureInfo.InvariantCulture, out valor))
             {
-                
+
             }
             else
             {
@@ -389,7 +389,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Add(ListaMateriales);
             Principal.menuTitleLaberl.Text = "MATERIALES";
             resetCampos(sender, e);
-            this.ParentForm.MostrarNotificacion("Material modificado",1);
+            this.ParentForm.MostrarNotificacion("Material modificado", 1);
         }
     }
 }
