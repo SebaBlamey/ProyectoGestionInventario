@@ -75,8 +75,6 @@ namespace aadea.Vistas
                 L_bodega l_Bodega = new L_bodega();
                 DataTable list = l_Bodega.listInventarioporID(id);
                 userControl.DataGridView1.DataSource = list;
-                this.ParentForm.MostrarNotificacion("Producto en bodega eliminado", 1);
-
             }
             this.refreshDGV();
 

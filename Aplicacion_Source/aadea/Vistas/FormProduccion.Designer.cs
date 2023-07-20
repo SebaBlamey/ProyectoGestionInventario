@@ -119,7 +119,7 @@ namespace aadea.Vistas
             btIngresarProduccion.FlatStyle = FlatStyle.Flat;
             btIngresarProduccion.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btIngresarProduccion.ForeColor = Color.White;
-            btIngresarProduccion.Location = new Point(210, 258);
+            btIngresarProduccion.Location = new Point(204, 133);
             btIngresarProduccion.Name = "btIngresarProduccion";
             btIngresarProduccion.Size = new Size(270, 60);
             btIngresarProduccion.TabIndex = 2;
@@ -139,7 +139,7 @@ namespace aadea.Vistas
             btViewProduccion.FlatStyle = FlatStyle.Flat;
             btViewProduccion.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             btViewProduccion.ForeColor = Color.White;
-            btViewProduccion.Location = new Point(210, 172);
+            btViewProduccion.Location = new Point(204, 199);
             btViewProduccion.Name = "btViewProduccion";
             btViewProduccion.Size = new Size(270, 60);
             btViewProduccion.TabIndex = 1;
@@ -159,7 +159,7 @@ namespace aadea.Vistas
             bt1.FlatStyle = FlatStyle.Flat;
             bt1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             bt1.ForeColor = Color.White;
-            bt1.Location = new Point(210, 82);
+            bt1.Location = new Point(204, 265);
             bt1.Name = "bt1";
             bt1.Size = new Size(270, 60);
             bt1.TabIndex = 0;
