@@ -263,7 +263,7 @@ namespace aadea.Logicaq
 
         public int obtenerIdProducto(string nombre)
         {
-            int id = 0; // Inicializar con un valor predeterminado
+            int id = 0;
             SQLiteDataReader resultado;
             SQLiteConnection connection = new SQLiteConnection();
             try
@@ -566,11 +566,6 @@ namespace aadea.Logicaq
 
                 // Obtener los materiales de la producción desde la tabla "Material_Produccion"
                 DataTable materialesProduccion = getMaterialProduccion(idProduccion);
-                if (materialesProduccion != null)
-                {
-                    MessageBox.Show("estalleno");
-                }
-                else { MessageBox.Show("Estavacio"); }
 
                 // Eliminar los registros de la producción de las tablas "Material_Produccion" y "Produccion"
                 string deleteMaterialProduccionQuery = "DELETE FROM Material_Produccion WHERE id_produccion = @id";

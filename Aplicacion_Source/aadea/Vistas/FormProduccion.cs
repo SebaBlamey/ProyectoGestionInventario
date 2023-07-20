@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -135,7 +136,7 @@ namespace aadea.Vistas
 
 
                 userControl.DataGridViewMateriales.Rows.Clear();
-                userControl.DataGridViewMateriales.Columns.Add("Nombre", "Nombre");
+                userControl.DataGridViewMateriales.Columns.Add("Material", "Material");
                 userControl.DataGridViewMateriales.Columns.Add("Cantidad", "Cantidad");
                 foreach (DataRow rows in tableMaterial.Rows)
                 {
@@ -147,7 +148,7 @@ namespace aadea.Vistas
                 }
 
                 userControl.DataGridViewProductos.Rows.Clear();
-                userControl.DataGridViewProductos.Columns.Add("Nombre", "Nombre");
+                userControl.DataGridViewProductos.Columns.Add("Producto", "Producto");
                 userControl.DataGridViewProductos.Columns.Add("Cantidad", "Cantidad");
                 userControl.DataGridViewProductos.Columns.Add("Frasco", "Frasco");
                 foreach (DataRow rows in tableProduct.Rows)
@@ -478,7 +479,7 @@ namespace aadea.Vistas
             L_Produccion l_list = new L_Produccion();
             l_list.InsertarProduccion(idProduccion, nombreProduccion, fechaInicio);
 
-            bool suficienteMaterial = true; // Variable para verificar si hay suficiente material disponible
+            bool suficienteMaterial = true; 
 
             Dictionary<int, float> materialesCantidad = new Dictionary<int, float>(); // Diccionario para almacenar el ID del material y la cantidad utilizada
 
@@ -492,14 +493,14 @@ namespace aadea.Vistas
 
                 float cantidad;
                 string cantidadTexto = textBoxCantidad.Text;
-                if (float.TryParse(cantidadTexto, out cantidad))
+
+                if (float.TryParse(cantidadTexto, NumberStyles.Float, CultureInfo.InvariantCulture, out cantidad))
                 {
-                    // Comprobar si hay suficiente material disponible
                     float stockDisponible = l_list.obtenerStockMaterial(idMaterial);
                     if (cantidad > stockDisponible)
                     {
                         suficienteMaterial = false;
-                        break; // Salir del bucle si no hay suficiente material
+                        break; 
                     }
 
                     materialesCantidad[idMaterial] = cantidad;
@@ -508,13 +509,12 @@ namespace aadea.Vistas
                 {
                     MessageBox.Show("Error");
                     suficienteMaterial = false;
-                    break; // Salir del bucle si hay un error en la cantidad
+                    break; 
                 }
             }
 
             if (suficienteMaterial)
             {
-                // Realizar la inserción de la producción y los materiales
                 foreach (var kvp in materialesCantidad)
                 {
                     int idMaterial = kvp.Key;
@@ -522,10 +522,9 @@ namespace aadea.Vistas
 
                     l_list.InsertarMaterialProduccion(idProduccion, idMaterial, cantidad);
 
-                    // Descontar la cantidad utilizada del material en la base de datos
                     l_list.DescontarStockMaterial(idMaterial, cantidad);
                 }
-
+                this.ParentForm.MostrarNotificacion("Produccion ingresada", 1);
                 tabControlProduccion.SelectedTab = viewButtons;
                 tabControlProduccion.TabPages.Remove(tabHistory);
                 tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
@@ -536,13 +535,12 @@ namespace aadea.Vistas
             }
             else
             {
-                // Eliminar la producción incompleta
                 l_list.EliminarProduccion(idProduccion);
 
                 MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            this.ParentForm.MostrarNotificacion("Produccion ingresada",  1);
+            
         }
 
         private void cancelarIngresar_Click(object sender, EventArgs e)
