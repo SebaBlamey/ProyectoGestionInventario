@@ -224,9 +224,11 @@ namespace aadea.Vistas
                 return;
             }
             string idProd = Convert.ToString(DGV_P_AddT.SelectedRows[0].Cells["ID"].Value);
-            string idSize = Convert.ToString(DGV_Size_AddT.SelectedRows[0].Cells["ID"].Value);
+            string size = Convert.ToString(DGV_Size_AddT.SelectedRows[0].Cells["Tamaño"].Value);
             int stock = int.Parse(textBox1.Text);
 
+            L_Produccion getId = new L_Produccion();
+            string idSize = getId.obtenerIdFrasco(size).ToString();
             L_inventario ins = new L_inventario();
             ins.addToInventory(idProd, idSize, stock);
             goToMainInventory();
@@ -271,7 +273,7 @@ namespace aadea.Vistas
             DialogResult result = MessageBox.Show("¿Estás seguro de realizar esta acción?", "Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(DGV_Sizes.SelectedRows[0].Cells["ID"].Value);
+                int id = Convert.ToInt32(DGV_Sizes.SelectedRows[0].Cells["Tamaño"].Value);
                 L_inventario del = new L_inventario();
                 del.delSize(id);
                 this.refreshDGV();
