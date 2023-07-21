@@ -28,6 +28,7 @@ namespace aadea.Vistas
             tabControl1.TabPages.Remove(tabSizes);
             tabControl1.TabPages.Remove(ModStock);
         }
+
         private void FormProduccion_Load(object? sender, EventArgs e)
         {
             tabControl1.ItemSize = new Size(0, 1);
@@ -52,11 +53,7 @@ namespace aadea.Vistas
                     UserControl_DeleteButtonClicked(userControl, s, args);
                     idLocal = userControl.ID;
                 };
-                userControl.buttonModifyClick += (s, args) =>
-                {
-                    UserControl_ButtonModify(userControl);
-
-                };
+                userControl.buttonModifyClick += (s, args) => { UserControl_ButtonModify(userControl); };
                 if (imagen != null && imagen.Length > 0)
                 {
 
@@ -70,12 +67,14 @@ namespace aadea.Vistas
                 {
                     userControl.PictureBox1 = Resource.defaultImage;
                 }
+
                 flowLayoutPanel1.Controls.Add(userControl);
 
                 L_bodega l_Bodega = new L_bodega();
                 DataTable list = l_Bodega.listInventarioporID(id);
                 userControl.DataGridView1.DataSource = list;
             }
+
             this.refreshDGV();
 
 
@@ -97,7 +96,8 @@ namespace aadea.Vistas
 
         private void UserControl_DeleteButtonClicked(productBodega user, object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro de realizar esta acción?", "Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Estás seguro de realizar esta acción?", "Confirmar acción",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -217,11 +217,13 @@ namespace aadea.Vistas
                 this.ParentForm.MostrarNotificacion("Seleccione un producto y un tamaño antes de continuar", 3);
                 return;
             }
+
             if (string.IsNullOrEmpty(textBox1.Text))
             {
                 this.ParentForm.MostrarNotificacion("Ingrese un stock inicial antes de continuar", 3);
                 return;
             }
+
             string idProd = Convert.ToString(DGV_P_AddT.SelectedRows[0].Cells["ID"].Value);
             string size = Convert.ToString(DGV_Size_AddT.SelectedRows[0].Cells["Tamaño"].Value);
             int stock = int.Parse(textBox1.Text);
@@ -233,7 +235,8 @@ namespace aadea.Vistas
             goToMainInventory();
             this.clearSelections();
             this.FormProduccion_Load(sender, e);
-            this.ParentForm.MostrarNotificacion("Producto ingresado a bodega", 1);
+            //this.ParentForm.MostrarNotificacion("Producto ingresado a bodega", 1);
+
         }
 
         private void volverBtn_Click(object sender, EventArgs e)
@@ -255,6 +258,7 @@ namespace aadea.Vistas
                 this.ParentForm.MostrarNotificacion("Debe ingresar un numero", 3);
                 return;
             }
+
             int size = int.Parse(sizesAddTB.Text);
             ins.addSize(size);
             this.refreshDGV();
@@ -269,7 +273,9 @@ namespace aadea.Vistas
                 this.ParentForm.MostrarNotificacion("Seleccione un tamaño para eliminar", 3);
                 return;
             }
-            DialogResult result = MessageBox.Show("¿Estás seguro de realizar esta acción?", "Confirmar acción", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            DialogResult result = MessageBox.Show("¿Estás seguro de realizar esta acción?", "Confirmar acción",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 int id = Convert.ToInt32(DGV_Sizes.SelectedRows[0].Cells["Tamaño"].Value);
@@ -293,6 +299,7 @@ namespace aadea.Vistas
                 this.ParentForm.MostrarNotificacion("Seleccione un tamaño y llene el stock antes de continuar", 3);
                 return;
             }
+
             int incStock = Convert.ToInt32(textBox2.Text);
             if (incStock == 0) return;
             int size = Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Tamaño"].Value);
@@ -312,6 +319,7 @@ namespace aadea.Vistas
                 this.ParentForm.MostrarNotificacion("Seleccione un tamaño y llene el stock antes de continuar", 3);
                 return;
             }
+
             int decStock = Convert.ToInt32(textBox2.Text);
             if (decStock == 0) return;
             if (decStock > Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Stock"].Value))
@@ -319,6 +327,7 @@ namespace aadea.Vistas
                 this.ParentForm.MostrarNotificacion("No puede eliminar una cantidad mayor a la presentada", 3);
                 return;
             }
+
             int size = Convert.ToInt32(DGV_Stock.SelectedRows[0].Cells["Tamaño"].Value);
             L_inventario dec = new L_inventario();
             dec.incDecStock(this.idLocal, size, -decStock);

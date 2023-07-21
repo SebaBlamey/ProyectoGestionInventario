@@ -122,6 +122,7 @@ namespace aadea.Logicaq
             catch (Exception ex)
             {
                 MessageBox.Show("Ya existe un producto con ese tamaño en bodega");
+                return;
             }
             finally
             {
