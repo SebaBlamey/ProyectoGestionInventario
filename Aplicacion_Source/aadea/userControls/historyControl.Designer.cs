@@ -64,6 +64,7 @@
             DGV_Producto.AllowUserToResizeColumns=false;
             DGV_Producto.AllowUserToResizeRows=false;
             DGV_Producto.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_Producto.AutoSizeRowsMode=DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             DGV_Producto.BackgroundColor=Color.FromArgb(115, 124, 141);
             DGV_Producto.CellBorderStyle=DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_Producto.ColumnHeadersBorderStyle=DataGridViewHeaderBorderStyle.None;
@@ -109,6 +110,7 @@
             DGV_materiales.AllowUserToResizeColumns=false;
             DGV_materiales.AllowUserToResizeRows=false;
             DGV_materiales.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_materiales.AutoSizeRowsMode=DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             DGV_materiales.BackgroundColor=Color.FromArgb(115, 124, 141);
             DGV_materiales.CellBorderStyle=DataGridViewCellBorderStyle.SingleHorizontal;
             DGV_materiales.ColumnHeadersBorderStyle=DataGridViewHeaderBorderStyle.None;

@@ -248,6 +248,12 @@ namespace aadea.Vistas
         {
             this.goToMainInventory();
             this.FormProduccion_Load(sender, e);
+            resetCampos(sender, e);
+        }
+
+        private void resetCampos(object sender, EventArgs e)
+        {
+            
         }
 
         private void agregarInventario_Click(object sender, EventArgs e)
@@ -263,7 +269,6 @@ namespace aadea.Vistas
             ins.addSize(size);
             this.refreshDGV();
             this.clearSelections();
-            this.ParentForm.MostrarNotificacion("Tamaño agregado", 1);
         }
 
         private void quitarInventario_Click(object sender, EventArgs e)

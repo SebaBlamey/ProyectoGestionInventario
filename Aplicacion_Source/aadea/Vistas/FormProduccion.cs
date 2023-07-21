@@ -478,70 +478,81 @@ namespace aadea.Vistas
             string nombreProduccion = txtName.Text;
             string fechaInicio = dateAddProduccion.Value.ToString("dd-MM-yyyy");
 
-            L_Produccion l_list = new L_Produccion();
-            l_list.InsertarProduccion(idProduccion, nombreProduccion, fechaInicio);
+            
 
             bool suficienteMaterial = true;
 
             Dictionary<int, float> materialesCantidad = new Dictionary<int, float>(); // Diccionario para almacenar el ID del material y la cantidad utilizada
-
-            for (int i = 0; i < comboBoxesMateriales.Count; i++)
+            if (textBoxCantidad.Text!=string.Empty && txtName.Text!=string.Empty)
             {
-                ComboBox comboBoxMaterial = comboBoxesMateriales[i];
-                TextBox textBoxCantidad = textBoxesCantidad[i];
-
-                string nombreMaterial = comboBoxMaterial.SelectedItem.ToString();
-                int idMaterial = l_list.obtenerIdMaterial(nombreMaterial);
-
-                float cantidad;
-                string cantidadTexto = textBoxCantidad.Text;
-
-                if (float.TryParse(cantidadTexto, NumberStyles.Float, CultureInfo.InvariantCulture, out cantidad))
+                L_Produccion l_list = new L_Produccion();
+                l_list.InsertarProduccion(idProduccion, nombreProduccion, fechaInicio);
+                for (int i = 0; i < comboBoxesMateriales.Count; i++)
                 {
-                    float stockDisponible = l_list.obtenerStockMaterial(idMaterial);
-                    if (cantidad > stockDisponible)
+                    ComboBox comboBoxMaterial = comboBoxesMateriales[i];
+                    TextBox textBoxCantidad = textBoxesCantidad[i];
+
+                    string nombreMaterial = comboBoxMaterial.SelectedItem.ToString();
+                    int idMaterial = l_list.obtenerIdMaterial(nombreMaterial);
+
+                    float cantidad;
+                    string cantidadTexto = textBoxCantidad.Text;
+
+                    if (float.TryParse(cantidadTexto, NumberStyles.Float, CultureInfo.InvariantCulture, out cantidad))
                     {
+                        float stockDisponible = l_list.obtenerStockMaterial(idMaterial);
+                        if (cantidad > stockDisponible)
+                        {
+                            suficienteMaterial = false;
+                            break;
+                        }
+
+                        materialesCantidad[idMaterial] = cantidad;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error");
                         suficienteMaterial = false;
                         break;
                     }
+                }
 
-                    materialesCantidad[idMaterial] = cantidad;
+                if (suficienteMaterial)
+                {
+                    foreach (var kvp in materialesCantidad)
+                    {
+                        int idMaterial = kvp.Key;
+                        float cantidad = kvp.Value;
+
+                        l_list.InsertarMaterialProduccion(idProduccion, idMaterial, cantidad);
+
+                        l_list.DescontarStockMaterial(idMaterial, cantidad);
+                    }
+                    this.ParentForm.MostrarNotificacion("Produccion ingresada", 1);
+                    tabControlProduccion.SelectedTab = viewButtons;
+                    tabControlProduccion.TabPages.Remove(tabHistory);
+                    tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
+                    tabControlProduccion.TabPages.Remove(tabProduccionActual);
+                    tabControlProduccion.TabPages.Remove(tabBodega);
+                    tabControlProduccion.TabPages.Add(viewButtons);
+                    resertcampos(sender, e);
                 }
                 else
                 {
-                    MessageBox.Show("Error");
-                    suficienteMaterial = false;
-                    break;
+                    l_list.EliminarProduccion(idProduccion);
+
+                    //MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
+                        //MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.ParentForm.MostrarNotificacion("No hay suficiente material disponible para realizar la produccion", 3);
+                    return;
                 }
-            }
-
-            if (suficienteMaterial)
-            {
-                foreach (var kvp in materialesCantidad)
-                {
-                    int idMaterial = kvp.Key;
-                    float cantidad = kvp.Value;
-
-                    l_list.InsertarMaterialProduccion(idProduccion, idMaterial, cantidad);
-
-                    l_list.DescontarStockMaterial(idMaterial, cantidad);
-                }
-                this.ParentForm.MostrarNotificacion("Produccion ingresada", 1);
-                tabControlProduccion.SelectedTab = viewButtons;
-                tabControlProduccion.TabPages.Remove(tabHistory);
-                tabControlProduccion.TabPages.Remove(tabIngresarProduccion);
-                tabControlProduccion.TabPages.Remove(tabProduccionActual);
-                tabControlProduccion.TabPages.Remove(tabBodega);
-                tabControlProduccion.TabPages.Add(viewButtons);
-                resertcampos(sender, e);
             }
             else
             {
-                l_list.EliminarProduccion(idProduccion);
-
-                MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.ParentForm.MostrarNotificacion("Debe rellenar todos los campos", 3);
+                return;
             }
+            
 
         }
 
