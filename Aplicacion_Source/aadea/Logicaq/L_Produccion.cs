@@ -62,6 +62,36 @@ namespace aadea.Logicaq
             return cant; 
         }
 
+        public string obtenerUnidad(string nameMaterial)
+        {
+            string uni=null; 
+            SQLiteDataReader resultado;
+            SQLiteConnection connection = new SQLiteConnection();
+            try
+            {
+                connection = Conexion.GetConexion().CrearConexion();
+                string query = "SELECT Unidad FROM Material WHERE Nombre = @nombre";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.Parameters.AddWithValue("@nombre", nameMaterial);
+                connection.Open();
+                resultado = command.ExecuteReader();
+                if (resultado.Read())
+                {
+                    uni = resultado.GetString(0);
+                }
+                resultado.Close();
+                return uni;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open) { connection.Close(); }
+            }
+        }
+
         public DataTable listMaterialForHistory(int id)
         {
             SQLiteDataReader resultado;

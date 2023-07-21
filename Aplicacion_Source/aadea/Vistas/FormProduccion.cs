@@ -284,7 +284,7 @@ namespace aadea.Vistas
         private void textBoxCantidad_TextChanged(object sender, EventArgs e)
         {
             int cantidadMateriales = 0;
-
+            L_Produccion l = new L_Produccion();
             if (int.TryParse(textBoxCantidad.Text, out cantidadMateriales))
             {
                 if (cantidadMateriales > cantMaterialesTot)
@@ -330,13 +330,16 @@ namespace aadea.Vistas
                         {
                             string opcion = unidades[comboBoxMaterial.SelectedIndex];
                             string unidad;
+                            string name = comboBoxMaterial.Text;
+                            string opcion2 = l.obtenerUnidad(name);
+
                             if (opcion == string.Empty)
                             {
                                 unidad = "El material no tiene una unidad definida";
                             }
                             else
                             {
-                                unidad = "La unidad del material es: " + opcion;
+                                unidad = "La unidad del material es: " + opcion2;
                             }
                             labelUnidad.Text = unidad;
                         }
