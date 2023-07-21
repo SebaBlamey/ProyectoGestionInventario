@@ -29,15 +29,16 @@ namespace aadea.Vistas
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             panel1 = new Panel();
             iconButtonSalir = new FontAwesome.Sharp.IconButton();
-            iconButtonAsistencia = new FontAwesome.Sharp.IconButton();
-            iconButtonTrabajadores = new FontAwesome.Sharp.IconButton();
             iconButtonProductos = new FontAwesome.Sharp.IconButton();
-            iconButtonProduccion = new FontAwesome.Sharp.IconButton();
             iconButtonMateriales = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
             iconButtonBodega = new FontAwesome.Sharp.IconButton();
+            iconButtonProduccion = new FontAwesome.Sharp.IconButton();
+            iconButtonTrabajadores = new FontAwesome.Sharp.IconButton();
+            iconButtonAsistencia = new FontAwesome.Sharp.IconButton();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
             menuTitleLaberl = new Label();
@@ -90,56 +91,6 @@ namespace aadea.Vistas
             iconButtonSalir.UseVisualStyleBackColor = false;
             iconButtonSalir.Click += iconButtonSalir_Click;
             // 
-            // iconButtonAsistencia
-            // 
-            iconButtonAsistencia.BackColor = Color.FromArgb(33, 42, 62);
-            iconButtonAsistencia.FlatAppearance.BorderSize = 0;
-            iconButtonAsistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
-            iconButtonAsistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
-            iconButtonAsistencia.FlatStyle = FlatStyle.Flat;
-            iconButtonAsistencia.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButtonAsistencia.ForeColor = Color.FromArgb(144, 147, 166);
-            iconButtonAsistencia.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
-            iconButtonAsistencia.IconColor = Color.FromArgb(144, 147, 166);
-            iconButtonAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButtonAsistencia.IconSize = 35;
-            iconButtonAsistencia.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonAsistencia.Location = new Point(0, 397);
-            iconButtonAsistencia.Margin = new Padding(3, 3, 5, 3);
-            iconButtonAsistencia.Name = "iconButtonAsistencia";
-            iconButtonAsistencia.Padding = new Padding(5, 0, 0, 0);
-            iconButtonAsistencia.Size = new Size(218, 47);
-            iconButtonAsistencia.TabIndex = 15;
-            iconButtonAsistencia.Text = "Asistencia";
-            iconButtonAsistencia.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonAsistencia.UseVisualStyleBackColor = false;
-            iconButtonAsistencia.Click += iconButtonAsistencia_Click;
-            // 
-            // iconButtonTrabajadores
-            // 
-            iconButtonTrabajadores.BackColor = Color.FromArgb(33, 42, 62);
-            iconButtonTrabajadores.FlatAppearance.BorderSize = 0;
-            iconButtonTrabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
-            iconButtonTrabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
-            iconButtonTrabajadores.FlatStyle = FlatStyle.Flat;
-            iconButtonTrabajadores.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButtonTrabajadores.ForeColor = Color.FromArgb(144, 147, 166);
-            iconButtonTrabajadores.IconChar = FontAwesome.Sharp.IconChar.Users;
-            iconButtonTrabajadores.IconColor = Color.FromArgb(144, 147, 166);
-            iconButtonTrabajadores.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButtonTrabajadores.IconSize = 35;
-            iconButtonTrabajadores.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonTrabajadores.Location = new Point(0, 344);
-            iconButtonTrabajadores.Margin = new Padding(3, 3, 5, 3);
-            iconButtonTrabajadores.Name = "iconButtonTrabajadores";
-            iconButtonTrabajadores.Padding = new Padding(5, 0, 0, 0);
-            iconButtonTrabajadores.Size = new Size(218, 47);
-            iconButtonTrabajadores.TabIndex = 14;
-            iconButtonTrabajadores.Text = "Trabajadores";
-            iconButtonTrabajadores.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonTrabajadores.UseVisualStyleBackColor = false;
-            iconButtonTrabajadores.Click += iconButtonTrabajadores_Click;
-            // 
             // iconButtonProductos
             // 
             iconButtonProductos.BackColor = Color.FromArgb(33, 42, 62);
@@ -163,30 +114,6 @@ namespace aadea.Vistas
             iconButtonProductos.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButtonProductos.UseVisualStyleBackColor = false;
             iconButtonProductos.Click += iconButtonProductos_Click;
-            // 
-            // iconButtonProduccion
-            // 
-            iconButtonProduccion.BackColor = Color.FromArgb(33, 42, 62);
-            iconButtonProduccion.FlatAppearance.BorderSize = 0;
-            iconButtonProduccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
-            iconButtonProduccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
-            iconButtonProduccion.FlatStyle = FlatStyle.Flat;
-            iconButtonProduccion.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButtonProduccion.ForeColor = Color.FromArgb(144, 147, 166);
-            iconButtonProduccion.IconChar = FontAwesome.Sharp.IconChar.Building;
-            iconButtonProduccion.IconColor = Color.FromArgb(144, 147, 166);
-            iconButtonProduccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButtonProduccion.IconSize = 35;
-            iconButtonProduccion.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonProduccion.Location = new Point(0, 291);
-            iconButtonProduccion.Name = "iconButtonProduccion";
-            iconButtonProduccion.Padding = new Padding(5, 0, 0, 0);
-            iconButtonProduccion.Size = new Size(218, 47);
-            iconButtonProduccion.TabIndex = 12;
-            iconButtonProduccion.Text = "Produccion";
-            iconButtonProduccion.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButtonProduccion.UseVisualStyleBackColor = false;
-            iconButtonProduccion.Click += iconButtonProduccion_Click;
             // 
             // iconButtonMateriales
             // 
@@ -253,6 +180,80 @@ namespace aadea.Vistas
             iconButtonBodega.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButtonBodega.UseVisualStyleBackColor = false;
             iconButtonBodega.Click += iconButtonBodega_Click;
+            // 
+            // iconButtonProduccion
+            // 
+            iconButtonProduccion.BackColor = Color.FromArgb(33, 42, 62);
+            iconButtonProduccion.FlatAppearance.BorderSize = 0;
+            iconButtonProduccion.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonProduccion.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
+            iconButtonProduccion.FlatStyle = FlatStyle.Flat;
+            iconButtonProduccion.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonProduccion.ForeColor = Color.FromArgb(144, 147, 166);
+            iconButtonProduccion.IconChar = FontAwesome.Sharp.IconChar.Building;
+            iconButtonProduccion.IconColor = Color.FromArgb(144, 147, 166);
+            iconButtonProduccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonProduccion.IconSize = 35;
+            iconButtonProduccion.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonProduccion.Location = new Point(0, 291);
+            iconButtonProduccion.Name = "iconButtonProduccion";
+            iconButtonProduccion.Padding = new Padding(5, 0, 0, 0);
+            iconButtonProduccion.Size = new Size(218, 47);
+            iconButtonProduccion.TabIndex = 12;
+            iconButtonProduccion.Text = "Produccion";
+            iconButtonProduccion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonProduccion.UseVisualStyleBackColor = false;
+            iconButtonProduccion.Click += iconButtonProduccion_Click;
+            // 
+            // iconButtonTrabajadores
+            // 
+            iconButtonTrabajadores.BackColor = Color.FromArgb(33, 42, 62);
+            iconButtonTrabajadores.FlatAppearance.BorderSize = 0;
+            iconButtonTrabajadores.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonTrabajadores.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
+            iconButtonTrabajadores.FlatStyle = FlatStyle.Flat;
+            iconButtonTrabajadores.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonTrabajadores.ForeColor = Color.FromArgb(144, 147, 166);
+            iconButtonTrabajadores.IconChar = FontAwesome.Sharp.IconChar.Users;
+            iconButtonTrabajadores.IconColor = Color.FromArgb(144, 147, 166);
+            iconButtonTrabajadores.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonTrabajadores.IconSize = 35;
+            iconButtonTrabajadores.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonTrabajadores.Location = new Point(0, 344);
+            iconButtonTrabajadores.Margin = new Padding(3, 3, 5, 3);
+            iconButtonTrabajadores.Name = "iconButtonTrabajadores";
+            iconButtonTrabajadores.Padding = new Padding(5, 0, 0, 0);
+            iconButtonTrabajadores.Size = new Size(218, 47);
+            iconButtonTrabajadores.TabIndex = 14;
+            iconButtonTrabajadores.Text = "Trabajadores";
+            iconButtonTrabajadores.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonTrabajadores.UseVisualStyleBackColor = false;
+            iconButtonTrabajadores.Click += iconButtonTrabajadores_Click;
+            // 
+            // iconButtonAsistencia
+            // 
+            iconButtonAsistencia.BackColor = Color.FromArgb(33, 42, 62);
+            iconButtonAsistencia.FlatAppearance.BorderSize = 0;
+            iconButtonAsistencia.FlatAppearance.MouseDownBackColor = Color.FromArgb(115, 124, 141);
+            iconButtonAsistencia.FlatAppearance.MouseOverBackColor = Color.FromArgb(57, 72, 103);
+            iconButtonAsistencia.FlatStyle = FlatStyle.Flat;
+            iconButtonAsistencia.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonAsistencia.ForeColor = Color.FromArgb(144, 147, 166);
+            iconButtonAsistencia.IconChar = FontAwesome.Sharp.IconChar.ClockFour;
+            iconButtonAsistencia.IconColor = Color.FromArgb(144, 147, 166);
+            iconButtonAsistencia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonAsistencia.IconSize = 35;
+            iconButtonAsistencia.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonAsistencia.Location = new Point(0, 397);
+            iconButtonAsistencia.Margin = new Padding(3, 3, 5, 3);
+            iconButtonAsistencia.Name = "iconButtonAsistencia";
+            iconButtonAsistencia.Padding = new Padding(5, 0, 0, 0);
+            iconButtonAsistencia.Size = new Size(218, 47);
+            iconButtonAsistencia.TabIndex = 15;
+            iconButtonAsistencia.Text = "Asistencia";
+            iconButtonAsistencia.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonAsistencia.UseVisualStyleBackColor = false;
+            iconButtonAsistencia.Click += iconButtonAsistencia_Click;
             // 
             // pictureBox2
             // 
@@ -328,6 +329,7 @@ namespace aadea.Vistas
             Controls.Add(panel1);
             ForeColor = Color.Transparent;
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "Principal";
             StartPosition = FormStartPosition.CenterScreen;

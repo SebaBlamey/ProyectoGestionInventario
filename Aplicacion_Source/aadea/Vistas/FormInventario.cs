@@ -253,7 +253,7 @@ namespace aadea.Vistas
 
         private void resetCampos(object sender, EventArgs e)
         {
-            
+
         }
 
         private void agregarInventario_Click(object sender, EventArgs e)

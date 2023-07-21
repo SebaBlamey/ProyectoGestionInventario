@@ -33,6 +33,7 @@ namespace aadea.Vistas
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTrabajadores));
             DGV_T = new DataGridView();
             tabControlE = new TabControlEx();
             employeList = new TabPage();
@@ -40,6 +41,9 @@ namespace aadea.Vistas
             iconButton1 = new FontAwesome.Sharp.IconButton();
             AddProduct = new FontAwesome.Sharp.IconButton();
             addE = new TabPage();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
             trabajadoresDelete = new FontAwesome.Sharp.IconButton();
             trabajadoresAdd = new FontAwesome.Sharp.IconButton();
             textBoxPhNum = new TextBox();
@@ -52,9 +56,6 @@ namespace aadea.Vistas
             textBoxSurname = new TextBox();
             textBoxName = new TextBox();
             textBoxRut = new TextBox();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)DGV_T).BeginInit();
             tabControlE.SuspendLayout();
             employeList.SuspendLayout();
@@ -236,6 +237,39 @@ namespace aadea.Vistas
             addE.Text = "Agregar";
             addE.Click += addE_Click;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.Red;
+            label8.Location = new Point(324, 122);
+            label8.Name = "label8";
+            label8.Size = new Size(18, 23);
+            label8.TabIndex = 14;
+            label8.Text = "*";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = Color.Red;
+            label7.Location = new Point(123, 122);
+            label7.Name = "label7";
+            label7.Size = new Size(18, 23);
+            label7.TabIndex = 13;
+            label7.Text = "*";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(76, 37);
+            label6.Name = "label6";
+            label6.Size = new Size(18, 23);
+            label6.TabIndex = 12;
+            label6.Text = "*";
+            // 
             // trabajadoresDelete
             // 
             trabajadoresDelete.BackColor = Color.FromArgb(204, 102, 102);
@@ -392,39 +426,6 @@ namespace aadea.Vistas
             textBoxRut.Size = new Size(169, 27);
             textBoxRut.TabIndex = 0;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.Red;
-            label6.Location = new Point(76, 37);
-            label6.Name = "label6";
-            label6.Size = new Size(18, 23);
-            label6.TabIndex = 12;
-            label6.Text = "*";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.ForeColor = Color.Red;
-            label7.Location = new Point(123, 122);
-            label7.Name = "label7";
-            label7.Size = new Size(18, 23);
-            label7.TabIndex = 13;
-            label7.Text = "*";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = Color.Red;
-            label8.Location = new Point(324, 122);
-            label8.Name = "label8";
-            label8.Size = new Size(18, 23);
-            label8.TabIndex = 14;
-            label8.Text = "*";
-            // 
             // FormTrabajadores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -432,6 +433,7 @@ namespace aadea.Vistas
             BackColor = Color.FromArgb(155, 164, 181);
             ClientSize = new Size(675, 477);
             Controls.Add(tabControlE);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormTrabajadores";
             Text = "FormTrabajadores";
             Load += FormTrabajadores_Load;

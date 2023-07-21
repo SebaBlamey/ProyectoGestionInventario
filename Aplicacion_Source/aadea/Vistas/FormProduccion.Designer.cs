@@ -31,6 +31,7 @@ namespace aadea.Vistas
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProduccion));
             panel1 = new Panel();
             tabControlProduccion = new TabControlEx();
             viewButtons = new TabPage();
@@ -57,6 +58,7 @@ namespace aadea.Vistas
             label2 = new Label();
             label3 = new Label();
             tabBodega = new TabPage();
+            iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             aceptarIngresarBodega = new FontAwesome.Sharp.IconButton();
             cancelarIngresarBodega = new FontAwesome.Sharp.IconButton();
             layoutPanelProducts = new FlowLayoutPanel();
@@ -65,7 +67,6 @@ namespace aadea.Vistas
             label4 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
-            iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             panel1.SuspendLayout();
             tabControlProduccion.SuspendLayout();
             viewButtons.SuspendLayout();
@@ -471,6 +472,21 @@ namespace aadea.Vistas
             tabBodega.TabIndex = 4;
             tabBodega.Text = "Ingresar productos";
             // 
+            // iconPictureBox3
+            // 
+            iconPictureBox3.BackColor = Color.FromArgb(115, 124, 141);
+            iconPictureBox3.ForeColor = Color.Black;
+            iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconPictureBox3.IconColor = Color.Black;
+            iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox3.IconSize = 24;
+            iconPictureBox3.Location = new Point(661, 433);
+            iconPictureBox3.Name = "iconPictureBox3";
+            iconPictureBox3.Size = new Size(24, 26);
+            iconPictureBox3.TabIndex = 27;
+            iconPictureBox3.TabStop = false;
+            iconPictureBox3.Click += iconPictureBox3_Click;
+            // 
             // aceptarIngresarBodega
             // 
             aceptarIngresarBodega.BackColor = Color.FromArgb(40, 167, 69);
@@ -574,27 +590,14 @@ namespace aadea.Vistas
             entityCommand1.EnablePlanCaching = true;
             entityCommand1.Transaction = null;
             // 
-            // iconPictureBox3
-            // 
-            iconPictureBox3.BackColor = Color.FromArgb(115, 124, 141);
-            iconPictureBox3.ForeColor = Color.Black;
-            iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.Question;
-            iconPictureBox3.IconColor = Color.Black;
-            iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox3.IconSize = 24;
-            iconPictureBox3.Location = new Point(661, 433);
-            iconPictureBox3.Name = "iconPictureBox3";
-            iconPictureBox3.Size = new Size(24, 26);
-            iconPictureBox3.TabIndex = 27;
-            iconPictureBox3.TabStop = false;
-            iconPictureBox3.Click += iconPictureBox3_Click;
-            // 
             // FormProduccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(675, 477);
             Controls.Add(panel1);
+            ForeColor = SystemColors.ControlText;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormProduccion";
             Text = "FormProduccion";
             panel1.ResumeLayout(false);

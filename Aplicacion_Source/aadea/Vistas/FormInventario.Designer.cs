@@ -43,6 +43,7 @@ namespace aadea.Vistas
             DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInventario));
             tabControl1 = new TabControlEx();
             tabView = new TabPage();
             verTamano = new FontAwesome.Sharp.IconButton();
@@ -772,6 +773,7 @@ namespace aadea.Vistas
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(826, 459);
             Controls.Add(tabControl1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormInventario";
             Text = "FormInventario";
             Load += FormProduccion_Load;

@@ -236,7 +236,7 @@ namespace aadea.Vistas
             tabControlProduccion.TabPages.Remove(viewButtons);
             tabControlProduccion.TabPages.Add(tabBodega);
             resertcampos(sender, e);
-            
+
 
         }
         private void aceptInsertProduct_Click(object sender, EventArgs e)
@@ -478,12 +478,12 @@ namespace aadea.Vistas
             string nombreProduccion = txtName.Text;
             string fechaInicio = dateAddProduccion.Value.ToString("dd-MM-yyyy");
 
-            
+
 
             bool suficienteMaterial = true;
 
             Dictionary<int, float> materialesCantidad = new Dictionary<int, float>(); // Diccionario para almacenar el ID del material y la cantidad utilizada
-            if (textBoxCantidad.Text!=string.Empty && txtName.Text!=string.Empty)
+            if (textBoxCantidad.Text != string.Empty && txtName.Text != string.Empty)
             {
                 L_Produccion l_list = new L_Produccion();
                 l_list.InsertarProduccion(idProduccion, nombreProduccion, fechaInicio);
@@ -542,7 +542,7 @@ namespace aadea.Vistas
                     l_list.EliminarProduccion(idProduccion);
 
                     //MessageBox.Show("No hay suficiente material disponible para realizar la producción.", "Material insuficiente",
-                        //MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     this.ParentForm.MostrarNotificacion("No hay suficiente material disponible para realizar la produccion", 3);
                     return;
                 }
@@ -552,7 +552,7 @@ namespace aadea.Vistas
                 this.ParentForm.MostrarNotificacion("Debe rellenar todos los campos", 3);
                 return;
             }
-            
+
 
         }
 

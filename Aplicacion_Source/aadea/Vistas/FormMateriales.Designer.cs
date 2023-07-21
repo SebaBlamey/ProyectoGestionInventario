@@ -31,11 +31,15 @@ namespace aadea.Vistas
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMateriales));
             tabControl1 = new TabControlEx();
             ListaMateriales = new TabPage();
             add_iconButton = new FontAwesome.Sharp.IconButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
             AddMaterial = new TabPage();
+            label8 = new Label();
+            label2 = new Label();
+            label1 = new Label();
             save_iconBtn = new FontAwesome.Sharp.IconButton();
             cancelAdd_btn = new FontAwesome.Sharp.IconButton();
             iconBtnExaminar = new FontAwesome.Sharp.IconButton();
@@ -59,9 +63,6 @@ namespace aadea.Vistas
             label6 = new Label();
             label4 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            label1 = new Label();
-            label2 = new Label();
-            label8 = new Label();
             tabControl1.SuspendLayout();
             ListaMateriales.SuspendLayout();
             AddMaterial.SuspendLayout();
@@ -162,6 +163,39 @@ namespace aadea.Vistas
             AddMaterial.Size = new Size(703, 450);
             AddMaterial.TabIndex = 1;
             AddMaterial.Text = "Agregar Material";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.Red;
+            label8.Location = new Point(256, 140);
+            label8.Name = "label8";
+            label8.Size = new Size(18, 23);
+            label8.TabIndex = 19;
+            label8.Text = "*";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(92, 140);
+            label2.Name = "label2";
+            label2.Size = new Size(18, 23);
+            label2.TabIndex = 18;
+            label2.Text = "*";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(125, 53);
+            label1.Name = "label1";
+            label1.Size = new Size(18, 23);
+            label1.TabIndex = 17;
+            label1.Text = "*";
             // 
             // save_iconBtn
             // 
@@ -496,39 +530,6 @@ namespace aadea.Vistas
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Size(61, 4);
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.Red;
-            label1.Location = new Point(125, 53);
-            label1.Name = "label1";
-            label1.Size = new Size(18, 23);
-            label1.TabIndex = 17;
-            label1.Text = "*";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.Red;
-            label2.Location = new Point(92, 140);
-            label2.Name = "label2";
-            label2.Size = new Size(18, 23);
-            label2.TabIndex = 18;
-            label2.Text = "*";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = Color.Red;
-            label8.Location = new Point(256, 140);
-            label8.Name = "label8";
-            label8.Size = new Size(18, 23);
-            label8.TabIndex = 19;
-            label8.Text = "*";
-            // 
             // FormMateriales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -536,6 +537,7 @@ namespace aadea.Vistas
             BackColor = Color.FromArgb(155, 164, 181);
             ClientSize = new Size(699, 519);
             Controls.Add(tabControl1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMateriales";
             Text = "FormMateriales";
             Load += FormMaterials_Load;

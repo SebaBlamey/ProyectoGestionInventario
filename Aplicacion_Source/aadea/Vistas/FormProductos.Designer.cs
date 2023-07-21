@@ -31,6 +31,7 @@ namespace aadea.Vistas
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductos));
             EditP = new TabPage();
             search_BtnEdit = new FontAwesome.Sharp.IconButton();
             save_BtnEdit = new FontAwesome.Sharp.IconButton();
@@ -41,6 +42,7 @@ namespace aadea.Vistas
             label3 = new Label();
             label2 = new Label();
             AddP = new TabPage();
+            label6 = new Label();
             save_iconBtn = new FontAwesome.Sharp.IconButton();
             cancelAdd_btn = new FontAwesome.Sharp.IconButton();
             iconBtnExaminar = new FontAwesome.Sharp.IconButton();
@@ -53,7 +55,6 @@ namespace aadea.Vistas
             AddProduct = new FontAwesome.Sharp.IconButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
             tabControl = new TabControlEx();
-            label6 = new Label();
             EditP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)cambiarBox).BeginInit();
             AddP.SuspendLayout();
@@ -224,6 +225,17 @@ namespace aadea.Vistas
             AddP.Size = new Size(679, 450);
             AddP.TabIndex = 1;
             AddP.Text = "AgregarProductos";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(210, 37);
+            label6.Name = "label6";
+            label6.Size = new Size(18, 23);
+            label6.TabIndex = 13;
+            label6.Text = "*";
             // 
             // save_iconBtn
             // 
@@ -424,17 +436,6 @@ namespace aadea.Vistas
             tabControl.SizeMode = TabSizeMode.Fixed;
             tabControl.TabIndex = 2;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.Red;
-            label6.Location = new Point(210, 37);
-            label6.Name = "label6";
-            label6.Size = new Size(18, 23);
-            label6.TabIndex = 13;
-            label6.Text = "*";
-            // 
             // FormProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -442,6 +443,7 @@ namespace aadea.Vistas
             BackColor = Color.FromArgb(155, 164, 181);
             ClientSize = new Size(675, 477);
             Controls.Add(tabControl);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormProductos";
             Text = "FormProductis";
             Load += FormProductos_Load;

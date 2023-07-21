@@ -98,7 +98,7 @@ namespace aadea.Vistas
             L_Trabajadores ins = new L_Trabajadores();
             if (DGV_T.SelectedRows.Count == 0)
             {
-                this.ParentForm.MostrarNotificacion("Por favor, seleccione una fila para eliminar",3);
+                this.ParentForm.MostrarNotificacion("Por favor, seleccione una fila para eliminar", 3);
                 return;
             }
 

@@ -77,6 +77,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(324, 473);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Help";
             Text = "Help";
             Load += HelpForm_Load;
